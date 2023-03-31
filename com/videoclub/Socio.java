@@ -1,3 +1,5 @@
+package com.videoclub;
+
 import java.time.LocalDate;
 import java.time.Period;
 

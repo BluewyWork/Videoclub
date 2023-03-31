@@ -1,3 +1,5 @@
+package com.videoclub;
+
 public abstract class Multimedia {
 
 	private String titulo;
