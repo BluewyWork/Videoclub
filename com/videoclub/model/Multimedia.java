@@ -5,20 +5,20 @@ public abstract class Multimedia {
 	private String titulo;
 	private String autor;
 	private Formato formato;
-	private int ano;
+	private int anyo;
 
 	public Multimedia() {
 		titulo = "Multimedia Vacio";
 		autor = "N/a";
 		formato = Formato.CD;
-		ano = 9999;
+		anyo = 9999;
 	}
 
 	public Multimedia(String titulo, String autor, Formato formato, int ano) {
-		this.titulo = titulo;
-		this.autor = autor;
-		this.formato = formato;
-		this.ano = ano;
+		setTitulo(titulo);;
+		setAutor(autor);
+		setFormato(formato);
+		setAnyo(ano);
 	}
 
 	@Override
@@ -28,7 +28,7 @@ public abstract class Multimedia {
 			"	Titulo: " + titulo + "\n" +
 			"	Autor: " + autor + "\n" +
 			"	Formato: " + formato + "\n" +
-			"	Ano: " + ano;
+			"	Ano: " + anyo;
 	}
 
 	public String getTitulo() {
@@ -55,12 +55,12 @@ public abstract class Multimedia {
 		this.formato = formato;
 	}
 
-	public int getAno() {
-		return ano;
+	public int getAnyo() {
+		return anyo;
 	}
 
-	public void setAño(int año) {
-		this.ano = año;
+	public void setAnyo(int año) {
+		this.anyo = año;
 	}
 
 	public boolean isEquals(Multimedia myMultimedia2) {
