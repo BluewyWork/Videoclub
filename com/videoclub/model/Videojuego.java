@@ -1,12 +1,12 @@
-package VIDEOCLUB;
+package com.videoclub.model;
 
 public class Videojuego extends Multimedia implements Comparable<Videojuego>{
 
-    private String plataforma;
+    private Plataforma plataforma;
 
     public Videojuego(){
         super();
-        this.plataforma = "pc";
+        this.plataforma = Plataforma.NINTENDO;
     }
 
     public Videojuego(String titulo, String autor, Formato formato, int anyo, String plataforma){

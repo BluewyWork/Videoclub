@@ -1,4 +1,4 @@
-package VIDEOCLUB;
+package com.videoclub;
 
 import java.util.Scanner;
 

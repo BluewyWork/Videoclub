@@ -1,4 +1,4 @@
-package VIDEOCLUB;
+package com.videoclub.model;
 
 public class Pelicula extends Multimedia implements Comparable<Pelicula>{
 

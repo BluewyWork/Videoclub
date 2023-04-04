@@ -1,4 +1,4 @@
-package VIDEOCLUB;
+package com.videoclub.model;
 
 public class Cancion extends Disco{
 
