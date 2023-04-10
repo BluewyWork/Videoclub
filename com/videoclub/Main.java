@@ -38,7 +38,7 @@ public class Main {
 		System.out.println("3. Devolver Multimedia a Socio");
 		System.out.println("4. Listar");
 		System.out.println("--- ---- ---");
-	} 
+	}
 	
 	public static void altasMenu() {
 		System.out.println("### Altas MENU ###");
@@ -66,4 +66,4 @@ public class Main {
 
 		return userInput;
 	}
-}	
+}
