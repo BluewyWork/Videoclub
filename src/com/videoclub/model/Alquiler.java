@@ -41,7 +41,7 @@ public class Alquiler {
 		return arrayListMultimedia;
 	}
 
-	public int getInt() {
+	public int getId() {
 		return id;
 	}
 
