@@ -6,6 +6,12 @@ public class Pelicula extends Multimedia implements Comparable<Pelicula>{
     private String actorPrincipal;
     private String actrizPrincipal;
 
+	public Pelicula() {
+		duracion = 10;
+		actorPrincipal = "Mark";
+		actrizPrincipal = "GOD";
+	}
+
     public Pelicula(String titulo, String autor, Formato formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal) {
         super(titulo, autor, formato, anyo);
         setDuracion(duracion);
