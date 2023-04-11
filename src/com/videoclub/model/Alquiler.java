@@ -11,9 +11,9 @@ public class Alquiler {
 
 	public Alquiler() {
 		alquilerCount ++;
-		mySocio = new Socio();
+		setMySocio(new Socio());
 		arrayListMultimedia = new ArrayList<>();
-		id = alquilerCount;
+		setId(alquilerCount);
 	}
 
 	@Override
@@ -40,6 +40,15 @@ public class Alquiler {
 	public ArrayList<Multimedia> getArrayListMultimedia() {
 		return arrayListMultimedia;
 	}
+
+	public int getInt() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public void setArrayListMultimedia(ArrayList<Multimedia> arrayListMultimedia) {
 		this.arrayListMultimedia = arrayListMultimedia;
 	}
