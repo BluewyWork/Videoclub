@@ -31,7 +31,7 @@ public class Socio {
 		"Socio: " + "\n" +
 		"	nif: " + nif + "\n" +
 		"	nombre: " + nombre + "\n" +
-		"	fechaNac: " + fechaNacimiento + "\n" +	
+		"	fechaNac: " + fechaNacimiento + "\n" +
 		"	poblacion: " + poblacion + "\n";
 	}
 
