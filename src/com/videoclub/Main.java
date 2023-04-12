@@ -9,6 +9,7 @@ public class Main {
 	public static void main(String[] args) {
 		ArrayList<Socio> arrayListSocio = new ArrayList<>();
 		ArrayList<Multimedia> arrayListMultimedia = new ArrayList<>();
+		ArrayList<Alquiler> arrayListAlquiler = new ArrayList<>();
 
 		Scanner myScanner = new Scanner(System.in);
 
@@ -17,19 +18,32 @@ public class Main {
 
 		while(!exit) {
 			menuOptions();
-			userInput = userInput(myScanner);
+			userInput = userInput(myScanner, false);
 
 			if (userInput == 0) {
 				exit = true;
 			}
 			else if (userInput == 1) {
 				altasMenuOptions();
-				userInput = userInput(myScanner);
+				userInput = userInput(myScanner, false);
 				altasMenu(userInput, arrayListSocio, arrayListMultimedia);
+			}
+			else if (userInput == 2) {
+				ArrayList<Multimedia> arrayListMultimediaDeSocio = new ArrayList<>();
+				
+				for (int x = 0; x < arrayListMultimedia.size(); x++) {
+					arrayListMultimediaDeSocio.add(arrayListMultimedia.get(x));
+					arrayListMultimedia.remove(x);
+				}
+
+				Alquiler myAlquiler = new Alquiler(arrayListSocio.get(0), arrayListMultimediaDeSocio);
+
+				arrayListAlquiler.add(myAlquiler);
 			}
 			else if (userInput == 4) {
 				listarMenuOptions();
-				userInput = userInput(myScanner);
+				userInput = userInput(myScanner, false);
+				listarMenu(userInput, arrayListAlquiler);
 			}
 			else {
 				System.out.println("Input Not Valid");
@@ -37,10 +51,18 @@ public class Main {
 		}
 	}
 
-	public static int userInput(Scanner myScanner) {
-		System.out.print("Option: ");
-		int userInput = myScanner.nextInt();
-		System.out.println("--- ---- ---");
+	public static int userInput(Scanner myScanner, boolean raw) {
+		int userInput;
+
+		if (raw) {
+			userInput = myScanner.nextInt();
+			System.out.println("--- ---- ---");
+		}
+		else {
+			System.out.print("Option: ");
+			userInput = myScanner.nextInt();
+			System.out.println("--- ---- ---");
+		}
 
 		return userInput;
 	}
@@ -97,12 +119,20 @@ public class Main {
 		}
 	}
 
-	public static void listarMenu(int userInput) {
+	public static void listarMenu(int userInput, ArrayList<Alquiler> arrayListAlquiler) {
+		Scanner myScanner = new Scanner(System.in);
+
 		if (userInput == 0) {
 
 		}
 		else if (userInput == 1) {
 
+		}
+		else if (userInput == 5) {
+			System.out.print("ID: ");
+			userInput = userInput(myScanner, true);
+
+			System.out.println(Alquiler.buscarAlquiler(arrayListAlquiler, userInput).toString());
 		}
 		else {
 			System.out.println("Input Not Valid");

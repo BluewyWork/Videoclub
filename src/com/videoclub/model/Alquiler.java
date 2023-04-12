@@ -10,10 +10,16 @@ public class Alquiler {
 	private ArrayList<Multimedia> arrayListMultimedia;
 
 	public Alquiler() {
+		setId(alquilerCount);
 		alquilerCount ++;
 		setMySocio(new Socio());
 		arrayListMultimedia = new ArrayList<>();
-		setId(alquilerCount);
+	}
+
+	public Alquiler(Socio mySocio, ArrayList<Multimedia> arrayListMulmedia) {
+		this();
+		this.mySocio = mySocio;
+		this.arrayListMultimedia = arrayListMulmedia;
 	}
 
 	@Override
@@ -51,5 +57,19 @@ public class Alquiler {
 
 	public void setArrayListMultimedia(ArrayList<Multimedia> arrayListMultimedia) {
 		this.arrayListMultimedia = arrayListMultimedia;
+	}
+
+	public static Alquiler buscarAlquiler(ArrayList<Alquiler> arrayListAlquiler, int id) {
+		Alquiler myAlquiler = null;
+		boolean encontrado = false;
+
+		for (int x = 0; x < arrayListAlquiler.size(); x++) {
+			if (id == arrayListAlquiler.get(x).getId() && encontrado == false) {
+				myAlquiler = arrayListAlquiler.get(x);
+				encontrado = true;
+			}
+		}
+
+		return myAlquiler;
 	}
 }
