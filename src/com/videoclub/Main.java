@@ -103,8 +103,11 @@ public class Main {
 
 		}
 		else if (userInput == 1) {
-			arrayListSocio.remove(0);
 
+			if (arrayListSocio.size() > 0) {
+				arrayListSocio.remove(0);
+			}
+			
 			Socio mySocio = new Socio();
 			arrayListSocio.add(mySocio);
 		}
