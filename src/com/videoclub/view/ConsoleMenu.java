@@ -1,12 +1,18 @@
 package com.videoclub.view;
 
 import com.videoclub.lib.Input;
+import com.videoclub.controller.*;
 
 public class ConsoleMenu {
+
+	GestorSocioController myGestorSocioController;
+
+	public ConsoleMenu() {
+		myGestorSocioController = new GestorSocioController();
+	}
 	
-	public static void menuPrincipal() {
-		String prompt = "Option: ";
-		int userAnswer = Input.readInput(prompt);
+	public void menuPrincipal() {
+		
 		boolean exit = false;
 
 		while(!exit) {
@@ -17,6 +23,8 @@ public class ConsoleMenu {
 			System.out.println("[4] Listar");
 			System.out.println("[0] Salir");
 			System.out.println("--- ---- ---");
+
+			int userAnswer = Input.readInput("Option: ");
 
 			switch(userAnswer) {
 				default:
@@ -41,7 +49,7 @@ public class ConsoleMenu {
 		
 	}
 	
-	public static void menuAltas() {
+	public void menuAltas() {
 		System.out.println("### Altas MENU ###");
 		System.out.println("[1] Alta a Socio");
 		System.out.println("[2] Alta a Pelicula");
@@ -58,16 +66,21 @@ public class ConsoleMenu {
 			case 0:
 				break;
 			case 1:
+				String nif = Input.readInput("NIF: ");
+				String nombre = Input.readInput("Nombre: ");
+				String fechaNac = Input.readInput("fecha nac (dd/mm/yyyy): ");
+				String poblacion = Input.readInput("Poblacion: ");
+
+				myGestorSocioController.crearSocio(nif, nombre, fechaNac, poblacion);
 				break;
 			case 2:
 				break;
 			case 3:
 				break;
-				
 		}
 	}
 
-	public static void menuListar() {
+	public void menuListar() {
 		System.out.println("### Listar MENU ###");
 		System.out.println("[1] Listado de todos los objetos multimedia");
 		System.out.println("[2] Listado de todas las películas ordenadas por título");
