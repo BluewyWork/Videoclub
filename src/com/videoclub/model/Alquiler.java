@@ -47,6 +47,10 @@ public class Alquiler {
 		return arrayListMultimedia;
 	}
 
+	public void setArrayListMultimedia(ArrayList<Multimedia> arrayListMultimedia) {
+		this.arrayListMultimedia = arrayListMultimedia;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -55,21 +59,17 @@ public class Alquiler {
 		this.id = id;
 	}
 
-	public void setArrayListMultimedia(ArrayList<Multimedia> arrayListMultimedia) {
-		this.arrayListMultimedia = arrayListMultimedia;
-	}
+	// public static Alquiler buscarAlquiler(ArrayList<Alquiler> arrayListAlquiler, int id) {
+	// 	Alquiler myAlquiler = null;
+	// 	boolean encontrado = false;
 
-	public static Alquiler buscarAlquiler(ArrayList<Alquiler> arrayListAlquiler, int id) {
-		Alquiler myAlquiler = null;
-		boolean encontrado = false;
+	// 	for (int x = 0; x < arrayListAlquiler.size(); x++) {
+	// 		if (id == arrayListAlquiler.get(x).getId() && encontrado == false) {
+	// 			myAlquiler = arrayListAlquiler.get(x);
+	// 			encontrado = true;
+	// 		}
+	// 	}
 
-		for (int x = 0; x < arrayListAlquiler.size(); x++) {
-			if (id == arrayListAlquiler.get(x).getId() && encontrado == false) {
-				myAlquiler = arrayListAlquiler.get(x);
-				encontrado = true;
-			}
-		}
-
-		return myAlquiler;
-	}
+	// 	return myAlquiler;
+	// }
 }

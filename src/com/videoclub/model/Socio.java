@@ -25,6 +25,14 @@ public class Socio {
 		this.poblacion = poblacion;
 	}
 
+	public Socio(String nif, String nombre, String fechaNac, String poblacion) {
+		this.nif = nif;
+		this.nombre = nombre;
+		LocalDate lc = LocalDate.parse(fechaNac);
+		fechaNacimiento = lc;
+		this.poblacion = poblacion;
+	}
+
 	@Override
 	public String toString() {
 		return 

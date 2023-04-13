@@ -1,8 +1,13 @@
 package com.videoclub.view;
 
+import com.videoclub.controller.GestorAlquilerController;
+import com.videoclub.controller.InventarioController;
 import com.videoclub.lib.Input;
 
 public class ConsoleMenu {
+	
+	GestorAlquilerController myAlquilerController = new GestorAlquilerController();
+	InventarioController myInventarioController = new InventarioController();
 	
 	public static void menuPrincipal() {
 		String prompt = "Option: ";
@@ -30,6 +35,11 @@ public class ConsoleMenu {
 					break;
 				case 2:
 					break;
+				case 3:
+					break;
+				case 4:
+					menuListar();
+					break;
 			}
 		}
 
@@ -52,6 +62,17 @@ public class ConsoleMenu {
 			case 0:
 				break;
 			case 1:
+				String nif = Input.readInput("NIF: ");
+				String nombre = Input.readInput("Nombre: ");
+				String fechaNacimiento = Input.readInput("fecha nac: ");
+				String poblacion = Input.readInput("Poblacion: ");
+
+				myAlquilerController.createSocio(nif, nombre, fechaNacimiento, poblacion);
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
 				
 		}
 	}
