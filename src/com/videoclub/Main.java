@@ -1,6 +1,8 @@
 package com.videoclub;
 
 import com.videoclub.model.*;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,21 +13,20 @@ public class Main {
 		ArrayList<Multimedia> arrayListMultimedia = new ArrayList<>();
 		ArrayList<Alquiler> arrayListAlquiler = new ArrayList<>();
 
-		Scanner myScanner = new Scanner(System.in);
 
 		boolean exit = false;
 		int userInput;
 
 		while(!exit) {
 			menuOptions();
-			userInput = userInput(myScanner, false);
+			userInput = integerInput(false);
 
 			if (userInput == 0) {
 				exit = true;
 			}
 			else if (userInput == 1) {
 				altasMenuOptions();
-				userInput = userInput(myScanner, false);
+				userInput = integerInput(false);
 				altasMenu(userInput, arrayListSocio, arrayListMultimedia);
 			}
 			else if (userInput == 2) {
@@ -42,7 +43,7 @@ public class Main {
 			}
 			else if (userInput == 4) {
 				listarMenuOptions();
-				userInput = userInput(myScanner, false);
+				userInput = integerInput(false);
 				listarMenu(userInput, arrayListAlquiler);
 			}
 			else {
@@ -51,12 +52,13 @@ public class Main {
 		}
 	}
 
-	public static int userInput(Scanner myScanner, boolean raw) {
+	public static int integerInput(boolean raw) {
+		Scanner myScanner = new Scanner(System.in);
+
 		int userInput;
 
 		if (raw) {
 			userInput = myScanner.nextInt();
-			System.out.println("--- ---- ---");
 		}
 		else {
 			System.out.print("Option: ");
@@ -65,6 +67,22 @@ public class Main {
 		}
 
 		return userInput;
+	}
+
+	public static String stringInput(boolean raw) {
+		Scanner myScanner = new Scanner(System.in);
+
+		String input = "";
+
+		if (raw) {
+			input = myScanner.nextLine();
+		}
+		else {
+			input = myScanner.nextLine();
+			System.out.println("--- ---- ---");
+		}
+
+		return input;
 	}
 
 	public static void menuOptions() {
@@ -107,8 +125,33 @@ public class Main {
 			if (arrayListSocio.size() > 0) {
 				arrayListSocio.remove(0);
 			}
-			
-			Socio mySocio = new Socio();
+
+			System.out.print("NIF: ");
+			String nif = stringInput(true);
+
+			System.out.println("");
+
+			System.out.print("Name: ");
+			String name = stringInput(true);
+
+			System.out.println("");
+
+			System.out.print("Fecha Nacimiento (dd/mm/yyyy): ");
+			String fechaNacimiento = stringInput(true);
+			String[] fechas = fechaNacimiento.split("/");
+			int dia = Integer.parseInt(fechas[0]);
+			int mes = Integer.parseInt(fechas[1]);
+			int anyo = Integer.parseInt(fechas[2]);
+
+			LocalDate lc;
+			lc = LocalDate.of(anyo, mes, dia);
+
+			System.out.println("");
+
+			System.out.print("Poblacion: ");
+			String poblacion = stringInput(true);
+
+			Socio mySocio = new Socio(nif, name, lc, poblacion);
 			arrayListSocio.add(mySocio);
 		}
 		else if (userInput == 2) {
@@ -135,7 +178,7 @@ public class Main {
 		}
 		else if (userInput == 5) {
 			System.out.print("ID: ");
-			userInput = userInput(myScanner, true);
+			userInput = integerInput(true);
 
 			System.out.println(Alquiler.buscarAlquiler(arrayListAlquiler, userInput).toString());
 		}
