@@ -6,9 +6,11 @@ import com.videoclub.controller.*;
 public class ConsoleMenu {
 
 	GestorSocioController myGestorSocioController;
+	InventarioController inventarioController;
 
 	public ConsoleMenu() {
 		myGestorSocioController = new GestorSocioController();
+		inventarioController = new InventarioController();
 	}
 	
 	public void menuPrincipal() {
@@ -68,14 +70,31 @@ public class ConsoleMenu {
 			case 1:
 				String nif = Input.readInput("NIF: ");
 				String nombre = Input.readInput("Nombre: ");
-				String fechaNac = Input.readInput("fecha nac (dd/mm/yyyy): ");
+				String fechaNac = Input.readInput("Fecha Nac (dd/mm/yyyy): ");
 				String poblacion = Input.readInput("Poblacion: ");
 
 				myGestorSocioController.crearSocio(nif, nombre, fechaNac, poblacion);
 				break;
 			case 2:
+				String titulo = Input.readInput("Titulo: ");
+				String autor = Input.readInput("Autor: ");
+				String formato = Input.readInput("Formato: ");
+				int anyo = Input.readInput("Año: ");
+				int duracion = Input.readInput("Duracion: ");
+				String actorPrincipal = Input.readInput("Actor Principal: ");
+				String atrizPrincipal = Input.readInput("Actriz Principal: ");
+
+				inventarioController.createMultimedia("pelicula", titulo, autor, formato, anyo, duracion, actorPrincipal, atrizPrincipal, formato);
 				break;
 			case 3:
+				titulo = Input.readInput("Titulo: ");
+				autor = Input.readInput("Autor: ");
+				formato = Input.readInput("Formato: ");
+				anyo = Input.readInput("Año: ");
+				duracion = Input.readInput("Duracion: ");
+				String plataforma = Input.readInput("Plataforma: ");
+
+				inventarioController.createMultimedia("videojuego", titulo, autor, formato, anyo, duracion, null, null, plataforma);
 				break;
 		}
 	}

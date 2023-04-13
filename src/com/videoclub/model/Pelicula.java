@@ -19,6 +19,13 @@ public class Pelicula extends Multimedia implements Comparable<Pelicula>{
         setActrizPrincipal(actrizPrincipal);
     }
 
+	public Pelicula(String titulo, String autor, String formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal) {
+			super(titulo, autor, formato, anyo);
+			setDuracion(duracion);
+			setActorPrincipal(actorPrincipal);
+			setActrizPrincipal(actrizPrincipal);
+		}	
+
     public int getDuracion() {
         return duracion;
     }

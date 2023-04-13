@@ -14,11 +14,18 @@ public abstract class Multimedia {
 		anyo = 9999;
 	}
 
-	public Multimedia(String titulo, String autor, Formato formato, int ano) {
+	public Multimedia(String titulo, String autor, Formato formato, int anyo) {
 		setTitulo(titulo);;
 		setAutor(autor);
 		setFormato(formato);
-		setAnyo(ano);
+		setAnyo(anyo);
+	}
+
+	public Multimedia(String titulo, String autor, String formato, int anyo) {
+		setTitulo(titulo);;
+		setAutor(autor);
+		setFormato(Formato.valueOf(formato));
+		setAnyo(anyo);
 	}
 
 	@Override
