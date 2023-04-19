@@ -9,7 +9,12 @@ public class Videojuego extends Multimedia implements Comparable<Videojuego>{
         this.plataforma = Plataforma.NINTENDO;
     }
 
-    public Videojuego(String titulo, String autor, Formato formato, int anyo, Plataforma plataforma){
+    public Videojuego(String titulo, String autor, String formato, int anyo, String plataforma2){
+        super(titulo, autor, formato, anyo);
+        setPlataforma(Plataforma.valueOf(plataforma2));
+    }
+
+	public Videojuego(String titulo, String autor, String formato, int anyo, Plataforma plataforma){
         super(titulo, autor, formato, anyo);
         setPlataforma(plataforma);
     }

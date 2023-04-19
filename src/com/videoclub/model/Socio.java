@@ -2,6 +2,7 @@ package com.videoclub.model;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 public class Socio {
 
@@ -22,6 +23,17 @@ public class Socio {
 		nif = nIF;
 		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
+		this.poblacion = poblacion;
+	}
+
+	public Socio(String nif, String nombre, String fechaNac, String poblacion) {
+		this.nif = nif;
+		this.nombre = nombre;
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate lc = LocalDate.parse(fechaNac, formatter);
+
+		fechaNacimiento = lc;
 		this.poblacion = poblacion;
 	}
 
