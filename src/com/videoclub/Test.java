@@ -4,13 +4,10 @@ import com.videoclub.lib.*;
 
 public class Test {
 	public static void main(String[] args) {
-		String test1 = "";
-		int one = 0;
+		int one;
 
-		test1 = Input.readInput("Input: ");
-		one = Input.readInput("Input: ");
+		one = Input.readInput("Input: ", "int");
 
-		System.out.println(test1);
 		System.out.println(one);
 	}	
 }
