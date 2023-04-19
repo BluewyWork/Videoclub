@@ -9,11 +9,14 @@ public class Input {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print(prompt);
 		String input = scanner.nextLine();
+
 		if (input.matches("-?\\d+")) {
 			return (T) Integer.valueOf(input);
-		} else if (input.matches("-?\\d+(\\.\\d+)?")) {
+		} 
+		else if (input.matches("-?\\d+(\\.\\d+)?")) {
 			return (T) Double.valueOf(input);
-		} else {
+		} 
+		else {
 			return (T) input;
 		}
 	}
@@ -28,10 +31,12 @@ public class Input {
 				String input = scanner.nextLine();
 
 				if (type.equals("int")) {
-				tipo = (T) Integer.valueOf(input);
-				} else if (type.equals("double")) {
+					tipo = (T) Integer.valueOf(input);
+				} 
+				else if (type.equals("double")) {
 					tipo = (T) Double.valueOf(input);
-				} else {
+				} 
+				else {
 					tipo =  (T) input;
 				}
 
