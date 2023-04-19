@@ -20,22 +20,27 @@ public class Input {
 
 	public static <T> T readInput(String prompt, String type) {
 		Scanner scanner = new Scanner(System.in);
-		System.out.print(prompt);
-		String input = scanner.nextLine();
+		T tipo = null;
 
-		try {
-			if (input.matches("-?\\d+") && type.equals("int")) {
-				return (T) Integer.valueOf(input);
-			} else if (input.matches("-?\\d+(\\.\\d+)?") && type.equals("double")) {
-				return (T) Double.valueOf(input);
-			} else {
-				return (T) input;
+		do {
+			try {
+				System.out.print(prompt);
+				String input = scanner.nextLine();
+
+				if (type.equals("int")) {
+				tipo = (T) Integer.valueOf(input);
+				} else if (type.equals("double")) {
+					tipo = (T) Double.valueOf(input);
+				} else {
+					tipo =  (T) input;
+				}
+
+				return tipo;
+			}
+			catch (Exception e) {
+				System.out.println("ERROR " + e.toString());
 			}
 		}
-		catch (Exception e) {
-			System.out.println("ERROR: " + e.toString());
-		}
-		return (T) input;
-		
+		while (true);
 	}
 }
