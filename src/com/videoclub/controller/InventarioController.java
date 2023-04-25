@@ -18,6 +18,19 @@ public class InventarioController {
 			case "videojuego":
 				myInventario.anadirMultimedia(type, titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal, plataforma);
 				break;
+			case "disco":
+				myInventario.anadirMultimedia(type, titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal, plataforma);
 		}
 	}
+
+	public void mostrarPeliculas(){
+		myInventario.mostrarPeliculas();
+	}
+	public void mostrarVideojuegos(){
+		myInventario.mostrarVideojuegos();
+	}
+	public void mostrarDiscos(){
+		myInventario.mostrarDiscos();
+	}
+
 }
