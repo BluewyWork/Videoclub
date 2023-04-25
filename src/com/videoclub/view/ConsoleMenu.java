@@ -54,7 +54,7 @@ public class ConsoleMenu {
 	}
 	
 	public void menuAltas() {
-		System.out.println("### Altas MENU ###");
+		System.out.println("### ALTAS MENU ###");
 		System.out.println("[1] Alta a Socio");
 		System.out.println("[2] Alta a Pelicula");
 		System.out.println("[3] Alta a Videojuego");
@@ -78,31 +78,37 @@ public class ConsoleMenu {
 				myGestorSocioController.crearSocio(nif, nombre, fechaNac, poblacion);
 				break;
 			case 2:
-				String titulo = Input.readInput("Titulo: ");
-				String autor = Input.readInput("Autor: ");
-				String formato = Input.readInput("Formato: ");
-				int anyo = Input.readInput("Año: ");
-				int duracion = Input.readInput("Duracion: ");
-				String actorPrincipal = Input.readInput("Actor Principal: ");
-				String atrizPrincipal = Input.readInput("Actriz Principal: ");
-
-				inventarioController.createMultimedia("pelicula", titulo, autor, formato, anyo, duracion, actorPrincipal, atrizPrincipal, formato);
+				promptMultimedia(userAnswer);
 				break;
 			case 3:
-				titulo = Input.readInput("Titulo: ");
-				autor = Input.readInput("Autor: ");
-				formato = Input.readInput("Formato: ");
-				anyo = Input.readInput("Año: ");
-				duracion = Input.readInput("Duracion: ");
-				String plataforma = Input.readInput("Plataforma: ");
-
-				inventarioController.createMultimedia("videojuego", titulo, autor, formato, anyo, duracion, null, null, plataforma);
+				promptMultimedia(userAnswer);
 				break;
 		}
 	}
 
+	public void promptMultimedia(int userAnswer) {
+		if (userAnswer == 2 || userAnswer == 3) {
+			String titulo = Input.readInput("Titulo: ");
+			String autor = Input.readInput("Autor: ");
+			String formato = Input.readInput("Formato: ");
+			int anyo = Input.readInput("Año: ");
+			int duracion = Input.readInput("Duracion: ");
+
+			if (userAnswer == 2) {
+				String actorPrincipal = Input.readInput("Actor Principal: ");
+				String atrizPrincipal = Input.readInput("Actriz Principal: ");
+
+				inventarioController.createMultimedia("pelicula", titulo, autor, formato, anyo, duracion, actorPrincipal, atrizPrincipal, formato);
+			} else if (userAnswer == 3) {
+				String plataforma = Input.readInput("Plataforma: ");
+
+				inventarioController.createMultimedia("videojuego", titulo, autor, formato, anyo, duracion, null, null, plataforma);
+			}
+		}
+	}
+
 	public void menuListar() {
-		System.out.println("### Listar MENU ###");
+		System.out.println("### LISTAR MENU ###");
 		System.out.println("[1] Listado de todos los objetos multimedia");
 		System.out.println("[2] Listado de todas las películas ordenadas por título");
 		System.out.println("[3] Listado de todas las canciones de un disco por duración");
@@ -112,6 +118,7 @@ public class ConsoleMenu {
 		System.out.println("[7] Salir");
 		System.out.println("--- ------ ---- ---");
 	}
+
 
 	public void alquilarMultimediaSocio(){
 		String nif = Input.readInput("Introduzca su nif");
@@ -125,5 +132,4 @@ public class ConsoleMenu {
 			}
 		}
 	}
-
 }
