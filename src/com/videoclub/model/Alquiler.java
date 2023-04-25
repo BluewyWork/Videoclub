@@ -1,25 +1,28 @@
 package com.videoclub.model;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Alquiler {
 
-	private static int alquilerCount = 0;
+	private static final AtomicInteger counter = new AtomicInteger(0);
 	private int id;
 	private Socio mySocio;
-	private ArrayList<Multimedia> arrayListMultimedia;
+	private ArrayList<Multimedia> arrayListMultimediaAlquilada;
+
+	private boolean deuda;
 
 	public Alquiler() {
-		setId(alquilerCount);
-		alquilerCount ++;
+		setId(getNextId());
 		setMySocio(new Socio());
-		arrayListMultimedia = new ArrayList<>();
+		setDeuda(true);
+		arrayListMultimediaAlquilada = new ArrayList<>();
 	}
 
-	public Alquiler(Socio mySocio, ArrayList<Multimedia> arrayListMulmedia) {
+	public Alquiler(Socio mySocio, boolean deuda) {
 		this();
 		this.mySocio = mySocio;
-		this.arrayListMultimedia = arrayListMulmedia;
+		this.deuda = deuda;
 	}
 
 	@Override
@@ -28,11 +31,23 @@ public class Alquiler {
 
 		text += mySocio.toString() + "\n";
 
-		for (int x = 0; x < arrayListMultimedia.size(); x++) {
-			text += arrayListMultimedia.get(x).toString() + "\n";
+		for (int x = 0; x < arrayListMultimediaAlquilada.size(); x++) {
+			text += arrayListMultimediaAlquilada.get(x).toString() + "\n";
 		}
 
 		return text;
+	}
+
+	public boolean isDeuda() {
+		return deuda;
+	}
+
+	public void setDeuda(boolean deuda) {
+		this.deuda = deuda;
+	}
+
+	public static int getNextId() {
+		return counter.getAndIncrement();
 	}
 
 	public Socio getMySocio() {
@@ -44,11 +59,11 @@ public class Alquiler {
 	}
 
 	public ArrayList<Multimedia> getArrayListMultimedia() {
-		return arrayListMultimedia;
+		return arrayListMultimediaAlquilada;
 	}
 
 	public void setArrayListMultimedia(ArrayList<Multimedia> arrayListMultimedia) {
-		this.arrayListMultimedia = arrayListMultimedia;
+		this.arrayListMultimediaAlquilada = arrayListMultimedia;
 	}
 
 	public int getId() {

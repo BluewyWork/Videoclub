@@ -2,11 +2,15 @@ package com.videoclub.view;
 
 import com.videoclub.lib.Input;
 import com.videoclub.controller.*;
+import com.videoclub.model.Multimedia;
+
+import java.util.ArrayList;
 
 public class ConsoleMenu {
 
 	GestorSocioController myGestorSocioController;
 	InventarioController inventarioController;
+
 
 	public ConsoleMenu() {
 		myGestorSocioController = new GestorSocioController();
@@ -47,8 +51,6 @@ public class ConsoleMenu {
 					break;
 			}
 		}
-
-		
 	}
 	
 	public void menuAltas() {
@@ -110,4 +112,18 @@ public class ConsoleMenu {
 		System.out.println("[7] Salir");
 		System.out.println("--- ------ ---- ---");
 	}
+
+	public void alquilarMultimediaSocio(){
+		String nif = Input.readInput("Introduzca su nif");
+		String respuesta;
+		if (myGestorSocioController.existeSocio(nif)) {
+			//comprobacion de que no tiene deudas para poder alquilar
+			respuesta = Input.readInput("Desea alquilar una pelicula, un videojuego o un disco?");
+			if (respuesta.equals("peliculas")){
+				inventarioController.mostrarPeliculas();
+
+			}
+		}
+	}
+
 }

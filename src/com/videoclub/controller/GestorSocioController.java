@@ -12,4 +12,8 @@ public class GestorSocioController {
 	public void crearSocio(String nif, String nombre, String fechaNac, String poblacion) {
 		myGS.addSocio(nif, nombre, fechaNac, poblacion);
 	}
+
+	public boolean existeSocio(String nif){
+		return myGS.existe(nif);
+	}
 }
