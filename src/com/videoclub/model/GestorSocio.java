@@ -30,4 +30,15 @@ public class GestorSocio {
 		return b;
 	}
 
+	public Socio buscaSocio(String nif){
+		Socio socio = null;
+		if (existe(nif)) {
+			for (int i = 0; i < arrayListSocio.size() && !b; i++) {
+				if (nif.equals(arrayListSocio.get(i).getNif())) {
+					socio = arrayListSocio.get(i);
+					b = true;
+				}
+			}
+		} return socio;
+	}
 }
