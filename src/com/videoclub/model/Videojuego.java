@@ -29,10 +29,9 @@ public class Videojuego extends Multimedia implements Comparable<Videojuego>{
 
     @Override
     public String toString() {
-        return "Videojuego{" +
-                super.toString() +
-                "plataforma='" + plataforma + '\'' +
-                '}';
+        return 
+            super.toString() + "\n" +
+            "\t" + "Plataforma: '" + plataforma + '\'';
     }
 
     @Override

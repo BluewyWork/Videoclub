@@ -12,6 +12,14 @@ public class Disco extends Multimedia{
         listCanciones = new ArrayList<>();
     }
 
+    @Override
+    public String toString() {
+        return 
+            super.toString() + "\n" +
+            "\t" + "Duracion: " + duracion +
+            "\t" + "Canciones: '" + listCanciones + '\'';
+    }
+
     public int getDuracion() {
         return duracion;
     }
@@ -28,12 +36,5 @@ public class Disco extends Multimedia{
 
     public void setListCanciones(ArrayList<Cancion> listCanciones) {
         this.listCanciones = listCanciones;
-    }
-
-    @Override
-    public String toString() {
-        return super.toString() +
-                "\nDuracion: " + duracion +
-                "\nCanciones: '" + listCanciones + '\'';
     }
 }

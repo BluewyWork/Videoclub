@@ -24,7 +24,17 @@ public class Pelicula extends Multimedia implements Comparable<Pelicula>{
 			setDuracion(duracion);
 			setActorPrincipal(actorPrincipal);
 			setActrizPrincipal(actrizPrincipal);
-		}	
+	}
+
+    @Override
+	public String toString() {
+		return 
+            "Pelicula: " + "\n" +
+            "\t" + super.toString() + "\n" +
+            "\t" + "Duracion: '" + nombre + '\'' + "\n" +
+            "\t" + "Actor principal: " + actorPrincipal + "\n" +
+            "\t" + "Actriz principal: " + actrizPrincipal;
+	}
 
     public int getDuracion() {
         return duracion;

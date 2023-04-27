@@ -40,11 +40,11 @@ public class Socio {
 	@Override
 	public String toString() {
 		return 
-		"Socio: " + "\n" +
-		"	nif: " + nif + "\n" +
-		"	nombre: " + nombre + "\n" +
-		"	fechaNac: " + fechaNacimiento + "\n" +
-		"	poblacion: " + poblacion + "\n";
+			"Socio: " + "\n" +
+			"\t" + "Nif: " + nif + "\n" +
+			"\t" + "Nombre: " + nombre + "\n" +
+			"\t" + "FechaNac: " + fechaNacimiento + "\n" +
+			"\t" + "Poblacion: " + poblacion;
 	}
 
 	public String getNif() {
