@@ -16,4 +16,8 @@ public class GestorSocioController {
 	public boolean existeSocio(String nif){
 		return myGS.existe(nif);
 	}
+
+	public Socio buscaSocio(String nif){
+		return myGS.buscaSocio(nif;)
+	}
 }

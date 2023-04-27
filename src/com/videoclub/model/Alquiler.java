@@ -28,11 +28,18 @@ public class Alquiler {
 	@Override
 	public String toString() {
 		String text = "";
-
+		
 		text += mySocio.toString() + "\n";
 
 		for (int x = 0; x < arrayListMultimediaAlquilada.size(); x++) {
-			text += arrayListMultimediaAlquilada.get(x).toString() + "\n";
+			if (arrayListMultimediaAlquilada.get(x) instanceof Pelicula) {
+				text += (Pelicula) arrayListMultimediaAlquilada.get(x).toString() + "\n";
+			} else if (arrayListMultimediaAlquilada.get(x) instanceof Videojuego) {
+				text += (Videojuego) arrayListMultimediaAlquilada.get(x).toString() + "\n";
+			} else if (arrayListMultimediaAlquilada.get(x) instanceof Disco) {
+				text += (Disco) arrayListMultimediaAlquilada.get(x).toString() + "\n";
+			} else
+				text += "ERROR";
 		}
 
 		return text;

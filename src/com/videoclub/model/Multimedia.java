@@ -31,11 +31,10 @@ public abstract class Multimedia {
 	@Override
 	public String toString() {
 		return
-			"Multimedia: " + "\n" +
-			"	Titulo: " + titulo + "\n" +
-			"	Autor: " + autor + "\n" +
-			"	Formato: " + formato + "\n" +
-			"	Ano: " + anyo;
+			"\t" + "Titulo: " + titulo + "\n" +
+			"\t" + "Autor: " + autor + "\n" +
+			"\t" + "Formato: " + formato + "\n" +
+			"\t" + "Ano: " + anyo;
 	}
 
 	public String getTitulo() {

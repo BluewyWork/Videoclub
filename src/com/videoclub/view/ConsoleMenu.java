@@ -9,10 +9,12 @@ import java.util.ArrayList;
 public class ConsoleMenu {
 
 	GestorSocioController myGestorSocioController;
+	GestorAlquilerController myGestorAlquilerController;
 	InventarioController inventarioController;
 
 
 	public ConsoleMenu() {
+		myGestorAlquilerController = new GestorAlquilerController();
 		myGestorSocioController = new GestorSocioController();
 		inventarioController = new InventarioController();
 	}
@@ -130,6 +132,18 @@ public class ConsoleMenu {
 				inventarioController.mostrarPeliculas();
 
 			}
+		}
+	}
+
+	public void listarAlquileresSocio(){
+		String nif = Input.readInput("Introduzca su nif");
+		Socio socio = null;
+		
+		try {
+			socio = myGestorSocioController.buscaSocio(nif);
+			
+		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 }
