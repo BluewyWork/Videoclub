@@ -36,8 +36,11 @@ public class Input {
 				else if (type.equals("double")) {
 					tipo = (T) Double.valueOf(input);
 				} 
-				else {
+				else if (type.equals("String")) {
 					tipo =  (T) input;
+				}
+				else {
+					throw new RuntimeException("not valid");
 				}
 
 				return tipo;
