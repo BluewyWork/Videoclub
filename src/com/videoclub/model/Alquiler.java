@@ -104,7 +104,7 @@ public class Alquiler {
             return fechaActual;
         }
     }
-}
+
 
 
 // public static Alquiler buscarAlquiler(ArrayList<Alquiler> arrayListAlquiler, int id) {
@@ -120,4 +120,3 @@ public class Alquiler {
 
 // 	return myAlquiler;
 // }
-}
