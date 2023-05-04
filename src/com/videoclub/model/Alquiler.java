@@ -1,5 +1,6 @@
 package com.videoclub.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -11,18 +12,22 @@ public class Alquiler {
 	private ArrayList<Multimedia> arrayListMultimediaAlquilada;
 
 	private boolean deuda;
+	private LocalDate fechaAlquiler;
 
 	public Alquiler() {
 		setId(getNextId());
 		setMySocio(new Socio());
 		setDeuda(true);
+		setFechaAlquiler(fechaDeAlquiler());
 		arrayListMultimediaAlquilada = new ArrayList<>();
 	}
 
 	public Alquiler(Socio mySocio, boolean deuda) {
 		this();
-		this.mySocio = mySocio;
-		this.deuda = deuda;
+		setMySocio(mySocio);
+		setDeuda(deuda);
+		setFechaAlquiler(fechaDeAlquiler());
+		arrayListMultimediaAlquilada = new ArrayList<>();
 	}
 
 	@Override
@@ -31,11 +36,19 @@ public class Alquiler {
 
 		text += mySocio.toString() + "\n";
 
-		for (int x = 0; x < arrayListMultimediaAlquilada.size(); x++) {
-			text += arrayListMultimediaAlquilada.get(x).toString() + "\n";
+		for (int i = 0; i < arrayListMultimediaAlquilada.size(); i++) {
+			text += arrayListMultimediaAlquilada.get(i).toString() + "\n";
 		}
 
 		return text;
+	}
+
+	public LocalDate getFechaAlquiler() {
+		return fechaAlquiler;
+	}
+
+	public void setFechaAlquiler(LocalDate fechaAlquiler) {
+		this.fechaAlquiler = fechaAlquiler;
 	}
 
 	public boolean isDeuda() {
@@ -66,6 +79,10 @@ public class Alquiler {
 		this.arrayListMultimediaAlquilada = arrayListMultimedia;
 	}
 
+	public void setArrayListMultimediaAlquilada(Multimedia multimediaAlquilada) {
+		this.arrayListMultimediaAlquilada.add(multimediaAlquilada);
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -73,6 +90,14 @@ public class Alquiler {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public LocalDate fechaDeAlquiler(){
+		LocalDate fechaActual = LocalDate.now();
+		return fechaActual;
+	}
+
+
+
 
 	// public static Alquiler buscarAlquiler(ArrayList<Alquiler> arrayListAlquiler, int id) {
 	// 	Alquiler myAlquiler = null;

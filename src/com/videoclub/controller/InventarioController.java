@@ -1,6 +1,7 @@
 package com.videoclub.controller;
 
 import com.videoclub.model.Inventario;
+import com.videoclub.model.Socio;
 
 public class InventarioController {
 
@@ -23,14 +24,14 @@ public class InventarioController {
 		}
 	}
 
-	public void mostrarPeliculas(){
-		myInventario.mostrarPeliculas();
+	public void mostrarPeliculas(Socio socio){
+		myInventario.mostrarPeliculas(socio);
 	}
-	public void mostrarVideojuegos(){
-		myInventario.mostrarVideojuegos();
+	public void mostrarVideojuegos(Socio socio){
+		myInventario.mostrarVideojuegos(socio);
 	}
-	public void mostrarDiscos(){
-		myInventario.mostrarDiscos();
+	public void mostrarDiscos(Socio socio){
+		myInventario.mostrarDiscos(socio);
 	}
 
 }
