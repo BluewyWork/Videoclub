@@ -8,15 +8,17 @@ import com.videoclub.model.Socio;
 import java.util.ArrayList;
 
 public class ConsoleMenu {
-
     GestorSocioController myGestorSocioController;
+    GestorAlquilerController myGestorAlquilerController;
     InventarioController inventarioController;
 
 
     public ConsoleMenu() {
+        myGestorAlquilerController = new GestorAlquilerController();
         myGestorSocioController = new GestorSocioController();
         inventarioController = new InventarioController();
     }
+
 
     public void menuPrincipal() {
 
@@ -55,6 +57,7 @@ public class ConsoleMenu {
         }
     }
 
+
     public void menuAltas() {
         System.out.println("### ALTAS MENU ###");
         System.out.println("[1] Alta a Socio");
@@ -87,6 +90,7 @@ public class ConsoleMenu {
                 break;
         }
     }
+
 
     public void promptMultimedia(int userAnswer) {
         if (userAnswer == 2 || userAnswer == 3) {
@@ -130,13 +134,26 @@ public class ConsoleMenu {
             respuesta = Input.readInput("Desea alquilar una pelicula, un videojuego o un disco?");
             if (respuesta.equals("pelicula")) {
                 inventarioController.mostrarPeliculas(myGestorSocioController.buscarSocio(nif));
-            }
-            else if (respuesta.equals("videojuego")){
+            } else if (respuesta.equals("videojuego")) {
                 inventarioController.mostrarVideojuegos(myGestorSocioController.buscarSocio(nif));
-            }
-            else if (respuesta.equals("disco")) {
+            } else if (respuesta.equals("disco")) {
                 inventarioController.mostrarDiscos(myGestorSocioController.buscarSocio(nif));
             }
         }
     }
+
+    public void listarAlquileresSocio() {
+        String nif = Input.readInput("Introduzca su nif");
+        Socio socio = null;
+
+        try {
+            socio = myGestorSocioController.buscarSocio(nif);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }
+
+
+

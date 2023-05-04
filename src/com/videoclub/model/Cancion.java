@@ -30,8 +30,10 @@ public class Cancion extends Disco{
 
     @Override
     public String toString() {
-        return super.toString() +
-                "\nNombre: '" + nombre + '\'' +
-                "\nDuracion: " + duracion;
+        return 
+            "Cancion: " + "\n" +
+            super.toString() + "\n" +
+            "\t" + "Nombre: '" + nombre + '\'' +
+            "\t" + "Duracion: " + duracion;
     }
 }
