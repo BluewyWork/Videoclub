@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Inventario {
 
     private ArrayList<Multimedia> arrayListMultimedia;
+    //private ArrayList<Multimedia> arrayListMultimediaAlquilada;
 
     public Inventario() {
         arrayListMultimedia = new ArrayList<>();
@@ -51,35 +52,76 @@ public class Inventario {
         }
         System.out.println(enteros);
     }*/
-    public void mostrarPeliculas() {
+    public void mostrarPeliculas(Socio socio) {
         for (int i = 0; i < arrayListMultimedia.size(); i++) {
             if (arrayListMultimedia.get(i) instanceof Pelicula) {
                 System.out.println(arrayListMultimedia.get(i).getTitulo());
             }
         }
-        String elegirPelicula = Input.readInput("Escriba el titulo de la pelicula a alquilar");
         boolean b = false;
-        for (int i = 0; i < arrayListMultimedia.size() && !b; i++) {
-            if (elegirPelicula.equals(arrayListMultimedia.get(i).getTitulo())) {
-
-                b = true;
+        while (!b) {
+            String elegirPelicula = Input.readInput("Escriba el titulo de la pelicula a alquilar", "");
+            for (int i = 0; i < arrayListMultimedia.size() && !b; i++) {
+                if (elegirPelicula.equals(arrayListMultimedia.get(i).getTitulo())) {
+                    Alquiler alquiler = new Alquiler(socio, true);
+                    alquiler.setArrayListMultimediaAlquilada(arrayListMultimedia.get(i));
+                    System.out.println("Pelicula " + arrayListMultimedia.get(i).getTitulo() + " alquilada correctamente");
+                    arrayListMultimedia.remove(i);
+                    System.out.println(alquiler.toString());
+                    System.out.println(arrayListMultimedia.toString());
+                    b = true;
+                }
             }
+            if (!b)
+                System.out.println("Tiene que introducir un nombre que se encuentre en el catalogo");
         }
-        if (!b)
-            System.out.println("Tiene que introducir un nombre que se encuentre en el catalogo");
     }
 
-    public void mostrarVideojuegos() {
+    public void mostrarVideojuegos(Socio socio) {
         for (int i = 0; i < arrayListMultimedia.size(); i++) {
             if (arrayListMultimedia.get(i) instanceof Videojuego)
                 System.out.println(arrayListMultimedia.get(i).getTitulo());
         }
+        boolean b = false;
+        while (!b) {
+            String elegirPelicula = Input.readInput("Escriba el titulo del videojuego a alquilar", "");
+            for (int i = 0; i < arrayListMultimedia.size() && !b; i++) {
+                if (elegirPelicula.equals(arrayListMultimedia.get(i).getTitulo())) {
+                    Alquiler alquiler = new Alquiler(socio, true);
+                    alquiler.setArrayListMultimediaAlquilada(arrayListMultimedia.get(i));
+                    System.out.println("Videojuego " + arrayListMultimedia.get(i).getTitulo() + " alquilada correctamente");
+                    arrayListMultimedia.remove(i);
+                    System.out.println(alquiler.toString());
+                    System.out.println(arrayListMultimedia.toString());
+                    b = true;
+                }
+            }
+            if (!b)
+                System.out.println("Tiene que introducir un nombre que se encuentre en el catalogo");
+        }
     }
 
-    public void mostrarDiscos() {
+    public void mostrarDiscos(Socio socio) {
         for (int i = 0; i < arrayListMultimedia.size(); i++) {
             if (arrayListMultimedia.get(i) instanceof Disco)
                 System.out.println(arrayListMultimedia.get(i).getTitulo());
+        }
+        boolean b = false;
+        while (!b) {
+            String elegirPelicula = Input.readInput("Escriba el titulo del disco a alquilar", "");
+            for (int i = 0; i < arrayListMultimedia.size() && !b; i++) {
+                if (elegirPelicula.equals(arrayListMultimedia.get(i).getTitulo())) {
+                    Alquiler alquiler = new Alquiler(socio, true);
+                    alquiler.setArrayListMultimediaAlquilada(arrayListMultimedia.get(i));
+                    System.out.println("Disco " + arrayListMultimedia.get(i).getTitulo() + " alquilada correctamente");
+                    arrayListMultimedia.remove(i);
+                    System.out.println(alquiler.toString());
+                    System.out.println(arrayListMultimedia.toString());
+                    b = true;
+                }
+            }
+            if (!b)
+                System.out.println("Tiene que introducir un nombre que se encuentre en el catalogo");
         }
     }
 }

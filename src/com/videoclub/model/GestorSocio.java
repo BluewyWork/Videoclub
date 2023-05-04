@@ -18,8 +18,6 @@ public class GestorSocio {
 	public boolean existe(String nif){
 		//Socio socio = null;
 		boolean b = false;
-		System.out.println(arrayListSocio.size());
-
 		for (int i = 0; i < arrayListSocio.size() && !b; i++) {
 			if (nif.equals(arrayListSocio.get(i).getNif())) {
 				//arrayListSocio.get(i).setDeuda(true);
@@ -32,15 +30,26 @@ public class GestorSocio {
 		return b;
 	}
 
-	public Socio buscaSocio(String nif){
+	public Socio buscarSocio(String nif){
 		Socio socio = null;
-		if (existe(nif)) {
-			for (int i = 0; i < arrayListSocio.size() && !b; i++) {
-				if (nif.equals(arrayListSocio.get(i).getNif())) {
-					socio = arrayListSocio.get(i);
-					b = true;
-				}
+		boolean b = false;
+		for (int i = 0; i < arrayListSocio.size() && !b; i++) {
+			if (nif.equals(arrayListSocio.get(i).getNif())) {
+				socio = arrayListSocio.get(i);
+				b = true;
 			}
-		} return socio;
+		}
+		return socio;
 	}
+
+	/*public boolean tieneDeudas(String nif){
+		boolean b = false;
+		for (int i = 0; i < arrayListSocio.size() && !b; i++){
+			if (nif.equals(arrayListSocio.get(i).getNif())){
+				if ()
+			}
+		}
+
+	}
+	 */
 }
