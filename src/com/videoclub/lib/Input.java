@@ -40,7 +40,7 @@ public class Input {
 					tipo =  (T) input;
 				}
 				else {
-					throw new RuntimeException("not valid");
+					throw new RuntimeException("Not a valid TYPE!");
 				}
 
 				return tipo;
