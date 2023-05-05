@@ -1,6 +1,7 @@
 package com.videoclub.view;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class PantallaPrincipal extends JPanel {
 
@@ -10,6 +11,7 @@ public class PantallaPrincipal extends JPanel {
 	private JButton buttonListar;
 
 	public PantallaPrincipal() {
+		setLayout(new GridLayout(2, 2));
 
 		buttonAltas = new JButton("Altas");
 		add(buttonAltas);

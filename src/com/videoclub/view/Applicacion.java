@@ -28,6 +28,8 @@ public class Applicacion extends JFrame implements ActionListener {
 		group1.add(menuItemSalir);
 
 		// add panel here !
+		panelPP = new PantallaPrincipal();
+		add(panelPP);
 	}
 
 	@Override
