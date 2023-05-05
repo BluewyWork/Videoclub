@@ -12,8 +12,7 @@ public class Applicacion extends JFrame implements ActionListener {
 	private JMenuItem menuItemSalir;
 
 	PantallaPrincipal panelPP;
-	Altas panelAltas;
-	Listar panelListar;
+	AltasDesign panelAltas;
 
 	public Applicacion() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -28,13 +27,7 @@ public class Applicacion extends JFrame implements ActionListener {
 		menuItemSalir.addActionListener(this);
 		group1.add(menuItemSalir);
 
-		panelPP = new PantallaPrincipal();
-
-		panelAltas = new Altas();
-
-		panelListar = new Listar();
-
-		add(panelPP);
+		// add panel here !
 	}
 
 	@Override

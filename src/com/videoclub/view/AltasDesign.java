@@ -3,13 +3,18 @@ package com.videoclub.view;
 import java.awt.*;
 import javax.swing.*;
 
-public class Altas extends JPanel {
+public class AltasDesign extends JPanel {
 
-	JButton buttonAltaASocio;
-	JButton buttonAltaPelicula;
-	JButton buttonAltaVideojuego;
+	private JButton buttonAltaASocio;
+	private JButton buttonAltaPelicula;
+	private JButton buttonAltaVideojuego;
 
-	public Altas() {
+	public AltasDesign() {
+		initializeComponents();
+	}
+
+	public void initializeComponents() {
+
 		setLayout(new GridLayout(2, 2));
 
 		buttonAltaASocio = new JButton("Alta a Socio");
