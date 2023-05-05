@@ -2,10 +2,8 @@ package com.videoclub.view;
 
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class Altas extends JPanel implements ActionListener {
+public class Altas extends JPanel {
 
 	JButton buttonAltaASocio;
 	JButton buttonAltaPelicula;
@@ -22,11 +20,5 @@ public class Altas extends JPanel implements ActionListener {
 
 		buttonAltaVideojuego = new JButton("Alta a Videojuego");
 		add(buttonAltaVideojuego);
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
 	}
 }
