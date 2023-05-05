@@ -75,10 +75,10 @@ public class ConsoleMenu {
             case 0:
                 break;
             case 1:
-                String nif = Input.readInput("NIF: ", "");
-                String nombre = Input.readInput("Nombre: ", "");
-                String fechaNac = Input.readInput("Fecha Nac (dd/mm/yyyy): ", "");
-                String poblacion = Input.readInput("Poblacion: ", "");
+                String nif = Input.readInput("NIF: ", "String");
+                String nombre = Input.readInput("Nombre: ", "String");
+                String fechaNac = Input.readInput("Fecha Nac (dd/mm/yyyy): ", "String");
+                String poblacion = Input.readInput("Poblacion: ", "String");
 
                 myGestorSocioController.crearSocio(nif, nombre, fechaNac, poblacion);
                 break;
@@ -94,15 +94,15 @@ public class ConsoleMenu {
 
     public void promptMultimedia(int userAnswer) {
         if (userAnswer == 2 || userAnswer == 3) {
-            String titulo = Input.readInput("Titulo: ", "");
-            String autor = Input.readInput("Autor: ", "");
-            String formato = Input.readInput("Formato: ", "");
+            String titulo = Input.readInput("Titulo: ", "String");
+            String autor = Input.readInput("Autor: ", "String");
+            String formato = Input.readInput("Formato: ", "String");
             int anyo = Input.readInput("Año: ", "int");
             int duracion = Input.readInput("Duracion: ", "int");
 
             if (userAnswer == 2) {
-                String actorPrincipal = Input.readInput("Actor Principal: ", "");
-                String atrizPrincipal = Input.readInput("Actriz Principal: ", "");
+                String actorPrincipal = Input.readInput("Actor Principal: ", "String");
+                String atrizPrincipal = Input.readInput("Actriz Principal: ", "String");
 
                 inventarioController.createMultimedia("pelicula", titulo, autor, formato, anyo, duracion, actorPrincipal, atrizPrincipal, formato);
             } else if (userAnswer == 3) {
@@ -127,23 +127,29 @@ public class ConsoleMenu {
 
 
     public void alquilarMultimediaSocio() {
-        String nif = Input.readInput("Introduzca su nif", "");
+        String nif = Input.readInput("Introduzca su nif: ", "String");
         String respuesta;
         if (myGestorSocioController.existeSocio(nif)) {
-            //comprobacion de que no tiene deudas para poder alquilar
-            respuesta = Input.readInput("Desea alquilar una pelicula, un videojuego o un disco?");
-            if (respuesta.equals("pelicula")) {
-                inventarioController.mostrarPeliculas(myGestorSocioController.buscarSocio(nif));
-            } else if (respuesta.equals("videojuego")) {
-                inventarioController.mostrarVideojuegos(myGestorSocioController.buscarSocio(nif));
-            } else if (respuesta.equals("disco")) {
-                inventarioController.mostrarDiscos(myGestorSocioController.buscarSocio(nif));
+            if (!myGestorAlquilerController.tieneDeudas(myGestorSocioController.buscarSocio(nif))) {
+                respuesta = Input.readInput("Desea alquilar una pelicula, un videojuego o un disco?", "String");
+                switch (respuesta) {
+                    case "pelicula" -> inventarioController.mostrarPeliculas(myGestorSocioController.buscarSocio(nif));
+
+                    case "videojuego" ->
+                            inventarioController.mostrarVideojuegos(myGestorSocioController.buscarSocio(nif));
+
+                    case "disco" -> inventarioController.mostrarDiscos(myGestorSocioController.buscarSocio(nif));
+                }
+            } else {
+                System.out.println("Tienes una deuda pendiente, tienes que pagar para poder seguir alquilando");
             }
+        } else {
+            System.out.println("Introduzca un DNI valido que exista en la base de datos");
         }
     }
 
     public void listarAlquileresSocio() {
-        String nif = Input.readInput("Introduzca su nif");
+        String nif = Input.readInput("Introduzca su nif: ", "String");
         Socio socio = null;
 
         try {
