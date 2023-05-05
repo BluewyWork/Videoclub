@@ -22,11 +22,9 @@ public class Alquiler {
         arrayListMultimediaAlquilada = new ArrayList<>();
     }
 
-    public Alquiler(Socio mySocio, boolean deuda) {
+    public Alquiler(Socio mySocio) {
         this();
         setMySocio(mySocio);
-        setDeuda(deuda);
-        setFechaAlquiler(fechaDeAlquiler());
         arrayListMultimediaAlquilada = new ArrayList<>();
     }
 
@@ -103,8 +101,9 @@ public class Alquiler {
             LocalDate fechaActual = LocalDate.now();
             return fechaActual;
         }
+
     }
-}
+
 
 
 // public static Alquiler buscarAlquiler(ArrayList<Alquiler> arrayListAlquiler, int id) {
@@ -120,4 +119,3 @@ public class Alquiler {
 
 // 	return myAlquiler;
 // }
-}
