@@ -62,7 +62,11 @@ public class GUI extends JFrame implements ActionListener {
 			System.exit(0);
 		}
 		else if (e.getSource().equals(buttonAltas)) {
-			
+			remove(panel);
+
+			Altas altas = new Altas();
+			add(altas);
+			validate();
 		}
 	}
 }
