@@ -2,18 +2,26 @@ package com.videoclub.view;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicArrowButton;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Altas extends JPanel implements ActionListener {
 
-	JButton button;
+	JButton buttonAltaASocio;
+	JButton buttonAltaPelicula;
+	JButton buttonAltaVideojuego;
 
 	public Altas() {
-		button = new JButton();
-		add(button);
+		setLayout(new GridLayout(2, 2));
+
+		buttonAltaASocio = new JButton("Alta a Socio");
+		add(buttonAltaASocio);
+
+		buttonAltaPelicula = new JButton("Alta a Pelicula");
+		add(buttonAltaPelicula);
+
+		buttonAltaVideojuego = new JButton("Alta a Videojuego");
+		add(buttonAltaVideojuego);
 	}
 
 	@Override
