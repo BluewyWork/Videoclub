@@ -4,6 +4,7 @@ import com.videoclub.controller.GestorAlquilerController;
 import com.videoclub.controller.GestorSocioController;
 import com.videoclub.controller.InventarioController;
 import com.videoclub.lib.Input;
+import com.videoclub.model.Pelicula;
 import com.videoclub.model.Socio;
 
 public class ConsoleMenu
@@ -48,7 +49,7 @@ public class ConsoleMenu
 					menuAltas();
 					break;
 				case 2:
-					alquilarMultimediaSocio();
+					alquilarMultimediaSocio2();
 					break;
 				case 3:
 					break;
@@ -151,6 +152,37 @@ public class ConsoleMenu
 
 					case "disco" -> inventarioController.mostrarDiscos(myGestorSocioController.buscarSocio(nif));
 				}
+			}
+			else
+			{
+				System.out.println("Tienes una deuda pendiente, tienes que pagar para poder seguir alquilando");
+			}
+		}
+		else
+		{
+			System.out.println("Introduzca un DNI valido que exista en la base de datos");
+		}
+	}
+
+	public void alquilarMultimediaSocio2()
+	{
+		String nif = Input.readInput("Introduzca su nif: ", "String");
+		String respuesta;
+		if (myGestorSocioController.existeSocio(nif))
+		{
+			if (!myGestorAlquilerController.tieneDeudas2(myGestorSocioController.buscarSocio(nif)))
+			{
+				respuesta = Input.readInput("Desea alquilar una pelicula, un videojuego o un disco?", "String");
+				switch (respuesta)
+				{
+					case "pelicula" -> inventarioController.mostrarPeliculas(myGestorSocioController.buscarSocio(nif));
+
+					case "videojuego" ->
+							inventarioController.mostrarVideojuegos(myGestorSocioController.buscarSocio(nif));
+
+					case "disco" -> inventarioController.mostrarDiscos(myGestorSocioController.buscarSocio(nif));
+				}
+				myGestorAlquilerController.aquilar(myGestorSocioController.buscarSocio(nif), new Pelicula());
 			}
 			else
 			{

@@ -27,6 +27,7 @@ public class Alquiler
 		this();
 		setMySocio(mySocio);
 		arrayListMultimediaAlquilada = new ArrayList<>();
+		setDeuda(true);
 	}
 
 	@Override

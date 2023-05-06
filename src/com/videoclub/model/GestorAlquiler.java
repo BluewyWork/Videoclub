@@ -11,9 +11,12 @@ public class GestorAlquiler
 		arrayListMultimediaAlquilada = new ArrayList<>();
 	}
 
-	public void addAlquiler(Socio socio, boolean deuda)
+	public void addAlquiler(Socio socio, Multimedia m)
 	{
-		arrayListMultimediaAlquilada.add(new Alquiler(socio));
+		Alquiler alquiler = new Alquiler();
+		alquiler.setMySocio(socio);
+		alquiler.getArrayListMultimedia().add(m);
+		arrayListMultimediaAlquilada.add(alquiler);
 	}
 
 	@Override
@@ -41,6 +44,22 @@ public class GestorAlquiler
 		return false; // si no encuentra ningún alquiler con deuda pendiente, devuelve false
 	}
 
+	public boolean tieneDeudaPendiente2(Socio socio)
+	{
+		boolean nani = false;
+		for (int x = 0; x < arrayListMultimediaAlquilada.size(); x++)
+		{
+			if (arrayListMultimediaAlquilada.get(x).getMySocio().equals(socio))
+			{
+				if (arrayListMultimediaAlquilada.get(x).isDeuda() == true)
+				{
+					nani = true;
+				}
+			}
+		}
+		return nani;
+	}
+
 
     /*public boolean tieneDeuda(String nif) {
         for (Alquiler alquiler : arrayListMultimediaAlquilada) {
@@ -52,4 +71,13 @@ public class GestorAlquiler
         return false;
     }*/
 
+	public ArrayList<Alquiler> getArrayListMultimediaAlquilada()
+	{
+		return arrayListMultimediaAlquilada;
+	}
+
+	public void setArrayListMultimediaAlquilada(ArrayList<Alquiler> arrayListMultimediaAlquilada)
+	{
+		this.arrayListMultimediaAlquilada = arrayListMultimediaAlquilada;
+	}
 }
