@@ -39,6 +39,7 @@ public class GestorSocio
 	{
 		Socio socio = null;
 		boolean b = false;
+
 		for (int i = 0; i < arrayListSocio.size() && !b; i++)
 		{
 			if (nif.equals(arrayListSocio.get(i).getNif()))

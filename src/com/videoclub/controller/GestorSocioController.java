@@ -25,6 +25,5 @@ public class GestorSocioController
 	public Socio buscarSocio(String nif)
 	{
 		return myGS.buscarSocio(nif);
-
 	}
 }
