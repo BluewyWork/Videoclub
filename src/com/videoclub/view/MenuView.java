@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 
 public class MenuView extends JFrame implements ActionListener
 {
-
 	private JPanel contentPane;
 	private CardLayout cardLayout;
 	private JButton buttonAltas;
@@ -28,23 +27,17 @@ public class MenuView extends JFrame implements ActionListener
 		panelAltas.setName("panelAltas");
 		contentPane.add(panelAltas, "panelAltas");
 
-		JPanel panelAlquilarMultimediaASocio = new JPanel();
-		JLabel label1 = new JLabel("This is panelAlquilarMultimediaASocio");
-		panelAlquilarMultimediaASocio.add(label1);
+		AlquilarMultiMediaSocioView panelAlquilarMultimediaASocio = new AlquilarMultiMediaSocioView();
 		panelAlquilarMultimediaASocio.setName("panelAlquilarMultimediaASocio");
 		contentPane.add(panelAlquilarMultimediaASocio, "panelAlquilarMultimediaASocio");
 
-		JPanel panelDevolverMultimedia = new JPanel();
-		JLabel label2 = new JLabel("This is panelDevolverMultimedia");
-		panelDevolverMultimedia.add(label2);
-		panelDevolverMultimedia.setName("panelDevolverMultimedia");
-		contentPane.add(panelDevolverMultimedia, "panelDevolverMultimedia");
+		DevolverMultimediaView panelDevolverMultimediaView = new DevolverMultimediaView();
+		panelDevolverMultimediaView.setName("panelDevolverMultimediaView");
+		contentPane.add(panelDevolverMultimediaView, "panelDevolverMultimediaView");
 
-		JPanel panelListar = new JPanel();
-		JLabel label3 = new JLabel("This is panelListar");
-		panelListar.add(label3);
-		panelListar.setName("panelListar");
-		contentPane.add(panelListar, "panelListar");
+		ListarView panelListarView = new ListarView();
+		panelListarView.setName("panelListarView");
+		contentPane.add(panelListarView, "panelListarView");
 
 		buttonAltas = new JButton("Altas");
 		buttonAltas.addActionListener(this);

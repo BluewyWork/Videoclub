@@ -5,7 +5,6 @@ import com.videoclub.model.Socio;
 
 public class GestorAlquilerController
 {
-
 	private GestorAlquiler myGA;
 
 	public GestorAlquilerController()

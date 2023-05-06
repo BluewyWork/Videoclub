@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class GestorAlquiler
 {
-
 	private ArrayList<Alquiler> arrayListMultimediaAlquilada;
 
 	public GestorAlquiler()
@@ -52,6 +51,5 @@ public class GestorAlquiler
         }
         return false;
     }*/
-
 
 }

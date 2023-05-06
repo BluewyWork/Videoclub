@@ -2,7 +2,6 @@ package com.videoclub.model;
 
 public class Videojuego extends Multimedia implements Comparable<Videojuego>
 {
-
 	private Plataforma plataforma;
 
 	public Videojuego()

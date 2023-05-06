@@ -6,12 +6,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Alquiler
 {
-
 	private static final AtomicInteger counter = new AtomicInteger(0);
 	private int id;
 	private Socio mySocio;
 	private ArrayList<Multimedia> arrayListMultimediaAlquilada;
-
 	private boolean deuda;
 	private LocalDate fechaAlquiler;
 
@@ -37,7 +35,6 @@ public class Alquiler
 		String text = "";
 
 		text += mySocio.toString() + "\n";
-
 
 		for (int x = 0; x < arrayListMultimediaAlquilada.size(); x++)
 		{
@@ -127,7 +124,6 @@ public class Alquiler
 	}
 
 }
-
 
 // public static Alquiler buscarAlquiler(ArrayList<Alquiler> arrayListAlquiler, int id) {
 // 	Alquiler myAlquiler = null;

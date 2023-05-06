@@ -1,15 +1,13 @@
 package com.videoclub;
 
-import com.videoclub.view.MenuView;
+import com.videoclub.lib.Input;
 import com.videoclub.view.ConsoleMenu;
-import com.videoclub.lib.*;
+import com.videoclub.view.MenuView;
 
 public class Main
 {
-
 	public static void main(String[] args)
 	{
-
 		String ans = Input.readInput("Console/GUI? [c/g]", "String");
 
 		if (ans.equals("c"))
@@ -28,6 +26,4 @@ public class Main
 			throw new Error("Not handled");
 		}
 	}
-
-
 }

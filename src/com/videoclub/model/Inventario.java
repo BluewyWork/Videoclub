@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class Inventario
 {
-
 	private ArrayList<Multimedia> arrayListMultimedia;
 	//private ArrayList<Multimedia> arrayListMultimediaAlquilada;
 

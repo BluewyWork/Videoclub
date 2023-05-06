@@ -7,14 +7,11 @@ import java.util.ArrayList;
 
 public class Socio
 {
-
 	private String nif;
 	private String nombre;
 	private LocalDate fechaNacimiento;
 	private String poblacion;
-
 	private ArrayList<Alquiler> alquileres;
-
 
 	// Constructors
 	public Socio()

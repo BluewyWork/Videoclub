@@ -56,7 +56,8 @@ public class Input
 				}
 
 				return tipo;
-			} catch (Exception e)
+			}
+			catch (Exception e)
 			{
 				System.out.println("ERROR " + e.toString());
 			}

@@ -2,7 +2,6 @@ package com.videoclub.model;
 
 public class Pelicula extends Multimedia implements Comparable<Pelicula>
 {
-
 	private int duracion;
 	private String actorPrincipal;
 	private String actrizPrincipal;

@@ -2,7 +2,6 @@ package com.videoclub.model;
 
 public abstract class Multimedia
 {
-
 	private String titulo;
 	private String autor;
 	private Formato formato;

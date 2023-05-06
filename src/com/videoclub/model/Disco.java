@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Disco extends Multimedia
 {
-
 	private int duracion;
 	private ArrayList<Cancion> listCanciones;
 

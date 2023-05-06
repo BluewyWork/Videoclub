@@ -5,7 +5,6 @@ import com.videoclub.model.Socio;
 
 public class InventarioController
 {
-
 	private Inventario myInventario;
 
 	public InventarioController()

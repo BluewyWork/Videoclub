@@ -1,11 +1,10 @@
 package com.videoclub.view;
 
+import com.videoclub.controller.GestorAlquilerController;
+import com.videoclub.controller.GestorSocioController;
+import com.videoclub.controller.InventarioController;
 import com.videoclub.lib.Input;
-import com.videoclub.controller.*;
-import com.videoclub.model.Multimedia;
 import com.videoclub.model.Socio;
-
-import java.util.ArrayList;
 
 public class ConsoleMenu
 {
@@ -13,14 +12,12 @@ public class ConsoleMenu
 	GestorAlquilerController myGestorAlquilerController;
 	InventarioController inventarioController;
 
-
 	public ConsoleMenu()
 	{
 		myGestorAlquilerController = new GestorAlquilerController();
 		myGestorSocioController = new GestorSocioController();
 		inventarioController = new InventarioController();
 	}
-
 
 	public void menuPrincipal()
 	{
@@ -62,7 +59,6 @@ public class ConsoleMenu
 		}
 	}
 
-
 	public void menuAltas()
 	{
 		System.out.println("### ALTAS MENU ###");
@@ -97,7 +93,6 @@ public class ConsoleMenu
 				break;
 		}
 	}
-
 
 	public void promptMultimedia(int userAnswer)
 	{
@@ -137,7 +132,6 @@ public class ConsoleMenu
 		System.out.println("[7] Salir");
 		System.out.println("--- ------ ---- ---");
 	}
-
 
 	public void alquilarMultimediaSocio()
 	{
