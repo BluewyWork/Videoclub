@@ -3,19 +3,22 @@ package com.videoclub.controller;
 import com.videoclub.model.Inventario;
 import com.videoclub.model.Socio;
 
-public class InventarioController {
-
+public class InventarioController
+{
 	private Inventario myInventario;
 
-	public InventarioController() {
+	public InventarioController()
+	{
 		myInventario = new Inventario();
 	}
 
-	public void createMultimedia(String type, String titulo, String autor, String formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal, String plataforma) {
-		switch (type.toLowerCase()) {
+	public void createMultimedia(String type, String titulo, String autor, String formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal, String plataforma)
+	{
+		switch (type.toLowerCase())
+		{
 			case "pelicula":
 				myInventario.anadirMultimedia(type, titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal, plataforma);
-				break; 
+				break;
 			case "videojuego":
 				myInventario.anadirMultimedia(type, titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal, plataforma);
 				break;
@@ -24,13 +27,18 @@ public class InventarioController {
 		}
 	}
 
-	public void mostrarPeliculas(Socio socio){
+	public void mostrarPeliculas(Socio socio)
+	{
 		myInventario.mostrarPeliculas(socio);
 	}
-	public void mostrarVideojuegos(Socio socio){
+
+	public void mostrarVideojuegos(Socio socio)
+	{
 		myInventario.mostrarVideojuegos(socio);
 	}
-	public void mostrarDiscos(Socio socio){
+
+	public void mostrarDiscos(Socio socio)
+	{
 		myInventario.mostrarDiscos(socio);
 	}
 
