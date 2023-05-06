@@ -1,6 +1,6 @@
 package com.videoclub;
 
-import com.videoclub.view.Applicacion;
+import com.videoclub.view.ApplicacionDesign;
 import com.videoclub.view.ConsoleMenu;
 import com.videoclub.lib.*;
 
@@ -15,7 +15,7 @@ public class Main {
 			menu.menuPrincipal();
 		}
 		else if (ans.equals("g")) {
-			Applicacion app = new Applicacion();
+			ApplicacionDesign app = new ApplicacionDesign();
 			app.setVisible(true);
 			app.setBounds(100, 100, 900, 900);
 		}

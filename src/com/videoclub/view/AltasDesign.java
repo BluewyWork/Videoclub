@@ -10,11 +10,10 @@ public class AltasDesign extends JPanel {
 	private JButton buttonAltaVideojuego;
 
 	public AltasDesign() {
-		initializeComponents();
+		initComponents();
 	}
 
-	public void initializeComponents() {
-
+	public void initComponents() {
 		setLayout(new GridLayout(2, 2));
 
 		buttonAltaASocio = new JButton("Alta a Socio");
@@ -25,29 +24,5 @@ public class AltasDesign extends JPanel {
 
 		buttonAltaVideojuego = new JButton("Alta a Videojuego");
 		add(buttonAltaVideojuego);
-	}
-
-	public JButton getButtonAltaASocio() {
-		return buttonAltaASocio;
-	}
-
-	public void setButtonAltaASocio(JButton buttonAltaASocio) {
-		this.buttonAltaASocio = buttonAltaASocio;
-	}
-
-	public JButton getButtonAltaPelicula() {
-		return buttonAltaPelicula;
-	}
-
-	public void setButtonAltaPelicula(JButton buttonAltaPelicula) {
-		this.buttonAltaPelicula = buttonAltaPelicula;
-	}
-
-	public JButton getButtonAltaVideojuego() {
-		return buttonAltaVideojuego;
-	}
-
-	public void setButtonAltaVideojuego(JButton buttonAltaVideojuego) {
-		this.buttonAltaVideojuego = buttonAltaVideojuego;
 	}
 }

@@ -3,18 +3,23 @@ package com.videoclub.view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import com.videoclub.view.*;
 
-public class Applicacion extends JFrame implements ActionListener {
+public class ApplicacionDesign extends JFrame {
 
 	private JMenuBar menuBar;
 
 	private JMenu group1;
 	private JMenuItem menuItemSalir;
 
-	PantallaPrincipal panelPP;
+	MenuDesign panelMenu;
 	AltasDesign panelAltas;
 
-	public Applicacion() {
+	public ApplicacionDesign() {
+		initComponents();
+	}
+
+	public void initComponents() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		menuBar = new JMenuBar();
@@ -24,19 +29,11 @@ public class Applicacion extends JFrame implements ActionListener {
 		menuBar.add(group1);
 
 		menuItemSalir = new JMenuItem("Salir");
-		menuItemSalir.addActionListener(this);
 		group1.add(menuItemSalir);
 
 		// add panel here !
-		panelPP = new PantallaPrincipal();
-		add(panelPP);
+		panelMenu = new MenuDesign();
+		add(panelMenu);
+		
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource().equals(menuItemSalir)) {
-			System.exit(0);
-		}
-	}
-	
 }
