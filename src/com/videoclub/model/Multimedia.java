@@ -18,7 +18,6 @@ public abstract class Multimedia
 	public Multimedia(String titulo, String autor, Formato formato, int anyo)
 	{
 		setTitulo(titulo);
-		;
 		setAutor(autor);
 		setFormato(formato);
 		setAnyo(anyo);
@@ -27,7 +26,6 @@ public abstract class Multimedia
 	public Multimedia(String titulo, String autor, String formato, int anyo)
 	{
 		setTitulo(titulo);
-		;
 		setAutor(autor);
 		setFormato(Formato.valueOf(formato));
 		setAnyo(anyo);
@@ -85,13 +83,6 @@ public abstract class Multimedia
 
 	public boolean isEquals(Multimedia myMultimedia2)
 	{
-		if (myMultimedia2.titulo == this.titulo && myMultimedia2.autor == this.autor)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return myMultimedia2.titulo == this.titulo && myMultimedia2.autor == this.autor;
 	}
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class GestorSocio
 {
-	private ArrayList<Socio> arrayListSocio;
+	private final ArrayList<Socio> arrayListSocio;
 
 	public GestorSocio()
 	{

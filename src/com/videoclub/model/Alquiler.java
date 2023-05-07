@@ -41,15 +41,15 @@ public class Alquiler
 		{
 			if (arrayListMultimediaAlquilada.get(x) instanceof Pelicula)
 			{
-				text += ((Pelicula) arrayListMultimediaAlquilada.get(x)).toString() + "\n";
+				text += arrayListMultimediaAlquilada.get(x).toString() + "\n";
 			}
 			else if (arrayListMultimediaAlquilada.get(x) instanceof Videojuego)
 			{
-				text += ((Videojuego) arrayListMultimediaAlquilada.get(x)).toString() + "\n";
+				text += arrayListMultimediaAlquilada.get(x).toString() + "\n";
 			}
 			else if (arrayListMultimediaAlquilada.get(x) instanceof Disco)
 			{
-				text += ((Disco) arrayListMultimediaAlquilada.get(x)).toString() + "\n";
+				text += arrayListMultimediaAlquilada.get(x).toString() + "\n";
 			}
 			else
 				text += "ERROR";

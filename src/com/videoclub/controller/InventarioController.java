@@ -7,8 +7,8 @@ import com.videoclub.model.Socio;
 
 public class InventarioController
 {
-	private Inventario myInventario;
-	private GestorAlquiler myGA;
+	private final Inventario myInventario;
+	private final GestorAlquiler myGA;
 
 	public InventarioController()
 	{

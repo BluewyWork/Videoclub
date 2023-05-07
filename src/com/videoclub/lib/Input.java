@@ -59,7 +59,7 @@ public class Input
 			}
 			catch (Exception e)
 			{
-				System.out.println("ERROR " + e.toString());
+				System.out.println("ERROR " + e);
 			}
 		}
 		while (true);

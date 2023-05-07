@@ -49,6 +49,7 @@ public class GestorAlquiler
 			if (alquiler.getMySocio().getNif().equals(nif))
 			{
 				nani = true;
+				break;
 			}
 		}
 		return nani;

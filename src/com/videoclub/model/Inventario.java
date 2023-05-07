@@ -1,7 +1,5 @@
 package com.videoclub.model;
 
-import com.videoclub.lib.Input;
-
 import java.util.ArrayList;
 
 public class Inventario
@@ -127,7 +125,7 @@ public class Inventario
 		{
 			if (arrayListMultimedia.get(i) instanceof Pelicula)
 			{
-				text +=  "Pelicula: " + arrayListMultimedia.get(i).getTitulo() + "\n";
+				text += "Pelicula: " + arrayListMultimedia.get(i).getTitulo() + "\n";
 			}
 		}
 		return text;

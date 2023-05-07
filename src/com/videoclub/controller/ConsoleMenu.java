@@ -1,7 +1,6 @@
 package com.videoclub.controller;
 
 import com.videoclub.lib.Input;
-import com.videoclub.model.Pelicula;
 import com.videoclub.model.Socio;
 import com.videoclub.view.ConsoleMenuView;
 
@@ -174,7 +173,8 @@ public class ConsoleMenu
 		{
 			socio = gsc.buscarSocio(nif);
 
-		} catch (Exception e)
+		}
+		catch (Exception e)
 		{
 			System.out.println(e);
 		}

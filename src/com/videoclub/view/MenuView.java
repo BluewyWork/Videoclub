@@ -7,12 +7,12 @@ import java.awt.event.ActionListener;
 
 public class MenuView extends JFrame implements ActionListener
 {
-	private JPanel contentPane;
-	private CardLayout cardLayout;
-	private JButton buttonAltas;
-	private JButton buttonAlquilarMultimediaASocio;
-	private JButton buttonDevolverMultimedia;
-	private JButton buttonListar;
+	private final JPanel contentPane;
+	private final CardLayout cardLayout;
+	private final JButton buttonAltas;
+	private final JButton buttonAlquilarMultimediaASocio;
+	private final JButton buttonDevolverMultimedia;
+	private final JButton buttonListar;
 
 	public MenuView()
 	{
