@@ -23,9 +23,9 @@ public class Socio
 		alquileres = new ArrayList<>();
 	}
 
-	public Socio(String nIF, String nombre, LocalDate fechaNacimiento, String poblacion)
+	public Socio(String nif, String nombre, LocalDate fechaNacimiento, String poblacion)
 	{
-		nif = nIF;
+		this.nif = nif;
 		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
 		this.poblacion = poblacion;
@@ -111,10 +111,5 @@ public class Socio
 		Period myPeriod = Period.between(fechaNacimiento, LocalDate.now());
 
 		return myPeriod.getYears() >= 18;
-	}
-
-	public void agregarAlquiler(Alquiler alquiler)
-	{
-		alquileres.add(alquiler);
 	}
 }

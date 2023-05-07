@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Inventario
 {
 	private ArrayList<Multimedia> arrayListMultimedia;
-	//private ArrayList<Multimedia> arrayListMultimediaAlquilada;
 
 	public Inventario()
 	{
@@ -72,50 +71,6 @@ public class Inventario
 		}
 		return mul;
 	}
-
-	/*public void mostrarPeliculas(){
-		int n = arrayListMultimedia.size();
-		int [] enteros = new int[n];
-		int contadorPelis = 0;
-
-		for (int i = 0; i < arrayListMultimedia.size(); i++){
-			if (arrayListMultimedia.get(i) instanceof Pelicula) {
-				System.out.println(contadorPelis + " " + arrayListMultimedia.get(i).getTitulo());
-				enteros [contadorPelis] = i;
-				contadorPelis++;
-			}
-		}
-		System.out.println(enteros);
-	}*/
-//	public void mostrarPeliculas(Socio socio)
-//	{
-//		for (int i = 0; i < arrayListMultimedia.size(); i++)
-//		{
-//			if (arrayListMultimedia.get(i) instanceof Pelicula)
-//			{
-//				System.out.println(arrayListMultimedia.get(i).getTitulo());
-//			}
-//		}
-//		boolean b = false;
-//		while (!b)
-//		{
-//			String elegirPelicula = Input.readInput("Escriba el titulo de la pelicula a alquilar", "String");
-//			for (int i = 0; i < arrayListMultimedia.size() && !b; i++)
-//			{
-//				if (elegirPelicula.equals(arrayListMultimedia.get(i).getTitulo()))
-//				{
-//					Alquiler alquiler = new Alquiler(socio);
-//					alquiler.setArrayListMultimediaAlquilada(arrayListMultimedia.get(i));
-//					socio.agregarAlquiler(alquiler);
-//					System.out.println("Pelicula " + arrayListMultimedia.get(i).getTitulo() + " alquilada correctamente");
-//					arrayListMultimedia.remove(i);
-//					b = true;
-//				}
-//			}
-//			if (!b)
-//				System.out.println("Tiene que introducir un nombre que se encuentre en el catalogo");
-//		}
-//	}
 
 	public String mostrarPeliculas()
 	{

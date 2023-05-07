@@ -50,15 +50,4 @@ public class GestorSocio
 		}
 		return socio;
 	}
-
-	/*public boolean tieneDeudas(String nif){
-		boolean b = false;
-		for (int i = 0; i < arrayListSocio.size() && !b; i++){
-			if (nif.equals(arrayListSocio.get(i).getNif())){
-				if ()
-			}
-		}
-
-	}
-	 */
 }

@@ -50,15 +50,4 @@ public class InventarioController
 		return myInventario.mostrarPeliculas();
 
 	}
-
-//	public void mostrarVideojuegos(Socio socio)
-//	{
-//		myInventario.mostrarVideojuegos(socio);
-//	}
-//
-//	public void mostrarDiscos(Socio socio)
-//	{
-//		myInventario.mostrarDiscos(socio);
-//	}
-
 }

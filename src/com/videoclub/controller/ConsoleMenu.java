@@ -104,36 +104,6 @@ public class ConsoleMenu
 		}
 	}
 
-//	public void alquilarMultimediaSocio()
-//	{
-//		String nif = Input.readInput("Introduzca su nif: ", "String");
-//		String respuesta;
-//		if (gsc.existeSocio(nif))
-//		{
-//			if (!gac.tieneDeudas(gsc.buscarSocio(nif)))
-//			{
-//				respuesta = Input.readInput("Desea alquilar una pelicula, un videojuego o un disco?", "String");
-//				switch (respuesta)
-//				{
-//					case "pelicula" -> ic.mostrarPeliculas(gsc.buscarSocio(nif));
-//
-//					case "videojuego" ->
-//							ic.mostrarVideojuegos(gsc.buscarSocio(nif));
-//
-//					case "disco" -> ic.mostrarDiscos(gsc.buscarSocio(nif));
-//				}
-//			}
-//			else
-//			{
-//				System.out.println("Tienes una deuda pendiente, tienes que pagar para poder seguir alquilando");
-//			}
-//		}
-//		else
-//		{
-//			System.out.println("Introduzca un DNI valido que exista en la base de datos");
-//		}
-//	}
-
 	public void alquilarMultimediaSocio2()
 	{
 		String nif = Input.readInput("Introduzca su nif: ", "String");

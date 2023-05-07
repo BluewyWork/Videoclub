@@ -84,10 +84,4 @@ public class MenuView extends JFrame implements ActionListener
 
 		cardLayout.show(contentPane, panelName);
 	}
-
-	public static void main(String[] args)
-	{
-		MenuView frame = new MenuView();
-		frame.setVisible(true);
-	}
 }

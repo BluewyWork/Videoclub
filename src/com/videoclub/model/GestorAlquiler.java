@@ -55,17 +55,6 @@ public class GestorAlquiler
 		return nani;
 	}
 
-
-    /*public boolean tieneDeuda(String nif) {
-        for (Alquiler alquiler : arrayListMultimediaAlquilada) {
-            if (alquiler.getMySocio().getNif().equals(nif))
-                if (alquiler.isDeuda()) {
-                    return true;
-                }
-        }
-        return false;
-    }*/
-
 	public ArrayList<Alquiler> getArrayListMultimediaAlquilada()
 	{
 		return arrayListMultimediaAlquilada;

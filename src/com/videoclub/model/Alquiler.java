@@ -125,17 +125,3 @@ public class Alquiler
 	}
 
 }
-
-// public static Alquiler buscarAlquiler(ArrayList<Alquiler> arrayListAlquiler, int id) {
-// 	Alquiler myAlquiler = null;
-// 	boolean encontrado = false;
-
-// 	for (int x = 0; x < arrayListAlquiler.size(); x++) {
-// 		if (id == arrayListAlquiler.get(x).getId() && encontrado == false) {
-// 			myAlquiler = arrayListAlquiler.get(x);
-// 			encontrado = true;
-// 		}
-// 	}
-
-// 	return myAlquiler;
-// }
