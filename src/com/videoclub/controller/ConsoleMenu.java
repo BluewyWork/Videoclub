@@ -1,8 +1,5 @@
 package com.videoclub.controller;
 
-import com.videoclub.controller.GestorAlquilerController;
-import com.videoclub.controller.GestorSocioController;
-import com.videoclub.controller.InventarioController;
 import com.videoclub.lib.Input;
 import com.videoclub.model.Pelicula;
 import com.videoclub.model.Socio;
@@ -10,16 +7,14 @@ import com.videoclub.view.ConsoleMenuView;
 
 public class ConsoleMenu
 {
-	GestorSocioController myGestorSocioController;
-	GestorAlquilerController myGestorAlquilerController;
-	InventarioController inventarioController;
+	GestorSocioController gsc;
+	InventarioController ic;
 	ConsoleMenuView cmv;
 
 	public ConsoleMenu()
 	{
-		myGestorAlquilerController = new GestorAlquilerController();
-		myGestorSocioController = new GestorSocioController();
-		inventarioController = new InventarioController();
+		gsc = new GestorSocioController();
+		ic = new InventarioController();
 		cmv = new ConsoleMenuView();
 	}
 
@@ -73,7 +68,7 @@ public class ConsoleMenu
 				String fechaNac = Input.readInput("Fecha Nac (dd/mm/yyyy): ", "String");
 				String poblacion = Input.readInput("Poblacion: ", "String");
 
-				myGestorSocioController.crearSocio(nif, nombre, fechaNac, poblacion);
+				gsc.crearSocio(nif, nombre, fechaNac, poblacion);
 				break;
 			case 2:
 				promptMultimedia(userAnswer);
@@ -99,66 +94,65 @@ public class ConsoleMenu
 				String actorPrincipal = Input.readInput("Actor Principal: ", "String");
 				String atrizPrincipal = Input.readInput("Actriz Principal: ", "String");
 
-				inventarioController.createMultimedia("pelicula", titulo, autor, formato, anyo, duracion, actorPrincipal, atrizPrincipal, formato);
+				ic.createMultimedia("pelicula", titulo, autor, formato, anyo, duracion, actorPrincipal, atrizPrincipal, formato);
 			}
 			else if (userAnswer == 3)
 			{
 				String plataforma = Input.readInput("Plataforma: ");
 
-				inventarioController.createMultimedia("videojuego", titulo, autor, formato, anyo, duracion, null, null, plataforma);
+				ic.createMultimedia("videojuego", titulo, autor, formato, anyo, duracion, null, null, plataforma);
 			}
 		}
 	}
 
-	public void alquilarMultimediaSocio()
-	{
-		String nif = Input.readInput("Introduzca su nif: ", "String");
-		String respuesta;
-		if (myGestorSocioController.existeSocio(nif))
-		{
-			if (!myGestorAlquilerController.tieneDeudas(myGestorSocioController.buscarSocio(nif)))
-			{
-				respuesta = Input.readInput("Desea alquilar una pelicula, un videojuego o un disco?", "String");
-				switch (respuesta)
-				{
-					case "pelicula" -> inventarioController.mostrarPeliculas(myGestorSocioController.buscarSocio(nif));
-
-					case "videojuego" ->
-							inventarioController.mostrarVideojuegos(myGestorSocioController.buscarSocio(nif));
-
-					case "disco" -> inventarioController.mostrarDiscos(myGestorSocioController.buscarSocio(nif));
-				}
-			}
-			else
-			{
-				System.out.println("Tienes una deuda pendiente, tienes que pagar para poder seguir alquilando");
-			}
-		}
-		else
-		{
-			System.out.println("Introduzca un DNI valido que exista en la base de datos");
-		}
-	}
+//	public void alquilarMultimediaSocio()
+//	{
+//		String nif = Input.readInput("Introduzca su nif: ", "String");
+//		String respuesta;
+//		if (gsc.existeSocio(nif))
+//		{
+//			if (!gac.tieneDeudas(gsc.buscarSocio(nif)))
+//			{
+//				respuesta = Input.readInput("Desea alquilar una pelicula, un videojuego o un disco?", "String");
+//				switch (respuesta)
+//				{
+//					case "pelicula" -> ic.mostrarPeliculas(gsc.buscarSocio(nif));
+//
+//					case "videojuego" ->
+//							ic.mostrarVideojuegos(gsc.buscarSocio(nif));
+//
+//					case "disco" -> ic.mostrarDiscos(gsc.buscarSocio(nif));
+//				}
+//			}
+//			else
+//			{
+//				System.out.println("Tienes una deuda pendiente, tienes que pagar para poder seguir alquilando");
+//			}
+//		}
+//		else
+//		{
+//			System.out.println("Introduzca un DNI valido que exista en la base de datos");
+//		}
+//	}
 
 	public void alquilarMultimediaSocio2()
 	{
 		String nif = Input.readInput("Introduzca su nif: ", "String");
 		String respuesta;
-		if (myGestorSocioController.existeSocio(nif))
+		if (gsc.existeSocio(nif))
 		{
-			if (!myGestorAlquilerController.tieneDeudas2(myGestorSocioController.buscarSocio(nif)))
+			if (!ic.tenerDeuda(nif))
 			{
-				respuesta = Input.readInput("Desea alquilar una pelicula, un videojuego o un disco?", "String");
-				switch (respuesta)
+				respuesta = Input.readInput("Desea alquilar [pelicula/videojuego/disco] ", "String");
+				switch (respuesta.toLowerCase())
 				{
-					case "pelicula" -> inventarioController.mostrarPeliculas(myGestorSocioController.buscarSocio(nif));
-
-					case "videojuego" ->
-							inventarioController.mostrarVideojuegos(myGestorSocioController.buscarSocio(nif));
-
-					case "disco" -> inventarioController.mostrarDiscos(myGestorSocioController.buscarSocio(nif));
+					default:
+						System.out.println("Input not Valid!");
+					case "pelicula":
+						System.out.println(ic.mostrarPeliculas());
+						String titulo = Input.readInput("Titulo: ", "String");
+						ic.alquilarMultimedia(gsc.buscarSocio(nif), titulo);
 				}
-				myGestorAlquilerController.aquilar(myGestorSocioController.buscarSocio(nif), new Pelicula());
 			}
 			else
 			{
@@ -178,7 +172,7 @@ public class ConsoleMenu
 
 		try
 		{
-			socio = myGestorSocioController.buscarSocio(nif);
+			socio = gsc.buscarSocio(nif);
 
 		} catch (Exception e)
 		{

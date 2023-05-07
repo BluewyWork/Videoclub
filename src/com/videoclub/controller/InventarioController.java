@@ -1,15 +1,19 @@
 package com.videoclub.controller;
 
+import com.videoclub.model.Alquiler;
+import com.videoclub.model.GestorAlquiler;
 import com.videoclub.model.Inventario;
 import com.videoclub.model.Socio;
 
 public class InventarioController
 {
 	private Inventario myInventario;
+	private GestorAlquiler myGA;
 
 	public InventarioController()
 	{
 		myInventario = new Inventario();
+		myGA = new GestorAlquiler();
 	}
 
 	public void createMultimedia(String type, String titulo, String autor, String formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal, String plataforma)
@@ -27,19 +31,34 @@ public class InventarioController
 		}
 	}
 
-	public void mostrarPeliculas(Socio socio)
+	public boolean tenerDeuda(String nif)
 	{
-		myInventario.mostrarPeliculas(socio);
+		return myGA.tieneDeudaPendiente2(nif);
 	}
 
-	public void mostrarVideojuegos(Socio socio)
+	public void alquilarMultimedia(Socio socio, String titulo)
 	{
-		myInventario.mostrarVideojuegos(socio);
+		Alquiler myAlquiler = new Alquiler();
+		myAlquiler.setMySocio(socio);
+		myAlquiler.getArrayListMultimedia().add(myInventario.buscarMultimedia(titulo));
+		myGA.addAlquiler(myAlquiler);
+		myInventario.removerMultimedia(titulo);
 	}
 
-	public void mostrarDiscos(Socio socio)
+	public String mostrarPeliculas()
 	{
-		myInventario.mostrarDiscos(socio);
+		return myInventario.mostrarPeliculas();
+
 	}
+
+//	public void mostrarVideojuegos(Socio socio)
+//	{
+//		myInventario.mostrarVideojuegos(socio);
+//	}
+//
+//	public void mostrarDiscos(Socio socio)
+//	{
+//		myInventario.mostrarDiscos(socio);
+//	}
 
 }
