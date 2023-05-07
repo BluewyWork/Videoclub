@@ -18,7 +18,6 @@ public abstract class Multimedia
 	public Multimedia(String titulo, String autor, Formato formato, int anyo)
 	{
 		setTitulo(titulo);
-		;
 		setAutor(autor);
 		setFormato(formato);
 		setAnyo(anyo);
@@ -27,7 +26,6 @@ public abstract class Multimedia
 	public Multimedia(String titulo, String autor, String formato, int anyo)
 	{
 		setTitulo(titulo);
-		;
 		setAutor(autor);
 		setFormato(Formato.valueOf(formato));
 		setAnyo(anyo);
@@ -36,11 +34,14 @@ public abstract class Multimedia
 	@Override
 	public String toString()
 	{
-		return
-				"\t" + "Titulo: " + titulo + "\n" +
-						"\t" + "Autor: " + autor + "\n" +
-						"\t" + "Formato: " + formato + "\n" +
-						"\t" + "Ano: " + anyo;
+		String text = "";
+
+		text += "\t" + "Titulo: " + titulo + "\n";
+		text += "\t" + "Autor: " + autor + "\n";
+		text += "\t" + "Formato: " + formato + "\n";
+		text += "\t" + "Ano: " + anyo;
+
+		return text;
 	}
 
 	public String getTitulo()
@@ -83,15 +84,8 @@ public abstract class Multimedia
 		this.anyo = año;
 	}
 
-	public boolean isEquals(Multimedia myMultimedia2)
+	public boolean compararMultimedia(Multimedia myMultimedia2)
 	{
-		if (myMultimedia2.titulo == this.titulo && myMultimedia2.autor == this.autor)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return myMultimedia2.titulo == this.titulo && myMultimedia2.autor == this.autor;
 	}
 }

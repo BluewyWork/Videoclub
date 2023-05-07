@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class GestorSocio
 {
-	private ArrayList<Socio> arrayListSocio;
+	private final ArrayList<Socio> arrayListSocio;
 
 	public GestorSocio()
 	{
@@ -50,15 +50,4 @@ public class GestorSocio
 		}
 		return socio;
 	}
-
-	/*public boolean tieneDeudas(String nif){
-		boolean b = false;
-		for (int i = 0; i < arrayListSocio.size() && !b; i++){
-			if (nif.equals(arrayListSocio.get(i).getNif())){
-				if ()
-			}
-		}
-
-	}
-	 */
 }

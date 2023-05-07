@@ -41,15 +41,15 @@ public class Alquiler
 		{
 			if (arrayListMultimediaAlquilada.get(x) instanceof Pelicula)
 			{
-				text += ((Pelicula) arrayListMultimediaAlquilada.get(x)).toString() + "\n";
+				text += arrayListMultimediaAlquilada.get(x).toString() + "\n";
 			}
 			else if (arrayListMultimediaAlquilada.get(x) instanceof Videojuego)
 			{
-				text += ((Videojuego) arrayListMultimediaAlquilada.get(x)).toString() + "\n";
+				text += arrayListMultimediaAlquilada.get(x).toString() + "\n";
 			}
 			else if (arrayListMultimediaAlquilada.get(x) instanceof Disco)
 			{
-				text += ((Disco) arrayListMultimediaAlquilada.get(x)).toString() + "\n";
+				text += arrayListMultimediaAlquilada.get(x).toString() + "\n";
 			}
 			else
 				text += "ERROR";
@@ -125,17 +125,3 @@ public class Alquiler
 	}
 
 }
-
-// public static Alquiler buscarAlquiler(ArrayList<Alquiler> arrayListAlquiler, int id) {
-// 	Alquiler myAlquiler = null;
-// 	boolean encontrado = false;
-
-// 	for (int x = 0; x < arrayListAlquiler.size(); x++) {
-// 		if (id == arrayListAlquiler.get(x).getId() && encontrado == false) {
-// 			myAlquiler = arrayListAlquiler.get(x);
-// 			encontrado = true;
-// 		}
-// 	}
-
-// 	return myAlquiler;
-// }

@@ -5,7 +5,7 @@ import com.videoclub.model.Socio;
 
 public class GestorSocioController
 {
-	private GestorSocio myGS;
+	private final GestorSocio myGS;
 
 	public GestorSocioController()
 	{
