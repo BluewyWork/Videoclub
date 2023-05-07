@@ -2,6 +2,8 @@ package com.videoclub.view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class AltasView extends JPanel
 {
@@ -68,5 +70,30 @@ public class AltasView extends JPanel
 
 		buttonAltaVideojuego = new JButton("Alta a Videojuego");
 		add(buttonAltaVideojuego, c);
+	}
+
+	public JTextArea getTextAreaOutput()
+	{
+		return textAreaOutput;
+	}
+
+	public JScrollPane getScrollPane()
+	{
+		return scrollPane;
+	}
+
+	public JButton getButtonAltaASocio()
+	{
+		return buttonAltaASocio;
+	}
+
+	public JButton getButtonAltaPelicula()
+	{
+		return buttonAltaPelicula;
+	}
+
+	public JButton getButtonAltaVideojuego()
+	{
+		return buttonAltaVideojuego;
 	}
 }

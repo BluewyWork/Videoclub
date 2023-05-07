@@ -45,9 +45,8 @@ public class InventarioController
 		myInventario.removerMultimedia(titulo);
 	}
 
-	public String mostrarPeliculas()
+	public String mostrarMultimedias(String type)
 	{
-		return myInventario.mostrarPeliculas();
-
+		return myInventario.mostarMultimedias(type);
 	}
 }

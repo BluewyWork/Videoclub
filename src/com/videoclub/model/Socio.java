@@ -11,16 +11,13 @@ public class Socio
 	private String nombre;
 	private LocalDate fechaNacimiento;
 	private String poblacion;
-	private ArrayList<Alquiler> alquileres;
 
-	// Constructors
 	public Socio()
 	{
 		nif = "RANDOM";
 		nombre = "RANDOM";
 		fechaNacimiento = LocalDate.of(2003, 1, 1);
 		poblacion = "RANDOM";
-		alquileres = new ArrayList<>();
 	}
 
 	public Socio(String nif, String nombre, LocalDate fechaNacimiento, String poblacion)
@@ -42,7 +39,6 @@ public class Socio
 
 		fechaNacimiento = lc;
 		this.poblacion = poblacion;
-		alquileres = new ArrayList<>();
 	}
 
 	@Override
@@ -54,16 +50,6 @@ public class Socio
 						"\t" + "Nombre: " + nombre + "\n" +
 						"\t" + "FechaNac: " + fechaNacimiento + "\n" +
 						"\t" + "Poblacion: " + poblacion;
-	}
-
-	public ArrayList<Alquiler> getAlquileres()
-	{
-		return alquileres;
-	}
-
-	public void setAlquileres(ArrayList<Alquiler> alquileres)
-	{
-		this.alquileres = alquileres;
 	}
 
 	public String getNif()

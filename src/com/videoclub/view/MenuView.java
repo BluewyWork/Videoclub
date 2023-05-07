@@ -13,6 +13,7 @@ public class MenuView extends JFrame implements ActionListener
 	private final JButton buttonAlquilarMultimediaASocio;
 	private final JButton buttonDevolverMultimedia;
 	private final JButton buttonListar;
+	AltasView panelAltas;
 
 	public MenuView()
 	{
@@ -23,7 +24,7 @@ public class MenuView extends JFrame implements ActionListener
 		cardLayout = new CardLayout();
 		contentPane.setLayout(cardLayout);
 
-		AltasView panelAltas = new AltasView();
+		panelAltas = new AltasView();
 		panelAltas.setName("panelAltas");
 		contentPane.add(panelAltas, "panelAltas");
 
@@ -83,5 +84,10 @@ public class MenuView extends JFrame implements ActionListener
 		}
 
 		cardLayout.show(contentPane, panelName);
+	}
+
+	public AltasView getPanelAltas()
+	{
+		return panelAltas;
 	}
 }

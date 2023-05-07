@@ -29,18 +29,6 @@ public class GestorAlquiler
 		return text;
 	}
 
-	public boolean tieneDeudaPendiente(Socio socio)
-	{
-		for (Alquiler alquiler : socio.getAlquileres())
-		{
-			if (alquiler.isDeuda())
-			{
-				return true; // si encuentra un alquiler con deuda pendiente, devuelve true
-			}
-		}
-		return false; // si no encuentra ningún alquiler con deuda pendiente, devuelve false
-	}
-
 	public boolean tieneDeudaPendiente2(String nif)
 	{
 		boolean nani = false;

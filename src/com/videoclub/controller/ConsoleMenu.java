@@ -39,7 +39,7 @@ public class ConsoleMenu
 					altas();
 					break;
 				case 2:
-					alquilarMultimediaSocio2();
+					alquilarMultimediaSocio();
 					break;
 				case 3:
 					break;
@@ -62,25 +62,29 @@ public class ConsoleMenu
 			case 0:
 				break;
 			case 1:
-				String nif = Input.readInput("NIF: ", "String");
-				String nombre = Input.readInput("Nombre: ", "String");
-				String fechaNac = Input.readInput("Fecha Nac (dd/mm/yyyy): ", "String");
-				String poblacion = Input.readInput("Poblacion: ", "String");
-
-				gsc.crearSocio(nif, nombre, fechaNac, poblacion);
+				promptAltas(userAnswer);
 				break;
 			case 2:
-				promptMultimedia(userAnswer);
+				promptAltas(userAnswer);
 				break;
 			case 3:
-				promptMultimedia(userAnswer);
+				promptAltas(userAnswer);
 				break;
 		}
 	}
 
-	public void promptMultimedia(int userAnswer)
+	public void promptAltas(int userAnswer)
 	{
-		if (userAnswer == 2 || userAnswer == 3)
+		if (userAnswer == 1)
+		{
+			String nif = Input.readInput("NIF: ", "String");
+			String nombre = Input.readInput("Nombre: ", "String");
+			String fechaNac = Input.readInput("Fecha Nac (dd/mm/yyyy): ", "String");
+			String poblacion = Input.readInput("Poblacion: ", "String");
+
+			gsc.crearSocio(nif, nombre, fechaNac, poblacion);
+		}
+		else if (userAnswer == 2 || userAnswer == 3)
 		{
 			String titulo = Input.readInput("Titulo: ", "String");
 			String autor = Input.readInput("Autor: ", "String");
@@ -101,10 +105,14 @@ public class ConsoleMenu
 
 				ic.createMultimedia("videojuego", titulo, autor, formato, anyo, duracion, null, null, plataforma);
 			}
+			else
+			{
+				throw new Error("Not Valid");
+			}
 		}
 	}
 
-	public void alquilarMultimediaSocio2()
+	public void alquilarMultimediaSocio()
 	{
 		String nif = Input.readInput("Introduzca su nif: ", "String");
 		String respuesta;
@@ -113,24 +121,36 @@ public class ConsoleMenu
 			if (!ic.tenerDeuda(nif))
 			{
 				respuesta = Input.readInput("Desea alquilar [pelicula/videojuego/disco] ", "String");
+
+				String titulo = "";
+				Socio socio = gsc.buscarSocio(nif);
+
 				switch (respuesta.toLowerCase())
 				{
 					default:
 						System.out.println("Input not Valid!");
 					case "pelicula":
-						System.out.println(ic.mostrarPeliculas());
-						String titulo = Input.readInput("Titulo: ", "String");
-						ic.alquilarMultimedia(gsc.buscarSocio(nif), titulo);
+						System.out.println(ic.mostrarMultimedias("peliculas"));
+						titulo = Input.readInput("Escriba el Titulo: ", "String");
+						ic.alquilarMultimedia(socio, titulo);
+					case "videojuego":
+						System.out.println(ic.mostrarMultimedias("videojuegos"));
+						titulo = Input.readInput("Escriba el Titulo: ", "String");
+						ic.alquilarMultimedia(socio, titulo);
+					case "disco":
+						System.out.println(ic.mostrarMultimedias("discos"));
+						titulo = Input.readInput("Escriba el Titulo: ", "String");
+						ic.alquilarMultimedia(socio, titulo);
 				}
 			}
 			else
 			{
-				System.out.println("Tienes una deuda pendiente, tienes que pagar para poder seguir alquilando");
+				System.out.println("Socio con el nif: " + nif + "\n" + "tiene deuda");
 			}
 		}
 		else
 		{
-			System.out.println("Introduzca un DNI valido que exista en la base de datos");
+			System.out.println("nif no existe :(");
 		}
 	}
 
@@ -142,7 +162,6 @@ public class ConsoleMenu
 		try
 		{
 			socio = gsc.buscarSocio(nif);
-
 		}
 		catch (Exception e)
 		{
@@ -150,6 +169,3 @@ public class ConsoleMenu
 		}
 	}
 }
-
-
-
