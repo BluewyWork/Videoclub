@@ -129,18 +129,22 @@ public class ConsoleMenu
 				{
 					default:
 						System.out.println("Input not Valid!");
+						break;
 					case "pelicula":
 						System.out.println(ic.mostrarMultimedias("peliculas"));
 						titulo = Input.readInput("Escriba el Titulo: ", "String");
 						ic.alquilarMultimedia(socio, titulo);
+						break;
 					case "videojuego":
 						System.out.println(ic.mostrarMultimedias("videojuegos"));
 						titulo = Input.readInput("Escriba el Titulo: ", "String");
 						ic.alquilarMultimedia(socio, titulo);
+						break;
 					case "disco":
 						System.out.println(ic.mostrarMultimedias("discos"));
 						titulo = Input.readInput("Escriba el Titulo: ", "String");
 						ic.alquilarMultimedia(socio, titulo);
+						break;
 				}
 			}
 			else
