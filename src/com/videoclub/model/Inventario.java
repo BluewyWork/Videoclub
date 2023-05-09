@@ -120,27 +120,37 @@ public class Inventario
 		}
 		return text;
 	}
-	public boolean hayPeliculasDisponibles() {
-		for (Multimedia multimedia : arrayListMultimedia) {
-			if (multimedia instanceof Pelicula) {
+
+	public boolean hayPeliculasDisponibles()
+	{
+		for (Multimedia multimedia : arrayListMultimedia)
+		{
+			if (multimedia instanceof Pelicula)
+			{
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public boolean hayVideojuegosDisponibles() {
-		for (Multimedia multimedia : arrayListMultimedia) {
-			if (multimedia instanceof Videojuego) {
+	public boolean hayVideojuegosDisponibles()
+	{
+		for (Multimedia multimedia : arrayListMultimedia)
+		{
+			if (multimedia instanceof Videojuego)
+			{
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public boolean hayDiscosDisponibles() {
-		for (Multimedia multimedia : arrayListMultimedia) {
-			if (multimedia instanceof Disco) {
+	public boolean hayDiscosDisponibles()
+	{
+		for (Multimedia multimedia : arrayListMultimedia)
+		{
+			if (multimedia instanceof Disco)
+			{
 				return true;
 			}
 		}
