@@ -52,4 +52,13 @@ public class GestorAlquiler
 	{
 		this.arrayListMultimediaAlquilada = arrayListMultimediaAlquilada;
 	}
+	public void mostrarAlquileresDeSocio(Socio socio) {
+		for (Alquiler alquiler : arrayListMultimediaAlquilada) {
+			if (alquiler.getMySocio().equals(socio)) {
+				//System.out.println(alquiler.toString());
+				//System.out.println(alquiler.getArrayListMultimedia());
+			}
+		}
+	}
+
 }
