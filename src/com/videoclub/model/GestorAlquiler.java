@@ -63,7 +63,10 @@ public class GestorAlquiler
 		{
 			if (alquiler.getMySocio().getNif().equals(nif))
 			{
-				listAlquileresSocio.add(alquiler.toString());
+				for (Multimedia multimedia : alquiler.getArrayListMultimedia())
+				{
+					listAlquileresSocio.add(multimedia.getTitulo());
+				}
 			}
 		}
 		return listAlquileresSocio;
