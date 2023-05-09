@@ -88,6 +88,7 @@ public class ConsoleMenu
 
 			gsc.crearSocio(nif, nombre, fechaNac, poblacion);
 		}
+
 		else if (userAnswer == 2 || userAnswer == 3 || userAnswer == 4)
 		{
 			String titulo = Input.readInput("Titulo: ", "String");
@@ -108,12 +109,6 @@ public class ConsoleMenu
 				String plataforma = Input.readInput("Plataforma: ");
 
 				ic.createMultimedia("videojuego", titulo, autor, formato, anyo, duracion, null, null, plataforma);
-			}
-			else if (userAnswer == 4)
-			{
-
-				ic.createMultimedia("disco", titulo, autor, formato, anyo, duracion, null, null, null);
-
 			}
 			else
 			{
@@ -198,7 +193,6 @@ public class ConsoleMenu
 	{
 		String nif = Input.readInput("Introduzca su nif: ", "String");
 		Socio socio = null;
-
 		try
 		{
 			socio = gsc.buscarSocio(nif);

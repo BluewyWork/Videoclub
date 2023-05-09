@@ -98,8 +98,6 @@ public class Alquiler
 		return arrayListMultimediaAlquilada;
 	}
 
-
-
 	public void setArrayListMultimediaAlquilada(Multimedia multimediaAlquilada)
 	{
 		this.arrayListMultimediaAlquilada.add(multimediaAlquilada);
@@ -120,6 +118,5 @@ public class Alquiler
 		LocalDate fechaActual = LocalDate.now();
 		return fechaActual;
 	}
-
 
 }

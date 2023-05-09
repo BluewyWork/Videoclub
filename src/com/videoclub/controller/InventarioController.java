@@ -50,16 +50,24 @@ public class InventarioController
 	{
 		return myInventario.mostarMultimedias(type);
 	}
-	public void mostrarAlquileresSocio(Socio socio){
+
+	public void mostrarAlquileresSocio(Socio socio)
+	{
 		myGA.mostrarAlquileresDeSocio(socio);
 	}
-	public boolean existenPeliculas(){
+
+	public boolean existenPeliculas()
+	{
 		return myInventario.hayPeliculasDisponibles();
 	}
-	public boolean existenVideojuegos(){
+
+	public boolean existenVideojuegos()
+	{
 		return myInventario.hayVideojuegosDisponibles();
 	}
-	public  boolean existenDiscos(){
+
+	public boolean existenDiscos()
+	{
 		return myInventario.hayDiscosDisponibles();
 	}
 }

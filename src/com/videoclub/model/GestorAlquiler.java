@@ -1,7 +1,5 @@
 package com.videoclub.model;
 
-import com.videoclub.lib.Input;
-
 import java.util.ArrayList;
 
 public class GestorAlquiler
@@ -55,6 +53,19 @@ public class GestorAlquiler
 		this.arrayListMultimediaAlquilada = arrayListMultimediaAlquilada;
 	}
 
+	public void mostrarAlquileresDeSocio(Socio socio)
+	{
+		for (Alquiler alquiler : arrayListMultimediaAlquilada)
+		{
+			if (alquiler.getMySocio().equals(socio))
+			{
+				//System.out.println(alquiler.toString());
+				System.out.println(socio.toString());
+
+				//System.out.println(alquiler.getArrayListMultimedia());
+			}
+		}
+	}
 	public ArrayList<String> listarAlquileresSocio(String nif)
 	{
 		ArrayList<String> listAlquileresSocio = new ArrayList<>();
