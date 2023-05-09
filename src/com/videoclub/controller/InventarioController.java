@@ -40,7 +40,8 @@ public class InventarioController
 	{
 		Alquiler myAlquiler = new Alquiler();
 		myAlquiler.setMySocio(socio);
-		myAlquiler.getArrayListMultimedia().add(myInventario.buscarMultimedia(titulo));
+		myAlquiler.setArrayListMultimediaAlquilada(myInventario.buscarMultimedia(titulo));
+		System.out.println(titulo + " alquilado correctamente");
 		myGA.addAlquiler(myAlquiler);
 		myInventario.removerMultimedia(titulo);
 	}
@@ -49,4 +50,17 @@ public class InventarioController
 	{
 		return myInventario.mostarMultimedias(type);
 	}
+	public void mostrarAlquileresSocio(Socio socio){
+		myGA.mostrarAlquileresDeSocio(socio);
+	}
+	public boolean existenPeliculas(){
+		return myInventario.hayPeliculasDisponibles();
+	}
+	public boolean existenVideojuegos(){
+		return myInventario.hayVideojuegosDisponibles();
+	}
+	public  boolean existenDiscos(){
+		return myInventario.hayDiscosDisponibles();
+	}
 }
+
