@@ -71,6 +71,9 @@ public class ConsoleMenu
 			case 3:
 				promptAltas(userAnswer);
 				break;
+			case 4:
+				promptAltas(userAnswer);
+				break;
 		}
 	}
 
@@ -85,7 +88,8 @@ public class ConsoleMenu
 
 			gsc.crearSocio(nif, nombre, fechaNac, poblacion);
 		}
-		else if (userAnswer == 2 || userAnswer == 3)
+
+		else if (userAnswer == 2 || userAnswer == 3 || userAnswer == 4)
 		{
 			String titulo = Input.readInput("Titulo: ", "String");
 			String autor = Input.readInput("Autor: ", "String");
@@ -189,7 +193,6 @@ public class ConsoleMenu
 	{
 		String nif = Input.readInput("Introduzca su nif: ", "String");
 		Socio socio = null;
-
 		try
 		{
 			socio = gsc.buscarSocio(nif);

@@ -66,7 +66,6 @@ public class GestorAlquiler
 			}
 		}
 	}
-
 	public ArrayList<String> listarAlquileresSocio(String nif)
 	{
 		ArrayList<String> listAlquileresSocio = new ArrayList<>();
@@ -75,7 +74,10 @@ public class GestorAlquiler
 		{
 			if (alquiler.getMySocio().getNif().equals(nif))
 			{
-				listAlquileresSocio.add(alquiler.toString());
+				for (Multimedia multimedia : alquiler.getArrayListMultimedia())
+				{
+					listAlquileresSocio.add(multimedia.getTitulo());
+				}
 			}
 		}
 		return listAlquileresSocio;
