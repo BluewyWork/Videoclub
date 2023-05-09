@@ -42,6 +42,7 @@ public class ConsoleMenu
 					alquilarMultimediaSocio();
 					break;
 				case 3:
+					devolverMultimediaSocio();
 					break;
 				case 4:
 					cmv.menuListar();
@@ -107,11 +108,14 @@ public class ConsoleMenu
 				String plataforma = Input.readInput("Plataforma: ");
 
 				ic.createMultimedia("videojuego", titulo, autor, formato, anyo, duracion, null, null, plataforma);
-			} else if (userAnswer == 4) {
+			}
+			else if (userAnswer == 4)
+			{
 
-				ic.createMultimedia("disco",titulo,autor,formato,anyo,duracion,null,null,null);
+				ic.createMultimedia("disco", titulo, autor, formato, anyo, duracion, null, null, null);
 
-			} else
+			}
+			else
 			{
 				throw new Error("Not Valid");
 			}
@@ -137,19 +141,34 @@ public class ConsoleMenu
 						System.out.println("Input not Valid!");
 						break;
 					case "pelicula":
-						System.out.println(ic.mostrarMultimedias("peliculas"));
-						titulo = Input.readInput("Escriba el Titulo: ", "String");
-						ic.alquilarMultimedia(socio, titulo);
+						if (ic.existenPeliculas())
+						{
+							System.out.println(ic.mostrarMultimedias("pelicula"));
+							titulo = Input.readInput("Escriba el Titulo: ", "String");
+							ic.alquilarMultimedia(socio, titulo);
+						}
+						else
+							System.out.println("No tenemos peliculas en stock");
 						break;
 					case "videojuego":
-						System.out.println(ic.mostrarMultimedias("videojuegos"));
-						titulo = Input.readInput("Escriba el Titulo: ", "String");
-						ic.alquilarMultimedia(socio, titulo);
+						if (ic.existenVideojuegos())
+						{
+							System.out.println(ic.mostrarMultimedias("videojuego"));
+							titulo = Input.readInput("Escriba el Titulo: ", "String");
+							ic.alquilarMultimedia(socio, titulo);
+						}
+						else
+							System.out.println("No tenemos videojuegos en stock");
 						break;
 					case "disco":
-						System.out.println(ic.mostrarMultimedias("discos"));
-						titulo = Input.readInput("Escriba el Titulo: ", "String");
-						ic.alquilarMultimedia(socio, titulo);
+						if (ic.existenDiscos())
+						{
+							System.out.println(ic.mostrarMultimedias("disco"));
+							titulo = Input.readInput("Escriba el Titulo: ", "String");
+							ic.alquilarMultimedia(socio, titulo);
+						}
+						else
+							System.out.println("No tenemos discos disponibles");
 						break;
 				}
 			}
@@ -162,6 +181,17 @@ public class ConsoleMenu
 		{
 			System.out.println("nif no existe :(");
 		}
+	}
+
+	public void devolverMultimediaSocio()
+	{
+		String nif = Input.readInput("Introduzca su nif: ", "String");
+		if (gsc.existeSocio(nif))
+		{
+			Socio socio = gsc.buscarSocio(nif);
+			ic.mostrarAlquileresSocio(socio);
+		}
+
 	}
 
 	public void listarAlquileresSocio()
@@ -178,4 +208,5 @@ public class ConsoleMenu
 			System.out.println(e);
 		}
 	}
+
 }
