@@ -63,3 +63,4 @@ public class InventarioController
 		return myInventario.hayDiscosDisponibles();
 	}
 }
+

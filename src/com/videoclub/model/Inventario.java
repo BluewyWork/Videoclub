@@ -103,7 +103,7 @@ public class Inventario
 	public String mostarMultimedias(String type)
 	{
 		String text = "";
-		for (Multimedia multimedia: arrayListMultimedia)
+		for (Multimedia multimedia : arrayListMultimedia)
 		{
 			if (multimedia instanceof Pelicula && type.equalsIgnoreCase("pelicula"))
 			{

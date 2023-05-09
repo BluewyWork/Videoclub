@@ -2,9 +2,6 @@ package com.videoclub.controller;
 
 import com.videoclub.view.MenuView;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 public class GUI
 {
 	GestorSocioController gsc;
