@@ -70,6 +70,9 @@ public class ConsoleMenu
 			case 3:
 				promptAltas(userAnswer);
 				break;
+			case 4:
+				promptAltas(userAnswer);
+				break;
 		}
 	}
 
@@ -84,7 +87,7 @@ public class ConsoleMenu
 
 			gsc.crearSocio(nif, nombre, fechaNac, poblacion);
 		}
-		else if (userAnswer == 2 || userAnswer == 3)
+		else if (userAnswer == 2 || userAnswer == 3 || userAnswer == 4)
 		{
 			String titulo = Input.readInput("Titulo: ", "String");
 			String autor = Input.readInput("Autor: ", "String");
@@ -104,8 +107,11 @@ public class ConsoleMenu
 				String plataforma = Input.readInput("Plataforma: ");
 
 				ic.createMultimedia("videojuego", titulo, autor, formato, anyo, duracion, null, null, plataforma);
-			}
-			else
+			} else if (userAnswer == 4) {
+
+				ic.createMultimedia("disco",titulo,autor,formato,anyo,duracion,null,null,null);
+
+			} else
 			{
 				throw new Error("Not Valid");
 			}

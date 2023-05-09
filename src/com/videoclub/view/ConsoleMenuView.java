@@ -19,6 +19,7 @@ public class ConsoleMenuView
 		System.out.println("[1] Alta a Socio");
 		System.out.println("[2] Alta a Pelicula");
 		System.out.println("[3] Alta a Videojuego");
+		System.out.println("[4] Alta a Disco");
 		System.out.println("[0] Salir");
 		System.out.println("--- ---- ---- ---");
 	}
