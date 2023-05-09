@@ -1,5 +1,7 @@
 package com.videoclub.model;
 
+import com.videoclub.lib.Input;
+
 import java.util.ArrayList;
 
 public class GestorAlquiler
@@ -51,5 +53,33 @@ public class GestorAlquiler
 	public void setArrayListMultimediaAlquilada(ArrayList<Alquiler> arrayListMultimediaAlquilada)
 	{
 		this.arrayListMultimediaAlquilada = arrayListMultimediaAlquilada;
+	}
+
+	public ArrayList<String> listarAlquileresSocio(String nif)
+	{
+		ArrayList<String> listAlquileresSocio = new ArrayList<>();
+
+		for (Alquiler alquiler : arrayListMultimediaAlquilada)
+		{
+			if (alquiler.getMySocio().getNif().equals(nif))
+			{
+				listAlquileresSocio.add(alquiler.toString());
+			}
+		}
+		return listAlquileresSocio;
+	}
+
+	public ArrayList<String> listarSocioRecargo()
+	{
+		ArrayList<String> listSocioRecargo = new ArrayList<>();
+
+		for (Alquiler alquiler : arrayListMultimediaAlquilada)
+		{
+			if (alquiler.isDeuda())
+			{
+				listSocioRecargo.add(alquiler.getMySocio().toString());
+			}
+		}
+		return listSocioRecargo;
 	}
 }
