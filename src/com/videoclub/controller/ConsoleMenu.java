@@ -157,19 +157,4 @@ public class ConsoleMenu
 			System.out.println("nif no existe :(");
 		}
 	}
-
-	public void listarAlquileresSocio()
-	{
-		String nif = Input.readInput("Introduzca su nif: ", "String");
-		Socio socio = null;
-
-		try
-		{
-			socio = gsc.buscarSocio(nif);
-		}
-		catch (Exception e)
-		{
-			System.out.println(e);
-		}
-	}
 }

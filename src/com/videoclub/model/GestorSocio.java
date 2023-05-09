@@ -31,7 +31,6 @@ public class GestorSocio
 				b = true;
 			}
 		}
-
 		return b;
 	}
 
