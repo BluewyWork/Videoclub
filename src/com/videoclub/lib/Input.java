@@ -38,22 +38,13 @@ public class Input
 				System.out.print(prompt);
 				String input = scanner.nextLine();
 
-				if (type.equals("int"))
+				tipo = switch (type)
 				{
-					tipo = (T) Integer.valueOf(input);
-				}
-				else if (type.equals("double"))
-				{
-					tipo = (T) Double.valueOf(input);
-				}
-				else if (type.equals("String"))
-				{
-					tipo = (T) input;
-				}
-				else
-				{
-					throw new RuntimeException("Not a valid TYPE!");
-				}
+					case "int" -> (T) Integer.valueOf(input);
+					case "double" -> (T) Double.valueOf(input);
+					case "String" -> (T) input;
+					default -> throw new RuntimeException("Not a valid TYPE!");
+				};
 
 				return tipo;
 			}

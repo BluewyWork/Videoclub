@@ -20,14 +20,12 @@ public class InventarioController
 	{
 		switch (type.toLowerCase())
 		{
-			case "pelicula":
-				myInventario.anadirMultimedia(type, titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal, plataforma);
-				break;
-			case "videojuego":
-				myInventario.anadirMultimedia(type, titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal, plataforma);
-				break;
-			case "disco":
-				myInventario.anadirMultimedia(type, titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal, plataforma);
+			case "pelicula" ->
+					myInventario.anadirMultimedia(type, titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal, plataforma);
+			case "videojuego" ->
+					myInventario.anadirMultimedia(type, titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal, plataforma);
+			case "disco" ->
+					myInventario.anadirMultimedia(type, titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal, plataforma);
 		}
 	}
 
@@ -71,4 +69,3 @@ public class InventarioController
 		return myInventario.hayDiscosDisponibles();
 	}
 }
-

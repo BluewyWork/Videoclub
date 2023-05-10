@@ -25,18 +25,21 @@ public class Inventario
 	{
 		switch (type.toLowerCase())
 		{
-			case "pelicula":
+			case "pelicula" ->
+			{
 				Pelicula myPelicula = new Pelicula(titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal);
 				arrayListMultimedia.add(myPelicula);
-				break;
-			case "videojuego":
+			}
+			case "videojuego" ->
+			{
 				Videojuego myVideojuego = new Videojuego(titulo, autor, formato, anyo, plataforma);
 				arrayListMultimedia.add(myVideojuego);
-				break;
-			case "disco":
+			}
+			case "disco" ->
+			{
 				Disco myDisco = new Disco();
 				arrayListMultimedia.add(myDisco);
-				break;
+			}
 		}
 	}
 
@@ -72,53 +75,55 @@ public class Inventario
 		return mul;
 	}
 
+	// eliminar metodo una vez completada mostrarMultimedias
 	public String mostrarPeliculas()
 	{
-		String text = "";
+		StringBuilder text = new StringBuilder();
 
-		for (int i = 0; i < arrayListMultimedia.size(); i++)
+		for (Multimedia multimedia : arrayListMultimedia)
 		{
-			if (arrayListMultimedia.get(i) instanceof Pelicula)
+			if (multimedia instanceof Pelicula)
 			{
-				text += "Pelicula: " + arrayListMultimedia.get(i).getTitulo() + "\n";
+				text.append("Pelicula: ").append(multimedia.getTitulo()).append("\n");
 			}
 		}
-		return text;
+		return text.toString();
 	}
 
+	// eliminar metodo una vez completada mostrarMultimedias
 	public String mostrarVideoJuegos()
 	{
-		String text = "";
+		StringBuilder text = new StringBuilder();
 
-		for (int i = 0; i < arrayListMultimedia.size(); i++)
+		for (Multimedia multimedia : arrayListMultimedia)
 		{
-			if (arrayListMultimedia.get(i) instanceof Videojuego)
+			if (multimedia instanceof Videojuego)
 			{
-				text += "videojuego: " + arrayListMultimedia.get(i).getTitulo() + "\n";
+				text.append("videojuego: ").append(multimedia.getTitulo()).append("\n");
 			}
 		}
-		return text;
+		return text.toString();
 	}
 
 	public String mostarMultimedias(String type)
 	{
-		String text = "";
+		StringBuilder text = new StringBuilder();
 		for (Multimedia multimedia : arrayListMultimedia)
 		{
 			if (multimedia instanceof Pelicula && type.equalsIgnoreCase("pelicula"))
 			{
-				text += "Pelicula: " + multimedia.getTitulo() + "\n";
+				text.append("Pelicula: ").append(multimedia.getTitulo()).append("\n");
 			}
 			else if (multimedia instanceof Videojuego && type.equalsIgnoreCase("videojuego"))
 			{
-				text += "Videojuego: " + multimedia.getTitulo() + "\n";
+				text.append("Videojuego: ").append(multimedia.getTitulo()).append("\n");
 			}
 			else if (multimedia instanceof Disco && type.equalsIgnoreCase("disco"))
 			{
-				text += "Disco: " + multimedia.getTitulo() + "\n";
+				text.append("Disco: ").append(multimedia.getTitulo()).append("\n");
 			}
 		}
-		return text;
+		return text.toString();
 	}
 
 	public boolean hayPeliculasDisponibles()

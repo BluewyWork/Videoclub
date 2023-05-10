@@ -1,5 +1,7 @@
 package com.videoclub.model;
 
+import java.util.Objects;
+
 public abstract class Multimedia
 {
 	private String titulo;
@@ -86,6 +88,6 @@ public abstract class Multimedia
 
 	public boolean compararMultimedia(Multimedia myMultimedia2)
 	{
-		return myMultimedia2.titulo == this.titulo && myMultimedia2.autor == this.autor;
+		return Objects.equals(myMultimedia2.titulo, this.titulo) && Objects.equals(myMultimedia2.autor, this.autor);
 	}
 }
