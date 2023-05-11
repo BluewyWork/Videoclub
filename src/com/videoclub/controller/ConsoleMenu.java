@@ -28,25 +28,16 @@ public class ConsoleMenu
 
 			switch (userAnswer)
 			{
-				default:
-					System.out.println("Valor no Valido!");
-					break;
-				case 0:
-					exit = true;
-					break;
-				case 1:
+				default -> System.out.println("Valor no Valido!");
+				case 0 -> exit = true;
+				case 1 ->
+				{
 					cmv.menuAltas();
 					altas();
-					break;
-				case 2:
-					alquilarMultimediaSocio();
-					break;
-				case 3:
-					devolverMultimediaSocio();
-					break;
-				case 4:
-					cmv.menuListar();
-					break;
+				}
+				case 2 -> alquilarMultimediaSocio();
+				case 3 -> devolverMultimediaSocio();
+				case 4 -> cmv.menuListar();
 			}
 		}
 	}
@@ -63,14 +54,8 @@ public class ConsoleMenu
 			case 0:
 				break;
 			case 1:
-				promptAltas(userAnswer);
-				break;
 			case 2:
-				promptAltas(userAnswer);
-				break;
 			case 3:
-				promptAltas(userAnswer);
-				break;
 			case 4:
 				promptAltas(userAnswer);
 				break;
@@ -132,10 +117,9 @@ public class ConsoleMenu
 
 				switch (respuesta.toLowerCase())
 				{
-					default:
-						System.out.println("Input not Valid!");
-						break;
-					case "pelicula":
+					default -> System.out.println("Input not Valid!");
+					case "pelicula" ->
+					{
 						if (ic.existenPeliculas())
 						{
 							System.out.println(ic.mostrarMultimedias("pelicula"));
@@ -144,8 +128,9 @@ public class ConsoleMenu
 						}
 						else
 							System.out.println("No tenemos peliculas en stock");
-						break;
-					case "videojuego":
+					}
+					case "videojuego" ->
+					{
 						if (ic.existenVideojuegos())
 						{
 							System.out.println(ic.mostrarMultimedias("videojuego"));
@@ -154,8 +139,9 @@ public class ConsoleMenu
 						}
 						else
 							System.out.println("No tenemos videojuegos en stock");
-						break;
-					case "disco":
+					}
+					case "disco" ->
+					{
 						if (ic.existenDiscos())
 						{
 							System.out.println(ic.mostrarMultimedias("disco"));
@@ -164,7 +150,7 @@ public class ConsoleMenu
 						}
 						else
 							System.out.println("No tenemos discos disponibles");
-						break;
+					}
 				}
 			}
 			else

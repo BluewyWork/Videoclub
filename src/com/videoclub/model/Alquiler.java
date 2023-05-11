@@ -33,29 +33,29 @@ public class Alquiler
 	@Override
 	public String toString()
 	{
-		String text = "";
+		StringBuilder text = new StringBuilder();
 
-		text += mySocio.toString() + "\n";
+		text.append(mySocio.toString()).append("\n");
 
-		for (int x = 0; x < arrayListMultimediaAlquilada.size(); x++)
+		for (Multimedia multimedia : arrayListMultimediaAlquilada)
 		{
-			if (arrayListMultimediaAlquilada.get(x) instanceof Pelicula)
+			if (multimedia instanceof Pelicula)
 			{
-				text += arrayListMultimediaAlquilada.get(x).toString() + "\n";
+				text.append(multimedia.toString()).append("\n");
 			}
-			else if (arrayListMultimediaAlquilada.get(x) instanceof Videojuego)
+			else if (multimedia instanceof Videojuego)
 			{
-				text += arrayListMultimediaAlquilada.get(x).toString() + "\n";
+				text.append(multimedia.toString()).append("\n");
 			}
-			else if (arrayListMultimediaAlquilada.get(x) instanceof Disco)
+			else if (multimedia instanceof Disco)
 			{
-				text += arrayListMultimediaAlquilada.get(x).toString() + "\n";
+				text.append(multimedia.toString()).append("\n");
 			}
 			else
-				text += "ERROR";
+				text.append("ERROR");
 		}
 
-		return text;
+		return text.toString();
 	}
 
 	public LocalDate getFechaAlquiler()
@@ -113,6 +113,9 @@ public class Alquiler
 		this.id = id;
 	}
 
+	// El metodo siguiente no tiene mucho sentido ya que
+	// en teoria deberia retornar la fecha alquiler inicializado
+	// en el contructor de Alquiler
 	public LocalDate fechaDeAlquiler()
 	{
 		LocalDate fechaActual = LocalDate.now();

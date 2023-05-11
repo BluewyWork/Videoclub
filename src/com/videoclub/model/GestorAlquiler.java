@@ -19,14 +19,14 @@ public class GestorAlquiler
 	@Override
 	public String toString()
 	{
-		String text = "";
+		StringBuilder text = new StringBuilder();
 
-		for (int i = 0; i < arrayListMultimediaAlquilada.size(); i++)
+		for (Alquiler alquiler : arrayListMultimediaAlquilada)
 		{
-			text += arrayListMultimediaAlquilada.get(i).toString();
+			text.append(alquiler.toString());
 		}
 
-		return text;
+		return text.toString();
 	}
 
 	public boolean tieneDeudaPendiente2(String nif)
