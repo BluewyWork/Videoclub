@@ -1,11 +1,11 @@
 package com.videoclub.model;
 
-public class Cancion extends Disco
+public class Song extends Disc
 {
 	private String nombre;
 	private int duracion;
 
-	public Cancion(String nombre, int duracion)
+	public Song(String nombre, int duracion)
 	{
 		this.nombre = nombre;
 		this.duracion = duracion;

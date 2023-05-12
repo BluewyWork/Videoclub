@@ -4,14 +4,14 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
-public class Socio
+public class Member
 {
 	private String nif;
 	private String nombre;
 	private LocalDate fechaNacimiento;
 	private String poblacion;
 
-	public Socio()
+	public Member()
 	{
 		nif = "RANDOM";
 		nombre = "RANDOM";
@@ -19,7 +19,7 @@ public class Socio
 		poblacion = "RANDOM";
 	}
 
-	public Socio(String nif, String nombre, LocalDate fechaNacimiento, String poblacion)
+	public Member(String nif, String nombre, LocalDate fechaNacimiento, String poblacion)
 	{
 		this.nif = nif;
 		this.nombre = nombre;
@@ -27,7 +27,7 @@ public class Socio
 		this.poblacion = poblacion;
 	}
 
-	public Socio(String nif, String nombre, String fechaNac, String poblacion)
+	public Member(String nif, String nombre, String fechaNac, String poblacion)
 	{
 		this();
 		this.nif = nif;

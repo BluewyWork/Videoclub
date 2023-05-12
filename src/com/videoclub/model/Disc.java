@@ -2,12 +2,12 @@ package com.videoclub.model;
 
 import java.util.ArrayList;
 
-public class Disco extends Multimedia
+public class Disc extends Multimedia
 {
 	private int duracion;
-	private ArrayList<Cancion> listCanciones;
+	private ArrayList<Song> listCanciones;
 
-	public Disco()
+	public Disc()
 	{
 		setDuracion();
 		listCanciones = new ArrayList<>();
@@ -29,18 +29,18 @@ public class Disco extends Multimedia
 
 	public void setDuracion()
 	{
-		for (Cancion a : listCanciones)
+		for (Song a : listCanciones)
 		{
 			duracion += a.getDuracion();
 		}
 	}
 
-	public ArrayList<Cancion> getListCanciones()
+	public ArrayList<Song> getListCanciones()
 	{
 		return listCanciones;
 	}
 
-	public void setListCanciones(ArrayList<Cancion> listCanciones)
+	public void setListCanciones(ArrayList<Song> listCanciones)
 	{
 		this.listCanciones = listCanciones;
 	}

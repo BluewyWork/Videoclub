@@ -6,18 +6,18 @@ public abstract class Multimedia
 {
 	private String titulo;
 	private String autor;
-	private Formato formato;
+	private Format formato;
 	private int anyo;
 
 	public Multimedia()
 	{
 		titulo = "Multimedia Vacio";
 		autor = "N/a";
-		formato = Formato.CD;
+		formato = Format.CD;
 		anyo = 9999;
 	}
 
-	public Multimedia(String titulo, String autor, Formato formato, int anyo)
+	public Multimedia(String titulo, String autor, Format formato, int anyo)
 	{
 		setTitulo(titulo);
 		setAutor(autor);
@@ -29,7 +29,7 @@ public abstract class Multimedia
 	{
 		setTitulo(titulo);
 		setAutor(autor);
-		setFormato(Formato.valueOf(formato));
+		setFormato(Format.valueOf(formato));
 		setAnyo(anyo);
 	}
 
@@ -66,12 +66,12 @@ public abstract class Multimedia
 		this.autor = autor;
 	}
 
-	public Formato getFormato()
+	public Format getFormato()
 	{
 		return formato;
 	}
 
-	public void setFormato(Formato formato)
+	public void setFormato(Format formato)
 	{
 		this.formato = formato;
 	}

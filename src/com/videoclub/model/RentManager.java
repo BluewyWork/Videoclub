@@ -2,16 +2,16 @@ package com.videoclub.model;
 
 import java.util.ArrayList;
 
-public class GestorAlquiler
+public class RentManager
 {
-	private ArrayList<Alquiler> arrayListMultimediaAlquilada;
+	private ArrayList<Rent> arrayListMultimediaAlquilada;
 
-	public GestorAlquiler()
+	public RentManager()
 	{
 		arrayListMultimediaAlquilada = new ArrayList<>();
 	}
 
-	public void addAlquiler(Alquiler al)
+	public void addAlquiler(Rent al)
 	{
 		arrayListMultimediaAlquilada.add(al);
 	}
@@ -21,7 +21,7 @@ public class GestorAlquiler
 	{
 		StringBuilder text = new StringBuilder();
 
-		for (Alquiler alquiler : arrayListMultimediaAlquilada)
+		for (Rent alquiler : arrayListMultimediaAlquilada)
 		{
 			text.append(alquiler.toString());
 		}
@@ -32,9 +32,9 @@ public class GestorAlquiler
 	public boolean tieneDeudaPendiente(String nif)
 	{
 		boolean nani = false;
-		for (Alquiler alquiler : arrayListMultimediaAlquilada)
+		for (Rent alquiler : arrayListMultimediaAlquilada)
 		{
-			if (alquiler.getMySocio().getNif().equals(nif))
+			if (alquiler.getMember().getNif().equals(nif))
 			{
 				nani = true;
 				break;
@@ -43,21 +43,21 @@ public class GestorAlquiler
 		return nani;
 	}
 
-	public ArrayList<Alquiler> getArrayListMultimediaAlquilada()
+	public ArrayList<Rent> getArrayListMultimediaAlquilada()
 	{
 		return arrayListMultimediaAlquilada;
 	}
 
-	public void setArrayListMultimediaAlquilada(ArrayList<Alquiler> arrayListMultimediaAlquilada)
+	public void setArrayListMultimediaAlquilada(ArrayList<Rent> arrayListMultimediaAlquilada)
 	{
 		this.arrayListMultimediaAlquilada = arrayListMultimediaAlquilada;
 	}
 
-	public void mostrarAlquileresDeSocio(Socio socio)
+	public void mostrarAlquileresDeSocio(Member socio)
 	{
-		for (Alquiler alquiler : arrayListMultimediaAlquilada)
+		for (Rent alquiler : arrayListMultimediaAlquilada)
 		{
-			if (alquiler.getMySocio().equals(socio))
+			if (alquiler.getMember().equals(socio))
 			{
 				//System.out.println(alquiler.toString());
 				System.out.println(socio.toString());
@@ -71,9 +71,9 @@ public class GestorAlquiler
 	{
 		ArrayList<String> listAlquileresSocio = new ArrayList<>();
 
-		for (Alquiler alquiler : arrayListMultimediaAlquilada)
+		for (Rent alquiler : arrayListMultimediaAlquilada)
 		{
-			if (alquiler.getMySocio().getNif().equals(nif))
+			if (alquiler.getMember().getNif().equals(nif))
 			{
 				for (Multimedia multimedia : alquiler.getArrayListMultimedia())
 				{
@@ -88,11 +88,11 @@ public class GestorAlquiler
 	{
 		ArrayList<String> listSocioRecargo = new ArrayList<>();
 
-		for (Alquiler alquiler : arrayListMultimediaAlquilada)
+		for (Rent alquiler : arrayListMultimediaAlquilada)
 		{
 			if (alquiler.tieneDeuda())
 			{
-				listSocioRecargo.add(alquiler.getMySocio().toString());
+				listSocioRecargo.add(alquiler.getMember().toString());
 			}
 		}
 		return listSocioRecargo;

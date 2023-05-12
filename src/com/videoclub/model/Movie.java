@@ -1,19 +1,19 @@
 package com.videoclub.model;
 
-public class Pelicula extends Multimedia implements Comparable<Pelicula>
+public class Movie extends Multimedia implements Comparable<Movie>
 {
 	private int duracion;
 	private String actorPrincipal;
 	private String actrizPrincipal;
 
-	public Pelicula()
+	public Movie()
 	{
 		duracion = 10;
 		actorPrincipal = "Mark";
 		actrizPrincipal = "GOD";
 	}
 
-	public Pelicula(String titulo, String autor, Formato formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal)
+	public Movie(String titulo, String autor, Format formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal)
 	{
 		super(titulo, autor, formato, anyo);
 		setDuracion(duracion);
@@ -21,7 +21,7 @@ public class Pelicula extends Multimedia implements Comparable<Pelicula>
 		setActrizPrincipal(actrizPrincipal);
 	}
 
-	public Pelicula(String titulo, String autor, String formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal)
+	public Movie(String titulo, String autor, String formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal)
 	{
 		super(titulo, autor, formato, anyo);
 		setDuracion(duracion);
@@ -40,7 +40,7 @@ public class Pelicula extends Multimedia implements Comparable<Pelicula>
 	}
 
 	@Override
-	public int compareTo(Pelicula o)
+	public int compareTo(Movie o)
 	{
 		return CharSequence.compare(this.getTitulo(), o.getTitulo());
 	}

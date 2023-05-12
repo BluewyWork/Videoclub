@@ -2,11 +2,11 @@ package com.videoclub.model;
 
 import java.util.ArrayList;
 
-public class Inventario
+public class Inventory
 {
 	private ArrayList<Multimedia> arrayListMultimedia;
 
-	public Inventario()
+	public Inventory()
 	{
 		arrayListMultimedia = new ArrayList<>();
 	}
@@ -27,17 +27,17 @@ public class Inventario
 		{
 			case "pelicula" ->
 			{
-				Pelicula myPelicula = new Pelicula(titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal);
+				Movie myPelicula = new Movie(titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal);
 				arrayListMultimedia.add(myPelicula);
 			}
 			case "videojuego" ->
 			{
-				Videojuego myVideojuego = new Videojuego(titulo, autor, formato, anyo, plataforma);
+				Videogame myVideojuego = new Videogame(titulo, autor, formato, anyo, plataforma);
 				arrayListMultimedia.add(myVideojuego);
 			}
 			case "disco" ->
 			{
-				Disco myDisco = new Disco();
+				Disc myDisco = new Disc();
 				arrayListMultimedia.add(myDisco);
 			}
 		}
@@ -80,15 +80,15 @@ public class Inventario
 		StringBuilder text = new StringBuilder();
 		for (Multimedia multimedia : arrayListMultimedia)
 		{
-			if (multimedia instanceof Pelicula && type.equalsIgnoreCase("pelicula"))
+			if (multimedia instanceof Movie && type.equalsIgnoreCase("pelicula"))
 			{
 				text.append("Pelicula: ").append(multimedia.getTitulo()).append("\n");
 			}
-			else if (multimedia instanceof Videojuego && type.equalsIgnoreCase("videojuego"))
+			else if (multimedia instanceof Videogame && type.equalsIgnoreCase("videojuego"))
 			{
 				text.append("Videojuego: ").append(multimedia.getTitulo()).append("\n");
 			}
-			else if (multimedia instanceof Disco && type.equalsIgnoreCase("disco"))
+			else if (multimedia instanceof Disc && type.equalsIgnoreCase("disco"))
 			{
 				text.append("Disco: ").append(multimedia.getTitulo()).append("\n");
 			}
@@ -100,15 +100,15 @@ public class Inventario
 	{
 		for (Multimedia multimedia : arrayListMultimedia)
 		{
-			if (multimedia instanceof Disco && type.equalsIgnoreCase("disco"))
+			if (multimedia instanceof Disc && type.equalsIgnoreCase("disco"))
 			{
 				return true;
 			}
-			else if (multimedia instanceof Pelicula && type.equalsIgnoreCase("pelicula"))
+			else if (multimedia instanceof Movie && type.equalsIgnoreCase("pelicula"))
 			{
 				return true;
 			}
-			else if (multimedia instanceof  Videojuego && type.equalsIgnoreCase("videojuego"))
+			else if (multimedia instanceof Videogame && type.equalsIgnoreCase("videojuego"))
 			{
 				return true;
 			}
