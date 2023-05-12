@@ -14,6 +14,7 @@ public class MenuView extends JFrame implements ActionListener
 	private final JButton buttonDevolverMultimedia;
 	private final JButton buttonListar;
 	AltasView panelAltas;
+	AltaPeliculaView panelPeliculas;
 
 	public MenuView()
 	{
@@ -27,6 +28,10 @@ public class MenuView extends JFrame implements ActionListener
 		panelAltas = new AltasView();
 		panelAltas.setName("panelAltas");
 		contentPane.add(panelAltas, "panelAltas");
+
+		panelPeliculas = new AltaPeliculaView();
+		panelPeliculas.setName("panelAltaPelicula");
+		contentPane.add(panelPeliculas, "panelAltaPelicula");
 
 		AlquilarMultiMediaSocioView panelAlquilarMultimediaASocio = new AlquilarMultiMediaSocioView();
 		panelAlquilarMultimediaASocio.setName("panelAlquilarMultimediaASocio");
@@ -69,6 +74,10 @@ public class MenuView extends JFrame implements ActionListener
 		if (e.getSource() == buttonAltas)
 		{
 			panelName = "panelAltas";
+		}
+		else if (e.getSource() == buttonAltas)
+		{
+			panelName = "panelAlquilarMultimediaASocio";
 		}
 		else if (e.getSource() == buttonAlquilarMultimediaASocio)
 		{
