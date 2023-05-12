@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 public class RentManager
 {
-	private ArrayList<Rent> arrayListMultimediaAlquilada;
+	private ArrayList<Rent> listMultimedia;
 
 	public RentManager()
 	{
-		arrayListMultimediaAlquilada = new ArrayList<>();
+		listMultimedia = new ArrayList<>();
 	}
 
-	public void addAlquiler(Rent al)
+	public void addRent(Rent al)
 	{
-		arrayListMultimediaAlquilada.add(al);
+		listMultimedia.add(al);
 	}
 
 	@Override
@@ -21,7 +21,7 @@ public class RentManager
 	{
 		StringBuilder text = new StringBuilder();
 
-		for (Rent alquiler : arrayListMultimediaAlquilada)
+		for (Rent alquiler : listMultimedia)
 		{
 			text.append(alquiler.toString());
 		}
@@ -29,12 +29,12 @@ public class RentManager
 		return text.toString();
 	}
 
-	public boolean tieneDeudaPendiente(String nif)
+	public boolean hasDebt(String nif)
 	{
 		boolean nani = false;
-		for (Rent alquiler : arrayListMultimediaAlquilada)
+		for (Rent rent : listMultimedia)
 		{
-			if (alquiler.getMember().getNif().equals(nif))
+			if (rent.getMember().getNif().equals(nif))
 			{
 				nani = true;
 				break;
@@ -43,19 +43,19 @@ public class RentManager
 		return nani;
 	}
 
-	public ArrayList<Rent> getArrayListMultimediaAlquilada()
+	public ArrayList<Rent> getListMultimedia()
 	{
-		return arrayListMultimediaAlquilada;
+		return listMultimedia;
 	}
 
-	public void setArrayListMultimediaAlquilada(ArrayList<Rent> arrayListMultimediaAlquilada)
+	public void setListMultimedia(ArrayList<Rent> listMultimedia)
 	{
-		this.arrayListMultimediaAlquilada = arrayListMultimediaAlquilada;
+		this.listMultimedia = listMultimedia;
 	}
 
-	public void mostrarAlquileresDeSocio(Member socio)
+	public void printMemberRent(Member socio)
 	{
-		for (Rent alquiler : arrayListMultimediaAlquilada)
+		for (Rent alquiler : listMultimedia)
 		{
 			if (alquiler.getMember().equals(socio))
 			{
@@ -67,30 +67,30 @@ public class RentManager
 		}
 	}
 
-	public ArrayList<String> listarAlquileresSocio(String nif)
+	public ArrayList<String> getListMemberRent(String nif)
 	{
 		ArrayList<String> listAlquileresSocio = new ArrayList<>();
 
-		for (Rent alquiler : arrayListMultimediaAlquilada)
+		for (Rent alquiler : listMultimedia)
 		{
 			if (alquiler.getMember().getNif().equals(nif))
 			{
 				for (Multimedia multimedia : alquiler.getArrayListMultimedia())
 				{
-					listAlquileresSocio.add(multimedia.getTitulo());
+					listAlquileresSocio.add(multimedia.getTitle());
 				}
 			}
 		}
 		return listAlquileresSocio;
 	}
 
-	public ArrayList<String> listarSocioRecargo()
+	public ArrayList<String> getListMemberRecharge()
 	{
 		ArrayList<String> listSocioRecargo = new ArrayList<>();
 
-		for (Rent alquiler : arrayListMultimediaAlquilada)
+		for (Rent alquiler : listMultimedia)
 		{
-			if (alquiler.tieneDeuda())
+			if (alquiler.hasDebt())
 			{
 				listSocioRecargo.add(alquiler.getMember().toString());
 			}

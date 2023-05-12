@@ -4,111 +4,111 @@ import java.util.ArrayList;
 
 public class Inventory
 {
-	private ArrayList<Multimedia> arrayListMultimedia;
+	private ArrayList<Multimedia> listMultimedia;
 
 	public Inventory()
 	{
-		arrayListMultimedia = new ArrayList<>();
+		listMultimedia = new ArrayList<>();
 	}
 
-	public ArrayList<Multimedia> getArrayListMultimedia()
+	public ArrayList<Multimedia> getListMultimedia()
 	{
-		return arrayListMultimedia;
+		return listMultimedia;
 	}
 
-	public void setArrayListMultimedia(ArrayList<Multimedia> arrayListMultimedia)
+	public void setListMultimedia(ArrayList<Multimedia> listMultimedia)
 	{
-		this.arrayListMultimedia = arrayListMultimedia;
+		this.listMultimedia = listMultimedia;
 	}
 
-	public void anadirMultimedia(String type, String titulo, String autor, String formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal, String plataforma)
+	public void addMultimedia(String type, String titulo, String autor, String formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal, String plataforma)
 	{
 		switch (type.toLowerCase())
 		{
 			case "pelicula" ->
 			{
 				Movie myPelicula = new Movie(titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal);
-				arrayListMultimedia.add(myPelicula);
+				listMultimedia.add(myPelicula);
 			}
 			case "videojuego" ->
 			{
 				Videogame myVideojuego = new Videogame(titulo, autor, formato, anyo, plataforma);
-				arrayListMultimedia.add(myVideojuego);
+				listMultimedia.add(myVideojuego);
 			}
 			case "disco" ->
 			{
 				Disc myDisco = new Disc();
-				arrayListMultimedia.add(myDisco);
+				listMultimedia.add(myDisco);
 			}
 		}
 	}
 
-	public void removerMultimedia(String titulo)
+	public void removeMultimedia(String titulo)
 	{
-		boolean encontrado = false;
+		boolean found = false;
 
-		for (int x = 0; x < arrayListMultimedia.size() && !encontrado; x++)
+		for (int x = 0; x < listMultimedia.size() && !found; x++)
 		{
-			if (arrayListMultimedia.get(x).getTitulo().equals(titulo))
+			if (listMultimedia.get(x).getTitle().equals(titulo))
 			{
-				encontrado = true;
+				found = true;
 
-				arrayListMultimedia.remove(x);
+				listMultimedia.remove(x);
 			}
 		}
 	}
 
-	public Multimedia buscarMultimedia(String titulo)
+	public Multimedia returnMultimedia(String titulo)
 	{
 		Multimedia mul = null;
-		boolean encontrado = false;
+		boolean found = false;
 
-		for (int x = 0; x < arrayListMultimedia.size() && !encontrado; x++)
+		for (int x = 0; x < listMultimedia.size() && !found; x++)
 		{
-			if (arrayListMultimedia.get(x).getTitulo().equals(titulo))
+			if (listMultimedia.get(x).getTitle().equals(titulo))
 			{
-				encontrado = true;
+				found = true;
 
-				mul = arrayListMultimedia.get(x);
+				mul = listMultimedia.get(x);
 			}
 		}
 		return mul;
 	}
 
-	public String mostarMultimedias(String type)
+	public String printMultimedias(String type)
 	{
 		StringBuilder text = new StringBuilder();
-		for (Multimedia multimedia : arrayListMultimedia)
+		for (Multimedia multimedia : listMultimedia)
 		{
 			if (multimedia instanceof Movie && type.equalsIgnoreCase("pelicula"))
 			{
-				text.append("Pelicula: ").append(multimedia.getTitulo()).append("\n");
+				text.append("Pelicula: ").append(multimedia.getTitle()).append("\n");
 			}
 			else if (multimedia instanceof Videogame && type.equalsIgnoreCase("videojuego"))
 			{
-				text.append("Videojuego: ").append(multimedia.getTitulo()).append("\n");
+				text.append("Videojuego: ").append(multimedia.getTitle()).append("\n");
 			}
 			else if (multimedia instanceof Disc && type.equalsIgnoreCase("disco"))
 			{
-				text.append("Disco: ").append(multimedia.getTitulo()).append("\n");
+				text.append("Disco: ").append(multimedia.getTitle()).append("\n");
 			}
 		}
 		return text.toString();
 	}
 
-	public boolean hayMultimediaDisponibles(String type)
+	public boolean isMultimediaAvailable(String type)
 	{
-		for (Multimedia multimedia : arrayListMultimedia)
+		for (Multimedia multimedia : listMultimedia)
 		{
-			if (multimedia instanceof Disc && type.equalsIgnoreCase("disco"))
+			if (multimedia instanceof Disc && type.equalsIgnoreCase("disc"))
 			{
 				return true;
 			}
-			else if (multimedia instanceof Movie && type.equalsIgnoreCase("pelicula"))
+			else if (multimedia instanceof Movie && type.equalsIgnoreCase("movie"))
 			{
 				return true;
 			}
-			else if (multimedia instanceof Videogame && type.equalsIgnoreCase("videojuego"))
+			else if (multimedia instanceof Videogame && type.equalsIgnoreCase("videogame"))
 			{
 				return true;
 			}

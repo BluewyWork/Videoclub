@@ -1,32 +1,32 @@
 package com.videoclub.model;
 
-public class Movie extends Multimedia implements Comparable<Movie>
+public class Movie extends Multimedia
 {
-	private int duracion;
-	private String actorPrincipal;
-	private String actrizPrincipal;
+	private int duration;
+	private String maleLead;
+	private String femaleLead;
 
 	public Movie()
 	{
-		duracion = 10;
-		actorPrincipal = "Mark";
-		actrizPrincipal = "GOD";
+		duration = 10;
+		maleLead = "Mark";
+		femaleLead = "GOD";
 	}
 
-	public Movie(String titulo, String autor, Format formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal)
+	public Movie(String title, String author, Format format, int year, int duration, String maleLead, String femaleLead)
 	{
-		super(titulo, autor, formato, anyo);
-		setDuracion(duracion);
-		setActorPrincipal(actorPrincipal);
-		setActrizPrincipal(actrizPrincipal);
+		super(title, author, format, year);
+		setDuration(duration);
+		setMaleLead(maleLead);
+		setFemaleLead(femaleLead);
 	}
 
-	public Movie(String titulo, String autor, String formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal)
+	public Movie(String title, String author, String format, int year, int duration, String maleLead, String femaleLead)
 	{
-		super(titulo, autor, formato, anyo);
-		setDuracion(duracion);
-		setActorPrincipal(actorPrincipal);
-		setActrizPrincipal(actrizPrincipal);
+		super(title, author, format, year);
+		setDuration(duration);
+		setMaleLead(maleLead);
+		setFemaleLead(femaleLead);
 	}
 
 	@Override
@@ -34,44 +34,38 @@ public class Movie extends Multimedia implements Comparable<Movie>
 	{
 		return
 				super.toString() +
-						"\nDuracion: " + duracion +
-						"\nActor principal: '" + actorPrincipal + '\'' +
-						"\nActriz principal: '" + actrizPrincipal + '\'';
+						"\nDuracion: " + duration +
+						"\nActor principal: '" + maleLead + '\'' +
+						"\nActriz principal: '" + femaleLead + '\'';
 	}
 
-	@Override
-	public int compareTo(Movie o)
+	public int getDuration()
 	{
-		return CharSequence.compare(this.getTitulo(), o.getTitulo());
+		return duration;
 	}
 
-	public int getDuracion()
+	public void setDuration(int duration)
 	{
-		return duracion;
+		this.duration = duration;
 	}
 
-	public void setDuracion(int duracion)
+	public String getMaleLead()
 	{
-		this.duracion = duracion;
+		return maleLead;
 	}
 
-	public String getActorPrincipal()
+	public void setMaleLead(String maleLead)
 	{
-		return actorPrincipal;
+		this.maleLead = maleLead;
 	}
 
-	public void setActorPrincipal(String actorPrincipal)
+	public String getFemaleLead()
 	{
-		this.actorPrincipal = actorPrincipal;
+		return femaleLead;
 	}
 
-	public String getActrizPrincipal()
+	public void setFemaleLead(String femaleLead)
 	{
-		return actrizPrincipal;
-	}
-
-	public void setActrizPrincipal(String actrizPrincipal)
-	{
-		this.actrizPrincipal = actrizPrincipal;
+		this.femaleLead = femaleLead;
 	}
 }

@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Disc extends Multimedia
 {
-	private int duracion;
-	private ArrayList<Song> listCanciones;
+	private int duration;
+	private ArrayList<Song> listSongs;
 
 	public Disc()
 	{
 		setDuracion();
-		listCanciones = new ArrayList<>();
+		listSongs = new ArrayList<>();
 	}
 
 	@Override
@@ -18,30 +18,30 @@ public class Disc extends Multimedia
 	{
 		return
 				super.toString() + "\n" +
-						"\t" + "Duracion: " + duracion +
-						"\t" + "Canciones: '" + listCanciones + '\'';
+						"\t" + "Duration: " + duration +
+						"\t" + "Songs: '" + listSongs + '\'';
 	}
 
-	public int getDuracion()
+	public int getDuration()
 	{
-		return duracion;
+		return duration;
 	}
 
 	public void setDuracion()
 	{
-		for (Song a : listCanciones)
+		for (Song a : listSongs)
 		{
-			duracion += a.getDuracion();
+			duration += a.getDuration();
 		}
 	}
 
-	public ArrayList<Song> getListCanciones()
+	public ArrayList<Song> getListSongs()
 	{
-		return listCanciones;
+		return listSongs;
 	}
 
-	public void setListCanciones(ArrayList<Song> listCanciones)
+	public void setListSongs(ArrayList<Song> listSongs)
 	{
-		this.listCanciones = listCanciones;
+		this.listSongs = listSongs;
 	}
 }

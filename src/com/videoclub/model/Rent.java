@@ -8,7 +8,7 @@ public class Rent
 	private static int idCounter = 0;
 	private int id;
 	private Member member;
-	private ArrayList<Multimedia> arrMultimedia;
+	private final ArrayList<Multimedia> listMultimedia;
 	private double debt;
 	private LocalDate rentDate;
 
@@ -16,9 +16,9 @@ public class Rent
 	{
 		setId(idCounter++);
 		setMember(new Member());
-		setDebt(calcularDeuda());
+		setDebt(calculateDebt());
 		rentDate = LocalDate.now();
-		arrMultimedia = new ArrayList<>();
+		listMultimedia = new ArrayList<>();
 	}
 
 	public Rent(Member member)
@@ -34,7 +34,7 @@ public class Rent
 
 		text.append(member.toString()).append("\n");
 
-		for (Multimedia multimedia : arrMultimedia)
+		for (Multimedia multimedia : listMultimedia)
 		{
 			if (multimedia instanceof Movie)
 			{
@@ -87,12 +87,12 @@ public class Rent
 
 	public ArrayList<Multimedia> getArrayListMultimedia()
 	{
-		return arrMultimedia;
+		return listMultimedia;
 	}
 
-	public void setArrMultimedia(Multimedia multimediaAlquilada)
+	public void setListMultimedia(Multimedia listMultimedia)
 	{
-		this.arrMultimedia.add(multimediaAlquilada);
+		this.listMultimedia.add(listMultimedia);
 	}
 
 	public int getId()
@@ -105,12 +105,12 @@ public class Rent
 		this.id = id;
 	}
 
-	public double calcularDeuda()
+	public double calculateDebt()
 	{
 		return 0.0;
 	}
 
-	public boolean tieneDeuda()
+	public boolean hasDebt()
 	{
 		return debt > 0;
 	}

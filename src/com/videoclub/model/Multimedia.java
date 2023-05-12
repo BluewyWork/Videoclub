@@ -4,33 +4,33 @@ import java.util.Objects;
 
 public abstract class Multimedia
 {
-	private String titulo;
-	private String autor;
-	private Format formato;
-	private int anyo;
+	private String title;
+	private String author;
+	private Format format;
+	private int year;
 
 	public Multimedia()
 	{
-		titulo = "Multimedia Vacio";
-		autor = "N/a";
-		formato = Format.CD;
-		anyo = 9999;
+		title = "Multimedia Vacio";
+		author = "N/a";
+		format = Format.CD;
+		year = 9999;
 	}
 
-	public Multimedia(String titulo, String autor, Format formato, int anyo)
+	public Multimedia(String title, String author, Format format, int year)
 	{
-		setTitulo(titulo);
-		setAutor(autor);
-		setFormato(formato);
-		setAnyo(anyo);
+		setTitle(title);
+		setAuthor(author);
+		setFormat(format);
+		setYear(year);
 	}
 
-	public Multimedia(String titulo, String autor, String formato, int anyo)
+	public Multimedia(String title, String author, String format, int year)
 	{
-		setTitulo(titulo);
-		setAutor(autor);
-		setFormato(Format.valueOf(formato));
-		setAnyo(anyo);
+		setTitle(title);
+		setAuthor(author);
+		setFormat(Format.valueOf(format));
+		setYear(year);
 	}
 
 	@Override
@@ -38,56 +38,51 @@ public abstract class Multimedia
 	{
 		String text = "";
 
-		text += "\t" + "Titulo: " + titulo + "\n";
-		text += "\t" + "Autor: " + autor + "\n";
-		text += "\t" + "Formato: " + formato + "\n";
-		text += "\t" + "Ano: " + anyo;
+		text += "\t" + "Titulo: " + title + "\n";
+		text += "\t" + "Autor: " + author + "\n";
+		text += "\t" + "Formato: " + format + "\n";
+		text += "\t" + "Ano: " + year;
 
 		return text;
 	}
 
-	public String getTitulo()
+	public String getTitle()
 	{
-		return titulo;
+		return title;
 	}
 
-	public void setTitulo(String titulo)
+	public void setTitle(String title)
 	{
-		this.titulo = titulo;
+		this.title = title;
 	}
 
-	public String getAutor()
+	public String getAuthor()
 	{
-		return autor;
+		return author;
 	}
 
-	public void setAutor(String autor)
+	public void setAuthor(String author)
 	{
-		this.autor = autor;
+		this.author = author;
 	}
 
-	public Format getFormato()
+	public Format getFormat()
 	{
-		return formato;
+		return format;
 	}
 
-	public void setFormato(Format formato)
+	public void setFormat(Format format)
 	{
-		this.formato = formato;
+		this.format = format;
 	}
 
-	public int getAnyo()
+	public int getYear()
 	{
-		return anyo;
+		return year;
 	}
 
-	public void setAnyo(int año)
+	public void setYear(int año)
 	{
-		this.anyo = año;
-	}
-
-	public boolean compararMultimedia(Multimedia myMultimedia2)
-	{
-		return Objects.equals(myMultimedia2.titulo, this.titulo) && Objects.equals(myMultimedia2.autor, this.autor);
+		this.year = año;
 	}
 }

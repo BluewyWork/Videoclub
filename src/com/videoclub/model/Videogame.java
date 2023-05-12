@@ -2,30 +2,30 @@ package com.videoclub.model;
 
 public class Videogame extends Multimedia implements Comparable<Videogame>
 {
-	private Platform plataforma;
+	private Platform platform;
 
 	public Videogame()
 	{
 		super();
-		this.plataforma = Platform.NINTENDO;
+		this.platform = Platform.NINTENDO;
 	}
 
-	public Videogame(String titulo, String autor, String formato, int anyo, String plataforma2)
+	public Videogame(String title, String author, String format, int year, String platform)
 	{
-		super(titulo, autor, formato, anyo);
-		setPlataforma(Platform.valueOf(plataforma2));
+		super(title, author, format, year);
+		setPlatform(Platform.valueOf(platform));
 	}
 
-	public Videogame(String titulo, String autor, String formato, int anyo, Platform plataforma)
+	public Videogame(String title, String author, String format, int year, Platform platform)
 	{
-		super(titulo, autor, formato, anyo);
-		setPlataforma(plataforma);
+		super(title, author, format, year);
+		setPlatform(platform);
 	}
 
-	public Videogame(String titulo, String autor, Format formato, int anyo, Platform plataforma)
+	public Videogame(String title, String author, Format format, int year, Platform platform)
 	{
-		super(titulo, autor, formato, anyo);
-		setPlataforma(plataforma);
+		super(title, author, format, year);
+		setPlatform(platform);
 	}
 
 	@Override
@@ -33,22 +33,22 @@ public class Videogame extends Multimedia implements Comparable<Videogame>
 	{
 		return
 				super.toString() + "\n" +
-						"\t" + "Plataforma: '" + plataforma + '\'';
+						"\t" + "Plataforma: '" + platform + '\'';
 	}
 
 	@Override
 	public int compareTo(Videogame o)
 	{
-		return Integer.compare(this.getAnyo(), o.getAnyo());
+		return Integer.compare(this.getYear(), o.getYear());
 	}
 
-	public Platform getPlataforma()
+	public Platform getPlatform()
 	{
-		return plataforma;
+		return platform;
 	}
 
-	public void setPlataforma(Platform plataforma)
+	public void setPlatform(Platform platform)
 	{
-		this.plataforma = plataforma;
+		this.platform = platform;
 	}
 }

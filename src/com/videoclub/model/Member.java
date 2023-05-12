@@ -7,37 +7,36 @@ import java.time.format.DateTimeFormatter;
 public class Member
 {
 	private String nif;
-	private String nombre;
-	private LocalDate fechaNacimiento;
-	private String poblacion;
+	private String name;
+	private LocalDate birthDate;
+	private String town;
 
 	public Member()
 	{
 		nif = "RANDOM";
-		nombre = "RANDOM";
-		fechaNacimiento = LocalDate.of(2003, 1, 1);
-		poblacion = "RANDOM";
+		name = "RANDOM";
+		birthDate = LocalDate.of(2003, 1, 1);
+		town = "RANDOM";
 	}
 
-	public Member(String nif, String nombre, LocalDate fechaNacimiento, String poblacion)
+	public Member(String nif, String name, LocalDate birthDate, String town)
 	{
 		this.nif = nif;
-		this.nombre = nombre;
-		this.fechaNacimiento = fechaNacimiento;
-		this.poblacion = poblacion;
+		this.name = name;
+		setBirthDate(birthDate);
+		this.town = town;
 	}
 
-	public Member(String nif, String nombre, String fechaNac, String poblacion)
+	public Member(String nif, String name, String birthDate, String town)
 	{
 		this();
 		this.nif = nif;
-		this.nombre = nombre;
+		this.name = name;
 
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		LocalDate lc = LocalDate.parse(fechaNac, formatter);
 
-		fechaNacimiento = lc;
-		this.poblacion = poblacion;
+		this.birthDate = LocalDate.parse(birthDate, formatter);
+		this.town = town;
 	}
 
 	@Override
@@ -46,9 +45,9 @@ public class Member
 		return
 				"Socio: " + "\n" +
 						"\t" + "Nif: " + nif + "\n" +
-						"\t" + "Nombre: " + nombre + "\n" +
-						"\t" + "FechaNac: " + fechaNacimiento + "\n" +
-						"\t" + "Poblacion: " + poblacion;
+						"\t" + "Nombre: " + name + "\n" +
+						"\t" + "FechaNac: " + birthDate + "\n" +
+						"\t" + "Poblacion: " + town;
 	}
 
 	public String getNif()
@@ -61,39 +60,47 @@ public class Member
 		this.nif = nif;
 	}
 
-	public String getNombre()
+	public String getName()
 	{
-		return nombre;
+		return name;
 	}
 
-	public void setNombre(String nombre)
+	public void setName(String name)
 	{
-		this.nombre = nombre;
+		this.name = name;
 	}
 
-	public LocalDate getFechaNacimiento()
+	public LocalDate getBirthDate()
 	{
-		return fechaNacimiento;
+		return birthDate;
 	}
 
-	public void setFechaNacimiento(LocalDate fechaNacimiento)
+	public void setBirthDate(LocalDate birthDate)
 	{
-		this.fechaNacimiento = fechaNacimiento;
+		if (isAdult())
+		{
+			this.birthDate = birthDate;
+		}
+		else
+		{
+			throw new RuntimeException("Member must be an ADULT (+18)");
+		}
+
 	}
 
-	public String getPoblacion()
+	public String getTown()
 	{
-		return poblacion;
+		return town;
 	}
 
-	public void setPoblacion(String poblacion)
+	public void setTown(String town)
 	{
-		this.poblacion = poblacion;
+		this.town = town;
 	}
 
-	public boolean isMayorEdad()
+	public boolean isAdult()
 	{
-		Period myPeriod = Period.between(fechaNacimiento, LocalDate.now());
+		Period myPeriod = Period.between(birthDate, LocalDate.now());
 
 		return myPeriod.getYears() >= 18;
 	}
