@@ -7,7 +7,8 @@ public class Serializador
 	public static void serializar(Object objeto, String nombreArchivo)
 	{
 		String rutaArchivo = "$HOME/.local/share/videoclub/" + nombreArchivo;
-		try {
+		try
+		{
 			FileOutputStream fs = new FileOutputStream(rutaArchivo);
 			ObjectOutputStream os = new ObjectOutputStream(fs);
 			os.writeObject(objeto);
@@ -16,15 +17,20 @@ public class Serializador
 			System.out.println("Objeto " + objeto + " serializado correctamente " +
 					"en el archivo " + rutaArchivo + " en la siguiente ruta: " +
 					System.getProperty("user.dir"));
-		} catch (IOException e) {
+		}
+		catch (IOException e)
+		{
 			e.printStackTrace();
 		}
 	}
 
 	public static Object deserializar(String rutaArchivo) throws IOException, ClassNotFoundException
 	{
-		try (FileInputStream fi = new FileInputStream(rutaArchivo);
-		     ObjectInputStream oi = new ObjectInputStream(fi)){
+		try (
+				FileInputStream fi = new FileInputStream(rutaArchivo);
+				ObjectInputStream oi = new ObjectInputStream(fi)
+		)
+		{
 			return oi.readObject();
 		}
 	}

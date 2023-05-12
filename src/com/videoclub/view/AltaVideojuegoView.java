@@ -30,13 +30,13 @@ public class AltaVideojuegoView extends JPanel implements ActionListener
 		lblAnyo = new JLabel("- Año lanzamiento -");
 		txtTitulo = new JTextField("Escriba el título aquí");
 		txtAutor = new JTextField("Escriba el autor aquí");
-		modelAnyo = new SpinnerNumberModel(2023,1950 ,2023,1);
+		modelAnyo = new SpinnerNumberModel(2023, 1950, 2023, 1);
 		txtAnyo = new JSpinner(modelAnyo);
 		btnDarAlta = new JButton("Dar alta videojuego");
 		Formato[] formatos = Formato.values();
 		listFormato = new JComboBox(formatos);
 
-		setLayout(new GridLayout(8,8));
+		setLayout(new GridLayout(8, 8));
 		add(lblTitulo);
 		add(txtTitulo);
 		add(lblAutor);
@@ -51,13 +51,15 @@ public class AltaVideojuegoView extends JPanel implements ActionListener
 
 		btnDarAlta.addActionListener(this);
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
 		Videojuego videojuego = new Videojuego(
 				txtTitulo.getText(), txtAutor.getText(),
 				Formato.valueOf(listFormato.getSelectedItem().toString()),
-				(int) txtAnyo.getValue(), Plataforma.valueOf(listPlataforma.getSelectedItem().toString()));
+				(int) txtAnyo.getValue(), Plataforma.valueOf(listPlataforma.getSelectedItem().toString())
+		);
 		Serializador.serializar(videojuego, "videojuego.ser");
 	}
 }

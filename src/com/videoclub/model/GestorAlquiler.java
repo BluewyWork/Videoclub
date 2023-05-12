@@ -66,6 +66,7 @@ public class GestorAlquiler
 			}
 		}
 	}
+
 	public ArrayList<String> listarAlquileresSocio(String nif)
 	{
 		ArrayList<String> listAlquileresSocio = new ArrayList<>();

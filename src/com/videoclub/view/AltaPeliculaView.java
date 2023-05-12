@@ -31,8 +31,8 @@ public class AltaPeliculaView extends JPanel implements ActionListener
 		lblActriz = new JLabel("- Actriz -");
 		txtTitulo = new JTextField("Escriba el título aquí");
 		txtAutor = new JTextField("Escriba el autor aquí");
-		modelAnyo = new SpinnerNumberModel(2023,1890 ,2023,1);
-		modelDuracion = new SpinnerNumberModel(0,0 ,3000,1);
+		modelAnyo = new SpinnerNumberModel(2023, 1890, 2023, 1);
+		modelDuracion = new SpinnerNumberModel(0, 0, 3000, 1);
 		txtAnyo = new JSpinner(modelAnyo);
 		txtDuracion = new JSpinner(modelDuracion);
 		txtActor = new JTextField("Escriba un actor aquí");
@@ -41,7 +41,7 @@ public class AltaPeliculaView extends JPanel implements ActionListener
 		Formato[] formatos = Formato.values();
 		listFormato = new JComboBox(formatos);
 
-		setLayout(new GridLayout(8,8));
+		setLayout(new GridLayout(8, 8));
 		add(lblTitulo);
 		add(txtTitulo);
 		add(lblAutor);
@@ -60,6 +60,7 @@ public class AltaPeliculaView extends JPanel implements ActionListener
 
 		btnDarAlta.addActionListener(this);
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
@@ -67,7 +68,8 @@ public class AltaPeliculaView extends JPanel implements ActionListener
 				txtTitulo.getText(), txtAutor.getText(),
 				Formato.valueOf(listFormato.getSelectedItem().toString()),
 				(int) txtAnyo.getValue(), (int) txtDuracion.getValue(),
-				txtActor.getText(), txtActriz.getText());
+				txtActor.getText(), txtActriz.getText()
+		);
 		Serializador.serializar(pelicula, "pelicula.ser");
 	}
 }
