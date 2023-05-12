@@ -1,15 +1,19 @@
 package com.videoclub.view;
 
+import com.videoclub.controller.InventarioController;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class AltasView extends JPanel
+public class AltasView extends JPanel implements ActionListener
 {
-	private JTextArea textAreaOutput;
+	private JTextArea txtAreaOutput;
 	private JScrollPane scrollPane;
-	private JButton buttonAltaASocio;
-	private JButton buttonAltaPelicula;
-	private JButton buttonAltaVideojuego;
+	private JButton btnAltaASocio;
+	private JButton btnAltaPelicula;
+	private JButton btnAltaVideojuego;
 
 	public AltasView()
 	{
@@ -28,9 +32,9 @@ public class AltasView extends JPanel
 		c.anchor = GridBagConstraints.NORTH;
 		c.fill = GridBagConstraints.HORIZONTAL;
 
-		textAreaOutput = new JTextArea();
-		textAreaOutput.setPreferredSize(new Dimension(320, 180));
-		scrollPane = new JScrollPane(textAreaOutput);
+		txtAreaOutput = new JTextArea();
+		txtAreaOutput.setPreferredSize(new Dimension(320, 180));
+		scrollPane = new JScrollPane(txtAreaOutput);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
@@ -44,8 +48,8 @@ public class AltasView extends JPanel
 		c.anchor = GridBagConstraints.CENTER;
 		c.fill = GridBagConstraints.HORIZONTAL;
 
-		buttonAltaASocio = new JButton("Alta a Socio");
-		add(buttonAltaASocio, c);
+		btnAltaASocio = new JButton("Alta a Socio");
+		add(btnAltaASocio, c);
 
 		c = new GridBagConstraints();
 		c.gridx = 1;
@@ -55,8 +59,8 @@ public class AltasView extends JPanel
 		c.anchor = GridBagConstraints.CENTER;
 		c.fill = GridBagConstraints.HORIZONTAL;
 
-		buttonAltaPelicula = new JButton("Alta a Pelicula");
-		add(buttonAltaPelicula, c);
+		btnAltaPelicula = new JButton("Alta a Pelicula");
+		add(btnAltaPelicula, c);
 
 		c = new GridBagConstraints();
 		c.gridx = 2;
@@ -66,32 +70,19 @@ public class AltasView extends JPanel
 		c.anchor = GridBagConstraints.CENTER;
 		c.fill = GridBagConstraints.HORIZONTAL;
 
-		buttonAltaVideojuego = new JButton("Alta a Videojuego");
-		add(buttonAltaVideojuego, c);
+		btnAltaVideojuego = new JButton("Alta a Videojuego");
+		add(btnAltaVideojuego, c);
+
+		this.btnAltaPelicula.addActionListener(this);
 	}
 
-	public JTextArea getTextAreaOutput()
+	@Override
+	public void actionPerformed(ActionEvent e)
 	{
-		return textAreaOutput;
-	}
+		InventarioController ic = new InventarioController();
+		if (e.getSource().equals(btnAltaPelicula))
+		{
 
-	public JScrollPane getScrollPane()
-	{
-		return scrollPane;
-	}
-
-	public JButton getButtonAltaASocio()
-	{
-		return buttonAltaASocio;
-	}
-
-	public JButton getButtonAltaPelicula()
-	{
-		return buttonAltaPelicula;
-	}
-
-	public JButton getButtonAltaVideojuego()
-	{
-		return buttonAltaVideojuego;
+		}
 	}
 }

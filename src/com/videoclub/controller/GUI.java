@@ -19,7 +19,5 @@ public class GUI
 		mv = new MenuView();
 		mv.setVisible(true);
 		mv.setBounds(350, 25, 900, 775);
-
-		mv.getPanelAltas().getButtonAltaASocio();
 	}
 }

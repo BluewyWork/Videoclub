@@ -22,6 +22,12 @@ public class Videojuego extends Multimedia implements Comparable<Videojuego>
 		setPlataforma(plataforma);
 	}
 
+	public Videojuego(String titulo, String autor, Formato formato, int anyo, Plataforma plataforma)
+	{
+		super(titulo, autor, formato, anyo);
+		setPlataforma(plataforma);
+	}
+
 	public void setPlataforma(Plataforma plataforma)
 	{
 		this.plataforma = plataforma;
