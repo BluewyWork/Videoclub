@@ -75,36 +75,6 @@ public class Inventario
 		return mul;
 	}
 
-	// eliminar metodo una vez completada mostrarMultimedias
-	public String mostrarPeliculas()
-	{
-		StringBuilder text = new StringBuilder();
-
-		for (Multimedia multimedia : arrayListMultimedia)
-		{
-			if (multimedia instanceof Pelicula)
-			{
-				text.append("Pelicula: ").append(multimedia.getTitulo()).append("\n");
-			}
-		}
-		return text.toString();
-	}
-
-	// eliminar metodo una vez completada mostrarMultimedias
-	public String mostrarVideoJuegos()
-	{
-		StringBuilder text = new StringBuilder();
-
-		for (Multimedia multimedia : arrayListMultimedia)
-		{
-			if (multimedia instanceof Videojuego)
-			{
-				text.append("videojuego: ").append(multimedia.getTitulo()).append("\n");
-			}
-		}
-		return text.toString();
-	}
-
 	public String mostarMultimedias(String type)
 	{
 		StringBuilder text = new StringBuilder();
@@ -126,40 +96,27 @@ public class Inventario
 		return text.toString();
 	}
 
-	public boolean hayPeliculasDisponibles()
+	public boolean hayMultimediaDisponibles(String type)
 	{
 		for (Multimedia multimedia : arrayListMultimedia)
 		{
-			if (multimedia instanceof Pelicula)
+			if (multimedia instanceof Disco && type.equalsIgnoreCase("disco"))
 			{
 				return true;
+			}
+			else if (multimedia instanceof Pelicula && type.equalsIgnoreCase("pelicula"))
+			{
+				return true;
+			}
+			else if (multimedia instanceof  Videojuego && type.equalsIgnoreCase("videojuego"))
+			{
+				return true;
+			}
+			else
+			{
+				throw new RuntimeException("Wrong Type!");
 			}
 		}
 		return false;
 	}
-
-	public boolean hayVideojuegosDisponibles()
-	{
-		for (Multimedia multimedia : arrayListMultimedia)
-		{
-			if (multimedia instanceof Videojuego)
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public boolean hayDiscosDisponibles()
-	{
-		for (Multimedia multimedia : arrayListMultimedia)
-		{
-			if (multimedia instanceof Disco)
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-
 }

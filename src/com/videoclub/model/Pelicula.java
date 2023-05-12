@@ -29,6 +29,22 @@ public class Pelicula extends Multimedia implements Comparable<Pelicula>
 		setActrizPrincipal(actrizPrincipal);
 	}
 
+	@Override
+	public String toString()
+	{
+		return
+				super.toString() +
+						"\nDuracion: " + duracion +
+						"\nActor principal: '" + actorPrincipal + '\'' +
+						"\nActriz principal: '" + actrizPrincipal + '\'';
+	}
+
+	@Override
+	public int compareTo(Pelicula o)
+	{
+		return CharSequence.compare(this.getTitulo(), o.getTitulo());
+	}
+
 	public int getDuracion()
 	{
 		return duracion;
@@ -57,21 +73,5 @@ public class Pelicula extends Multimedia implements Comparable<Pelicula>
 	public void setActrizPrincipal(String actrizPrincipal)
 	{
 		this.actrizPrincipal = actrizPrincipal;
-	}
-
-	@Override
-	public String toString()
-	{
-		return
-				super.toString() +
-						"\nDuracion: " + duracion +
-						"\nActor principal: '" + actorPrincipal + '\'' +
-						"\nActriz principal: '" + actrizPrincipal + '\'';
-	}
-
-	@Override
-	public int compareTo(Pelicula o)
-	{
-		return CharSequence.compare(this.getTitulo(), o.getTitulo());
 	}
 }

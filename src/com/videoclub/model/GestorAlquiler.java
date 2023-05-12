@@ -29,7 +29,7 @@ public class GestorAlquiler
 		return text.toString();
 	}
 
-	public boolean tieneDeudaPendiente2(String nif)
+	public boolean tieneDeudaPendiente(String nif)
 	{
 		boolean nani = false;
 		for (Alquiler alquiler : arrayListMultimediaAlquilada)
@@ -90,7 +90,7 @@ public class GestorAlquiler
 
 		for (Alquiler alquiler : arrayListMultimediaAlquilada)
 		{
-			if (alquiler.isDeuda())
+			if (alquiler.tieneDeuda())
 			{
 				listSocioRecargo.add(alquiler.getMySocio().toString());
 			}

@@ -5,13 +5,13 @@ import com.videoclub.view.MenuView;
 public class GUI
 {
 	GestorSocioController gsc;
-	InventarioController iv;
+	GestorItems iv;
 	MenuView mv;
 
 	public GUI()
 	{
 		gsc = new GestorSocioController();
-		iv = new InventarioController();
+		iv = new GestorItems();
 	}
 
 	public void run()

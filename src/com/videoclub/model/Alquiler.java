@@ -10,15 +10,15 @@ public class Alquiler
 	private int id;
 	private Socio mySocio;
 	private ArrayList<Multimedia> arrayListMultimediaAlquilada;
-	private boolean deuda;
+	private double deuda;
 	private LocalDate fechaAlquiler;
 
 	public Alquiler()
 	{
 		setId(getNextId());
 		setMySocio(new Socio());
-		setDeuda(true);
-		setFechaAlquiler(fechaDeAlquiler());
+		setDeuda(calcularDeuda());
+		fechaAlquiler = LocalDate.now();
 		arrayListMultimediaAlquilada = new ArrayList<>();
 	}
 
@@ -26,8 +26,6 @@ public class Alquiler
 	{
 		this();
 		setMySocio(mySocio);
-		arrayListMultimediaAlquilada = new ArrayList<>();
-		setDeuda(true);
 	}
 
 	@Override
@@ -68,12 +66,12 @@ public class Alquiler
 		this.fechaAlquiler = fechaAlquiler;
 	}
 
-	public boolean isDeuda()
+	public double getDeuda()
 	{
 		return deuda;
 	}
 
-	public void setDeuda(boolean deuda)
+	public void setDeuda(double deuda)
 	{
 		this.deuda = deuda;
 	}
@@ -113,13 +111,13 @@ public class Alquiler
 		this.id = id;
 	}
 
-	// El metodo siguiente no tiene mucho sentido ya que
-	// en teoria deberia retornar la fecha alquiler inicializado
-	// en el contructor de Alquiler
-	public LocalDate fechaDeAlquiler()
+	public double calcularDeuda()
 	{
-		LocalDate fechaActual = LocalDate.now();
-		return fechaActual;
+		return 0.0;
 	}
 
+	public boolean tieneDeuda()
+	{
+		return deuda > 0;
+	}
 }

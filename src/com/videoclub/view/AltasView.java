@@ -1,6 +1,6 @@
 package com.videoclub.view;
 
-import com.videoclub.controller.InventarioController;
+import com.videoclub.controller.GestorItems;
 
 import javax.swing.*;
 import java.awt.*;
@@ -79,7 +79,7 @@ public class AltasView extends JPanel implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		InventarioController ic = new InventarioController();
+		GestorItems ic = new GestorItems();
 		if (e.getSource().equals(btnAltaPelicula))
 		{
 

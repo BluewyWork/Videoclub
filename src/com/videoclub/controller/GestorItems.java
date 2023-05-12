@@ -5,12 +5,12 @@ import com.videoclub.model.GestorAlquiler;
 import com.videoclub.model.Inventario;
 import com.videoclub.model.Socio;
 
-public class InventarioController
+public class GestorItems
 {
 	private final Inventario myInventario;
 	private final GestorAlquiler myGA;
 
-	public InventarioController()
+	public GestorItems()
 	{
 		myInventario = new Inventario();
 		myGA = new GestorAlquiler();
@@ -20,18 +20,14 @@ public class InventarioController
 	{
 		switch (type.toLowerCase())
 		{
-			case "pelicula" ->
-					myInventario.anadirMultimedia(type, titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal, plataforma);
-			case "videojuego" ->
-					myInventario.anadirMultimedia(type, titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal, plataforma);
-			case "disco" ->
+			case "pelicula", "videojuego", "disco" ->
 					myInventario.anadirMultimedia(type, titulo, autor, formato, anyo, duracion, actorPrincipal, actrizPrincipal, plataforma);
 		}
 	}
 
 	public boolean tenerDeuda(String nif)
 	{
-		return myGA.tieneDeudaPendiente2(nif);
+		return myGA.tieneDeudaPendiente(nif);
 	}
 
 	public void alquilarMultimedia(Socio socio, String titulo)
@@ -54,18 +50,8 @@ public class InventarioController
 		myGA.mostrarAlquileresDeSocio(socio);
 	}
 
-	public boolean existenPeliculas()
+	public boolean existenMultimedia(String type)
 	{
-		return myInventario.hayPeliculasDisponibles();
-	}
-
-	public boolean existenVideojuegos()
-	{
-		return myInventario.hayVideojuegosDisponibles();
-	}
-
-	public boolean existenDiscos()
-	{
-		return myInventario.hayDiscosDisponibles();
+		return myInventario.hayMultimediaDisponibles(type);
 	}
 }

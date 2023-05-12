@@ -7,13 +7,13 @@ import com.videoclub.view.ConsoleMenuView;
 public class ConsoleMenu
 {
 	GestorSocioController gsc;
-	InventarioController ic;
+	GestorItems ic;
 	ConsoleMenuView cmv;
 
 	public ConsoleMenu()
 	{
 		gsc = new GestorSocioController();
-		ic = new InventarioController();
+		ic = new GestorItems();
 		cmv = new ConsoleMenuView();
 	}
 
@@ -120,7 +120,7 @@ public class ConsoleMenu
 					default -> System.out.println("Input not Valid!");
 					case "pelicula" ->
 					{
-						if (ic.existenPeliculas())
+						if (ic.existenMultimedia("pelicula"))
 						{
 							System.out.println(ic.mostrarMultimedias("pelicula"));
 							titulo = Input.readInput("Escriba el Titulo: ", "String");
@@ -131,7 +131,7 @@ public class ConsoleMenu
 					}
 					case "videojuego" ->
 					{
-						if (ic.existenVideojuegos())
+						if (ic.existenMultimedia("videojuego"))
 						{
 							System.out.println(ic.mostrarMultimedias("videojuego"));
 							titulo = Input.readInput("Escriba el Titulo: ", "String");
@@ -142,7 +142,7 @@ public class ConsoleMenu
 					}
 					case "disco" ->
 					{
-						if (ic.existenDiscos())
+						if (ic.existenMultimedia("disco"))
 						{
 							System.out.println(ic.mostrarMultimedias("disco"));
 							titulo = Input.readInput("Escriba el Titulo: ", "String");
@@ -185,8 +185,7 @@ public class ConsoleMenu
 		}
 		catch (Exception e)
 		{
-			System.out.println(e);
+			throw new RuntimeException(e);
 		}
 	}
-
 }

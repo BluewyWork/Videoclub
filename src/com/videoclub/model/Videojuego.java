@@ -28,16 +28,6 @@ public class Videojuego extends Multimedia implements Comparable<Videojuego>
 		setPlataforma(plataforma);
 	}
 
-	public void setPlataforma(Plataforma plataforma)
-	{
-		this.plataforma = plataforma;
-	}
-
-	public Plataforma getPlataforma()
-	{
-		return plataforma;
-	}
-
 	@Override
 	public String toString()
 	{
@@ -50,5 +40,15 @@ public class Videojuego extends Multimedia implements Comparable<Videojuego>
 	public int compareTo(Videojuego o)
 	{
 		return Integer.compare(this.getAnyo(), o.getAnyo());
+	}
+
+	public Plataforma getPlataforma()
+	{
+		return plataforma;
+	}
+
+	public void setPlataforma(Plataforma plataforma)
+	{
+		this.plataforma = plataforma;
 	}
 }
