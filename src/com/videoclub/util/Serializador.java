@@ -1,12 +1,14 @@
 package com.videoclub.util;
 
+import com.videoclub.model.Constantes;
+
 import java.io.*;
 
 public class Serializador
 {
 	public static void serializar(Object objeto, String nombreArchivo)
 	{
-		String rutaArchivo = "$HOME/.local/share/videoclub/" + nombreArchivo;
+		String rutaArchivo = Constantes.BASE_PATH + nombreArchivo + Constantes.FILE_FORMAT;
 		try
 		{
 			FileOutputStream fs = new FileOutputStream(rutaArchivo);
@@ -24,14 +26,19 @@ public class Serializador
 		}
 	}
 
-	public static Object deserializar(String rutaArchivo) throws IOException, ClassNotFoundException
+	public static Object deserializar(String nombreArchivo)
 	{
-		try (
-				FileInputStream fi = new FileInputStream(rutaArchivo);
-				ObjectInputStream oi = new ObjectInputStream(fi)
-		)
-		{
-			return oi.readObject();
+		Object object = null;
+		String rutaArchivo = Constantes.BASE_PATH + nombreArchivo + Constantes.FILE_FORMAT;
+		try {
+			FileInputStream fi = new FileInputStream(rutaArchivo);
+			ObjectInputStream oi = new ObjectInputStream(fi);
+			object = oi.readObject();
+			oi.close();
+			fi.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
+		return object;
 	}
 }
