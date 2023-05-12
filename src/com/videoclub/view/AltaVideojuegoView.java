@@ -28,6 +28,7 @@ public class AltaVideojuegoView extends JPanel implements ActionListener
 		lblAutor = new JLabel("- Autor -");
 		lblFormato = new JLabel("- Formato -");
 		lblAnyo = new JLabel("- Año lanzamiento -");
+		lblPlataforma = new JLabel("- Plataforma -");
 		txtTitulo = new JTextField("Escriba el título aquí");
 		txtAutor = new JTextField("Escriba el autor aquí");
 		modelAnyo = new SpinnerNumberModel(2023, 1950, 2023, 1);
@@ -35,6 +36,8 @@ public class AltaVideojuegoView extends JPanel implements ActionListener
 		btnDarAlta = new JButton("Dar alta videojuego");
 		Formato[] formatos = Formato.values();
 		listFormato = new JComboBox(formatos);
+		Plataforma[] plataformas = Plataforma.values();
+		listPlataforma = new JComboBox(plataformas);
 
 		setLayout(new GridLayout(8, 8));
 		add(lblTitulo);
