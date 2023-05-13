@@ -1,7 +1,6 @@
 package com.videoclub.model;
 
 import java.util.ArrayList;
-import java.util.jar.JarEntry;
 
 public class InventoryDAO
 {

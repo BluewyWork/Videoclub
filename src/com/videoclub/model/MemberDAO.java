@@ -45,9 +45,4 @@ public class MemberDAO
 		}
 
 	}
-
-	public boolean containsMember(String nif)
-	{
-		return findMember(nif) != null;
-	}
 }
