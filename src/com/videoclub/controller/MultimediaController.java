@@ -3,13 +3,13 @@ package com.videoclub.controller;
 import com.videoclub.lib.*;
 import com.videoclub.model.*;
 
-public class InventoryController
+public class MultimediaController
 {
-	InventoryDAO inventoryDAO;
+	MultimediaDAO multimediaDAO;
 
-	public InventoryController()
+	public MultimediaController()
 	{
-		inventoryDAO = new InventoryDAO();
+		multimediaDAO = new MultimediaDAO();
 	}
 
 	public void storeMultimedia(String type)
@@ -29,24 +29,29 @@ public class InventoryController
 				String femaleLead = Input.readInput("Female Lead: ", "String");
 
 				Movie movie = new Movie(title, author, format, year, duration, maleLead, femaleLead);
-				inventoryDAO.addMultimedia(movie);
+				multimediaDAO.addMultimedia(movie);
 			}
 			case "videogame" ->
 			{
 				String platform = Input.readInput("Plataforma: ");
 
 				VideoGame videoGame = new VideoGame(title, author, format, year, platform);
-				inventoryDAO.addMultimedia(videoGame);
+				multimediaDAO.addMultimedia(videoGame);
 			}
 		}
 	}
 
 	public Multimedia retrieveMultimedia(String title, String author)
 	{
-		Multimedia multimedia = inventoryDAO.findMultimedia(title, author);
+		Multimedia multimedia = multimediaDAO.findMultimedia(title, author);
 
-		inventoryDAO.eraseMultimedia(title, author);
+		multimediaDAO.eraseMultimedia(title, author);
 
 		return multimedia;
+	}
+
+	public String showMultimedias()
+	{
+		return multimediaDAO.toString();
 	}
 }

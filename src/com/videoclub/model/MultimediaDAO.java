@@ -2,23 +2,26 @@ package com.videoclub.model;
 
 import java.util.ArrayList;
 
-public class InventoryDAO
+public class MultimediaDAO
 {
 	private ArrayList<Multimedia> listMultimedia;
 
-	public InventoryDAO()
+	public MultimediaDAO()
 	{
 		listMultimedia = new ArrayList<>();
 	}
 
-	public ArrayList<Multimedia> getListMultimedia()
+	@Override
+	public String toString()
 	{
-		return listMultimedia;
-	}
+		String txt = "";
 
-	public void setListMultimedia(ArrayList<Multimedia> listMultimedia)
-	{
-		this.listMultimedia = listMultimedia;
+		for (Multimedia multimedia : listMultimedia)
+		{
+			txt += multimedia.toString();
+		}
+
+		return txt;
 	}
 
 	public Multimedia findMultimedia(String title, String author)

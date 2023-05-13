@@ -30,4 +30,9 @@ public class MemberController
 	{
 		memberDAO.removeMember(nif);
 	}
+
+	public String showMembers()
+	{
+		return memberDAO.toString();
+	}
 }

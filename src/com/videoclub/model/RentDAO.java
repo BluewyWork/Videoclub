@@ -45,6 +45,4 @@ public class RentDAO
 			throw new RuntimeException("Rent Not Found");
 		}
 	}
-
-
 }

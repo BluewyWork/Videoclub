@@ -11,6 +11,24 @@ public class MemberDAO
 		listMembers = new ArrayList<>();
 	}
 
+	@Override
+	public String toString()
+	{
+		String text = "";
+
+		for (Member member : listMembers)
+		{
+			text += member.toString();
+		}
+
+		return text;
+	}
+
+	public ArrayList<Member> getListMembers()
+	{
+		return listMembers;
+	}
+
 	public Member findMember(String nif)
 	{
 		Member member = null;
