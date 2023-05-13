@@ -20,7 +20,7 @@ public class RentController
 		rentDAO.addRent(rent);
 	}
 
-	public Rent returnRent(int id)
+	public Rent releaseRent(int id)
 	{
 		Rent rent = rentDAO.findRent(id);
 

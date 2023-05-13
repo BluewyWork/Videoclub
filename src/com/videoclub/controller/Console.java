@@ -56,7 +56,7 @@ public class Console
 					System.out.println(rentController.showRents());
 					int id = Input.readInput("ID: ", "int");
 
-					Rent rent = rentController.returnRent(id);
+					Rent rent = rentController.releaseRent(id);
 					ArrayList<Multimedia> listMultimedia = rent.getArrayListMultimedia();
 
 					multimediaController.storeMultimedias(listMultimedia);
