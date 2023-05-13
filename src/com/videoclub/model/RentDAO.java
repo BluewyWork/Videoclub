@@ -11,6 +11,19 @@ public class RentDAO
 		listRent = new ArrayList<>();
 	}
 
+	@Override
+	public String toString()
+	{
+		String txt = "";
+
+		for (Rent rent : listRent)
+		{
+			txt += rent.toString();
+		}
+
+		return txt;
+	}
+
 	public Rent findRent(int id)
 	{
 		Rent rent = null;

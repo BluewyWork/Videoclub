@@ -3,6 +3,8 @@ package com.videoclub.controller;
 import com.videoclub.lib.*;
 import com.videoclub.model.*;
 
+import java.util.ArrayList;
+
 public class MultimediaController
 {
 	MultimediaDAO multimediaDAO;
@@ -38,6 +40,14 @@ public class MultimediaController
 				VideoGame videoGame = new VideoGame(title, author, format, year, platform);
 				multimediaDAO.addMultimedia(videoGame);
 			}
+		}
+	}
+
+	public void storeMultimedias(ArrayList<Multimedia> listMultimedia)
+	{
+		for (Multimedia multimedia : listMultimedia)
+		{
+			multimediaDAO.addMultimedia(multimedia);
 		}
 	}
 

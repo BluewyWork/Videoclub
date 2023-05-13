@@ -7,7 +7,7 @@ public class Rent
 {
 	private static int idCounter = 0;
 	private int id;
-	private Member member;
+	private String memberNIF;
 	private ArrayList<Multimedia> listMultimedia;
 	private double initialDebt;
 	private double finalDebt;
@@ -16,25 +16,26 @@ public class Rent
 
 	public Rent()
 	{
+		listMultimedia = new ArrayList<>();
 		setId(idCounter++);
-		setMember(new Member());
+		memberNIF = "RANDOM";
 		setInitialDebt(calculateInitialDebt());
 		rentDate = LocalDate.now();
 		returnDate = LocalDate.now().plusDays(Constants.RENT_MAX_DURATION);
-		listMultimedia = new ArrayList<>();
+
 	}
 
-	public Rent(Member member, Multimedia multimedia)
+	public Rent(String memberNIF, Multimedia multimedia)
 	{
 		this();
-		setMember(member);
+		setMemberNIF(memberNIF);
 		listMultimedia.add(multimedia);
 	}
 
-	public Rent(Member member, ArrayList<Multimedia> listMultimedia)
+	public Rent(String memberNIF, ArrayList<Multimedia> listMultimedia)
 	{
 		this();
-		setMember(member);
+		setMemberNIF(memberNIF);
 		setListMultimedia(listMultimedia);
 	}
 
@@ -43,7 +44,7 @@ public class Rent
 	{
 		StringBuilder text = new StringBuilder();
 
-		text.append(member.toString()).append("\n");
+		text.append(memberNIF).append("\n");
 
 		for (Multimedia multimedia : listMultimedia)
 		{
@@ -86,14 +87,14 @@ public class Rent
 		this.initialDebt = initialDebt;
 	}
 
-	public Member getMember()
+	public String getMemberNIF()
 	{
-		return member;
+		return memberNIF;
 	}
 
-	public void setMember(Member member)
+	public void setMemberNIF(String memberNIF)
 	{
-		this.member = member;
+		this.memberNIF = memberNIF;
 	}
 
 	public ArrayList<Multimedia> getArrayListMultimedia()
