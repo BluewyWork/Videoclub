@@ -8,6 +8,7 @@ public class Movie extends Multimedia
 
 	public Movie()
 	{
+		super();
 		duration = 10;
 		maleLead = "Mark";
 		femaleLead = "GOD";
@@ -37,6 +38,19 @@ public class Movie extends Multimedia
 						"\nDuracion: " + duration +
 						"\nActor principal: '" + maleLead + '\'' +
 						"\nActriz principal: '" + femaleLead + '\'';
+	}
+
+	@Override
+	public double calculateRentPrice()
+	{
+		if (getYear() < 2012)
+		{
+			return Constants.BASE_PRICE - 1;
+		}
+		else
+		{
+			return Constants.BASE_PRICE;
+		}
 	}
 
 	public int getDuration()

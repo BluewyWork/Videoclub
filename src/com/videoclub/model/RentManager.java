@@ -90,7 +90,7 @@ public class RentManager
 
 		for (Rent alquiler : listMultimedia)
 		{
-			if (alquiler.hasDebt())
+			if (alquiler.isOverdue())
 			{
 				listSocioRecargo.add(alquiler.getMember().toString());
 			}

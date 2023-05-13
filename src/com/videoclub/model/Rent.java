@@ -9,15 +9,18 @@ public class Rent
 	private int id;
 	private Member member;
 	private final ArrayList<Multimedia> listMultimedia;
-	private double debt;
+	private double initialDebt;
+	private double finalDebt;
 	private LocalDate rentDate;
+	private final LocalDate returnDate;
 
 	public Rent()
 	{
 		setId(idCounter++);
 		setMember(new Member());
-		setDebt(calculateDebt());
+		setInitialDebt(calculateInitialDebt());
 		rentDate = LocalDate.now();
+		returnDate = LocalDate.now().plusDays(Constants.RENT_MAX_DURATION);
 		listMultimedia = new ArrayList<>();
 	}
 
@@ -40,7 +43,7 @@ public class Rent
 			{
 				text.append(multimedia.toString()).append("\n");
 			}
-			else if (multimedia instanceof Videogame)
+			else if (multimedia instanceof VideoGame)
 			{
 				text.append(multimedia.toString()).append("\n");
 			}
@@ -65,14 +68,14 @@ public class Rent
 		this.rentDate = rentDate;
 	}
 
-	public double getDebt()
+	public double getInitialDebt()
 	{
-		return debt;
+		return initialDebt;
 	}
 
-	public void setDebt(double debt)
+	public void setInitialDebt(double initialDebt)
 	{
-		this.debt = debt;
+		this.initialDebt = initialDebt;
 	}
 
 	public Member getMember()
@@ -105,13 +108,37 @@ public class Rent
 		this.id = id;
 	}
 
-	public double calculateDebt()
+	public boolean isOverdue()
 	{
-		return 0.0;
+		return daysOverdue() > 0;
 	}
 
-	public boolean hasDebt()
+	public int daysOverdue()
 	{
-		return debt > 0;
+		return returnDate.until(LocalDate.now()).getDays();
+	}
+
+	public double calculateInitialDebt()
+	{
+		double debt = 0;
+
+		for (Multimedia multimedia : listMultimedia)
+		{
+			debt += multimedia.calculateRentPrice();
+		}
+
+		return debt;
+	}
+
+	public double calculateFinalDebt()
+	{
+		double debt = 0;
+
+		if (isOverdue())
+		{
+			debt += daysOverdue() * Constants.SURCHARGE_PER_DAY * listMultimedia.size();
+		}
+
+		return debt + initialDebt;
 	}
 }

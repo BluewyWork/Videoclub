@@ -9,16 +9,20 @@ public abstract class Multimedia
 	private Format format;
 	private int year;
 
+	private double totalRentPrice;
+
 	public Multimedia()
 	{
 		title = "Multimedia Vacio";
 		author = "N/a";
 		format = Format.CD;
 		year = 9999;
+		totalRentPrice = calculateRentPrice();
 	}
 
 	public Multimedia(String title, String author, Format format, int year)
 	{
+		this();
 		setTitle(title);
 		setAuthor(author);
 		setFormat(format);
@@ -27,6 +31,7 @@ public abstract class Multimedia
 
 	public Multimedia(String title, String author, String format, int year)
 	{
+		this();
 		setTitle(title);
 		setAuthor(author);
 		setFormat(Format.valueOf(format));
@@ -84,5 +89,20 @@ public abstract class Multimedia
 	public void setYear(int año)
 	{
 		this.year = año;
+	}
+
+	public double getTotalRentPrice()
+	{
+		return totalRentPrice;
+	}
+
+	public void setTotalRentPrice(double totalRentPrice)
+	{
+		this.totalRentPrice = totalRentPrice;
+	}
+
+	public double calculateRentPrice()
+	{
+		return Constants.BASE_PRICE;
 	}
 }

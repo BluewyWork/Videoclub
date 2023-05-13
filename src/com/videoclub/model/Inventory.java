@@ -32,7 +32,7 @@ public class Inventory
 			}
 			case "videojuego" ->
 			{
-				Videogame myVideojuego = new Videogame(titulo, autor, formato, anyo, plataforma);
+				VideoGame myVideojuego = new VideoGame(titulo, autor, formato, anyo, plataforma);
 				listMultimedia.add(myVideojuego);
 			}
 			case "disco" ->
@@ -84,7 +84,7 @@ public class Inventory
 			{
 				text.append("Pelicula: ").append(multimedia.getTitle()).append("\n");
 			}
-			else if (multimedia instanceof Videogame && type.equalsIgnoreCase("videojuego"))
+			else if (multimedia instanceof VideoGame && type.equalsIgnoreCase("videojuego"))
 			{
 				text.append("Videojuego: ").append(multimedia.getTitle()).append("\n");
 			}
@@ -108,7 +108,7 @@ public class Inventory
 			{
 				return true;
 			}
-			else if (multimedia instanceof Videogame && type.equalsIgnoreCase("videogame"))
+			else if (multimedia instanceof VideoGame && type.equalsIgnoreCase("videogame"))
 			{
 				return true;
 			}

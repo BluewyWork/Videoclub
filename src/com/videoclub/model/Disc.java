@@ -22,6 +22,19 @@ public class Disc extends Multimedia
 						"\t" + "Songs: '" + listSongs + '\'';
 	}
 
+	@Override
+	public double calculateRentPrice()
+	{
+		if (duration < 30)
+		{
+			return Constants.BASE_PRICE - 1;
+		}
+		else
+		{
+			return Constants.BASE_PRICE;
+		}
+	}
+
 	public int getDuration()
 	{
 		return duration;
