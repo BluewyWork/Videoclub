@@ -1,7 +1,5 @@
 package com.videoclub.model;
 
-import java.util.Objects;
-
 public abstract class Multimedia
 {
 	private String title;

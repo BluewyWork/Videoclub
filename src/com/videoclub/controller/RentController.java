@@ -1,6 +1,8 @@
 package com.videoclub.controller;
 
-import com.videoclub.model.*;
+import com.videoclub.model.Multimedia;
+import com.videoclub.model.Rent;
+import com.videoclub.model.RentDAO;
 
 public class RentController
 {

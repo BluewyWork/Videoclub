@@ -30,13 +30,16 @@ public class Serializador
 	{
 		Object object = null;
 		String rutaArchivo = Constants.BASE_PATH + nombreArchivo + Constants.FILE_FORMAT;
-		try {
+		try
+		{
 			FileInputStream fi = new FileInputStream(rutaArchivo);
 			ObjectInputStream oi = new ObjectInputStream(fi);
 			object = oi.readObject();
 			oi.close();
 			fi.close();
-		} catch (Exception ex) {
+		}
+		catch (Exception ex)
+		{
 			ex.printStackTrace();
 		}
 		return object;

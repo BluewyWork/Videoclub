@@ -1,9 +1,8 @@
 package com.videoclub.controller;
 
 import com.videoclub.lib.Input;
-import com.videoclub.model.*;
-
-import java.net.Socket;
+import com.videoclub.model.Member;
+import com.videoclub.model.MemberDAO;
 
 public class MemberController
 {

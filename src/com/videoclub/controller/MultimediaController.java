@@ -1,7 +1,10 @@
 package com.videoclub.controller;
 
-import com.videoclub.lib.*;
-import com.videoclub.model.*;
+import com.videoclub.lib.Input;
+import com.videoclub.model.Movie;
+import com.videoclub.model.Multimedia;
+import com.videoclub.model.MultimediaDAO;
+import com.videoclub.model.VideoGame;
 
 import java.util.ArrayList;
 
@@ -24,7 +27,7 @@ public class MultimediaController
 		switch (type)
 		{
 			default -> throw new RuntimeException("Type Is Not Valid");
-			case  "movie" ->
+			case "movie" ->
 			{
 				int duration = Input.readInput("Duration:  ", "int");
 				String maleLead = Input.readInput("Male Lead: ", "String");

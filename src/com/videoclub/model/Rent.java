@@ -44,7 +44,7 @@ public class Rent
 	{
 		StringBuilder text = new StringBuilder();
 
-		text.append(memberNIF).append("\n");
+		text.append("ID: ").append(id).append("\n");
 
 		for (Multimedia multimedia : listMultimedia)
 		{
