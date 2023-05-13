@@ -9,7 +9,7 @@ public class Disc extends Multimedia
 
 	public Disc()
 	{
-		setDuracion();
+		setDuration();
 		listSongs = new ArrayList<>();
 	}
 
@@ -40,7 +40,7 @@ public class Disc extends Multimedia
 		return duration;
 	}
 
-	public void setDuracion()
+	public void setDuration()
 	{
 		for (Song a : listSongs)
 		{

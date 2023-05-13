@@ -8,7 +8,7 @@ public class Rent
 	private static int idCounter = 0;
 	private int id;
 	private Member member;
-	private final ArrayList<Multimedia> listMultimedia;
+	private ArrayList<Multimedia> listMultimedia;
 	private double initialDebt;
 	private double finalDebt;
 	private LocalDate rentDate;
@@ -24,10 +24,18 @@ public class Rent
 		listMultimedia = new ArrayList<>();
 	}
 
-	public Rent(Member member)
+	public Rent(Member member, Multimedia multimedia)
 	{
 		this();
 		setMember(member);
+		listMultimedia.add(multimedia);
+	}
+
+	public Rent(Member member, ArrayList<Multimedia> listMultimedia)
+	{
+		this();
+		setMember(member);
+		setListMultimedia(listMultimedia);
 	}
 
 	@Override
@@ -93,9 +101,9 @@ public class Rent
 		return listMultimedia;
 	}
 
-	public void setListMultimedia(Multimedia listMultimedia)
+	public void setListMultimedia(ArrayList<Multimedia> listMultimedia)
 	{
-		this.listMultimedia.add(listMultimedia);
+		this.listMultimedia = listMultimedia;
 	}
 
 	public int getId()

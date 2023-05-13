@@ -2,11 +2,11 @@ package com.videoclub.model;
 
 import java.util.ArrayList;
 
-public class RentManager
+public class RentDAO
 {
 	private ArrayList<Rent> listMultimedia;
 
-	public RentManager()
+	public RentDAO()
 	{
 		listMultimedia = new ArrayList<>();
 	}
