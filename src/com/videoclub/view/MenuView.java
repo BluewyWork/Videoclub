@@ -29,10 +29,6 @@ public class MenuView extends JFrame implements ActionListener
 		panelAltas.setName("panelAltas");
 		contentPane.add(panelAltas, "panelAltas");
 
-		panelPeliculas = new AltaPeliculaView();
-		panelPeliculas.setName("panelAltaPelicula");
-		contentPane.add(panelPeliculas, "panelAltaPelicula");
-
 		AlquilarMultiMediaSocioView panelAlquilarMultimediaASocio = new AlquilarMultiMediaSocioView();
 		panelAlquilarMultimediaASocio.setName("panelAlquilarMultimediaASocio");
 		contentPane.add(panelAlquilarMultimediaASocio, "panelAlquilarMultimediaASocio");
