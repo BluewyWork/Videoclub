@@ -29,7 +29,7 @@ public class Input
 	public static <T> T readInput(String prompt, String type)
 	{
 		Scanner scanner = new Scanner(System.in);
-		T tipo = null;
+		T value = null;
 
 		do
 		{
@@ -38,19 +38,20 @@ public class Input
 				System.out.print(prompt);
 				String input = scanner.nextLine();
 
-				tipo = switch (type)
+				value = switch (type)
 				{
 					case "int" -> (T) Integer.valueOf(input);
 					case "double" -> (T) Double.valueOf(input);
 					case "String" -> (T) input;
+					case "boolean" -> (T) Boolean.valueOf(input);
 					default -> throw new RuntimeException("Not a valid TYPE!");
 				};
 
-				return tipo;
+				return value;
 			}
 			catch (Exception e)
 			{
-				System.out.println("ERROR " + e);
+				System.out.println("ERROR: " + e.getMessage());
 			}
 		}
 		while (true);

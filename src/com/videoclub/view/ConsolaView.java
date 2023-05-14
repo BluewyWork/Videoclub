@@ -1,6 +1,6 @@
 package com.videoclub.view;
 
-public class ConsoleMenuView
+public class ConsolaView
 {
 	public void menuPrincipal()
 	{
@@ -37,6 +37,3 @@ public class ConsoleMenuView
 		System.out.println("--- ------ ---- ---");
 	}
 }
-
-
-

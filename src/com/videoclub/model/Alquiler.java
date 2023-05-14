@@ -1,31 +1,32 @@
 package com.videoclub.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Alquiler
 {
-	private static final AtomicInteger counter = new AtomicInteger(0);
-	private int id;
-	private Socio mySocio;
-	private ArrayList<Multimedia> arrayListMultimediaAlquilada;
-	private double deuda;
+	private static int contadorID = 0;
+	private int contador;
+	private String nif;
+	private Multimedia multimedia;
+	private double deudaInicial;
+	private double deudaFinal;
 	private LocalDate fechaAlquiler;
+	private final LocalDate fechaDevolucion;
 
 	public Alquiler()
 	{
-		setId(getNextId());
-		setMySocio(new Socio());
-		setDeuda(calcularDeuda());
+		setContador(contadorID++);
+		nif = "RANDOM";
 		fechaAlquiler = LocalDate.now();
-		arrayListMultimediaAlquilada = new ArrayList<>();
+		fechaDevolucion = LocalDate.now().plusDays(Constantes.RENT_MAX_DURATION);
 	}
 
-	public Alquiler(Socio mySocio)
+	public Alquiler(String nif, Multimedia multimedia)
 	{
 		this();
-		setMySocio(mySocio);
+		setNif(nif);
+		setMultimedia(multimedia);
+		setDeudaInicial(calcularDeudaInicial());
 	}
 
 	@Override
@@ -33,25 +34,9 @@ public class Alquiler
 	{
 		StringBuilder text = new StringBuilder();
 
-		text.append(mySocio.toString()).append("\n");
+		text.append("ID: ").append(contador).append("\n\n");
 
-		for (Multimedia multimedia : arrayListMultimediaAlquilada)
-		{
-			if (multimedia instanceof Pelicula)
-			{
-				text.append(multimedia.toString()).append("\n");
-			}
-			else if (multimedia instanceof Videojuego)
-			{
-				text.append(multimedia.toString()).append("\n");
-			}
-			else if (multimedia instanceof Disco)
-			{
-				text.append(multimedia.toString()).append("\n");
-			}
-			else
-				text.append("ERROR");
-		}
+		text.append(multimedia.toString()).append("\n\n");
 
 		return text.toString();
 	}
@@ -66,58 +51,74 @@ public class Alquiler
 		this.fechaAlquiler = fechaAlquiler;
 	}
 
-	public double getDeuda()
+	public double getDeudaInicial()
 	{
-		return deuda;
+		return deudaInicial;
 	}
 
-	public void setDeuda(double deuda)
+	public void setDeudaInicial(double deudaInicial)
 	{
-		this.deuda = deuda;
+		this.deudaInicial = deudaInicial;
 	}
 
-	public static int getNextId()
+	public String getNif()
 	{
-		return counter.getAndIncrement();
+		return nif;
 	}
 
-	public Socio getMySocio()
+	public void setNif(String nif)
 	{
-		return mySocio;
+		this.nif = nif;
 	}
 
-	public void setMySocio(Socio mySocio)
+	public Multimedia getMultimedia()
 	{
-		this.mySocio = mySocio;
+		return multimedia;
 	}
 
-	public ArrayList<Multimedia> getArrayListMultimedia()
+	public void setMultimedia(Multimedia multimedia)
 	{
-		return arrayListMultimediaAlquilada;
+		this.multimedia = multimedia;
 	}
 
-	public void setArrayListMultimediaAlquilada(Multimedia multimediaAlquilada)
+	public int getContador()
 	{
-		this.arrayListMultimediaAlquilada.add(multimediaAlquilada);
+		return contador;
 	}
 
-	public int getId()
+	public void setContador(int contador)
 	{
-		return id;
+		this.contador = contador;
 	}
 
-	public void setId(int id)
+	public boolean esAtrasado()
 	{
-		this.id = id;
+		return diasAtrasado() > 0;
 	}
 
-	public double calcularDeuda()
+	public int diasAtrasado()
 	{
-		return 0.0;
+		return fechaDevolucion.until(LocalDate.now()).getDays();
 	}
 
-	public boolean tieneDeuda()
+	public double calcularDeudaInicial()
 	{
-		return deuda > 0;
+		double debt = 0;
+
+		debt += multimedia.calcularPrecioAlquiler();
+
+		return debt;
+	}
+
+	public double calcularDeudaFinal()
+	{
+		double debt = 0;
+
+		if (esAtrasado())
+		{
+			debt += diasAtrasado() * Constantes.SURCHARGE_PER_DAY;
+		}
+
+		return debt + deudaInicial;
 	}
 }

@@ -1,6 +1,6 @@
 package com.videoclub.model;
 
-public class Pelicula extends Multimedia implements Comparable<Pelicula>
+public class Pelicula extends Multimedia
 {
 	private int duracion;
 	private String actorPrincipal;
@@ -8,22 +8,23 @@ public class Pelicula extends Multimedia implements Comparable<Pelicula>
 
 	public Pelicula()
 	{
+		super();
 		duracion = 10;
 		actorPrincipal = "Mark";
 		actrizPrincipal = "GOD";
 	}
 
-	public Pelicula(String titulo, String autor, Formato formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal)
+	public Pelicula(String title, String author, Formato formato, int year, int duracion, String actorPrincipal, String actrizPrincipal)
 	{
-		super(titulo, autor, formato, anyo);
+		super(title, author, formato, year);
 		setDuracion(duracion);
 		setActorPrincipal(actorPrincipal);
 		setActrizPrincipal(actrizPrincipal);
 	}
 
-	public Pelicula(String titulo, String autor, String formato, int anyo, int duracion, String actorPrincipal, String actrizPrincipal)
+	public Pelicula(String title, String author, String format, int year, int duracion, String actorPrincipal, String actrizPrincipal)
 	{
-		super(titulo, autor, formato, anyo);
+		super(title, author, format, year);
 		setDuracion(duracion);
 		setActorPrincipal(actorPrincipal);
 		setActrizPrincipal(actrizPrincipal);
@@ -32,17 +33,27 @@ public class Pelicula extends Multimedia implements Comparable<Pelicula>
 	@Override
 	public String toString()
 	{
-		return
-				super.toString() +
-						"\nDuracion: " + duracion +
-						"\nActor principal: '" + actorPrincipal + '\'' +
-						"\nActriz principal: '" + actrizPrincipal + '\'';
+		String txt = "";
+
+		txt += super.toString() + "\n";
+		txt += "Duracion: " + duracion + "\n";
+		txt += "Actor principal: " + actorPrincipal + "\n";
+		txt += "Actriz principal: " + actrizPrincipal;
+
+		return txt;
 	}
 
 	@Override
-	public int compareTo(Pelicula o)
+	public double calcularPrecioAlquiler()
 	{
-		return CharSequence.compare(this.getTitulo(), o.getTitulo());
+		if (getAnio() < 2012)
+		{
+			return Constantes.BASE_PRICE - 1;
+		}
+		else
+		{
+			return Constantes.BASE_PRICE;
+		}
 	}
 
 	public int getDuracion()

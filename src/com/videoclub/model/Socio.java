@@ -23,20 +23,19 @@ public class Socio
 	{
 		this.nif = nif;
 		this.nombre = nombre;
-		this.fechaNacimiento = fechaNacimiento;
+		setFechaNacimiento(fechaNacimiento);
 		this.poblacion = poblacion;
 	}
 
-	public Socio(String nif, String nombre, String fechaNac, String poblacion)
+	public Socio(String nif, String nombre, String fechaNacimiento, String poblacion)
 	{
 		this();
 		this.nif = nif;
 		this.nombre = nombre;
 
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		LocalDate lc = LocalDate.parse(fechaNac, formatter);
 
-		fechaNacimiento = lc;
+		this.fechaNacimiento = LocalDate.parse(fechaNacimiento, formatter);
 		this.poblacion = poblacion;
 	}
 
@@ -78,7 +77,15 @@ public class Socio
 
 	public void setFechaNacimiento(LocalDate fechaNacimiento)
 	{
-		this.fechaNacimiento = fechaNacimiento;
+		if (isAdult())
+		{
+			this.fechaNacimiento = fechaNacimiento;
+		}
+		else
+		{
+			throw new RuntimeException("Member must be an ADULT (+18)");
+		}
+
 	}
 
 	public String getPoblacion()
@@ -91,7 +98,7 @@ public class Socio
 		this.poblacion = poblacion;
 	}
 
-	public boolean isMayorEdad()
+	public boolean isAdult()
 	{
 		Period myPeriod = Period.between(fechaNacimiento, LocalDate.now());
 

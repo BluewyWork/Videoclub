@@ -1,36 +1,39 @@
 package com.videoclub.model;
 
-import java.util.Objects;
-
 public abstract class Multimedia
 {
 	private String titulo;
 	private String autor;
 	private Formato formato;
-	private int anyo;
+	private int anio;
+
+	private double precioTotalAlquiler;
 
 	public Multimedia()
 	{
 		titulo = "Multimedia Vacio";
 		autor = "N/a";
 		formato = Formato.CD;
-		anyo = 9999;
+		anio = 9999;
+		precioTotalAlquiler = calcularPrecioAlquiler();
 	}
 
-	public Multimedia(String titulo, String autor, Formato formato, int anyo)
+	public Multimedia(String titulo, String autor, Formato formato, int anio)
 	{
+		this();
 		setTitulo(titulo);
 		setAutor(autor);
-		setFormato(formato);
-		setAnyo(anyo);
+		setFormat(formato);
+		setAnio(anio);
 	}
 
-	public Multimedia(String titulo, String autor, String formato, int anyo)
+	public Multimedia(String titulo, String autor, String format, int anio)
 	{
+		this();
 		setTitulo(titulo);
 		setAutor(autor);
-		setFormato(Formato.valueOf(formato));
-		setAnyo(anyo);
+		setFormat(Formato.valueOf(format));
+		setAnio(anio);
 	}
 
 	@Override
@@ -38,10 +41,10 @@ public abstract class Multimedia
 	{
 		String text = "";
 
-		text += "\t" + "Titulo: " + titulo + "\n";
-		text += "\t" + "Autor: " + autor + "\n";
-		text += "\t" + "Formato: " + formato + "\n";
-		text += "\t" + "Ano: " + anyo;
+		text += "Titulo: " + titulo + "\n";
+		text += "Autor: " + autor + "\n";
+		text += "Formato: " + formato + "\n";
+		text += "Ano: " + anio;
 
 		return text;
 	}
@@ -66,28 +69,38 @@ public abstract class Multimedia
 		this.autor = autor;
 	}
 
-	public Formato getFormato()
+	public Formato getFormat()
 	{
 		return formato;
 	}
 
-	public void setFormato(Formato formato)
+	public void setFormat(Formato formato)
 	{
 		this.formato = formato;
 	}
 
-	public int getAnyo()
+	public int getAnio()
 	{
-		return anyo;
+		return anio;
 	}
 
-	public void setAnyo(int año)
+	public void setAnio(int año)
 	{
-		this.anyo = año;
+		this.anio = año;
 	}
 
-	public boolean compararMultimedia(Multimedia myMultimedia2)
+	public double getPrecioTotalAlquiler()
 	{
-		return Objects.equals(myMultimedia2.titulo, this.titulo) && Objects.equals(myMultimedia2.autor, this.autor);
+		return precioTotalAlquiler;
+	}
+
+	public void setPrecioTotalAlquiler(double precioTotalAlquiler)
+	{
+		this.precioTotalAlquiler = precioTotalAlquiler;
+	}
+
+	public double calcularPrecioAlquiler()
+	{
+		return Constantes.BASE_PRICE;
 	}
 }
