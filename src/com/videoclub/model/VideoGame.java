@@ -31,9 +31,12 @@ public class VideoGame extends Multimedia
 	@Override
 	public String toString()
 	{
-		return
-				super.toString() + "\n" +
-						"\t" + "Plataforma: '" + platform + '\'';
+		String txt = "";
+
+		txt += super.toString() + "\n";
+		txt += "Plataforma: " + platform;
+
+		return txt;
 	}
 
 	public Platform getPlatform()

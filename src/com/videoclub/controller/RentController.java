@@ -19,7 +19,7 @@ public class RentController
 	// multimedia and pass it as an argument
 	public void rentMultimedias(String memberNIF, ArrayList<Multimedia> listMultimedia)
 	{
-		if (rentDAO.checkPendingPayments(memberNIF))
+		if (!rentDAO.checkPendingPayments(memberNIF))
 		{
 			Rent rent = new Rent(memberNIF, listMultimedia);
 			rentDAO.addRent(rent);

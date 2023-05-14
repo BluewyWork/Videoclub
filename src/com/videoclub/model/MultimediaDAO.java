@@ -14,14 +14,14 @@ public class MultimediaDAO
 	@Override
 	public String toString()
 	{
-		String txt = "";
+		StringBuilder txt = new StringBuilder();
 
 		for (Multimedia multimedia : listMultimedia)
 		{
-			txt += multimedia.toString();
+			txt.append(multimedia.toString()).append("\n\n");
 		}
 
-		return txt;
+		return txt.toString();
 	}
 
 	public Multimedia findMultimedia(String title, String author)

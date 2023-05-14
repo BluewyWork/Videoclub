@@ -114,10 +114,14 @@ public class Console
 				case 4 ->
 				{
 					System.out.println("In Stock: ");
-					System.out.println("\t" + multimediaController.showMultimedias() + "\n");
+					String originalString = multimediaController.showMultimedias(); // Get the original string
+					String indentedString = "\t" + originalString.replace("\n", "\n\t"); // Prepend a tab character to each line
+					System.out.println(indentedString + "\n");
 
 					System.out.println("Rented: ");
-					System.out.println("\t" + rentController.showRents() + "\n");
+					String org = rentController.showRents();
+					String ind = "\t" + org.replace("\n", "\n\t");
+					System.out.println(ind + "\n");
 				}
 			}
 		}

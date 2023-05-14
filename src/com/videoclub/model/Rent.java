@@ -44,26 +44,11 @@ public class Rent
 	{
 		StringBuilder text = new StringBuilder();
 
-		text.append("ID: ").append(id).append("\n");
+		text.append("ID: ").append(id).append("\n\n");
 
 		for (Multimedia multimedia : listMultimedia)
 		{
-			if (multimedia instanceof Movie)
-			{
-				text.append("\t").append(multimedia.toString()).append("\n");
-			}
-			else if (multimedia instanceof VideoGame)
-			{
-				text.append("\t").append(multimedia.toString()).append("\n");
-			}
-			else if (multimedia instanceof Disc)
-			{
-				text.append("\t").append(multimedia.toString()).append("\n");
-			}
-			else
-			{
-				throw new RuntimeException("Null");
-			}
+			text.append(multimedia.toString()).append("\n\n");
 		}
 
 		return text.toString();

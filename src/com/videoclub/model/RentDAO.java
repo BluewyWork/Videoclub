@@ -19,7 +19,7 @@ public class RentDAO
 
 		for (Rent rent : listRent)
 		{
-			txt.append(rent.toString());
+			txt.append(rent.toString()).append("\n");
 		}
 
 		return txt.toString();

@@ -33,11 +33,14 @@ public class Movie extends Multimedia
 	@Override
 	public String toString()
 	{
-		return
-				super.toString() + "\n" +
-						"\t" + "Duracion: " + duration + "\n" +
-						"\t" + "Actor principal: " + maleLead + "\n" +
-						"\t" + "Actriz principal: " + femaleLead + "\n";
+		String txt = "";
+
+		txt += super.toString() + "\n";
+		txt += "Duracion: " + duration + "\n";
+		txt += "Actor principal: " + maleLead + "\n" ;
+		txt += "Actriz principal: " + femaleLead;
+
+		return txt;
 	}
 
 	@Override

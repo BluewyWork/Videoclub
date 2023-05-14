@@ -42,9 +42,9 @@ public abstract class Multimedia
 		String text = "";
 
 		text += "Titulo: " + title + "\n";
-		text += "\t" + "Autor: " + author + "\n";
-		text += "\t" + "Formato: " + format + "\n";
-		text += "\t" + "Ano: " + year;
+		text += "Autor: " + author + "\n";
+		text += "Formato: " + format + "\n";
+		text += "Ano: " + year;
 
 		return text;
 	}
