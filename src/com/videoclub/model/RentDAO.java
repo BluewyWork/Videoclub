@@ -15,14 +15,14 @@ public class RentDAO
 	@Override
 	public String toString()
 	{
-		String txt = "";
+		StringBuilder txt = new StringBuilder();
 
 		for (Rent rent : listRent)
 		{
-			txt += rent.toString();
+			txt.append(rent.toString());
 		}
 
-		return txt;
+		return txt.toString();
 	}
 
 	public Rent findRent(int id)

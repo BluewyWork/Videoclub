@@ -102,6 +102,14 @@ public class Console
 
 					multimediaController.storeMultimedias(listMultimedia);
 				}
+				case 4 ->
+				{
+					System.out.println("In Stock: ");
+					System.out.println("\t" + multimediaController.showMultimedias() + "\n");
+
+					System.out.println("Rented: ");
+					System.out.println("\t" + rentController.showRents() + "\n");
+				}
 			}
 		}
 	}

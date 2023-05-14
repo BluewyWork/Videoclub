@@ -50,18 +50,20 @@ public class Rent
 		{
 			if (multimedia instanceof Movie)
 			{
-				text.append(multimedia.toString()).append("\n");
+				text.append("\t").append(multimedia.toString()).append("\n");
 			}
 			else if (multimedia instanceof VideoGame)
 			{
-				text.append(multimedia.toString()).append("\n");
+				text.append("\t").append(multimedia.toString()).append("\n");
 			}
 			else if (multimedia instanceof Disc)
 			{
-				text.append(multimedia.toString()).append("\n");
+				text.append("\t").append(multimedia.toString()).append("\n");
 			}
 			else
-				text.append("ERROR");
+			{
+				throw new RuntimeException("Null");
+			}
 		}
 
 		return text.toString();

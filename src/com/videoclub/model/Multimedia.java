@@ -41,7 +41,7 @@ public abstract class Multimedia
 	{
 		String text = "";
 
-		text += "\t" + "Titulo: " + title + "\n";
+		text += "Titulo: " + title + "\n";
 		text += "\t" + "Autor: " + author + "\n";
 		text += "\t" + "Formato: " + format + "\n";
 		text += "\t" + "Ano: " + year;
