@@ -7,6 +7,7 @@ import com.videoclub.model.MultimediaDAO;
 import com.videoclub.model.VideoGame;
 
 import java.util.ArrayList;
+import java.util.jar.JarEntry;
 
 public class MultimediaController
 {
@@ -17,33 +18,21 @@ public class MultimediaController
 		multimediaDAO = new MultimediaDAO();
 	}
 
-	public void storeMultimedia(String type)
+	public void storeMovie(String title, String author, String format, int year, int duration, String maleLead, String femaleLead)
 	{
-		String title = Input.readInput("Titulo: ", "String");
-		String author = Input.readInput("Autor: ", "String");
-		String format = Input.readInput("Formato: ", "String");
-		int year = Input.readInput("Año: ", "int");
+		Movie movie = new Movie(title, author, format, year, duration, maleLead, femaleLead);
+		multimediaDAO.addMultimedia(movie);
+	}
 
-		switch (type)
-		{
-			default -> throw new RuntimeException("Type Is Not Valid");
-			case "movie" ->
-			{
-				int duration = Input.readInput("Duration:  ", "int");
-				String maleLead = Input.readInput("Male Lead: ", "String");
-				String femaleLead = Input.readInput("Female Lead: ", "String");
+	public void storeVideoGame(String title, String author, String format, int year, String platform)
+	{
+		VideoGame videoGame = new VideoGame(title, author, format, year, platform);
+		multimediaDAO.addMultimedia(videoGame);
+	}
 
-				Movie movie = new Movie(title, author, format, year, duration, maleLead, femaleLead);
-				multimediaDAO.addMultimedia(movie);
-			}
-			case "videogame" ->
-			{
-				String platform = Input.readInput("Plataforma: ");
-
-				VideoGame videoGame = new VideoGame(title, author, format, year, platform);
-				multimediaDAO.addMultimedia(videoGame);
-			}
-		}
+	public void storeDisc()
+	{
+		throw new UnsupportedOperationException();
 	}
 
 	// works cause it is involved in 1:M relationship
@@ -62,12 +51,6 @@ public class MultimediaController
 		multimediaDAO.eraseMultimedia(title, author);
 
 		return multimedia;
-	}
-
-	@Deprecated
-	public ArrayList<Multimedia> retrieveMultimedias()
-	{
-		return null;
 	}
 
 	public String showMultimedias()

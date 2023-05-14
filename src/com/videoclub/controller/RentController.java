@@ -15,19 +15,6 @@ public class RentController
 		rentDAO = new RentDAO();
 	}
 
-	public void rentMultimedia(String memberNIF, Multimedia multimedia)
-	{
-		if (rentDAO.checkPendingPayments(memberNIF))
-		{
-			Rent rent = new Rent(memberNIF, multimedia);
-			rentDAO.addRent(rent);
-		}
-		else
-		{
-			throw new RuntimeException("Member with NIF: " + memberNIF + " has pending payments");
-		}
-	}
-
 	// using clever techniques to retrieve desired amount of
 	// multimedia and pass it as an argument
 	public void rentMultimedias(String memberNIF, ArrayList<Multimedia> listMultimedia)
