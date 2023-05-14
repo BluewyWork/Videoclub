@@ -2,26 +2,24 @@ package com.videoclub.controller;
 
 import com.videoclub.lib.Input;
 import com.videoclub.model.Multimedia;
-import com.videoclub.model.Rent;
-import com.videoclub.view.ConsoleView;
+import com.videoclub.model.Alquiler;
+import com.videoclub.view.ConsolaView;
 
-import java.util.ArrayList;
-
-public class Console
+public class Consola
 {
 	public static void main(String[] args)
 	{
-		ConsoleView consoleView = new ConsoleView();
-		MemberController memberController = new MemberController();
+		ConsolaView consolaView = new ConsolaView();
+		SocioController socioController = new SocioController();
 		MultimediaController multimediaController = new MultimediaController();
-		RentController rentController = new RentController();
+		AlquilerController alquilerController = new AlquilerController();
 
 		boolean exit = false;
 		int userInput = 9;
 
 		while (!exit)
 		{
-			consoleView.menuPrincipal();
+			consolaView.menuPrincipal();
 			userInput = Input.readInput("Option: ", "int");
 
 			switch (userInput)
@@ -29,7 +27,7 @@ public class Console
 				case 0 -> exit = true;
 				case 1 ->
 				{
-					consoleView.menuAltas();
+					consolaView.menuAltas();
 					userInput = Input.readInput("Option: ", "int");
 
 					switch (userInput)
@@ -42,7 +40,7 @@ public class Console
 							String birthDate = Input.readInput("Birth Date (dd/mm/yyyy): ");
 							String town = Input.readInput("Town: ", "String");
 
-							memberController.registerMember(nif, name, birthDate, town);
+							socioController.registrarMiembros(nif, name, birthDate, town);
 						}
 						case 2, 3 ->
 						{
@@ -59,14 +57,14 @@ public class Console
 									String maleLead = Input.readInput("Male Lead: ", "String");
 									String femaleLead = Input.readInput("Female Lead: ", "String");
 
-									multimediaController.storeMovie(title, author, format, year, duration, maleLead, femaleLead);
+									multimediaController.altaPelicula(title, author, format, year, duration, maleLead, femaleLead);
 								}
 
 								case 3 ->
 								{
 									String platform = Input.readInput("Plataforma: ");
 
-									multimediaController.storeVideoGame(title, author, format, year, platform);
+									multimediaController.altaVideojuego(title, author, format, year, platform);
 								}
 							}
 						}
@@ -74,37 +72,37 @@ public class Console
 				}
 				case 2 ->
 				{
-					System.out.println(memberController.showMembers());
+					System.out.println(socioController.mostrarSocios());
 					String memberNIF = Input.readInput("NIF: ", "String");
 
-					System.out.println(multimediaController.showMultimedias());
+					System.out.println(multimediaController.mostrarMultimedias());
 					String title = Input.readInput("Title: ", "String");
 					String author = Input.readInput("Author: ", "String");
 
-					Multimedia multimedia = multimediaController.retrieveMultimedia(title, author);
+					Multimedia multimedia = multimediaController.devolverMultimedias(title, author);
 
-					rentController.rentMultimedia(memberNIF, multimedia);
+					alquilerController.alquilarMultimedia(memberNIF, multimedia);
 				}
 				case 3 ->
 				{
-					System.out.println(rentController.showRents());
+					System.out.println(alquilerController.mostrarAlquileres());
 					int id = Input.readInput("ID: ", "int");
 
-					Rent rent = rentController.releaseRent(id);
+					Alquiler alquiler = alquilerController.delvolverAlquiler(id);
 
-					Multimedia multimedia = rent.getMultimedia();
+					Multimedia multimedia = alquiler.getMultimedia();
 
-					multimediaController.storeMultimedia(multimedia);
+					multimediaController.guardarMultimedia(multimedia);
 				}
 				case 4 ->
 				{
 					System.out.println("In Stock: ");
-					String originalString = multimediaController.showMultimedias(); // Get the original string
+					String originalString = multimediaController.mostrarMultimedias(); // Get the original string
 					String indentedString = "\t" + originalString.replace("\n", "\n\t"); // Prepend a tab character to each line
 					System.out.println(indentedString + "\n");
 
 					System.out.println("Rented: ");
-					String org = rentController.showRents();
+					String org = alquilerController.mostrarAlquileres();
 					String ind = "\t" + org.replace("\n", "\n\t");
 					System.out.println(ind + "\n");
 				}

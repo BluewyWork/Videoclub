@@ -24,11 +24,11 @@ public class MultimediaDAO
 		return txt.toString();
 	}
 
-	public Multimedia findMultimedia(String title, String author)
+	public Multimedia encontrarMultimedia(String title, String author)
 	{
 		for (Multimedia multimedia : listMultimedia)
 		{
-			if (multimedia.getTitle().equalsIgnoreCase(title) && multimedia.getAuthor().equalsIgnoreCase(author))
+			if (multimedia.getTitulo().equalsIgnoreCase(title) && multimedia.getAutor().equalsIgnoreCase(author))
 			{
 				return multimedia;
 			}
@@ -36,14 +36,14 @@ public class MultimediaDAO
 		return null;
 	}
 
-	public void addMultimedia(Multimedia multimedia)
+	public void aniadirMultimedia(Multimedia multimedia)
 	{
 		listMultimedia.add(multimedia);
 	}
 
-	public void eraseMultimedia(String title, String author)
+	public void eliminarMultimedia(String title, String author)
 	{
-		Multimedia multimedia = findMultimedia(title, author);
+		Multimedia multimedia = encontrarMultimedia(title, author);
 
 		if (multimedia != null)
 		{

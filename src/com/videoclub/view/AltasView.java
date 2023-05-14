@@ -1,11 +1,9 @@
 package com.videoclub.view;
 
-import com.videoclub.controller.GUI;
-
 import javax.swing.*;
 import java.awt.*;
 
-public class NewView extends JPanel
+public class AltasView extends JPanel
 {
 	private JTextArea txtAreaOutput;
 	private JScrollPane scrollPane;
@@ -13,7 +11,7 @@ public class NewView extends JPanel
 	private JButton btnAltaPelicula;
 	private JButton btnAltaVideojuego;
 
-	public NewView()
+	public AltasView()
 	{
 		initComponents();
 	}

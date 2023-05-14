@@ -1,0 +1,107 @@
+package com.videoclub.model;
+
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
+public class Socio
+{
+	private String nif;
+	private String nombre;
+	private LocalDate fechaNacimiento;
+	private String poblacion;
+
+	public Socio()
+	{
+		nif = "RANDOM";
+		nombre = "RANDOM";
+		fechaNacimiento = LocalDate.of(2003, 1, 1);
+		poblacion = "RANDOM";
+	}
+
+	public Socio(String nif, String nombre, LocalDate fechaNacimiento, String poblacion)
+	{
+		this.nif = nif;
+		this.nombre = nombre;
+		setFechaNacimiento(fechaNacimiento);
+		this.poblacion = poblacion;
+	}
+
+	public Socio(String nif, String nombre, String fechaNacimiento, String poblacion)
+	{
+		this();
+		this.nif = nif;
+		this.nombre = nombre;
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+		this.fechaNacimiento = LocalDate.parse(fechaNacimiento, formatter);
+		this.poblacion = poblacion;
+	}
+
+	@Override
+	public String toString()
+	{
+		return
+				"Socio: " + "\n" +
+						"\t" + "Nif: " + nif + "\n" +
+						"\t" + "Nombre: " + nombre + "\n" +
+						"\t" + "FechaNac: " + fechaNacimiento + "\n" +
+						"\t" + "Poblacion: " + poblacion;
+	}
+
+	public String getNif()
+	{
+		return nif;
+	}
+
+	public void setNif(String nif)
+	{
+		this.nif = nif;
+	}
+
+	public String getNombre()
+	{
+		return nombre;
+	}
+
+	public void setNombre(String nombre)
+	{
+		this.nombre = nombre;
+	}
+
+	public LocalDate getFechaNacimiento()
+	{
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(LocalDate fechaNacimiento)
+	{
+		if (isAdult())
+		{
+			this.fechaNacimiento = fechaNacimiento;
+		}
+		else
+		{
+			throw new RuntimeException("Member must be an ADULT (+18)");
+		}
+
+	}
+
+	public String getPoblacion()
+	{
+		return poblacion;
+	}
+
+	public void setPoblacion(String poblacion)
+	{
+		this.poblacion = poblacion;
+	}
+
+	public boolean isAdult()
+	{
+		Period myPeriod = Period.between(fechaNacimiento, LocalDate.now());
+
+		return myPeriod.getYears() >= 18;
+	}
+}

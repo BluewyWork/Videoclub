@@ -1,6 +1,6 @@
 package com.videoclub.model;
 
-public enum Platform
+public enum Platforma
 {
 	PLAYSTATION5, XBOX, NINTENDO, PC
 }

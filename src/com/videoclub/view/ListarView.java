@@ -2,9 +2,9 @@ package com.videoclub.view;
 
 import javax.swing.*;
 
-public class ListView extends JPanel
+public class ListarView extends JPanel
 {
-	public ListView()
+	public ListarView()
 	{
 		initComponents();
 	}

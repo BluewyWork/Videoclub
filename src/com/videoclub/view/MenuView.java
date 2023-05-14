@@ -13,22 +13,22 @@ public class MenuView extends JFrame implements ActionListener
 	private JButton buttonAlquilarMultimediaASocio;
 	private JButton buttonDevolverMultimedia;
 	private JButton buttonListar;
-	NewView newView;
-	RentView rentView;
-	ReleaseRentView releaseRentView;
-	ListView listView;
+	AltasView altasView;
+	AlquilerView alquilerView;
+	DevolverView devolverView;
+	ListarView listarView;
 
 	public MenuView()
 	{
 	    initComponents();
 	}
 
-	public MenuView(NewView nv, RentView rv, ReleaseRentView rrv, ListView lv)
+	public MenuView(AltasView nv, AlquilerView rv, DevolverView rrv, ListarView lv)
 	{
-		newView = nv;
-		rentView = rv;
-		releaseRentView = rrv;
-		listView = lv;
+		altasView = nv;
+		alquilerView = rv;
+		devolverView = rrv;
+		listarView = lv;
 
 		initComponents();
 	}
@@ -42,17 +42,17 @@ public class MenuView extends JFrame implements ActionListener
 		cardLayout = new CardLayout();
 		contentPane.setLayout(cardLayout);
 
-		newView.setName("newView");
-		contentPane.add(newView, "newView");
+		altasView.setName("newView");
+		contentPane.add(altasView, "newView");
 
-		rentView.setName("rentView");
-		contentPane.add(rentView, "rentView");
+		alquilerView.setName("rentView");
+		contentPane.add(alquilerView, "rentView");
 
-		releaseRentView.setName("releaseRentView");
-		contentPane.add(releaseRentView, "releaseRentView");
+		devolverView.setName("releaseRentView");
+		contentPane.add(devolverView, "releaseRentView");
 
-		listView.setName("listView");
-		contentPane.add(listView, "listView");
+		listarView.setName("listView");
+		contentPane.add(listarView, "listView");
 
 		buttonAltas = new JButton("Altas");
 		buttonAltas.addActionListener(this);

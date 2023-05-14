@@ -2,9 +2,9 @@ package com.videoclub.view;
 
 import javax.swing.*;
 
-public class RentView extends JPanel
+public class DevolverView extends JPanel
 {
-	public RentView()
+	public DevolverView()
 	{
 		initComponents();
 	}

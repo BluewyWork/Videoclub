@@ -1,6 +1,6 @@
 package com.videoclub.view;
 
-public class ConsoleView
+public class ConsolaView
 {
 	public void menuPrincipal()
 	{

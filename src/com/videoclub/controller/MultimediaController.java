@@ -1,11 +1,9 @@
 package com.videoclub.controller;
 
-import com.videoclub.model.Movie;
+import com.videoclub.model.Pelicula;
 import com.videoclub.model.Multimedia;
 import com.videoclub.model.MultimediaDAO;
-import com.videoclub.model.VideoGame;
-
-import java.util.ArrayList;
+import com.videoclub.model.VideoJuego;
 
 public class MultimediaController
 {
@@ -16,16 +14,16 @@ public class MultimediaController
 		multimediaDAO = new MultimediaDAO();
 	}
 
-	public void storeMovie(String title, String author, String format, int year, int duration, String maleLead, String femaleLead)
+	public void altaPelicula(String title, String author, String format, int year, int duration, String maleLead, String femaleLead)
 	{
-		Movie movie = new Movie(title, author, format, year, duration, maleLead, femaleLead);
-		multimediaDAO.addMultimedia(movie);
+		Pelicula pelicula = new Pelicula(title, author, format, year, duration, maleLead, femaleLead);
+		multimediaDAO.aniadirMultimedia(pelicula);
 	}
 
-	public void storeVideoGame(String title, String author, String format, int year, String platform)
+	public void altaVideojuego(String title, String author, String format, int year, String platform)
 	{
-		VideoGame videoGame = new VideoGame(title, author, format, year, platform);
-		multimediaDAO.addMultimedia(videoGame);
+		VideoJuego videoJuego = new VideoJuego(title, author, format, year, platform);
+		multimediaDAO.aniadirMultimedia(videoJuego);
 	}
 
 	public void storeDisc()
@@ -34,21 +32,21 @@ public class MultimediaController
 	}
 
 	// works cause it is involved in 1:M relationship
-	public void storeMultimedia(Multimedia multimedia)
+	public void guardarMultimedia(Multimedia multimedia)
 	{
-		multimediaDAO.addMultimedia(multimedia);
+		multimediaDAO.aniadirMultimedia(multimedia);
 	}
 
-	public Multimedia retrieveMultimedia(String title, String author)
+	public Multimedia devolverMultimedias(String title, String author)
 	{
-		Multimedia multimedia = multimediaDAO.findMultimedia(title, author);
+		Multimedia multimedia = multimediaDAO.encontrarMultimedia(title, author);
 
-		multimediaDAO.eraseMultimedia(title, author);
+		multimediaDAO.eliminarMultimedia(title, author);
 
 		return multimedia;
 	}
 
-	public String showMultimedias()
+	public String mostrarMultimedias()
 	{
 		return multimediaDAO.toString();
 	}

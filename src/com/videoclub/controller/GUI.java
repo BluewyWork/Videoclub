@@ -4,16 +4,15 @@ import com.videoclub.view.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.*;
 
 public class GUI implements ActionListener
 {
-	private static NewView newView;
-	private static RentView rentView;
-	private static ReleaseRentView releaseRentView;
-	private static ListView listView;
+	private static AltasView altasView;
+	private static AlquilerView alquilerView;
+	private static DevolverView devolverView;
+	private static ListarView listarView;
 
-	private MemberController memberControllear = new MemberController();
+	private SocioController memberControllear = new SocioController();
 
 	public static void main(String[] args)
 	{
@@ -22,19 +21,19 @@ public class GUI implements ActionListener
 	}
 	public void run()
 	{
-		newView = new NewView();
+		altasView = new AltasView();
 
-		newView.getBtnAltaASocio().addActionListener(this);
-		newView.getBtnAltaPelicula().addActionListener(this);
-		newView.getBtnAltaVideojuego().addActionListener(this);
+		altasView.getBtnAltaASocio().addActionListener(this);
+		altasView.getBtnAltaPelicula().addActionListener(this);
+		altasView.getBtnAltaVideojuego().addActionListener(this);
 
-		rentView = new RentView();
+		alquilerView = new AlquilerView();
 
-		releaseRentView = new ReleaseRentView();
+		devolverView = new DevolverView();
 
-		listView = new ListView();
+		listarView = new ListarView();
 
-		MenuView menuView = new MenuView(newView, rentView, releaseRentView, listView);
+		MenuView menuView = new MenuView(altasView, alquilerView, devolverView, listarView);
 
 		menuView.setVisible(true);
 		menuView.setBounds(100, 100, 900, 900);
@@ -43,15 +42,15 @@ public class GUI implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		if (e.getSource().equals(newView.getBtnAltaASocio()))
+		if (e.getSource().equals(altasView.getBtnAltaASocio()))
 		{
-			memberControllear.registerMember("minecraft", "minecraft", "03/10/2003", "minecraft");
+			memberControllear.registrarMiembros("minecraft", "minecraft", "03/10/2003", "minecraft");
 		}
-		else if (e.getSource().equals(newView.getBtnAltaPelicula()))
+		else if (e.getSource().equals(altasView.getBtnAltaPelicula()))
 		{
 
 		}
-		else if (e.getSource().equals(newView.getBtnAltaVideojuego()))
+		else if (e.getSource().equals(altasView.getBtnAltaVideojuego()))
 		{
 
 		}

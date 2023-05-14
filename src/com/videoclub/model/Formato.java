@@ -1,6 +1,6 @@
 package com.videoclub.model;
 
-public enum Format
+public enum Formato
 {
 	CD, DVD, BLU_RAY, FILE
 }

@@ -2,38 +2,38 @@ package com.videoclub.model;
 
 public abstract class Multimedia
 {
-	private String title;
-	private String author;
-	private Format format;
-	private int year;
+	private String titulo;
+	private String autor;
+	private Formato formato;
+	private int anio;
 
-	private double totalRentPrice;
+	private double precioTotalAlquiler;
 
 	public Multimedia()
 	{
-		title = "Multimedia Vacio";
-		author = "N/a";
-		format = Format.CD;
-		year = 9999;
-		totalRentPrice = calculateRentPrice();
+		titulo = "Multimedia Vacio";
+		autor = "N/a";
+		formato = Formato.CD;
+		anio = 9999;
+		precioTotalAlquiler = calcularPrecioAlquiler();
 	}
 
-	public Multimedia(String title, String author, Format format, int year)
+	public Multimedia(String titulo, String autor, Formato formato, int anio)
 	{
 		this();
-		setTitle(title);
-		setAuthor(author);
-		setFormat(format);
-		setYear(year);
+		setTitulo(titulo);
+		setAutor(autor);
+		setFormat(formato);
+		setAnio(anio);
 	}
 
-	public Multimedia(String title, String author, String format, int year)
+	public Multimedia(String titulo, String autor, String format, int anio)
 	{
 		this();
-		setTitle(title);
-		setAuthor(author);
-		setFormat(Format.valueOf(format));
-		setYear(year);
+		setTitulo(titulo);
+		setAutor(autor);
+		setFormat(Formato.valueOf(format));
+		setAnio(anio);
 	}
 
 	@Override
@@ -41,66 +41,66 @@ public abstract class Multimedia
 	{
 		String text = "";
 
-		text += "Titulo: " + title + "\n";
-		text += "Autor: " + author + "\n";
-		text += "Formato: " + format + "\n";
-		text += "Ano: " + year;
+		text += "Titulo: " + titulo + "\n";
+		text += "Autor: " + autor + "\n";
+		text += "Formato: " + formato + "\n";
+		text += "Ano: " + anio;
 
 		return text;
 	}
 
-	public String getTitle()
+	public String getTitulo()
 	{
-		return title;
+		return titulo;
 	}
 
-	public void setTitle(String title)
+	public void setTitulo(String titulo)
 	{
-		this.title = title;
+		this.titulo = titulo;
 	}
 
-	public String getAuthor()
+	public String getAutor()
 	{
-		return author;
+		return autor;
 	}
 
-	public void setAuthor(String author)
+	public void setAutor(String autor)
 	{
-		this.author = author;
+		this.autor = autor;
 	}
 
-	public Format getFormat()
+	public Formato getFormat()
 	{
-		return format;
+		return formato;
 	}
 
-	public void setFormat(Format format)
+	public void setFormat(Formato formato)
 	{
-		this.format = format;
+		this.formato = formato;
 	}
 
-	public int getYear()
+	public int getAnio()
 	{
-		return year;
+		return anio;
 	}
 
-	public void setYear(int año)
+	public void setAnio(int año)
 	{
-		this.year = año;
+		this.anio = año;
 	}
 
-	public double getTotalRentPrice()
+	public double getPrecioTotalAlquiler()
 	{
-		return totalRentPrice;
+		return precioTotalAlquiler;
 	}
 
-	public void setTotalRentPrice(double totalRentPrice)
+	public void setPrecioTotalAlquiler(double precioTotalAlquiler)
 	{
-		this.totalRentPrice = totalRentPrice;
+		this.precioTotalAlquiler = precioTotalAlquiler;
 	}
 
-	public double calculateRentPrice()
+	public double calcularPrecioAlquiler()
 	{
-		return Constants.BASE_PRICE;
+		return Constantes.BASE_PRICE;
 	}
 }
