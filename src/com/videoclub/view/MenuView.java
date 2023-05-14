@@ -20,7 +20,7 @@ public class MenuView extends JFrame implements ActionListener
 
 	public MenuView()
 	{
-	    initComponents();
+		initComponents();
 	}
 
 	public MenuView(AltasView nv, AlquilerView rv, DevolverView rrv, ListarView lv)

@@ -19,6 +19,7 @@ public class GUI implements ActionListener
 		GUI gui = new GUI();
 		gui.run();
 	}
+
 	public void run()
 	{
 		altasView = new AltasView();

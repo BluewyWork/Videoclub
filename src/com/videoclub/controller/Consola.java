@@ -1,8 +1,8 @@
 package com.videoclub.controller;
 
 import com.videoclub.lib.Input;
-import com.videoclub.model.Multimedia;
 import com.videoclub.model.Alquiler;
+import com.videoclub.model.Multimedia;
 import com.videoclub.view.ConsolaView;
 
 public class Consola
