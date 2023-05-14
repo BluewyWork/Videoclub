@@ -34,12 +34,9 @@ public class MultimediaController
 	}
 
 	// works cause it is involved in 1:M relationship
-	public void storeMultimedias(ArrayList<Multimedia> listMultimedia)
+	public void storeMultimedia(Multimedia multimedia)
 	{
-		for (Multimedia multimedia : listMultimedia)
-		{
-			multimediaDAO.addMultimedia(multimedia);
-		}
+		multimediaDAO.addMultimedia(multimedia);
 	}
 
 	public Multimedia retrieveMultimedia(String title, String author)

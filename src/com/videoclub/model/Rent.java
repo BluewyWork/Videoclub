@@ -8,7 +8,7 @@ public class Rent
 	private static int idCounter = 0;
 	private int id;
 	private String memberNIF;
-	private ArrayList<Multimedia> listMultimedia;
+	private Multimedia multimedia;
 	private double initialDebt;
 	private double finalDebt;
 	private LocalDate rentDate;
@@ -16,7 +16,6 @@ public class Rent
 
 	public Rent()
 	{
-		listMultimedia = new ArrayList<>();
 		setId(idCounter++);
 		memberNIF = "RANDOM";
 		setInitialDebt(calculateInitialDebt());
@@ -29,14 +28,7 @@ public class Rent
 	{
 		this();
 		setMemberNIF(memberNIF);
-		listMultimedia.add(multimedia);
-	}
-
-	public Rent(String memberNIF, ArrayList<Multimedia> listMultimedia)
-	{
-		this();
-		setMemberNIF(memberNIF);
-		setListMultimedia(listMultimedia);
+		setMultimedia(multimedia);
 	}
 
 	@Override
@@ -46,10 +38,7 @@ public class Rent
 
 		text.append("ID: ").append(id).append("\n\n");
 
-		for (Multimedia multimedia : listMultimedia)
-		{
-			text.append(multimedia.toString()).append("\n\n");
-		}
+		text.append(multimedia.toString()).append("\n\n");
 
 		return text.toString();
 	}
@@ -84,14 +73,14 @@ public class Rent
 		this.memberNIF = memberNIF;
 	}
 
-	public ArrayList<Multimedia> getArrayListMultimedia()
+	public Multimedia getMultimedia()
 	{
-		return listMultimedia;
+		return multimedia;
 	}
 
-	public void setListMultimedia(ArrayList<Multimedia> listMultimedia)
+	public void setMultimedia(Multimedia multimedia)
 	{
-		this.listMultimedia = listMultimedia;
+		this.multimedia = multimedia;
 	}
 
 	public int getId()
@@ -118,10 +107,7 @@ public class Rent
 	{
 		double debt = 0;
 
-		for (Multimedia multimedia : listMultimedia)
-		{
-			debt += multimedia.calculateRentPrice();
-		}
+		debt += multimedia.calculateRentPrice();
 
 		return debt;
 	}
@@ -132,7 +118,7 @@ public class Rent
 
 		if (isOverdue())
 		{
-			debt += daysOverdue() * Constants.SURCHARGE_PER_DAY * listMultimedia.size();
+			debt += daysOverdue() * Constants.SURCHARGE_PER_DAY;
 		}
 
 		return debt + initialDebt;

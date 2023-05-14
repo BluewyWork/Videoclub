@@ -77,23 +77,13 @@ public class Console
 					System.out.println(memberController.showMembers());
 					String memberNIF = Input.readInput("NIF: ", "String");
 
-					ArrayList<Multimedia> listMultimedia = new ArrayList<>();
+					System.out.println(multimediaController.showMultimedias());
+					String title = Input.readInput("Title: ", "String");
+					String author = Input.readInput("Author: ", "String");
 
-					boolean addMore = true;
+					Multimedia multimedia = multimediaController.retrieveMultimedia(title, author);
 
-					while (addMore)
-					{
-						System.out.println(multimediaController.showMultimedias());
-						String title = Input.readInput("Title: ", "String");
-						String author = Input.readInput("Author: ", "String");
-
-						Multimedia multimedia = multimediaController.retrieveMultimedia(title, author);
-						listMultimedia.add(multimedia);
-
-						addMore = Input.readInput("Add more? [true/false] ", "boolean");
-					}
-
-					rentController.rentMultimedias(memberNIF, listMultimedia);
+					rentController.rentMultimedia(memberNIF, multimedia);
 				}
 				case 3 ->
 				{
@@ -101,9 +91,10 @@ public class Console
 					int id = Input.readInput("ID: ", "int");
 
 					Rent rent = rentController.releaseRent(id);
-					ArrayList<Multimedia> listMultimedia = rent.getArrayListMultimedia();
 
-					multimediaController.storeMultimedias(listMultimedia);
+					Multimedia multimedia = rent.getMultimedia();
+
+					multimediaController.storeMultimedia(multimedia);
 				}
 				case 4 ->
 				{
