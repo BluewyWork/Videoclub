@@ -37,7 +37,7 @@ public class Movie extends Multimedia
 
 		txt += super.toString() + "\n";
 		txt += "Duracion: " + duration + "\n";
-		txt += "Actor principal: " + maleLead + "\n" ;
+		txt += "Actor principal: " + maleLead + "\n";
 		txt += "Actriz principal: " + femaleLead;
 
 		return txt;

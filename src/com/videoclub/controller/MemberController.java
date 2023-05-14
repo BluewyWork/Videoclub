@@ -1,6 +1,5 @@
 package com.videoclub.controller;
 
-import com.videoclub.lib.Input;
 import com.videoclub.model.Member;
 import com.videoclub.model.MemberDAO;
 
@@ -15,7 +14,7 @@ public class MemberController
 
 	public void registerMember(String nif, String name, String birthDate, String town)
 	{
-		Member member = new Member(nif ,name, birthDate, town);
+		Member member = new Member(nif, name, birthDate, town);
 
 		memberDAO.addMember(member);
 	}

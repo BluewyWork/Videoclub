@@ -1,10 +1,8 @@
 package com.videoclub.controller;
 
 import com.videoclub.lib.Input;
-import com.videoclub.model.Movie;
 import com.videoclub.model.Multimedia;
 import com.videoclub.model.Rent;
-import com.videoclub.model.VideoGame;
 import com.videoclub.view.ConsoleView;
 
 import java.util.ArrayList;
@@ -34,11 +32,8 @@ public class Console
 					consoleView.menuAltas();
 					userInput = Input.readInput("Option: ", "int");
 
-
-
 					switch (userInput)
 					{
-
 
 						case 1 ->
 						{
@@ -97,7 +92,6 @@ public class Console
 
 						addMore = Input.readInput("Add more? [true/false] ", "boolean");
 					}
-
 
 					rentController.rentMultimedias(memberNIF, listMultimedia);
 				}

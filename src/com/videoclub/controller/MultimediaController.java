@@ -1,13 +1,11 @@
 package com.videoclub.controller;
 
-import com.videoclub.lib.Input;
 import com.videoclub.model.Movie;
 import com.videoclub.model.Multimedia;
 import com.videoclub.model.MultimediaDAO;
 import com.videoclub.model.VideoGame;
 
 import java.util.ArrayList;
-import java.util.jar.JarEntry;
 
 public class MultimediaController
 {
