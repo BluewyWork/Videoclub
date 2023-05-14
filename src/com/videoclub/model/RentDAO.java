@@ -1,5 +1,6 @@
 package com.videoclub.model;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class RentDAO
@@ -37,7 +38,28 @@ public class RentDAO
 				b = true;
 			}
 		}
+
+		if (rent == null)
+		{
+			throw new RuntimeException("Rent Object with ID: " + id + " not found");
+		}
+
 		return rent;
+	}
+
+	public ArrayList<Rent> findRent(String memberNIF)
+	{
+		ArrayList<Rent> listRent = new ArrayList<>();
+
+		for (Rent rent : this.listRent)
+		{
+			if (rent.getMemberNIF().equals(memberNIF))
+			{
+				listRent.add(rent);
+			}
+		}
+
+		return listRent;
 	}
 
 	public void addRent(Rent al)
@@ -49,13 +71,23 @@ public class RentDAO
 	{
 		Rent rent = findRent(id);
 
-		if (rent != null)
+		if (!listRent.remove(rent))
 		{
-			listRent.remove(rent);
+			throw new RuntimeException("Rent with ID: " + id + " not found");
 		}
-		else
+	}
+
+	public boolean checkPendingPayments(String memberNIF)
+	{
+		boolean pendingPayments = false;
+
+		ArrayList<Rent> listRent = findRent(memberNIF);
+
+		for (Rent rent : listRent)
 		{
-			throw new RuntimeException("Rent Not Found");
+			pendingPayments = rent.isOverdue();
 		}
+
+		return pendingPayments;
 	}
 }

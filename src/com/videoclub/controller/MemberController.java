@@ -25,6 +25,13 @@ public class MemberController
 		memberDAO.addMember(member);
 	}
 
+	public void registerMember(String nif, String name, String birthDate, String town)
+	{
+		Member member = new Member(nif ,name, birthDate, town);
+
+		memberDAO.addMember(member);
+	}
+
 	public void unregisterMember(String nif)
 	{
 		memberDAO.removeMember(nif);

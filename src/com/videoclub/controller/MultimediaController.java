@@ -46,6 +46,7 @@ public class MultimediaController
 		}
 	}
 
+	// works cause it is involved in 1:M relationship
 	public void storeMultimedias(ArrayList<Multimedia> listMultimedia)
 	{
 		for (Multimedia multimedia : listMultimedia)
@@ -61,6 +62,12 @@ public class MultimediaController
 		multimediaDAO.eraseMultimedia(title, author);
 
 		return multimedia;
+	}
+
+	@Deprecated
+	public ArrayList<Multimedia> retrieveMultimedias()
+	{
+		return null;
 	}
 
 	public String showMultimedias()
