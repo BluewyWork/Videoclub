@@ -18,10 +18,8 @@ public class Rent
 	{
 		setId(idCounter++);
 		memberNIF = "RANDOM";
-		setInitialDebt(calculateInitialDebt());
 		rentDate = LocalDate.now();
 		returnDate = LocalDate.now().plusDays(Constants.RENT_MAX_DURATION);
-
 	}
 
 	public Rent(String memberNIF, Multimedia multimedia)
@@ -29,6 +27,7 @@ public class Rent
 		this();
 		setMemberNIF(memberNIF);
 		setMultimedia(multimedia);
+		setInitialDebt(calculateInitialDebt());
 	}
 
 	@Override
