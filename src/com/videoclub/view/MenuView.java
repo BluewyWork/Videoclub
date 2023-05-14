@@ -7,16 +7,33 @@ import java.awt.event.ActionListener;
 
 public class MenuView extends JFrame implements ActionListener
 {
-	private final JPanel contentPane;
-	private final CardLayout cardLayout;
-	private final JButton buttonAltas;
-	private final JButton buttonAlquilarMultimediaASocio;
-	private final JButton buttonDevolverMultimedia;
-	private final JButton buttonListar;
-	AltasView panelAltas;
-	AltaPeliculaView panelPeliculas;
+	private JPanel contentPane;
+	private CardLayout cardLayout;
+	private JButton buttonAltas;
+	private JButton buttonAlquilarMultimediaASocio;
+	private JButton buttonDevolverMultimedia;
+	private JButton buttonListar;
+	NewView newView;
+	RentView rentView;
+	ReleaseRentView releaseRentView;
+	ListView listView;
 
 	public MenuView()
+	{
+	    initComponents();
+	}
+
+	public MenuView(NewView nv, RentView rv, ReleaseRentView rrv, ListView lv)
+	{
+		newView = nv;
+		rentView = rv;
+		releaseRentView = rrv;
+		listView = lv;
+
+		initComponents();
+	}
+
+	public void initComponents()
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(400, 300);
@@ -25,21 +42,17 @@ public class MenuView extends JFrame implements ActionListener
 		cardLayout = new CardLayout();
 		contentPane.setLayout(cardLayout);
 
-		panelAltas = new AltasView();
-		panelAltas.setName("panelAltas");
-		contentPane.add(panelAltas, "panelAltas");
+		newView.setName("newView");
+		contentPane.add(newView, "newView");
 
-		AlquilarMultiMediaSocioView panelAlquilarMultimediaASocio = new AlquilarMultiMediaSocioView();
-		panelAlquilarMultimediaASocio.setName("panelAlquilarMultimediaASocio");
-		contentPane.add(panelAlquilarMultimediaASocio, "panelAlquilarMultimediaASocio");
+		rentView.setName("rentView");
+		contentPane.add(rentView, "rentView");
 
-		DevolverMultimediaView panelDevolverMultimediaView = new DevolverMultimediaView();
-		panelDevolverMultimediaView.setName("panelDevolverMultimediaView");
-		contentPane.add(panelDevolverMultimediaView, "panelDevolverMultimediaView");
+		releaseRentView.setName("releaseRentView");
+		contentPane.add(releaseRentView, "releaseRentView");
 
-		ListarView panelListarView = new ListarView();
-		panelListarView.setName("panelListarView");
-		contentPane.add(panelListarView, "panelListarView");
+		listView.setName("listView");
+		contentPane.add(listView, "listView");
 
 		buttonAltas = new JButton("Altas");
 		buttonAltas.addActionListener(this);
@@ -89,10 +102,5 @@ public class MenuView extends JFrame implements ActionListener
 		}
 
 		cardLayout.show(contentPane, panelName);
-	}
-
-	public AltasView getPanelAltas()
-	{
-		return panelAltas;
 	}
 }

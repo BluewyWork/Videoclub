@@ -2,9 +2,9 @@ package com.videoclub.view;
 
 import javax.swing.*;
 
-public class DevolverMultimediaView extends JPanel
+public class ListView extends JPanel
 {
-	public DevolverMultimediaView()
+	public ListView()
 	{
 		initComponents();
 	}

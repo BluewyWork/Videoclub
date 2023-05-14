@@ -2,9 +2,9 @@ package com.videoclub.view;
 
 import javax.swing.*;
 
-public class AlquilarMultiMediaSocioView extends JPanel
+public class ReleaseRentView extends JPanel
 {
-	public AlquilarMultiMediaSocioView()
+	public ReleaseRentView()
 	{
 		initComponents();
 	}

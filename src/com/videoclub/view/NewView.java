@@ -1,13 +1,11 @@
 package com.videoclub.view;
 
-import com.videoclub.controller.GestorItems;
+import com.videoclub.controller.GUI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class AltasView extends JPanel implements ActionListener
+public class NewView extends JPanel
 {
 	private JTextArea txtAreaOutput;
 	private JScrollPane scrollPane;
@@ -15,9 +13,34 @@ public class AltasView extends JPanel implements ActionListener
 	private JButton btnAltaPelicula;
 	private JButton btnAltaVideojuego;
 
-	public AltasView()
+	public NewView()
 	{
 		initComponents();
+	}
+
+	public JTextArea getTxtAreaOutput()
+	{
+		return txtAreaOutput;
+	}
+
+	public JScrollPane getScrollPane()
+	{
+		return scrollPane;
+	}
+
+	public JButton getBtnAltaASocio()
+	{
+		return btnAltaASocio;
+	}
+
+	public JButton getBtnAltaPelicula()
+	{
+		return btnAltaPelicula;
+	}
+
+	public JButton getBtnAltaVideojuego()
+	{
+		return btnAltaVideojuego;
 	}
 
 	public void initComponents()
@@ -72,17 +95,5 @@ public class AltasView extends JPanel implements ActionListener
 
 		btnAltaVideojuego = new JButton("Alta a Videojuego");
 		add(btnAltaVideojuego, c);
-
-		this.btnAltaPelicula.addActionListener(this);
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-		GestorItems ic = new GestorItems();
-		if (e.getSource().equals(btnAltaPelicula))
-		{
-
-		}
 	}
 }
