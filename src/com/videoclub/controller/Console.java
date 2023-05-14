@@ -34,10 +34,7 @@ public class Console
 					consoleView.menuAltas();
 					userInput = Input.readInput("Option: ", "int");
 
-					String title = Input.readInput("Titulo: ", "String");
-					String author = Input.readInput("Autor: ", "String");
-					String format = Input.readInput("Formato: ", "String");
-					int year = Input.readInput("Año: ", "int");
+
 
 					switch (userInput)
 					{
@@ -52,19 +49,31 @@ public class Console
 
 							memberController.registerMember(nif, name, birthDate, town);
 						}
-						case 2 ->
+						case 2, 3 ->
 						{
-							int duration = Input.readInput("Duration:  ", "int");
-							String maleLead = Input.readInput("Male Lead: ", "String");
-							String femaleLead = Input.readInput("Female Lead: ", "String");
+							String title = Input.readInput("Titulo: ", "String");
+							String author = Input.readInput("Autor: ", "String");
+							String format = Input.readInput("Formato: ", "String");
+							int year = Input.readInput("Año: ", "int");
 
-							multimediaController.storeMovie(title, author, format, year, duration, maleLead, femaleLead);
-						}
-						case 3 ->
-						{
-							String platform = Input.readInput("Plataforma: ");
+							switch (userInput)
+							{
+								case 2 ->
+								{
+									int duration = Input.readInput("Duration:  ", "int");
+									String maleLead = Input.readInput("Male Lead: ", "String");
+									String femaleLead = Input.readInput("Female Lead: ", "String");
 
-							multimediaController.storeVideoGame(title, author, format, year, platform);
+									multimediaController.storeMovie(title, author, format, year, duration, maleLead, femaleLead);
+								}
+
+								case 3 ->
+								{
+									String platform = Input.readInput("Plataforma: ");
+
+									multimediaController.storeVideoGame(title, author, format, year, platform);
+								}
+							}
 						}
 					}
 				}
