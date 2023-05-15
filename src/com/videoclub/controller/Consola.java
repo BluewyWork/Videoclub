@@ -79,7 +79,7 @@ public class Consola
 					String title = Input.readInput("Title: ", "String");
 					String author = Input.readInput("Author: ", "String");
 
-					Multimedia multimedia = multimediaController.devolverMultimedias(title, author);
+					Multimedia multimedia = multimediaController.recuperarMultimedias(title, author);
 
 					alquilerController.alquilarMultimedia(memberNIF, multimedia);
 				}

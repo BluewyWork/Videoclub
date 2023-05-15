@@ -28,4 +28,5 @@ public class SocioController
 	{
 		return socioDAO.toString();
 	}
+
 }

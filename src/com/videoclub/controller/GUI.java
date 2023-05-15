@@ -11,8 +11,9 @@ public class GUI implements ActionListener
 	private static AlquilerView alquilerView;
 	private static DevolverView devolverView;
 	private static ListarView listarView;
+	private static AltaSocioView altaSocioView;
 
-	private SocioController memberControllear = new SocioController();
+	private SocioController memberController = new SocioController();
 
 	public static void main(String[] args)
 	{
@@ -45,7 +46,8 @@ public class GUI implements ActionListener
 	{
 		if (e.getSource().equals(altasView.getBtnAltaASocio()))
 		{
-			memberControllear.registrarMiembros("minecraft", "minecraft", "03/10/2003", "minecraft");
+			//memberControllear.registrarMiembros("minecraft", "minecraft", "03/10/2003", "minecraft");
+			altaSocioView = new AltaSocioView(memberController);
 		}
 		else if (e.getSource().equals(altasView.getBtnAltaPelicula()))
 		{
