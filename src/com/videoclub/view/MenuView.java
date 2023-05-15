@@ -1,6 +1,8 @@
 package com.videoclub.view;
 
 import javax.swing.*;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,8 +32,9 @@ public class MenuView extends JFrame implements ActionListener, MouseListener
 		initComponents();
 	}
 
-	public MenuView(AltasView nv, AlquilerView rv, DevolverView rrv, ListarView lv)
+	public MenuView(IntroduccionView iv, AltasView nv, AlquilerView rv, DevolverView rrv, ListarView lv)
 	{
+		introduccionView = iv;
 		altasView = nv;
 		alquilerView = rv;
 		devolverView = rrv;
@@ -44,7 +47,6 @@ public class MenuView extends JFrame implements ActionListener, MouseListener
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(400, 300);
-		setJMenuBar(menuBar);
 		setTitle("JAMA Videoclub");
 
 		menuBar = new JMenuBar();
@@ -55,9 +57,11 @@ public class MenuView extends JFrame implements ActionListener, MouseListener
 		altaSocio = new JMenuItem("Alta de socio");
 		altaPelicula = new JMenuItem("Alta de pelicula");
 		altaVideojuego = new JMenuItem("Alta de videojuego");
+
 		menuAlta.add(altaSocio);
 		menuAlta.add(altaPelicula);
 		menuAlta.add(altaVideojuego);
+
 		menuListar = new JMenu("Listar");
 		listarMultimedia = new JMenuItem("Todos los objetos multimedia");
 		listarPelicula = new JMenuItem("Todas las peliculas ordenados por título");
@@ -65,12 +69,14 @@ public class MenuView extends JFrame implements ActionListener, MouseListener
 		listarVideojuego = new JMenuItem("Todos los videojuegos ordenados por año");
 		listarAlquiler = new JMenuItem("Los alquileres actuales de un socio");
 		listarSocio = new JMenuItem("Los socios con recargos pendientes");
+
 		menuListar.add(listarMultimedia);
 		menuListar.add(listarPelicula);
 		menuListar.add(listarCancion);
 		menuListar.add(listarVideojuego);
 		menuListar.add(listarAlquiler);
 		menuListar.add(listarSocio);
+
 		menuAlquilar = new JMenu("Alquilar");
 		menuDevolver = new JMenu("Devolver");
 
@@ -79,6 +85,8 @@ public class MenuView extends JFrame implements ActionListener, MouseListener
 		menuBar.add(menuAlquilar);
 		menuBar.add(menuDevolver);
 		menuBar.add(menuListar);
+
+		setJMenuBar(menuBar);
 
 		contentPane = new JPanel();
 		cardLayout = new CardLayout();
@@ -100,6 +108,39 @@ public class MenuView extends JFrame implements ActionListener, MouseListener
 		contentPane.add(listarView, "listaView");
 
 		menuHome.addMouseListener(this);
+
+		menuHome.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e)
+			{
+
+				cardLayout.show(contentPane, "panelIntroduccion");
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e)
+			{
+
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e)
+			{
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e)
+			{
+				menuHome.setPopupMenuVisible(true);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e)
+			{
+
+			}
+		});
 
 		buttonAltas = new JButton("Altas");
 		buttonAltas.addActionListener(this);
@@ -127,9 +168,9 @@ public class MenuView extends JFrame implements ActionListener, MouseListener
 	{
 		String panelName = "";
 
-		if (e.getSource() == buttonAltas)
+		if (e.getSource() == menuHome)
 		{
-			panelName = "panelAltas";
+			panelName = "panelIntroduccion";
 		}
 		else if (e.getSource() == buttonAltas)
 		{
@@ -146,6 +187,10 @@ public class MenuView extends JFrame implements ActionListener, MouseListener
 		else if (e.getSource() == buttonListar)
 		{
 			panelName = "panelListar";
+		}
+		else if (e.getSource() == buttonAltas)
+		{
+			panelName = "panelAltas";
 		}
 
 		cardLayout.show(contentPane, panelName);
