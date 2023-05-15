@@ -37,12 +37,12 @@ public class MultimediaController
 		multimediaDAO.aniadirMultimedia(multimedia);
 	}
 
-	public Multimedia devolverMultimedias(String title, String author)
+	public Multimedia recuperarMultimedias(String title, String author)
 	{
 		Multimedia multimedia = multimediaDAO.encontrarMultimedia(title, author);
 
 		multimediaDAO.eliminarMultimedia(title, author);
-
+		
 		return multimedia;
 	}
 
