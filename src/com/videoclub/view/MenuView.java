@@ -10,6 +10,7 @@ import java.awt.event.MouseListener;
 public class MenuView extends JFrame implements ActionListener, MouseListener
 {
 	private JPanel contentPane;
+	private JPanel buttonPanel;
 	private CardLayout cardLayout;
 	private JButton buttonAltas;
 	private JButton buttonAlquilarMultimediaASocio;
@@ -46,7 +47,55 @@ public class MenuView extends JFrame implements ActionListener, MouseListener
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(400, 300);
 		setTitle("JAMA Videoclub");
+		initMenuBar();
 
+		contentPane = new JPanel();
+		cardLayout = new CardLayout();
+		contentPane.setLayout(cardLayout);
+
+		introduccionView.setName("introduccionView");
+		contentPane.add(introduccionView, "introduccionView");
+
+		altasView.setName("altasView");
+		contentPane.add(altasView, "altasView");
+
+		alquilerView.setName("alquilerView");
+		contentPane.add(alquilerView, "alquilerView");
+
+		devolverView.setName("devolverView");
+		contentPane.add(devolverView, "devolverView");
+
+		listarView.setName("listaView");
+		contentPane.add(listarView, "listaView");
+
+		menuHome.addMouseListener(this);
+
+		menuHome.addMouseListener(this);
+
+		buttonAltas = new JButton("Altas");
+		buttonAltas.addActionListener(this);
+
+		buttonAlquilarMultimediaASocio = new JButton("Alquilar Multimedia\na Socio");
+		buttonAlquilarMultimediaASocio.addActionListener(this);
+
+		buttonDevolverMultimedia = new JButton("Delvolver Multimedia");
+		buttonDevolverMultimedia.addActionListener(this);
+
+		buttonListar = new JButton("Listar");
+		buttonListar.addActionListener(this);
+
+		buttonPanel = new JPanel();
+		buttonPanel.add(buttonAltas);
+		buttonPanel.add(buttonAlquilarMultimediaASocio);
+		buttonPanel.add(buttonDevolverMultimedia);
+		buttonPanel.add(buttonListar);
+
+		add(contentPane, BorderLayout.CENTER);
+		add(buttonPanel, BorderLayout.SOUTH);
+	}
+
+	public void initMenuBar()
+	{
 		menuBar = new JMenuBar();
 		menuHome = new JMenu("Home");
 		menuAlta = new JMenu("Altas");
@@ -85,50 +134,6 @@ public class MenuView extends JFrame implements ActionListener, MouseListener
 		menuBar.add(menuListar);
 
 		setJMenuBar(menuBar);
-
-		contentPane = new JPanel();
-		cardLayout = new CardLayout();
-		contentPane.setLayout(cardLayout);
-
-		introduccionView.setName("introduccionView");
-		contentPane.add(introduccionView, "introduccionView");
-
-		altasView.setName("altasView");
-		contentPane.add(altasView, "altasView");
-
-		alquilerView.setName("alquilerView");
-		contentPane.add(alquilerView, "alquilerView");
-
-		devolverView.setName("devolverView");
-		contentPane.add(devolverView, "devolverView");
-
-		listarView.setName("listaView");
-		contentPane.add(listarView, "listaView");
-
-		menuHome.addMouseListener(this);
-
-		menuHome.addMouseListener(this);
-
-		buttonAltas = new JButton("Altas");
-		buttonAltas.addActionListener(this);
-
-		buttonAlquilarMultimediaASocio = new JButton("Alquilar Multimedia\na Socio");
-		buttonAlquilarMultimediaASocio.addActionListener(this);
-
-		buttonDevolverMultimedia = new JButton("Delvolver Multimedia");
-		buttonDevolverMultimedia.addActionListener(this);
-
-		buttonListar = new JButton("Listar");
-		buttonListar.addActionListener(this);
-
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.add(buttonAltas);
-		buttonPanel.add(buttonAlquilarMultimediaASocio);
-		buttonPanel.add(buttonDevolverMultimedia);
-		buttonPanel.add(buttonListar);
-
-		add(contentPane, BorderLayout.CENTER);
-		add(buttonPanel, BorderLayout.SOUTH);
 	}
 
 	public void actionPerformed(ActionEvent e)
