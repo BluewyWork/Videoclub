@@ -40,7 +40,7 @@ public class Consola
 							String birthDate = Input.readInput("Birth Date (dd/mm/yyyy): ");
 							String town = Input.readInput("Town: ", "String");
 
-							socioController.registrarMiembros(nif, name, birthDate, town);
+							socioController.registrarSocio(nif, name, birthDate, town);
 						}
 						case 2, 3 ->
 						{

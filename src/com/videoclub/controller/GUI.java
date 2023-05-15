@@ -45,7 +45,7 @@ public class GUI implements ActionListener
 	{
 		if (e.getSource().equals(altasView.getBtnAltaASocio()))
 		{
-			memberControllear.registrarMiembros("minecraft", "minecraft", "03/10/2003", "minecraft");
+			memberControllear.registrarSocio("minecraft", "minecraft", "03/10/2003", "minecraft");
 		}
 		else if (e.getSource().equals(altasView.getBtnAltaPelicula()))
 		{
