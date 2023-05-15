@@ -1,6 +1,8 @@
 package com.videoclub.view;
 
 import javax.swing.*;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -107,6 +109,39 @@ public class MenuView extends JFrame implements ActionListener, MouseListener
 
 		menuHome.addMouseListener(this);
 
+		menuHome.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e)
+			{
+
+				cardLayout.show(contentPane, "panelIntroduccion");
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e)
+			{
+
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e)
+			{
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e)
+			{
+				menuHome.setPopupMenuVisible(true);
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e)
+			{
+
+			}
+		});
+
 		buttonAltas = new JButton("Altas");
 		buttonAltas.addActionListener(this);
 
@@ -133,9 +168,9 @@ public class MenuView extends JFrame implements ActionListener, MouseListener
 	{
 		String panelName = "";
 
-		if (e.getSource() == buttonAltas)
+		if (e.getSource() == menuHome)
 		{
-			panelName = "panelAltas";
+			panelName = "panelIntroduccion";
 		}
 		else if (e.getSource() == buttonAltas)
 		{
@@ -152,6 +187,10 @@ public class MenuView extends JFrame implements ActionListener, MouseListener
 		else if (e.getSource() == buttonListar)
 		{
 			panelName = "panelListar";
+		}
+		else if (e.getSource() == buttonAltas)
+		{
+			panelName = "panelAltas";
 		}
 
 		cardLayout.show(contentPane, panelName);
