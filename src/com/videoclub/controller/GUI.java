@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 public class GUI implements ActionListener
 {
+	private static IntroduccionView introduccionView;
 	private static AltasView altasView;
 	private static AlquilerView alquilerView;
 	private static DevolverView devolverView;
@@ -23,6 +24,8 @@ public class GUI implements ActionListener
 
 	public void run()
 	{
+		introduccionView = new IntroduccionView();
+
 		altasView = new AltasView();
 
 		altasView.getBtnAltaASocio().addActionListener(this);
@@ -35,10 +38,10 @@ public class GUI implements ActionListener
 
 		listarView = new ListarView();
 
-		MenuView menuView = new MenuView(altasView, alquilerView, devolverView, listarView);
+		MenuView menuView = new MenuView(introduccionView, altasView, alquilerView, devolverView, listarView);
 
 		menuView.setVisible(true);
-		menuView.setBounds(100, 100, 900, 900);
+		menuView.setBounds(250, 25, 1000, 780);
 	}
 
 	@Override

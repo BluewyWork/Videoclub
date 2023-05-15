@@ -3,7 +3,7 @@ package com.videoclub.controller;
 import com.videoclub.model.Multimedia;
 import com.videoclub.model.MultimediaDAO;
 import com.videoclub.model.Pelicula;
-import com.videoclub.model.VideoJuego;
+import com.videoclub.model.Videojuego;
 
 public class MultimediaController
 {
@@ -22,7 +22,7 @@ public class MultimediaController
 
 	public void altaVideojuego(String title, String author, String format, int year, String platform)
 	{
-		VideoJuego videoJuego = new VideoJuego(title, author, format, year, platform);
+		Videojuego videoJuego = new Videojuego(title, author, format, year, platform);
 		multimediaDAO.aniadirMultimedia(videoJuego);
 	}
 
