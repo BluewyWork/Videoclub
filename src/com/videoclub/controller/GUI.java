@@ -48,6 +48,7 @@ public class GUI implements ActionListener
 		{
 			//memberControllear.registrarMiembros("minecraft", "minecraft", "03/10/2003", "minecraft");
 			altaSocioView = new AltaSocioView(memberController);
+			memberController.registrarSocio("minecraft", "minecraft", "03/10/2003", "minecraft");
 		}
 		else if (e.getSource().equals(altasView.getBtnAltaPelicula()))
 		{

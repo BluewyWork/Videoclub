@@ -12,14 +12,14 @@ public class SocioController
 		socioDAO = new SocioDAO();
 	}
 
-	public void registrarMiembros(String nif, String name, String birthDate, String town)
+	public void registrarSocio(String nif, String name, String birthDate, String town)
 	{
 		Socio socio = new Socio(nif, name, birthDate, town);
 
 		socioDAO.aniadirSocio(socio);
 	}
 
-	public void unregisterMember(String nif)
+	public void darDeBaja(String nif)
 	{
 		socioDAO.eliminarSocio(nif);
 	}

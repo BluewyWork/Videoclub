@@ -78,7 +78,7 @@ public class AltaSocioView extends JFrame
 
 				// Llamar al método para agregar el socio en GestorSocioController
 				socioController = new SocioController();
-				socioController.registrarMiembros(nif, nombre, fechaNacimientoText, poblacion);
+				socioController.registrarSocio(nif, nombre, fechaNacimientoText, poblacion);
 
 				// Mostrar un mensaje de éxito
 				JOptionPane.showMessageDialog(null, "Socio agregado correctamente");
