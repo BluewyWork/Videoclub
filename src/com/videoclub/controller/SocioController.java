@@ -29,4 +29,8 @@ public class SocioController
 		return socioDAO.toString();
 	}
 
+	public Socio encontrarSocio(String nif){
+		return socioDAO.encontrarSocio(nif);
+	}
+
 }

@@ -54,4 +54,17 @@ public class MultimediaDAO
 			throw new RuntimeException("Multimedia Not Found");
 		}
 	}
+
+	public String mostrarTituloMultimedia()
+	{
+		StringBuilder txt = new StringBuilder();
+
+		for (Multimedia multimedia : listMultimedia)
+		{
+			txt.append(multimedia.getTitulo() + "||" + multimedia.getAutor()).append("\n\n");
+		}
+
+		return txt.toString();
+
+	}
 }

@@ -42,7 +42,7 @@ public class MultimediaController
 		Multimedia multimedia = multimediaDAO.encontrarMultimedia(title, author);
 
 		multimediaDAO.eliminarMultimedia(title, author);
-		
+
 		return multimedia;
 	}
 
@@ -50,4 +50,8 @@ public class MultimediaController
 	{
 		return multimediaDAO.toString();
 	}
+	public String mostrarTituloMultimedia(){
+		return multimediaDAO.mostrarTituloMultimedia();
+	}
+
 }
