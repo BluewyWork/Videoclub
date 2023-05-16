@@ -23,12 +23,7 @@ public class AlquilerView extends JPanel implements ActionListener
 	private AlquilerController alquilerController;
 	private SocioController socioController;
 
-	public AlquilerView()
-	{
-		initComponents();
-	}
-
-	public AlquilerView(MultimediaController mc, AlquilerController ac, SocioController sc)
+	public AlquilerView(SocioController sc, MultimediaController mc, AlquilerController ac)
 	{
 		multimediaController = mc;
 		alquilerController = ac;
