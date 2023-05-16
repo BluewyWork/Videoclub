@@ -1,7 +1,6 @@
 package com.videoclub.view;
 /*
 import com.videoclub.model.Formato;
-import com.videoclub.model.Pelicula;
 import com.videoclub.model.Plataforma;
 import com.videoclub.model.Videojuego;
 import com.videoclub.util.Serializador;

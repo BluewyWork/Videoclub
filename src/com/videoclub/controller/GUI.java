@@ -16,6 +16,8 @@ public class GUI implements ActionListener
 
 	private SocioController memberController;
 	private MultimediaController multimediaController;
+	private static IntroduccionView introduccionView;
+
 
 
 	public static void main(String[] args)
@@ -26,6 +28,8 @@ public class GUI implements ActionListener
 
 	public void run()
 	{
+		introduccionView = new IntroduccionView();
+
 		altasView = new AltasView();
 
 		altasView.getBtnAltaASocio().addActionListener(this);
@@ -42,10 +46,11 @@ public class GUI implements ActionListener
 
 		multimediaController = new MultimediaController();
 
-		MenuView menuView = new MenuView(altasView, alquilerView, devolverView, listarView);
+
+		MenuView menuView = new MenuView(introduccionView, altasView, alquilerView, devolverView, listarView);
 
 		menuView.setVisible(true);
-		menuView.setBounds(100, 100, 900, 900);
+		menuView.setBounds(250, 25, 1000, 780);
 	}
 
 	@Override
