@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
-public class AltaSocioView extends JFrame
+public class AltaSocioView extends JFrame implements ActionListener
 {
 	private JTextField txtNombre;
 	private JTextField txtNIF;
@@ -57,40 +57,37 @@ public class AltaSocioView extends JFrame
 		setVisible(true);
 
 		// Asignar el ActionListener al botón de guardar
-		btnGuardar.addActionListener(new ActionListener()
+		btnGuardar.addActionListener(this);
+}
+	public void actionPerformed(ActionEvent e)
+	{
+		// Obtener los datos ingresados por el usuario
+		String nif = txtNIF.getText();
+		String nombre = txtNombre.getText();
+		String fechaNacimientoText = txtFechaNacimiento.getText();
+		String poblacion = txtPoblacion.getText();
+
+		// Validar que los campos no estén vacíos
+		if (nif.isEmpty() || nombre.isEmpty() || fechaNacimientoText.isEmpty() || poblacion.isEmpty())
 		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				// Obtener los datos ingresados por el usuario
-				String nif = txtNIF.getText();
-				String nombre = txtNombre.getText();
-				String fechaNacimientoText = txtFechaNacimiento.getText();
-				String poblacion = txtPoblacion.getText();
-
-				// Validar que los campos no estén vacíos
-				if (nif.isEmpty() || nombre.isEmpty() || fechaNacimientoText.isEmpty() || poblacion.isEmpty())
-				{
-					JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos");
-					return;
-				}
+			JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos");
+			return;
+		}
 
 
-				// Llamar al método para agregar el socio en GestorSocioController
-				socioController = new SocioController();
-				socioController.registrarSocio(nif, nombre, fechaNacimientoText, poblacion);
+		// Llamar al método para agregar el socio en GestorSocioController
+		socioController = new SocioController();
+		socioController.registrarSocio(nif, nombre, fechaNacimientoText, poblacion);
 
-				// Mostrar un mensaje de éxito
-				JOptionPane.showMessageDialog(null, "Socio agregado correctamente");
+		// Mostrar un mensaje de éxito
+		JOptionPane.showMessageDialog(null, "Socio agregado correctamente");
 
-				// Limpiar los campos de texto
-				txtNIF.setText("");
-				txtNombre.setText("");
-				txtFechaNacimiento.setText("");
-				txtPoblacion.setText("");
-				//setDefaultCloseOperation(EXIT_ON_CLOSE);
-			}
-		});
+		// Limpiar los campos de texto
+		txtNIF.setText("");
+		txtNombre.setText("");
+		txtFechaNacimiento.setText("");
+		txtPoblacion.setText("");
+		//setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 }
 

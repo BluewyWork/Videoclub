@@ -9,6 +9,7 @@ public class ListarView extends JPanel
 		initComponents();
 	}
 
+
 	public void initComponents()
 	{
 

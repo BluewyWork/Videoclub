@@ -1,5 +1,5 @@
 package com.videoclub.view;
-
+/*
 import com.videoclub.model.Formato;
 import com.videoclub.model.Plataforma;
 import com.videoclub.model.Videojuego;
@@ -64,4 +64,4 @@ public class AltaVideojuegoView extends JPanel implements ActionListener
 		);
 		Serializador.serializar(videojuego, "videojuego.ser");
 	}
-}
+}*/

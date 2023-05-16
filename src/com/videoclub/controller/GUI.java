@@ -7,14 +7,18 @@ import java.awt.event.ActionListener;
 
 public class GUI implements ActionListener
 {
-	private static IntroduccionView introduccionView;
-	private static AltasView altasView;
-	private static AlquilerView alquilerView;
-	private static DevolverView devolverView;
-	private static ListarView listarView;
-	private static AltaSocioView altaSocioView;
+	private AltasView altasView;
+	private AlquilerView alquilerView;
+	private DevolverView devolverView;
+	private ListarView listarView;
+	private AltaSocioView altaSocioView;
+	private AltaPeliculaView altaPeliculaView;
 
-	private SocioController memberController = new SocioController();
+	private SocioController memberController;
+	private MultimediaController multimediaController;
+	private static IntroduccionView introduccionView;
+
+
 
 	public static void main(String[] args)
 	{
@@ -38,6 +42,11 @@ public class GUI implements ActionListener
 
 		listarView = new ListarView();
 
+		memberController = new SocioController();
+
+		multimediaController = new MultimediaController();
+
+
 		MenuView menuView = new MenuView(introduccionView, altasView, alquilerView, devolverView, listarView);
 
 		menuView.setVisible(true);
@@ -51,11 +60,11 @@ public class GUI implements ActionListener
 		{
 			//memberControllear.registrarMiembros("minecraft", "minecraft", "03/10/2003", "minecraft");
 			altaSocioView = new AltaSocioView(memberController);
-			memberController.registrarSocio("minecraft", "minecraft", "03/10/2003", "minecraft");
+			//memberController.registrarSocio("minecraft", "minecraft", "03/10/2003", "minecraft");
 		}
 		else if (e.getSource().equals(altasView.getBtnAltaPelicula()))
 		{
-
+			altaPeliculaView = new AltaPeliculaView(multimediaController);
 		}
 		else if (e.getSource().equals(altasView.getBtnAltaVideojuego()))
 		{
