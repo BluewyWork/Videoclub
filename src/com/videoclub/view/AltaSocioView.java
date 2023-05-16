@@ -20,6 +20,11 @@ public class AltaSocioView extends JFrame implements ActionListener
 
 	public AltaSocioView(SocioController socio)
 	{
+		initComponents();
+	}
+
+	public void initComponents()
+	{
 		// Configuración de la ventana
 		setTitle("Alta de Socio");
 		setSize(300, 200);
@@ -58,7 +63,7 @@ public class AltaSocioView extends JFrame implements ActionListener
 
 		// Asignar el ActionListener al botón de guardar
 		btnGuardar.addActionListener(this);
-}
+	}
 	public void actionPerformed(ActionEvent e)
 	{
 		// Obtener los datos ingresados por el usuario
