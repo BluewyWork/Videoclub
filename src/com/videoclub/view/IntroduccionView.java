@@ -11,6 +11,11 @@ public class IntroduccionView extends JPanel
 
 	public IntroduccionView()
 	{
+		initComponents();
+	}
+
+	public void initComponents()
+	{
 		lblHomePage = new JLabel();
 		lblHomePage.setIcon(new ImageIcon("ImagenPrincipal.jpg")); //Sets the image to be displayed as an icon
 		Dimension size = lblHomePage.getPreferredSize(); //Gets the size of the image

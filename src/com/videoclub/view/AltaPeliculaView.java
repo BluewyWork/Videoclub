@@ -19,10 +19,14 @@ public class AltaPeliculaView extends JPanel implements ActionListener
 	private JButton btnIniciar, btnDarAlta;
 	private JComboBox listFormato;
 	private SpinnerNumberModel modelAnyo, modelDuracion;
-
 	private MultimediaController multimediaController;
 
 	public AltaPeliculaView(MultimediaController multimedia)
+	{
+		initComponents();
+	}
+
+	public void initComponents()
 	{
 		multimediaController = new MultimediaController();
 

@@ -1,18 +1,26 @@
 package com.videoclub.view;
 
+import com.videoclub.controller.MultimediaController;
+import com.videoclub.controller.SocioController;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class AltasView extends JPanel
 {
+	SocioController socioController;
+	MultimediaController multimediaController;
 	private JTextArea txtAreaOutput;
 	private JScrollPane scrollPane;
 	private JButton btnAltaASocio;
 	private JButton btnAltaPelicula;
 	private JButton btnAltaVideojuego;
 
-	public AltasView()
+	public AltasView(SocioController socioController, MultimediaController multimediaController)
 	{
+		this.socioController = socioController;
+		this.multimediaController = multimediaController;
+
 		initComponents();
 	}
 

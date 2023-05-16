@@ -13,24 +13,27 @@ import java.awt.event.ActionListener;
 import java.util.Collections;
 import java.util.List;
 
-public class AlquilerView extends JFrame implements ActionListener
+public class AlquilerView extends JPanel implements ActionListener
 {
-
 	private JTextField nifTextField;
 	private JButton comprobarNifButton;
 	private JComboBox<String> comboBoxTitulos;
 	private JButton alquilarButton;
-
 	private MultimediaController multimediaController;
 	private AlquilerController alquilerController;
 	private SocioController socioController;
 
-	public AlquilerView()
+	public AlquilerView(SocioController sc, MultimediaController mc, AlquilerController ac)
 	{
-		comboBoxTitulos.setEnabled(false);
+		multimediaController = mc;
+		alquilerController = ac;
+		socioController = sc;
 
-		setTitle("Alquiler de Multimedia");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		initComponents();
+	}
+
+	public void initComponents()
+	{
 		setLayout(new BorderLayout());
 		setPreferredSize(new Dimension(400, 200));
 
@@ -44,6 +47,7 @@ public class AlquilerView extends JFrame implements ActionListener
 		// Panel central
 		JPanel tituloPanel = new JPanel();
 		comboBoxTitulos = new JComboBox<>();
+		comboBoxTitulos.setEnabled(false);
 		tituloPanel.add(new JLabel("Título:"));
 		tituloPanel.add(comboBoxTitulos);
 
@@ -57,9 +61,6 @@ public class AlquilerView extends JFrame implements ActionListener
 		add(tituloPanel, BorderLayout.CENTER);
 		add(alquilarPanel, BorderLayout.SOUTH);
 
-		pack();
-		setLocationRelativeTo(null); // Centrar la ventana en la pantalla
-
 		alquilarButton.addActionListener(this);
 		comprobarNifButton.addActionListener(this);
 	}
@@ -71,6 +72,7 @@ public class AlquilerView extends JFrame implements ActionListener
 
 		// Actualizar la lista de títulos disponibles en el combo box
 		comboBoxTitulos.removeAllItems();
+
 		for (String titulo : titulosDisponibles)
 		{
 			comboBoxTitulos.addItem(titulo);

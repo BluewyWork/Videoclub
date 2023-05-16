@@ -14,8 +14,9 @@ public class GUI implements ActionListener
 	private AltaSocioView altaSocioView;
 	private AltaPeliculaView altaPeliculaView;
 
-	private SocioController memberController;
+	private SocioController socioController;
 	private MultimediaController multimediaController;
+	private AlquilerController alquilerController;
 	private static IntroduccionView introduccionView;
 
 
@@ -28,24 +29,23 @@ public class GUI implements ActionListener
 
 	public void run()
 	{
-		introduccionView = new IntroduccionView();
+		socioController = new SocioController();
+		multimediaController = new MultimediaController();
+		alquilerController = new AlquilerController();
 
-		altasView = new AltasView();
-
+		altasView = new AltasView(socioController, multimediaController);
 		altasView.getBtnAltaASocio().addActionListener(this);
 		altasView.getBtnAltaPelicula().addActionListener(this);
 		altasView.getBtnAltaVideojuego().addActionListener(this);
 
-		alquilerView = new AlquilerView();
+		alquilerView = new AlquilerView(socioController, multimediaController, alquilerController);
 
-		devolverView = new DevolverView();
+		devolverView = new DevolverView(socioController, multimediaController, alquilerController);
 
-		listarView = new ListarView();
+		listarView = new ListarView(socioController, multimediaController, alquilerController);
 
-		memberController = new SocioController();
-
-		multimediaController = new MultimediaController();
-
+		// other panels
+		introduccionView = new IntroduccionView();
 
 		MenuView menuView = new MenuView(introduccionView, altasView, alquilerView, devolverView, listarView);
 
@@ -59,7 +59,7 @@ public class GUI implements ActionListener
 		if (e.getSource().equals(altasView.getBtnAltaASocio()))
 		{
 			//memberControllear.registrarMiembros("minecraft", "minecraft", "03/10/2003", "minecraft");
-			altaSocioView = new AltaSocioView(memberController);
+			altaSocioView = new AltaSocioView(socioController);
 			//memberController.registrarSocio("minecraft", "minecraft", "03/10/2003", "minecraft");
 		}
 		else if (e.getSource().equals(altasView.getBtnAltaPelicula()))
