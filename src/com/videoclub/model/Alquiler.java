@@ -61,6 +61,11 @@ public class Alquiler
 		this.deudaInicial = deudaInicial;
 	}
 
+	public void setDeudaFinal()
+	{
+		deudaFinal = calcularDeudaFinal();
+	}
+
 	public String getNif()
 	{
 		return nif;
