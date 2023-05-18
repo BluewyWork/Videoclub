@@ -104,6 +104,11 @@ public class AlquilerDAO
 		return listAlquileresSocio;
 	}
 
+	public ArrayList<String> listarTitulosAlquilerSocio(String nif)
+	{
+
+	}
+
 	public ArrayList<String> listarSocioRecargo()
 	{
 		ArrayList<String> listSocioRecargo = new ArrayList<>();
