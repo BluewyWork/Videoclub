@@ -55,6 +55,7 @@ public class MultimediaDAO
 		}
 	}
 
+	@Deprecated
 	public ArrayList<String> mostrarTituloMultimedia()
 	{
 		ArrayList<String> string = new ArrayList<>();
@@ -66,5 +67,25 @@ public class MultimediaDAO
 
 		return string;
 
+	}
+
+	public String[][] devolverListMultimedia()
+	{
+		int size = listMultimedia.size();
+		String[][] list = new String[size][5];
+
+		for (int x = 0; x < list.length; x++)
+		{
+			for (Multimedia multimedia : listMultimedia)
+			{
+				list[x][0] = multimedia.getTitulo();
+				list[x][1] = multimedia.getAutor();
+				list[x][2] = multimedia.getFormat().name();
+				list[x][3] = String.valueOf(multimedia.getAnio());
+				list[x][4] = String.valueOf(multimedia.getPrecioTotalAlquiler());
+			}
+		}
+
+		return list;
 	}
 }

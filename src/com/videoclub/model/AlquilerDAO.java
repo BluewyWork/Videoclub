@@ -132,6 +132,8 @@ public class AlquilerDAO
 		}
 		return listSocioRecargo;
 	}
+
+	@Deprecated
 	public int [] recuperarIdAlquiler(String nif)
 	{
 		int xd = encontrarAlquiler(nif).size();
@@ -147,16 +149,20 @@ public class AlquilerDAO
 
 	public String[][] obtenerAlquileres(String nif) {
 		List<Alquiler> alquileres = encontrarAlquiler(nif);
-		int tamaño = alquileres.size();
+		int tamanio = alquileres.size();
 
-		String[][] matriz = new String[tamaño][4];
+		String[][] matriz = new String[tamanio][4];
 
-		for (int i = 0; i < tamaño; i++) {
-			Alquiler alquiler = alquileres.get(i);
-			matriz[i][0] = String.valueOf(alquiler.getContador());
-			matriz[i][1] = alquiler.getNif();
-			matriz[i][2] = alquiler.getMultimedia().getTitulo();
-			matriz[i][3] = alquiler.getMultimedia().getAutor();
+		for (int i = 0; i < tamanio; i++)
+		{
+			for (Alquiler alquiler : listAlquiler)
+			{
+				matriz[i][0] = String.valueOf(alquiler.getContador());
+				matriz[i][1] = alquiler.getNif();
+				matriz[i][2] = alquiler.getMultimedia().getTitulo();
+				matriz[i][3] = alquiler.getMultimedia().getAutor();
+			}
+
 		}
 
 		return matriz;

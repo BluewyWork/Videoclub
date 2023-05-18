@@ -52,7 +52,29 @@ public class MultimediaController
 	{
 		return multimediaDAO.toString();
 	}
-	public ArrayList<String> mostrarTituloMultimedia(){
+	public ArrayList<String> mostrarTituloMultimedia()
+	{
 		return multimediaDAO.mostrarTituloMultimedia();
+	}
+
+	public ArrayList<String> infoMultimedias()
+	{
+		ArrayList<String> strings = new ArrayList<>();
+		String[][] strings2 = multimediaDAO.devolverListMultimedia();
+
+		for (int x = 0; x < strings2.length; x++)
+		{
+			String var = strings2[x][0];
+			String var2 = strings2[x][1];
+			String var3 = strings2[x][2];
+			String var4 = strings2[x][3];
+			String var5 = strings2[x][4];
+
+			String join = var + var2 + var3 + var4 + var5;
+
+			strings.add(join);
+		}
+
+		return strings;
 	}
 }

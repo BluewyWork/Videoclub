@@ -70,7 +70,7 @@ public class DevolverView extends JPanel implements ActionListener
 	public void actualizarInterfazGrafica()
 	{
 		// Obtener la lista de títulos desde el gestor de multimedia
-		ArrayList<String> titulosDisponibles = alquilerController.randomList(niftextField.getText());
+		ArrayList<String> titulosDisponibles = alquilerController.devolverStringAlquileres(niftextField.getText());
 
 		// Actualizar la lista de títulos disponibles en el combo box
 		comboBoxTitulos.removeAllItems();

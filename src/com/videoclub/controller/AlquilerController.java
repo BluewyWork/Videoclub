@@ -15,8 +15,6 @@ public class AlquilerController
 		alquilerDAO = new AlquilerDAO();
 	}
 
-	// using clever techniques to retrieve desired amount of
-	// multimedia and pass it as an argument
 	public void alquilarMultimedia(String memberNIF, Multimedia multimedia)
 	{
 		if (!alquilerDAO.pagosPendientes(memberNIF))
@@ -39,30 +37,39 @@ public class AlquilerController
 		return alquiler;
 	}
 
+	@Deprecated
 	public String mostrarAlquileres()
 	{
 		return alquilerDAO.toString();
 	}
+
+	@Deprecated
 	public ArrayList<String> listarTitulosAlquilerSocio(String nif){
 		return alquilerDAO.listarTitulosAlquilerSocio(nif);
 	}
+
+	@Deprecated
 	public int [] encontrarALquiler(String memberNif){
 		return alquilerDAO.recuperarIdAlquiler(memberNif);
 	}
+
+	@Deprecated
 	public String [][] obtenerAlquileresMatriz(String nif){
 		return alquilerDAO.obtenerAlquileres(nif);
 	}
 
-	public ArrayList<String> randomList(String nif)
+	public ArrayList<String> devolverStringAlquileres(String nif)
 	{
 		ArrayList<String> random2List = new ArrayList<>();
 
-		String [][] matriz = obtenerAlquileresMatriz(nif);
+		String [][] matriz = alquilerDAO.obtenerAlquileres(nif);
 
-		for (int i = 0; i <  matriz.length; i++){
+		for (int i = 0; i <  matriz.length; i++)
+		{
 			String contador = matriz[i][0];
 			String titulo = matriz[i][1];
 			String con = contador + titulo;
+
 			random2List.add(con);
 		}
 

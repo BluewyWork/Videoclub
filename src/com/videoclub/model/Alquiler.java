@@ -33,13 +33,15 @@ public class Alquiler
 	@Override
 	public String toString()
 	{
-		StringBuilder text = new StringBuilder();
-
-		text.append("ID: ").append(contador).append("\n\n");
-
-		text.append(multimedia.toString()).append("\n\n");
-
-		return text.toString();
+		return "Alquiler{" +
+				"contador=" + contador +
+				", nif='" + nif + '\'' +
+				", multimedia=" + multimedia +
+				", deudaInicial=" + deudaInicial +
+				", deudaFinal=" + deudaFinal +
+				", fechaAlquiler=" + fechaAlquiler +
+				", fechaDevolucion=" + fechaDevolucion +
+				'}';
 	}
 
 	public String listaAlquileres()
