@@ -103,4 +103,18 @@ public class AlquilerDAO
 		}
 		return listAlquileresSocio;
 	}
+
+	public ArrayList<String> listarSocioRecargo()
+	{
+		ArrayList<String> listSocioRecargo = new ArrayList<>();
+
+		for (Alquiler alquiler : listAlquiler)
+		{
+			if (alquiler.esAtrasado())
+			{
+				listSocioRecargo.add(alquiler.getNif());
+			}
+		}
+		return listSocioRecargo;
+	}
 }
