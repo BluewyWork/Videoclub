@@ -4,6 +4,8 @@ import com.videoclub.model.Alquiler;
 import com.videoclub.model.AlquilerDAO;
 import com.videoclub.model.Multimedia;
 
+import java.util.ArrayList;
+
 public class AlquilerController
 {
 	private AlquilerDAO alquilerDAO;
@@ -41,4 +43,6 @@ public class AlquilerController
 	{
 		return alquilerDAO.toString();
 	}
+
+
 }

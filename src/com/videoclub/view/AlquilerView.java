@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -68,8 +69,7 @@ public class AlquilerView extends JPanel implements ActionListener
 	public void actualizarInterfazGrafica()
 	{
 		// Obtener la lista de títulos desde el gestor de multimedia
-		List<String> titulosDisponibles = Collections.singletonList(multimediaController.mostrarTituloMultimedia());
-
+		ArrayList<String> titulosDisponibles = multimediaController.mostrarTituloMultimedia();
 		// Actualizar la lista de títulos disponibles en el combo box
 		comboBoxTitulos.removeAllItems();
 

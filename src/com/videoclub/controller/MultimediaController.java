@@ -5,6 +5,8 @@ import com.videoclub.model.MultimediaDAO;
 import com.videoclub.model.Pelicula;
 import com.videoclub.model.Videojuego;
 
+import java.util.ArrayList;
+
 public class MultimediaController
 {
 	MultimediaDAO multimediaDAO;
@@ -50,8 +52,35 @@ public class MultimediaController
 	{
 		return multimediaDAO.toString();
 	}
-	public String mostrarTituloMultimedia(){
+	public ArrayList<String> mostrarTituloMultimedia(){
 		return multimediaDAO.mostrarTituloMultimedia();
 	}
 
+	public ArrayList<String> listarAlquileresSocio(String nif)
+	{
+		ArrayList<String> listAlquileresSocio = new ArrayList<>();
+
+		for (Alquiler alquiler : arrayListMultimediaAlquilada)
+		{
+			if (alquiler.getMySocio().getNif().equals(nif))
+			{
+				listAlquileresSocio.add(alquiler.toString());
+			}
+		}
+		return listAlquileresSocio;
+	}
+
+	public ArrayList<String> listarSocioRecargo()
+	{
+		ArrayList<String> listSocioRecargo = new ArrayList<>();
+
+		for (Alquiler alquiler : arrayListMultimediaAlquilada)
+		{
+			if (alquiler.isDeuda())
+			{
+				listSocioRecargo.add(alquiler.getMySocio().toString());
+			}
+		}
+		return listSocioRecargo;
+	}
 }
