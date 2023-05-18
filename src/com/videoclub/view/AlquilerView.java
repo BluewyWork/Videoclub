@@ -69,7 +69,7 @@ public class AlquilerView extends JPanel implements ActionListener
 	public void actualizarInterfazGrafica()
 	{
 		// Obtener la lista de títulos desde el gestor de multimedia
-		ArrayList<String> titulosDisponibles = multimediaController.mostrarTituloMultimedia();
+		ArrayList<String> titulosDisponibles = multimediaController.multimediasDisponiblesID();
 		// Actualizar la lista de títulos disponibles en el combo box
 		comboBoxTitulos.removeAllItems();
 

@@ -37,42 +37,8 @@ public class AlquilerController
 		return alquiler;
 	}
 
-	@Deprecated
-	public String mostrarAlquileres()
+	public String[][] alquileresDeSocio(String nif)
 	{
-		return alquilerDAO.toString();
-	}
-
-	@Deprecated
-	public ArrayList<String> listarTitulosAlquilerSocio(String nif){
-		return alquilerDAO.listarTitulosAlquilerSocio(nif);
-	}
-
-	@Deprecated
-	public int [] encontrarALquiler(String memberNif){
-		return alquilerDAO.recuperarIdAlquiler(memberNif);
-	}
-
-	@Deprecated
-	public String [][] obtenerAlquileresMatriz(String nif){
 		return alquilerDAO.obtenerAlquileres(nif);
-	}
-
-	public ArrayList<String> devolverStringAlquileres(String nif)
-	{
-		ArrayList<String> random2List = new ArrayList<>();
-
-		String [][] matriz = alquilerDAO.obtenerAlquileres(nif);
-
-		for (int i = 0; i <  matriz.length; i++)
-		{
-			String contador = matriz[i][0];
-			String titulo = matriz[i][1];
-			String con = contador + titulo;
-
-			random2List.add(con);
-		}
-
-		return random2List;
 	}
 }

@@ -3,15 +3,12 @@ package com.videoclub.view;
 import com.videoclub.controller.AlquilerController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
-import com.videoclub.model.Alquiler;
-import com.videoclub.model.Multimedia;
 import com.videoclub.model.Socio;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class DevolverView extends JPanel implements ActionListener
 {
@@ -67,17 +64,12 @@ public class DevolverView extends JPanel implements ActionListener
 		comprobarNifButton.addActionListener(this);
 	}
 
-	public void actualizarInterfazGrafica()
+	public void multimediasAlquiladasASocio()
 	{
-		// Obtener la lista de títulos desde el gestor de multimedia
-		ArrayList<String> titulosDisponibles = alquilerController.devolverStringAlquileres(niftextField.getText());
-
-		// Actualizar la lista de títulos disponibles en el combo box
-		comboBoxTitulos.removeAllItems();
-
-		for (String titulo : titulosDisponibles)
+		String[][] multimediaTenerSocio = alquilerController.alquileresDeSocio(niftextField.getText());
+		for (String[] multimedia : multimediaTenerSocio)
 		{
-			comboBoxTitulos.addItem(titulo);
+			comboBoxTitulos.addItem(multimedia[2]);
 		}
 	}
 
@@ -85,39 +77,29 @@ public class DevolverView extends JPanel implements ActionListener
 	{
 		if (e.getSource() == devolverButton)
 		{
-			//int id = Integer.parseInt(idNumericField.getText());
-			String tituloAutor = comboBoxTitulos.getSelectedItem().toString();
-			String[] partes = tituloAutor.split("\\|\\|");
-			String id = partes[0].trim();
-			//String titulo = partes[1].trim();
+			String[][] titulosDisponibles = alquilerController.alquileresDeSocio(niftextField.getText());
+
+			int getSelectedIndex = comboBoxTitulos.getSelectedIndex();
+			String id = titulosDisponibles[getSelectedIndex][0];
 
 			alquilerController.delvolverAlquiler(Integer.parseInt(id));
 
-			// Realizar la lógica de alquiler del multimedia al socio
-			// Socio socio = socioController.encontrarSocio(nifTextField.getText());
-			// alquilerController.delvolverAlquiler(id);
-
-			// Mostrar mensaje de éxito
 			JOptionPane.showMessageDialog(null, "Multimedia alquilada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 		}
 		if (e.getSource() == comprobarNifButton)
 		{
-
 			comboBoxTitulos.setEnabled(true);
 
 			String nif = niftextField.getText();
 
-			// Utiliza el gestor de socios para buscar el socio por el NIF
 			Socio socio = socioController.encontrarSocio(nif);
 
 			if (socio != null)
 			{
-				// El socio existe, mostrar las multimedia disponibles
-				actualizarInterfazGrafica();
+				multimediasAlquiladasASocio();
 			}
 			else
 			{
-				// El socio no existe, mostrar mensaje de error
 				JOptionPane.showMessageDialog(null, "NIF no válido", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
