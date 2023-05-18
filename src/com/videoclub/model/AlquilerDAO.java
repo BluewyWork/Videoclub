@@ -106,7 +106,16 @@ public class AlquilerDAO
 
 	public ArrayList<String> listarTitulosAlquilerSocio(String nif)
 	{
+		ArrayList<String> listAlquileresSocio = new ArrayList<>();
 
+		for (Alquiler alquiler : listAlquiler)
+		{
+			if (alquiler.getNif().equals(nif))
+			{
+				listAlquileresSocio.add(alquiler.listaAlquileres());
+			}
+		}
+		return listAlquileresSocio;
 	}
 
 	public ArrayList<String> listarSocioRecargo()
@@ -121,5 +130,17 @@ public class AlquilerDAO
 			}
 		}
 		return listSocioRecargo;
+	}
+	public int [] recuperarIdAlquiler(String nif)
+	{
+		int xd = encontrarAlquiler(nif).size();
+		int [] ids = new int[xd];
+
+		ArrayList<Alquiler> alquileres = encontrarAlquiler(nif);
+		for (int i = 0; i < alquileres.size(); i++)
+		{
+			ids [i] = alquileres.get(i).getContador();
+		}
+		return ids;
 	}
 }

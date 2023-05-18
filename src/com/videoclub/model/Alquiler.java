@@ -42,6 +42,17 @@ public class Alquiler
 		return text.toString();
 	}
 
+	public String listaAlquileres()
+	{
+		StringBuilder text = new StringBuilder();
+
+		text.append(contador).append("||").append(text.append(multimedia.getTitulo()).append("\n\n"));
+
+
+
+		return text.toString();
+	}
+
 	public LocalDate getFechaAlquiler()
 	{
 		return fechaAlquiler;

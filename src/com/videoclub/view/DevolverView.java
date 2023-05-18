@@ -70,7 +70,7 @@ public class DevolverView extends JPanel implements ActionListener
 	public void actualizarInterfazGrafica()
 	{
 		// Obtener la lista de títulos desde el gestor de multimedia
-		ArrayList<String> titulosDisponibles = alquilerController.mostrarAlquileres();
+		ArrayList<String> titulosDisponibles = alquilerController.listarTitulosAlquilerSocio(niftextField.getText());
 
 		// Actualizar la lista de títulos disponibles en el combo box
 		comboBoxTitulos.removeAllItems();
@@ -85,13 +85,18 @@ public class DevolverView extends JPanel implements ActionListener
 	{
 		if (e.getSource() == devolverButton)
 		{
-			int id = Integer.parseInt(idNumericField.getText());
+			//int id = Integer.parseInt(idNumericField.getText());
+			String tituloAutor = comboBoxTitulos.getSelectedItem().toString();
+			String[] partes = tituloAutor.split("\\|\\|");
+			String id = partes[0].trim();
+			//String titulo = partes[1].trim();
 
-			Alquiler alquiler = alquilerController.delvolverAlquiler(id);
+
+			alquilerController.delvolverAlquiler(Integer.parseInt(id));
 
 			// Realizar la lógica de alquiler del multimedia al socio
 			//Socio socio = socioController.encontrarSocio(nifTextField.getText());
-			alquilerController.delvolverAlquiler(id);
+			//alquilerController.delvolverAlquiler(id);
 
 			// Mostrar mensaje de éxito
 			JOptionPane.showMessageDialog(null, "Multimedia alquilada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -101,7 +106,7 @@ public class DevolverView extends JPanel implements ActionListener
 
 			comboBoxTitulos.setEnabled(true);
 
-			String nif = idNumericField.getText();
+			String nif = niftextField.getText();
 
 			// Utiliza el gestor de socios para buscar el socio por el NIF
 			Socio socio = socioController.encontrarSocio(nif);

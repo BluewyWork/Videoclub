@@ -20,8 +20,6 @@ public class GUI implements ActionListener
 	private AlquilerController alquilerController;
 	private static IntroduccionView introduccionView;
 
-
-
 	public static void main(String[] args)
 	{
 		GUI gui = new GUI();
