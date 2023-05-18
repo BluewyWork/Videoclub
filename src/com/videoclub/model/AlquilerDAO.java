@@ -149,15 +149,16 @@ public class AlquilerDAO
 		List<Alquiler> alquileres = encontrarAlquiler(nif);
 		int tamaño = alquileres.size();
 
-		String[][] matriz = new String[tamaño][2];
+		String[][] matriz = new String[tamaño][4];
 
 		for (int i = 0; i < tamaño; i++) {
 			Alquiler alquiler = alquileres.get(i);
 			matriz[i][0] = String.valueOf(alquiler.getContador());
-			matriz[i][1] = alquiler.listaAlquileres();
+			matriz[i][1] = alquiler.getNif();
+			matriz[i][2] = alquiler.getMultimedia().getTitulo();
+			matriz[i][3] = alquiler.getMultimedia().getAutor();
 		}
 
 		return matriz;
 	}
-
 }
