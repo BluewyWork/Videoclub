@@ -1,6 +1,7 @@
 package com.videoclub.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class AlquilerDAO
@@ -133,20 +134,20 @@ public class AlquilerDAO
 		return listSocioRecargo;
 	}
 
-	@Deprecated
-	public int [] recuperarIdAlquiler(String nif)
+	// Hash map version
+	public HashMap<Integer, Multimedia> test()
 	{
-		int xd = encontrarAlquiler(nif).size();
-		int [] ids = new int[xd];
+		HashMap<Integer, Multimedia> hashMap = new HashMap<>();
 
-		ArrayList<Alquiler> alquileres = encontrarAlquiler(nif);
-		for (int i = 0; i < alquileres.size(); i++)
+		for (Alquiler alquiler : listAlquiler)
 		{
-			ids [i] = alquileres.get(i).getContador();
+			hashMap.put(alquiler.getContador(), alquiler.getMultimedia());
 		}
-		return ids;
+
+		return hashMap;
 	}
 
+	// using 2d
 	public String[][] obtenerAlquileres(String nif) {
 		List<Alquiler> alquileres = encontrarAlquiler(nif);
 		int tamanio = alquileres.size();

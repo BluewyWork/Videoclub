@@ -3,12 +3,14 @@ package com.videoclub.view;
 import com.videoclub.controller.AlquilerController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
+import com.videoclub.model.Multimedia;
 import com.videoclub.model.Socio;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 public class DevolverView extends JPanel implements ActionListener
 {
@@ -66,10 +68,16 @@ public class DevolverView extends JPanel implements ActionListener
 
 	public void multimediasAlquiladasASocio()
 	{
-		String[][] multimediaTenerSocio = alquilerController.alquileresDeSocio(niftextField.getText());
-		for (String[] multimedia : multimediaTenerSocio)
-		{
-			comboBoxTitulos.addItem(multimedia[2]);
+//		String[][] multimediaTenerSocio = alquilerController.alquileresDeSocio(niftextField.getText());
+//		for (String[] multimedia : multimediaTenerSocio)
+//		{
+//			comboBoxTitulos.addItem(multimedia[2]);
+//		}
+
+		HashMap<Integer, Multimedia> hashMap = alquilerController.test();
+
+		for (Multimedia multimedia : hashMap.values()) {
+			comboBoxTitulos.addItem(multimedia.getTitulo());
 		}
 	}
 
@@ -77,12 +85,16 @@ public class DevolverView extends JPanel implements ActionListener
 	{
 		if (e.getSource() == devolverButton)
 		{
-			String[][] titulosDisponibles = alquilerController.alquileresDeSocio(niftextField.getText());
+//			String[][] titulosDisponibles = alquilerController.alquileresDeSocio(niftextField.getText());
+//
+//			int getSelectedIndex = comboBoxTitulos.getSelectedIndex();
+//			String id = titulosDisponibles[getSelectedIndex][0];
+//
+//			alquilerController.delvolverAlquiler(Integer.parseInt(id));
 
-			int getSelectedIndex = comboBoxTitulos.getSelectedIndex();
-			String id = titulosDisponibles[getSelectedIndex][0];
+			HashMap<Integer, Multimedia> hashMap = alquilerController.test();
 
-			alquilerController.delvolverAlquiler(Integer.parseInt(id));
+			int id = comboBoxTitulos.getSelectedIndex();
 
 			JOptionPane.showMessageDialog(null, "Multimedia alquilada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 		}
