@@ -1,6 +1,8 @@
 package com.videoclub.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class MultimediaDAO
 {
@@ -22,6 +24,11 @@ public class MultimediaDAO
 		}
 
 		return txt.toString();
+	}
+
+	public ArrayList<Multimedia> getListMultimedia()
+	{
+		return listMultimedia;
 	}
 
 	public Multimedia encontrarMultimedia(String title, String author)
@@ -55,37 +62,19 @@ public class MultimediaDAO
 		}
 	}
 
-	@Deprecated
-	public ArrayList<String> mostrarTituloMultimedia()
+	public HashMap<Integer, Multimedia> test()
 	{
-		ArrayList<String> string = new ArrayList<>();
+		HashMap<Integer, Multimedia> hashMap = new HashMap<>();
 
+		int x = 0;
 		for (Multimedia multimedia : listMultimedia)
 		{
-			string.add(multimedia.getTitulo() + "||" + multimedia.getAutor());
+
+			hashMap.put(x, multimedia);
+			x++;
 		}
 
-		return string;
-
+		return hashMap;
 	}
 
-	public String[][] devolverListMultimedia()
-	{
-		int size = listMultimedia.size();
-		String[][] list = new String[size][5];
-
-		for (int x = 0; x < list.length; x++)
-		{
-			for (Multimedia multimedia : listMultimedia)
-			{
-				list[x][0] = multimedia.getTitulo();
-				list[x][1] = multimedia.getAutor();
-				list[x][2] = multimedia.getFormat().name();
-				list[x][3] = String.valueOf(multimedia.getAnio());
-				list[x][4] = String.valueOf(multimedia.getPrecioTotalAlquiler());
-			}
-		}
-
-		return list;
-	}
 }

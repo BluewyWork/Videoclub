@@ -4,7 +4,6 @@ import com.videoclub.model.Alquiler;
 import com.videoclub.model.AlquilerDAO;
 import com.videoclub.model.Multimedia;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AlquilerController
@@ -38,12 +37,8 @@ public class AlquilerController
 		return alquiler;
 	}
 
-	public HashMap<Integer, Multimedia> test()
+	public HashMap<Integer, Multimedia> alquileresDeSocio(String nif)
 	{
-		return alquilerDAO.test();
-	}
-	public String[][] alquileresDeSocio(String nif)
-	{
-		return alquilerDAO.obtenerAlquileres(nif);
+		return alquilerDAO.test(nif);
 	}
 }

@@ -135,37 +135,16 @@ public class AlquilerDAO
 	}
 
 	// Hash map version
-	public HashMap<Integer, Multimedia> test()
+	public HashMap<Integer, Multimedia> test(String nif)
 	{
+		List<Alquiler> alquileresDeSocio = encontrarAlquiler(nif);
 		HashMap<Integer, Multimedia> hashMap = new HashMap<>();
 
-		for (Alquiler alquiler : listAlquiler)
+		for (Alquiler alquiler : alquileresDeSocio)
 		{
 			hashMap.put(alquiler.getContador(), alquiler.getMultimedia());
 		}
 
 		return hashMap;
-	}
-
-	// using 2d
-	public String[][] obtenerAlquileres(String nif) {
-		List<Alquiler> alquileres = encontrarAlquiler(nif);
-		int tamanio = alquileres.size();
-
-		String[][] matriz = new String[tamanio][4];
-
-		for (int i = 0; i < tamanio; i++)
-		{
-			for (Alquiler alquiler : listAlquiler)
-			{
-				matriz[i][0] = String.valueOf(alquiler.getContador());
-				matriz[i][1] = alquiler.getNif();
-				matriz[i][2] = alquiler.getMultimedia().getTitulo();
-				matriz[i][3] = alquiler.getMultimedia().getAutor();
-			}
-
-		}
-
-		return matriz;
 	}
 }

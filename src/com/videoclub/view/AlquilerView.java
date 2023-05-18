@@ -3,6 +3,7 @@ package com.videoclub.view;
 import com.videoclub.controller.AlquilerController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
+import com.videoclub.model.Alquiler;
 import com.videoclub.model.Multimedia;
 import com.videoclub.model.Socio;
 
@@ -12,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class AlquilerView extends JPanel implements ActionListener
@@ -69,13 +71,11 @@ public class AlquilerView extends JPanel implements ActionListener
 	public void actualizarInterfazGrafica()
 	{
 		// Obtener la lista de títulos desde el gestor de multimedia
-		ArrayList<String> titulosDisponibles = multimediaController.multimediasDisponiblesID();
-		// Actualizar la lista de títulos disponibles en el combo box
-		comboBoxTitulos.removeAllItems();
+		HashMap<Integer, Multimedia> hashMap = multimediaController.test();
 
-		for (String titulo : titulosDisponibles)
+		for (Multimedia multimedia : hashMap.values())
 		{
-			comboBoxTitulos.addItem(titulo);
+			comboBoxTitulos.addItem(multimedia.getTitulo());
 		}
 	}
 
@@ -84,10 +84,10 @@ public class AlquilerView extends JPanel implements ActionListener
 	{
 		if (e.getSource() == alquilarButton)
 		{
-			String tituloAutor = comboBoxTitulos.getSelectedItem().toString();
-			String[] partes = tituloAutor.split("\\|\\|");
-			String titulo = partes[0].trim();
-			String autor = partes[1].trim();
+			HashMap<Integer, Multimedia> hashMap = multimediaController.test();
+			int index = comboBoxTitulos.getSelectedIndex();
+			String titulo = hashMap.get(index).getTitulo();
+			String autor = hashMap.get(index).getAutor();
 
 			Multimedia multimedia = multimediaController.recuperarMultimedias(titulo, autor);
 

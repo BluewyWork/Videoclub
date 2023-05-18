@@ -68,13 +68,7 @@ public class DevolverView extends JPanel implements ActionListener
 
 	public void multimediasAlquiladasASocio()
 	{
-//		String[][] multimediaTenerSocio = alquilerController.alquileresDeSocio(niftextField.getText());
-//		for (String[] multimedia : multimediaTenerSocio)
-//		{
-//			comboBoxTitulos.addItem(multimedia[2]);
-//		}
-
-		HashMap<Integer, Multimedia> hashMap = alquilerController.test();
+		HashMap<Integer, Multimedia> hashMap = alquilerController.alquileresDeSocio(niftextField.getText());
 
 		for (Multimedia multimedia : hashMap.values()) {
 			comboBoxTitulos.addItem(multimedia.getTitulo());
@@ -85,14 +79,7 @@ public class DevolverView extends JPanel implements ActionListener
 	{
 		if (e.getSource() == devolverButton)
 		{
-//			String[][] titulosDisponibles = alquilerController.alquileresDeSocio(niftextField.getText());
-//
-//			int getSelectedIndex = comboBoxTitulos.getSelectedIndex();
-//			String id = titulosDisponibles[getSelectedIndex][0];
-//
-//			alquilerController.delvolverAlquiler(Integer.parseInt(id));
-
-			HashMap<Integer, Multimedia> hashMap = alquilerController.test();
+			HashMap<Integer, Multimedia> hashMap = alquilerController.alquileresDeSocio(niftextField.getText());
 
 			int id = comboBoxTitulos.getSelectedIndex();
 

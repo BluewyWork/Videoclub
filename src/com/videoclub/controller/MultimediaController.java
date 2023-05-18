@@ -6,6 +6,7 @@ import com.videoclub.model.Pelicula;
 import com.videoclub.model.Videojuego;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MultimediaController
 {
@@ -14,6 +15,11 @@ public class MultimediaController
 	public MultimediaController()
 	{
 		multimediaDAO = new MultimediaDAO();
+	}
+
+	public MultimediaDAO getMultimediaDAO()
+	{
+		return multimediaDAO;
 	}
 
 	public void altaPelicula(String title, String author, String format, int year, int duration, String maleLead, String femaleLead)
@@ -52,47 +58,9 @@ public class MultimediaController
 	{
 		return multimediaDAO.toString();
 	}
-	public ArrayList<String> mostrarTituloMultimedia()
+
+	public HashMap<Integer, Multimedia> test()
 	{
-		return multimediaDAO.mostrarTituloMultimedia();
-	}
-
-	public ArrayList<String> multimediasDisponibles()
-	{
-		ArrayList<String> strings = new ArrayList<>();
-		String[][] strings2 = multimediaDAO.devolverListMultimedia();
-
-		for (int x = 0; x < strings2.length; x++)
-		{
-			String var = strings2[x][0];
-			String var2 = strings2[x][1];
-			String var3 = strings2[x][2];
-			String var4 = strings2[x][3];
-			String var5 = strings2[x][4];
-
-			String join = var + var2 + var3 + var4 + var5;
-
-			strings.add(join);
-		}
-
-		return strings;
-	}
-
-	public ArrayList<String> multimediasDisponiblesID()
-	{
-		ArrayList<String> strings = new ArrayList<>();
-		String[][] strings2 = multimediaDAO.devolverListMultimedia();
-
-		for (int x = 0; x < strings2.length; x++)
-		{
-			String var = strings2[x][0];
-			String var2 = strings2[x][1];
-
-			String join = var + "||" +  var2;
-
-			strings.add(join);
-		}
-
-		return strings;
+		return multimediaDAO.test();
 	}
 }
