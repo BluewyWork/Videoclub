@@ -91,8 +91,12 @@ public class DevolverView extends JPanel implements ActionListener
 			String id = partes[0].trim();
 			//String titulo = partes[1].trim();
 
-
 			alquilerController.delvolverAlquiler(Integer.parseInt(id));
+			String [][] matriz = alquilerController.obtenerAlquileresMatriz(niftextField.getText());
+
+			for (int i = 0; i <  matriz.length; i++){
+				String contador = matriz[]
+			}
 
 			// Realizar la lógica de alquiler del multimedia al socio
 			//Socio socio = socioController.encontrarSocio(nifTextField.getText());
