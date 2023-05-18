@@ -43,6 +43,12 @@ public class AlquilerController
 	{
 		return alquilerDAO.toString();
 	}
+	public ArrayList<String> listarTitulosAlquilerSocio(String nif){
+		return alquilerDAO.listarTitulosAlquilerSocio(nif);
+	}
+	public int [] encontrarALquiler(String memberNif){
+		return alquilerDAO.recuperarIdAlquiler(memberNif);
+	}
 
 
 }
