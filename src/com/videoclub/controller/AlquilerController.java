@@ -49,6 +49,9 @@ public class AlquilerController
 	public int [] encontrarALquiler(String memberNif){
 		return alquilerDAO.recuperarIdAlquiler(memberNif);
 	}
+	public String [][] obtenerAlquileresMatriz(String nif){
+		return alquilerDAO.obtenerAlquileres(nif);
+	}
 
 
 }

@@ -1,6 +1,7 @@
 package com.videoclub.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AlquilerDAO
 {
@@ -143,4 +144,20 @@ public class AlquilerDAO
 		}
 		return ids;
 	}
+
+	public String[][] obtenerAlquileres(String nif) {
+		List<Alquiler> alquileres = encontrarAlquiler(nif);
+		int tamaño = alquileres.size();
+
+		String[][] matriz = new String[tamaño][2];
+
+		for (int i = 0; i < tamaño; i++) {
+			Alquiler alquiler = alquileres.get(i);
+			matriz[i][0] = String.valueOf(alquiler.getContador());
+			matriz[i][1] = alquiler.listaAlquileres();
+		}
+
+		return matriz;
+	}
+
 }

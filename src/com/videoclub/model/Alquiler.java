@@ -48,8 +48,6 @@ public class Alquiler
 
 		text.append(contador).append("||").append(text.append(multimedia.getTitulo()).append("\n\n"));
 
-
-
 		return text.toString();
 	}
 
