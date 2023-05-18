@@ -67,20 +67,4 @@ public class MultimediaDAO
 		return string;
 
 	}
-
-
-
-	public ArrayList<String> listarSocioRecargo()
-	{
-		ArrayList<String> listSocioRecargo = new ArrayList<>();
-
-		for (Alquiler alquiler : arrayListMultimediaAlquilada)
-		{
-			if (alquiler.isDeuda())
-			{
-				listSocioRecargo.add(alquiler.getMySocio().toString());
-			}
-		}
-		return listSocioRecargo;
-	}
 }

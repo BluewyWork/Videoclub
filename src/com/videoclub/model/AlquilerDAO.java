@@ -94,9 +94,9 @@ public class AlquilerDAO
 	{
 		ArrayList<String> listAlquileresSocio = new ArrayList<>();
 
-		for (Alquiler alquiler : arrayListMultimediaAlquilada)
+		for (Alquiler alquiler : listAlquiler)
 		{
-			if (alquiler.getMySocio().getNif().equals(nif))
+			if (alquiler.getNif().equals(nif))
 			{
 				listAlquileresSocio.add(alquiler.toString());
 			}
