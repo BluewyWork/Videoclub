@@ -55,16 +55,32 @@ public class MultimediaDAO
 		}
 	}
 
-	public String mostrarTituloMultimedia()
+	public ArrayList<String> mostrarTituloMultimedia()
 	{
-		StringBuilder txt = new StringBuilder();
+		ArrayList<String> string = new ArrayList<>();
 
 		for (Multimedia multimedia : listMultimedia)
 		{
-			txt.append(multimedia.getTitulo() + "||" + multimedia.getAutor()).append("\n\n");
+			string.add(multimedia.getTitulo() + "||" + multimedia.getAutor());
 		}
 
-		return txt.toString();
+		return string;
 
+	}
+
+
+
+	public ArrayList<String> listarSocioRecargo()
+	{
+		ArrayList<String> listSocioRecargo = new ArrayList<>();
+
+		for (Alquiler alquiler : arrayListMultimediaAlquilada)
+		{
+			if (alquiler.isDeuda())
+			{
+				listSocioRecargo.add(alquiler.getMySocio().toString());
+			}
+		}
+		return listSocioRecargo;
 	}
 }

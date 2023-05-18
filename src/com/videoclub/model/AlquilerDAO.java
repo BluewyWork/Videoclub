@@ -89,4 +89,18 @@ public class AlquilerDAO
 
 		return pendingPayments;
 	}
+
+	public ArrayList<String> listarAlquileresSocio(String nif)
+	{
+		ArrayList<String> listAlquileresSocio = new ArrayList<>();
+
+		for (Alquiler alquiler : arrayListMultimediaAlquilada)
+		{
+			if (alquiler.getMySocio().getNif().equals(nif))
+			{
+				listAlquileresSocio.add(alquiler.toString());
+			}
+		}
+		return listAlquileresSocio;
+	}
 }
