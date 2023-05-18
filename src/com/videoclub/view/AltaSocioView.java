@@ -6,9 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Optional;
 
 public class AltaSocioView extends JFrame implements ActionListener
 {
@@ -20,6 +17,7 @@ public class AltaSocioView extends JFrame implements ActionListener
 
 	public AltaSocioView(SocioController socio)
 	{
+		socioController = socio;
 		initComponents();
 	}
 
@@ -28,7 +26,7 @@ public class AltaSocioView extends JFrame implements ActionListener
 		// Configuración de la ventana
 		setTitle("Alta de Socio");
 		setSize(300, 200);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		// Creación de los componentes visuales
 		JLabel lblNombre = new JLabel("Nombre:");
@@ -81,7 +79,6 @@ public class AltaSocioView extends JFrame implements ActionListener
 
 
 		// Llamar al método para agregar el socio en GestorSocioController
-		socioController = new SocioController();
 		socioController.registrarSocio(nif, nombre, fechaNacimientoText, poblacion);
 
 		// Mostrar un mensaje de éxito

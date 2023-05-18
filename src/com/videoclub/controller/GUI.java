@@ -13,6 +13,7 @@ public class GUI implements ActionListener
 	private ListarView listarView;
 	private AltaSocioView altaSocioView;
 	private AltaPeliculaView altaPeliculaView;
+	private AltaVideojuegoView altaVideojuegoView;
 
 	private SocioController socioController;
 	private MultimediaController multimediaController;
@@ -45,7 +46,7 @@ public class GUI implements ActionListener
 		listarView = new ListarView(socioController, multimediaController, alquilerController);
 
 		// other panels
-		introduccionView = new IntroduccionView();
+		introduccionView = new IntroduccionView(socioController, multimediaController);
 
 		MenuView menuView = new MenuView(introduccionView, altasView, alquilerView, devolverView, listarView);
 
@@ -65,10 +66,12 @@ public class GUI implements ActionListener
 		else if (e.getSource().equals(altasView.getBtnAltaPelicula()))
 		{
 			altaPeliculaView = new AltaPeliculaView(multimediaController);
+			altaPeliculaView.setVisible(true);
+			altaPeliculaView.setBounds(100, 100, 500, 500);
 		}
 		else if (e.getSource().equals(altasView.getBtnAltaVideojuego()))
 		{
-
+			altaVideojuegoView = new AltaVideojuegoView(multimediaController);
 		}
 	}
 }

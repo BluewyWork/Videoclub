@@ -11,18 +11,19 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AltaPeliculaView extends JPanel implements ActionListener
+public class AltaPeliculaView extends JFrame implements ActionListener
 {
 	private JLabel lblTitulo, lblAutor, lblFormato, lblAnyo, lblDuracion, lblActor, lblActriz;
 	private JTextField txtTitulo, txtAutor, txtActor, txtActriz;
 	private JSpinner txtAnyo, txtDuracion;
-	private JButton btnIniciar, btnDarAlta;
+	private JButton btnDarAlta;
 	private JComboBox listFormato;
 	private SpinnerNumberModel modelAnyo, modelDuracion;
 	private MultimediaController multimediaController;
 
 	public AltaPeliculaView(MultimediaController multimedia)
 	{
+		multimediaController = multimedia;
 		initComponents();
 	}
 
@@ -30,25 +31,31 @@ public class AltaPeliculaView extends JPanel implements ActionListener
 	{
 		multimediaController = new MultimediaController();
 
-		lblTitulo = new JLabel("- Título -");
-		lblAutor = new JLabel("- Autor -");
-		lblFormato = new JLabel("- Formato -");
-		lblAnyo = new JLabel("- Año lanzamiento -");
-		lblDuracion = new JLabel("- Duración -");
-		lblActor = new JLabel("- Actor -");
-		lblActriz = new JLabel("- Actriz -");
-		txtTitulo = new JTextField("Escriba el título aquí");
-		txtAutor = new JTextField("Escriba el autor aquí");
-		modelAnyo = new SpinnerNumberModel(2023, 1890, 2023, 1);
-		modelDuracion = new SpinnerNumberModel(0, 0, 3000, 1);
-		txtAnyo = new JSpinner(modelAnyo);
-		txtDuracion = new JSpinner(modelDuracion);
-		txtActor = new JTextField("Escriba un actor aquí");
-		txtActriz = new JTextField("Escriba una actriz aquí");
-		btnIniciar = new JButton("Reniciar valores");
-		btnDarAlta = new JButton("Dar alta película");
+		lblTitulo = new JLabel("Título:");
+		txtTitulo = new JTextField(20);
+
+		lblAutor = new JLabel("Autor:");
+		txtAutor = new JTextField(30);
+
+		lblFormato = new JLabel("Formato:");
 		Formato[] formatos = Formato.values();
 		listFormato = new JComboBox(formatos);
+
+		lblAnyo = new JLabel("Año lanzamiento:");
+		modelAnyo = new SpinnerNumberModel(2023, 1890, 2023, 1);
+		txtAnyo = new JSpinner(modelAnyo);
+
+		lblDuracion = new JLabel("Duración:");
+		modelDuracion = new SpinnerNumberModel(0, 0, 3000, 1);
+		txtDuracion = new JSpinner(modelDuracion);
+
+		lblActor = new JLabel("Actor:");
+		txtActor = new JTextField(20);
+
+		lblActriz = new JLabel("Actriz:");
+		txtActriz = new JTextField(20);
+
+		btnDarAlta = new JButton("Dar alta película");
 
 		setSize(400, 300);
 		setLayout(new GridLayout(8, 8));
@@ -66,11 +73,10 @@ public class AltaPeliculaView extends JPanel implements ActionListener
 		add(txtActor);
 		add(lblActriz);
 		add(txtActriz);
-		add(btnIniciar);
 		add(btnDarAlta);
 
-		btnIniciar.addActionListener(this);
 		btnDarAlta.addActionListener(this);
+		setVisible(true);
 	}
 
 	@Override
@@ -78,17 +84,31 @@ public class AltaPeliculaView extends JPanel implements ActionListener
 	{
 		if (e.getSource() == btnDarAlta)
 		{
-			Pelicula pelicula = new Pelicula(
-					txtTitulo.getText(), txtAutor.getText(),
-					Formato.valueOf(listFormato.getSelectedItem().toString()),
-					(int) txtAnyo.getValue(), (int) txtDuracion.getValue(),
-					txtActor.getText(), txtActriz.getText()
-			);
-			Serializador.serializar(pelicula, "pelicula.ser");
-		}
-		else if (e.getSource() == btnIniciar)
-		{
+			String titulo = txtTitulo.getText();
+			String autor = txtAutor.getText();
+			String formato = listFormato.getSelectedItem().toString();
+			int anyo = (int) txtAnyo.getValue();
+			int duracion = (int) txtDuracion.getValue();
+			String actor = txtActor.getText();
+			String actriz = txtActriz.getText();
 
+			if (titulo.isEmpty() || autor.isEmpty() || formato.isEmpty() || actor.isEmpty() || actriz.isEmpty())
+			{
+				JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos");
+				return;
+			}
+
+			multimediaController.altaPelicula(titulo, autor, formato, anyo, duracion, actor, actriz);
+
+			JOptionPane.showMessageDialog(null, "Peli agregada correctamente");
+
+			txtTitulo.setText("");
+			txtAutor.setText("");
+			txtActriz.setText("");
+			txtActor.setText("");
+			listFormato.setSelectedIndex(0);
+			txtAnyo.setValue(2003);
+			txtDuracion.setValue("0");
 		}
 	}
 }
