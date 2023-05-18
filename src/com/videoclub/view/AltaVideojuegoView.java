@@ -1,5 +1,6 @@
 package com.videoclub.view;
-/*
+
+import com.videoclub.controller.MultimediaController;
 import com.videoclub.model.Formato;
 import com.videoclub.model.Plataforma;
 import com.videoclub.model.Videojuego;
@@ -10,7 +11,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AltaVideojuegoView extends JPanel implements ActionListener
+public class AltaVideojuegoView extends JFrame implements ActionListener
 {
 	private JLabel lblTitulo, lblAutor, lblFormato, lblAnyo, lblPlataforma;
 	private JTextField txtTitulo, txtAutor;
@@ -18,8 +19,15 @@ public class AltaVideojuegoView extends JPanel implements ActionListener
 	private JComboBox listFormato, listPlataforma;
 	private SpinnerNumberModel modelAnyo;
 	private JSpinner txtAnyo;
+	private MultimediaController multimediaController;
 
-	public AltaVideojuegoView()
+	public AltaVideojuegoView(MultimediaController mc)
+	{
+		multimediaController = mc;
+		initComponents();
+	}
+
+	public void initComponents()
 	{
 		setSize(400, 300);
 
@@ -38,7 +46,7 @@ public class AltaVideojuegoView extends JPanel implements ActionListener
 		Plataforma[] plataformas = Plataforma.values();
 		listPlataforma = new JComboBox(plataformas);
 
-		setLayout(new GridLayout(8, 8));
+		setLayout(new GridLayout(6, 2));
 		add(lblTitulo);
 		add(txtTitulo);
 		add(lblAutor);
@@ -52,16 +60,32 @@ public class AltaVideojuegoView extends JPanel implements ActionListener
 		add(btnDarAlta);
 
 		btnDarAlta.addActionListener(this);
+		setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		Videojuego videojuego = new Videojuego(
-				txtTitulo.getText(), txtAutor.getText(),
-				Formato.valueOf(listFormato.getSelectedItem().toString()),
-				(int) txtAnyo.getValue(), Plataforma.valueOf(listPlataforma.getSelectedItem().toString())
-		);
-		Serializador.serializar(videojuego, "videojuego.ser");
+		String titulo = txtTitulo.getText();
+		String autor = txtAutor.getText();
+		String formato = listFormato.getSelectedItem().toString();
+		int anyo = Integer.parseInt(txtAnyo.getValue().toString());
+		String plataforma = listPlataforma.getSelectedItem().toString();
+
+		if (titulo.isEmpty() || autor.isEmpty() || formato.isEmpty())
+		{
+			JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos");
+			return;
+		}
+
+		multimediaController.altaVideojuego(titulo, autor, formato, anyo, plataforma);
+
+		JOptionPane.showMessageDialog(null, "videojuego agregada correctamente");
+
+		txtTitulo.setText("");
+		txtAutor.setText("");
+		listFormato.setSelectedIndex(0);
+		txtAnyo.setValue(2023);
+		listPlataforma.setSelectedIndex(0);
 	}
-}*/
+}

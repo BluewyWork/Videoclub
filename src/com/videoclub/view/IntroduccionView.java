@@ -2,32 +2,66 @@ package com.videoclub.view;
 
 import javax.swing.*;
 import java.awt.*;
+import com.videoclub.controller.MultimediaController;
+import com.videoclub.controller.SocioController;
 
 public class IntroduccionView extends JPanel
 {
-	private JLabel lblHomePage;
-	private JTextArea txtArea;
+	SocioController socioController;
+	MultimediaController multimediaController;
+	private JTextArea txtAreaOutput;
 	private JScrollPane scrollPane;
 
-	public IntroduccionView()
+	public IntroduccionView(SocioController socioController, MultimediaController multimediaController)
 	{
+		this.socioController = socioController;
+		this.multimediaController = multimediaController;
+
 		initComponents();
 	}
 
 	public void initComponents()
 	{
-		lblHomePage = new JLabel();
-		lblHomePage.setIcon(new ImageIcon("ImagenPrincipal.jpg")); //Sets the image to be displayed as an icon
-		Dimension size = lblHomePage.getPreferredSize(); //Gets the size of the image
-		lblHomePage.setBounds(50, 30, size.width, size.height); //Sets the location of the image
-		add(lblHomePage);
+		setLayout(new GridBagLayout());
 
-		txtArea = new JTextArea();
-		txtArea.setPreferredSize(new Dimension(320, 180));
-		scrollPane = new JScrollPane(txtArea);
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 0;
+		c.gridwidth = 3;
+		c.weighty = 1.0;
+		c.anchor = GridBagConstraints.NORTH;
+		c.fill = GridBagConstraints.HORIZONTAL;
+
+		txtAreaOutput = new JTextArea();
+		txtAreaOutput.setPreferredSize(new Dimension(850, 180));
+		scrollPane = new JScrollPane(txtAreaOutput);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		add(txtArea);
-		add(scrollPane);
+
+		add(scrollPane, c);
+
+		c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 1;
+		c.weightx = 1.0;
+		c.insets = new Insets(10, 10, 10, 10);
+		c.anchor = GridBagConstraints.CENTER;
+		c.fill = GridBagConstraints.HORIZONTAL;
+
+		c = new GridBagConstraints();
+		c.gridx = 1;
+		c.gridy = 1;
+		c.weightx = 1.0;
+		c.insets = new Insets(10, 10, 10, 10);
+		c.anchor = GridBagConstraints.CENTER;
+		c.fill = GridBagConstraints.HORIZONTAL;
+
+		c = new GridBagConstraints();
+		c.gridx = 2;
+		c.gridy = 1;
+		c.weightx = 1.0;
+		c.insets = new Insets(10, 10, 10, 10);
+		c.anchor = GridBagConstraints.CENTER;
+		c.fill = GridBagConstraints.HORIZONTAL;
 	}
 }
