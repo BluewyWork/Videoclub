@@ -53,5 +53,19 @@ public class AlquilerController
 		return alquilerDAO.obtenerAlquileres(nif);
 	}
 
+	public ArrayList<String> randomList(String nif)
+	{
+		ArrayList<String> random2List = new ArrayList<>();
 
+		String [][] matriz = obtenerAlquileresMatriz(nif);
+
+		for (int i = 0; i <  matriz.length; i++){
+			String contador = matriz[i][0];
+			String titulo = matriz[i][1];
+			String con = contador + titulo;
+			random2List.add(con);
+		}
+
+		return random2List;
+	}
 }
