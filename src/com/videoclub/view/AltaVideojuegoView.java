@@ -27,6 +27,12 @@ public class AltaVideojuegoView extends JFrame implements ActionListener
 		initComponents();
 	}
 
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		accionDarAltaVideojuego();
+	}
+
 	public void initComponents()
 	{
 		setSize(400, 300);
@@ -63,8 +69,7 @@ public class AltaVideojuegoView extends JFrame implements ActionListener
 		setVisible(true);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e)
+	public void accionDarAltaVideojuego()
 	{
 		String titulo = txtTitulo.getText();
 		String autor = txtAutor.getText();

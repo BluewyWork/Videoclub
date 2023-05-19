@@ -21,6 +21,11 @@ public class AltaSocioView extends JFrame implements ActionListener
 		initComponents();
 	}
 
+	public void actionPerformed(ActionEvent e)
+	{
+		accionDarAltaSocio();
+	}
+
 	public void initComponents()
 	{
 		// Configuración de la ventana
@@ -62,7 +67,8 @@ public class AltaSocioView extends JFrame implements ActionListener
 		// Asignar el ActionListener al botón de guardar
 		btnGuardar.addActionListener(this);
 	}
-	public void actionPerformed(ActionEvent e)
+
+	public void accionDarAltaSocio()
 	{
 		// Obtener los datos ingresados por el usuario
 		String nif = txtNIF.getText();
@@ -76,7 +82,6 @@ public class AltaSocioView extends JFrame implements ActionListener
 			JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos");
 			return;
 		}
-
 
 		// Llamar al método para agregar el socio en GestorSocioController
 		socioController.registrarSocio(nif, nombre, fechaNacimientoText, poblacion);
