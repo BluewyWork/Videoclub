@@ -71,7 +71,8 @@ public class DevolverView extends JPanel implements ActionListener
 
 	public void actualizarAlquilerListDeSocio()
 	{
-		ArrayList<Alquiler> alquilerList = alquilerController.returnStuff();
+		String nif = niftextField.getText();
+		ArrayList<Alquiler> alquilerList = alquilerController.returnStuff(nif);
 		comboBoxTitulos.removeAllItems(); // Clear the combo box before adding items
 		for (Alquiler alquiler : alquilerList)
 		{
