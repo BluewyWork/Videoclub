@@ -138,18 +138,4 @@ public class AlquilerDAO
 		}
 		return listSocioRecargo;
 	}
-
-	// Hash map version
-	public HashMap<Integer, Multimedia> test(String nif)
-	{
-		List<Alquiler> alquileresDeSocio = encontrarAlquiler(nif);
-		HashMap<Integer, Multimedia> hashMap = new HashMap<>();
-
-		for (Alquiler alquiler : alquileresDeSocio)
-		{
-			hashMap.put(alquiler.getContador(), alquiler.getMultimedia());
-		}
-
-		return hashMap;
-	}
 }

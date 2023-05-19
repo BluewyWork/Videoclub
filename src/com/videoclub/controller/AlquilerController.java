@@ -42,9 +42,4 @@ public class AlquilerController
 	{
 		return alquilerDAO.getListAlquiler();
 	}
-
-	public HashMap<Integer, Multimedia> alquileresDeSocio(String nif)
-	{
-		return alquilerDAO.test(nif);
-	}
 }

@@ -53,16 +53,6 @@ public class Alquiler
 		return text.toString();
 	}
 
-	public LocalDate getFechaAlquiler()
-	{
-		return fechaAlquiler;
-	}
-
-	public void setFechaAlquiler(LocalDate fechaAlquiler)
-	{
-		this.fechaAlquiler = fechaAlquiler;
-	}
-
 	public double getDeudaInicial()
 	{
 		return deudaInicial;

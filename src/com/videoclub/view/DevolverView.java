@@ -69,7 +69,7 @@ public class DevolverView extends JPanel implements ActionListener
 		comboBoxTitulos.setRenderer(new AlquilerListCellRenderer());
 	}
 
-	public void multimediasAlquiladasASocio()
+	public void actualizarAlquilerListDeSocio()
 	{
 		ArrayList<Alquiler> alquilerList = alquilerController.returnStuff();
 		comboBoxTitulos.removeAllItems(); // Clear the combo box before adding items
@@ -99,7 +99,7 @@ public class DevolverView extends JPanel implements ActionListener
 
 			if (socio != null)
 			{
-				multimediasAlquiladasASocio();
+				actualizarAlquilerListDeSocio();
 			}
 			else
 			{

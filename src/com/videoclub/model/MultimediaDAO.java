@@ -61,20 +61,4 @@ public class MultimediaDAO
 			throw new RuntimeException("Multimedia Not Found");
 		}
 	}
-
-	public HashMap<Integer, Multimedia> test()
-	{
-		HashMap<Integer, Multimedia> hashMap = new HashMap<>();
-
-		int x = 0;
-		for (Multimedia multimedia : listMultimedia)
-		{
-
-			hashMap.put(x, multimedia);
-			x++;
-		}
-
-		return hashMap;
-	}
-
 }

@@ -18,15 +18,6 @@ public abstract class Multimedia
 		precioTotalAlquiler = calcularPrecioAlquiler();
 	}
 
-	public Multimedia(String titulo, String autor, Formato formato, int anio)
-	{
-		this();
-		setTitulo(titulo);
-		setAutor(autor);
-		setFormat(formato);
-		setAnio(anio);
-	}
-
 	public Multimedia(String titulo, String autor, String format, int anio)
 	{
 		this();

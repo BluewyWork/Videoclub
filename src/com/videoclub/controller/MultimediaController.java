@@ -17,11 +17,6 @@ public class MultimediaController
 		multimediaDAO = new MultimediaDAO();
 	}
 
-	public MultimediaDAO getMultimediaDAO()
-	{
-		return multimediaDAO;
-	}
-
 	public void altaPelicula(String title, String author, String format, int year, int duration, String maleLead, String femaleLead)
 	{
 		Pelicula pelicula = new Pelicula(title, author, format, year, duration, maleLead, femaleLead);
@@ -39,7 +34,6 @@ public class MultimediaController
 		throw new UnsupportedOperationException();
 	}
 
-	// works cause it is involved in 1:M relationship
 	public void guardarMultimedia(Multimedia multimedia)
 	{
 		multimediaDAO.aniadirMultimedia(multimedia);
@@ -54,13 +48,8 @@ public class MultimediaController
 		return multimedia;
 	}
 
-	public String mostrarMultimedias()
+	public ArrayList<Multimedia> returnStuff()
 	{
-		return multimediaDAO.toString();
-	}
-
-	public HashMap<Integer, Multimedia> test()
-	{
-		return multimediaDAO.test();
+		return multimediaDAO.getListMultimedia();
 	}
 }
