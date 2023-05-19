@@ -33,13 +33,15 @@ public class Alquiler
 	@Override
 	public String toString()
 	{
-		StringBuilder text = new StringBuilder();
-
-		text.append("ID: ").append(contador).append("\n\n");
-
-		text.append(multimedia.toString()).append("\n\n");
-
-		return text.toString();
+		return "Alquiler{" +
+				"contador=" + contador +
+				", nif='" + nif + '\'' +
+				", multimedia=" + multimedia +
+				", deudaInicial=" + deudaInicial +
+				", deudaFinal=" + deudaFinal +
+				", fechaAlquiler=" + fechaAlquiler +
+				", fechaDevolucion=" + fechaDevolucion +
+				'}';
 	}
 
 	public String listaAlquileres()
@@ -49,16 +51,6 @@ public class Alquiler
 		text.append(contador).append("||").append(text.append(multimedia.getTitulo()).append("\n\n"));
 
 		return text.toString();
-	}
-
-	public LocalDate getFechaAlquiler()
-	{
-		return fechaAlquiler;
-	}
-
-	public void setFechaAlquiler(LocalDate fechaAlquiler)
-	{
-		this.fechaAlquiler = fechaAlquiler;
 	}
 
 	public double getDeudaInicial()

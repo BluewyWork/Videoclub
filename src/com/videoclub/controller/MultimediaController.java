@@ -6,6 +6,7 @@ import com.videoclub.model.Pelicula;
 import com.videoclub.model.Videojuego;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MultimediaController
 {
@@ -33,7 +34,6 @@ public class MultimediaController
 		throw new UnsupportedOperationException();
 	}
 
-	// works cause it is involved in 1:M relationship
 	public void guardarMultimedia(Multimedia multimedia)
 	{
 		multimediaDAO.aniadirMultimedia(multimedia);
@@ -48,11 +48,8 @@ public class MultimediaController
 		return multimedia;
 	}
 
-	public String mostrarMultimedias()
+	public ArrayList<Multimedia> returnStuff()
 	{
-		return multimediaDAO.toString();
-	}
-	public ArrayList<String> mostrarTituloMultimedia(){
-		return multimediaDAO.mostrarTituloMultimedia();
+		return multimediaDAO.getListMultimedia();
 	}
 }

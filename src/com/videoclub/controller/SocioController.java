@@ -24,11 +24,6 @@ public class SocioController
 		socioDAO.eliminarSocio(nif);
 	}
 
-	public String mostrarSocios()
-	{
-		return socioDAO.toString();
-	}
-
 	public Socio encontrarSocio(String nif){
 		return socioDAO.encontrarSocio(nif);
 	}

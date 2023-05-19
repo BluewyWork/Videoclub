@@ -17,9 +17,8 @@ public class DevolverView extends JPanel implements ActionListener
 {
 
 	private JTextField niftextField;
-	private JTextField idNumericField;
 	private JButton comprobarNifButton;
-	private JComboBox<String> comboBoxTitulos;
+	private JComboBox<Alquiler> comboBoxTitulos;
 	private JButton devolverButton;
 	private MultimediaController multimediaController;
 	private AlquilerController alquilerController;
@@ -65,19 +64,18 @@ public class DevolverView extends JPanel implements ActionListener
 
 		devolverButton.addActionListener(this);
 		comprobarNifButton.addActionListener(this);
+
+		// Set custom renderer for the JComboBox
+		comboBoxTitulos.setRenderer(new AlquilerListCellRenderer());
 	}
 
-	public void actualizarInterfazGrafica()
+	public void actualizarAlquilerListDeSocio()
 	{
-		// Obtener la lista de títulos desde el gestor de multimedia
-		ArrayList<String> titulosDisponibles = alquilerController.randomList(niftextField.getText());
-
-		// Actualizar la lista de títulos disponibles en el combo box
-		comboBoxTitulos.removeAllItems();
-
-		for (String titulo : titulosDisponibles)
+		ArrayList<Alquiler> alquilerList = alquilerController.returnStuff();
+		comboBoxTitulos.removeAllItems(); // Clear the combo box before adding items
+		for (Alquiler alquiler : alquilerList)
 		{
-			comboBoxTitulos.addItem(titulo);
+			comboBoxTitulos.addItem(alquiler);
 		}
 	}
 
@@ -85,41 +83,45 @@ public class DevolverView extends JPanel implements ActionListener
 	{
 		if (e.getSource() == devolverButton)
 		{
-			//int id = Integer.parseInt(idNumericField.getText());
-			String tituloAutor = comboBoxTitulos.getSelectedItem().toString();
-			String[] partes = tituloAutor.split("\\|\\|");
-			String id = partes[0].trim();
-			//String titulo = partes[1].trim();
+			Alquiler alquiler = (Alquiler) comboBoxTitulos.getSelectedItem();
+			int id = alquiler.getContador();
+			alquilerController.delvolverAlquiler(id);
+			multimediaController.guardarMultimedia(alquiler.getMultimedia()); // Call the method to handle the multimedia return
 
-			alquilerController.delvolverAlquiler(Integer.parseInt(id));
-
-			// Realizar la lógica de alquiler del multimedia al socio
-			// Socio socio = socioController.encontrarSocio(nifTextField.getText());
-			// alquilerController.delvolverAlquiler(id);
-
-			// Mostrar mensaje de éxito
-			JOptionPane.showMessageDialog(null, "Multimedia alquilada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Multimedia devuelto correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 		}
 		if (e.getSource() == comprobarNifButton)
 		{
-
 			comboBoxTitulos.setEnabled(true);
 
 			String nif = niftextField.getText();
-
-			// Utiliza el gestor de socios para buscar el socio por el NIF
 			Socio socio = socioController.encontrarSocio(nif);
 
 			if (socio != null)
 			{
-				// El socio existe, mostrar las multimedia disponibles
-				actualizarInterfazGrafica();
+				actualizarAlquilerListDeSocio();
 			}
 			else
 			{
-				// El socio no existe, mostrar mensaje de error
 				JOptionPane.showMessageDialog(null, "NIF no válido", "Error", JOptionPane.ERROR_MESSAGE);
 			}
+		}
+	}
+
+	// Custom ListCellRenderer to control the displayed string in the JComboBox
+	private class AlquilerListCellRenderer extends DefaultListCellRenderer
+	{
+		@Override
+		public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus)
+		{
+			super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+			if (value instanceof Alquiler)
+			{
+				Alquiler alquiler = (Alquiler) value;
+				Multimedia multimedia = alquiler.getMultimedia();
+				setText(multimedia.getTitulo());
+			}
+			return this;
 		}
 	}
 }

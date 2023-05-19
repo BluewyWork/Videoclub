@@ -3,6 +3,7 @@ package com.videoclub.view;
 import com.videoclub.controller.AlquilerController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
+import com.videoclub.model.Alquiler;
 import com.videoclub.model.Multimedia;
 import com.videoclub.model.Socio;
 
@@ -11,14 +12,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class AlquilerView extends JPanel implements ActionListener
 {
 	private JTextField nifTextField;
 	private JButton comprobarNifButton;
-	private JComboBox<String> comboBoxTitulos;
+	private JComboBox<Multimedia> comboBoxTitulos;
 	private JButton alquilarButton;
 	private MultimediaController multimediaController;
 	private AlquilerController alquilerController;
@@ -64,18 +63,17 @@ public class AlquilerView extends JPanel implements ActionListener
 
 		alquilarButton.addActionListener(this);
 		comprobarNifButton.addActionListener(this);
+
+		comboBoxTitulos.setRenderer(new MultimediaListCellRenderer());
 	}
 
-	public void actualizarInterfazGrafica()
+	public void actualizarMultimediaListEnInventario()
 	{
-		// Obtener la lista de títulos desde el gestor de multimedia
-		ArrayList<String> titulosDisponibles = multimediaController.mostrarTituloMultimedia();
-		// Actualizar la lista de títulos disponibles en el combo box
-		comboBoxTitulos.removeAllItems();
-
-		for (String titulo : titulosDisponibles)
+		ArrayList<Multimedia> listMultimedia = multimediaController.returnStuff();
+		comboBoxTitulos.removeAllItems(); // Clear the combo box before adding items
+		for (Multimedia multimedia : listMultimedia)
 		{
-			comboBoxTitulos.addItem(titulo);
+			comboBoxTitulos.addItem(multimedia);
 		}
 	}
 
@@ -84,16 +82,14 @@ public class AlquilerView extends JPanel implements ActionListener
 	{
 		if (e.getSource() == alquilarButton)
 		{
-			String tituloAutor = comboBoxTitulos.getSelectedItem().toString();
-			String[] partes = tituloAutor.split("\\|\\|");
-			String titulo = partes[0].trim();
-			String autor = partes[1].trim();
+			Multimedia multimedia2 = (Multimedia) comboBoxTitulos.getSelectedItem();
+			String titulo = multimedia2.getTitulo();
+			String autor = multimedia2.getTitulo();
 
-			Multimedia multimedia = multimediaController.recuperarMultimedias(titulo, autor);
+			multimediaController.recuperarMultimedias(titulo, autor);
 
 			// Realizar la lógica de alquiler del multimedia al socio
-			//Socio socio = socioController.encontrarSocio(nifTextField.getText());
-			alquilerController.alquilarMultimedia(nifTextField.getText(), multimedia);
+			alquilerController.alquilarMultimedia(nifTextField.getText(), multimedia2);
 
 			// Mostrar mensaje de éxito
 			JOptionPane.showMessageDialog(null, "Multimedia alquilada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -111,7 +107,7 @@ public class AlquilerView extends JPanel implements ActionListener
 			if (socio != null)
 			{
 				// El socio existe, mostrar las multimedia disponibles
-				actualizarInterfazGrafica();
+				actualizarMultimediaListEnInventario();
 			}
 			else
 			{
@@ -121,5 +117,18 @@ public class AlquilerView extends JPanel implements ActionListener
 		}
 	}
 
+	private class MultimediaListCellRenderer extends DefaultListCellRenderer
+	{
+		@Override
+		public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus)
+		{
+			super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+			if (value instanceof Alquiler)
+			{
+				Multimedia multimedia = (Multimedia) value;
+				setText(multimedia.getTitulo());
+			}
+			return this;
+		}
+	}
 }
-

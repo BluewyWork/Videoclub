@@ -1,6 +1,8 @@
 package com.videoclub.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class MultimediaDAO
 {
@@ -22,6 +24,11 @@ public class MultimediaDAO
 		}
 
 		return txt.toString();
+	}
+
+	public ArrayList<Multimedia> getListMultimedia()
+	{
+		return listMultimedia;
 	}
 
 	public Multimedia encontrarMultimedia(String title, String author)
@@ -53,18 +60,5 @@ public class MultimediaDAO
 		{
 			throw new RuntimeException("Multimedia Not Found");
 		}
-	}
-
-	public ArrayList<String> mostrarTituloMultimedia()
-	{
-		ArrayList<String> string = new ArrayList<>();
-
-		for (Multimedia multimedia : listMultimedia)
-		{
-			string.add(multimedia.getTitulo() + "||" + multimedia.getAutor());
-		}
-
-		return string;
-
 	}
 }
