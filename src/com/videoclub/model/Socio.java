@@ -56,13 +56,13 @@ public class Socio
 
 	public void setFechaNacimiento(LocalDate fechaNacimiento)
 	{
-		if (isAdult(fechaNacimiento))
+		if (isAdult(fechaNacimiento) && isValidYear(fechaNacimiento.getYear()))
 		{
 			this.fechaNacimiento = fechaNacimiento;
 		}
 		else
 		{
-			throw new RuntimeException("Member must be an ADULT (+18)");
+			throw new RuntimeException("Member must be an ADULT (+18) and have a valid year");
 		}
 	}
 
@@ -80,5 +80,9 @@ public class Socio
 	{
 		Period myPeriod = Period.between(fechaNacimiento, LocalDate.now());
 		return myPeriod.getYears() >= 18;
+	}
+
+	private boolean isValidYear(int year) {
+		return year > 1900;
 	}
 }
