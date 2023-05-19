@@ -3,7 +3,6 @@ package com.videoclub.view;
 import com.videoclub.controller.AlquilerController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
-import com.videoclub.model.Alquiler;
 import com.videoclub.model.Multimedia;
 import com.videoclub.model.Socio;
 
@@ -30,6 +29,19 @@ public class AlquilerView extends JPanel implements ActionListener
 		socioController = sc;
 
 		initComponents();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		if (e.getSource() == alquilarButton)
+		{
+			acccionAlquilar();
+		}
+		else if (e.getSource() == comprobarNifButton)
+		{
+			accionComprobarNIF();
+		}
 	}
 
 	public void initComponents()
@@ -77,43 +89,39 @@ public class AlquilerView extends JPanel implements ActionListener
 		}
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e)
+	public void acccionAlquilar()
 	{
-		if (e.getSource() == alquilarButton)
+		Multimedia multimedia2 = (Multimedia) comboBoxTitulos.getSelectedItem();
+		String titulo = multimedia2.getTitulo();
+		String autor = multimedia2.getTitulo();
+
+		multimediaController.recuperarMultimedias(titulo, autor);
+
+		// Realizar la lógica de alquiler del multimedia al socio
+		alquilerController.alquilarMultimedia(nifTextField.getText(), multimedia2);
+
+		// Mostrar mensaje de éxito
+		JOptionPane.showMessageDialog(null, "Multimedia alquilada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+	}
+
+	public void accionComprobarNIF()
+	{
+		comboBoxTitulos.setEnabled(true);
+
+		String nif = nifTextField.getText();
+
+		// Utiliza el gestor de socios para buscar el socio por el NIF
+		Socio socio = socioController.encontrarSocio(nif);
+
+		if (socio != null)
 		{
-			Multimedia multimedia2 = (Multimedia) comboBoxTitulos.getSelectedItem();
-			String titulo = multimedia2.getTitulo();
-			String autor = multimedia2.getTitulo();
-
-			multimediaController.recuperarMultimedias(titulo, autor);
-
-			// Realizar la lógica de alquiler del multimedia al socio
-			alquilerController.alquilarMultimedia(nifTextField.getText(), multimedia2);
-
-			// Mostrar mensaje de éxito
-			JOptionPane.showMessageDialog(null, "Multimedia alquilada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+			// El socio existe, mostrar las multimedia disponibles
+			actualizarMultimediaListEnInventario();
 		}
-		if (e.getSource() == comprobarNifButton)
+		else
 		{
-
-			comboBoxTitulos.setEnabled(true);
-
-			String nif = nifTextField.getText();
-
-			// Utiliza el gestor de socios para buscar el socio por el NIF
-			Socio socio = socioController.encontrarSocio(nif);
-
-			if (socio != null)
-			{
-				// El socio existe, mostrar las multimedia disponibles
-				actualizarMultimediaListEnInventario();
-			}
-			else
-			{
-				// El socio no existe, mostrar mensaje de error
-				JOptionPane.showMessageDialog(null, "NIF no válido", "Error", JOptionPane.ERROR_MESSAGE);
-			}
+			// El socio no existe, mostrar mensaje de error
+			JOptionPane.showMessageDialog(null, "NIF no válido", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 

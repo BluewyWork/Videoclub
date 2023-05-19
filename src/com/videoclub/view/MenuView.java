@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class MenuView extends JFrame implements ActionListener, MouseListener
+public class MenuView extends JFrame implements ActionListener
 {
 	private JPanel contentPane;
 	private JPanel buttonPanel;
@@ -15,6 +15,7 @@ public class MenuView extends JFrame implements ActionListener, MouseListener
 	private JButton buttonAltas, buttonAlquilarMultimediaASocio, buttonDevolverMultimedia, buttonListar;
 	private JMenuBar menuBar;
 	private JMenu menuHome, menuAlta, menuListar, menuAlquilar, menuDevolver;
+	private JMenuItem menuHome2;
 	private JMenuItem altaSocio, altaPelicula, altaVideojuego;
 	private JMenuItem listarMultimedia, listarPelicula, listarCancion, listarVideojuego, listarAlquiler, listarSocio;
 	IntroduccionView introduccionView;
@@ -46,9 +47,6 @@ public class MenuView extends JFrame implements ActionListener, MouseListener
 		setTitle("JAMA Videoclub");
 		initMenuBar();
 		initPanel();
-
-		menuHome.addMouseListener(this);
-		menuHome.addMouseListener(this);
 	}
 
 	public void initMenuBar()
@@ -58,9 +56,13 @@ public class MenuView extends JFrame implements ActionListener, MouseListener
 		menuAlta = new JMenu("Altas");
 		menuAlquilar = new JMenu("Alquilar Multimedia");
 		menuDevolver = new JMenu("Devolver Multimedia");
+		menuHome2 = new JMenuItem("Aqui!");
 		altaSocio = new JMenuItem("Alta de socio");
+		altaSocio.addActionListener(this);
 		altaPelicula = new JMenuItem("Alta de pelicula");
 		altaVideojuego = new JMenuItem("Alta de videojuego");
+
+		menuHome.add(menuHome2);
 
 		menuAlta.add(altaSocio);
 		menuAlta.add(altaPelicula);
@@ -156,38 +158,15 @@ public class MenuView extends JFrame implements ActionListener, MouseListener
 		{
 			panelName = "listaView";
 		}
+		else if (e.getSource().equals(menuHome))
+		{
+			System.exit(0);
+		}
+		else if(e.getSource().equals(altaSocio))
+		{
+			System.exit(0);
+		}
 
 		cardLayout.show(contentPane, panelName);
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e)
-	{
-
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e)
-	{
-		if (e.getSource() == menuHome)
-			cardLayout.show(contentPane, "introduccionView");
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e)
-	{
-
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e)
-	{
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e)
-	{
-
 	}
 }
