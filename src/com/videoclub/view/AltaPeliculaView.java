@@ -1,10 +1,7 @@
 package com.videoclub.view;
 
 import com.videoclub.controller.MultimediaController;
-import com.videoclub.model.Constantes;
 import com.videoclub.model.Formato;
-import com.videoclub.model.Pelicula;
-import com.videoclub.util.Serializador;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,6 +22,15 @@ public class AltaPeliculaView extends JFrame implements ActionListener
 	{
 		multimediaController = multimedia;
 		initComponents();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		if (e.getSource() == btnDarAlta)
+		{
+			accionDarAltaPelicula();
+		}
 	}
 
 	public void initComponents()
@@ -79,36 +85,32 @@ public class AltaPeliculaView extends JFrame implements ActionListener
 		setVisible(true);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e)
+	public void accionDarAltaPelicula()
 	{
-		if (e.getSource() == btnDarAlta)
+		String titulo = txtTitulo.getText();
+		String autor = txtAutor.getText();
+		String formato = listFormato.getSelectedItem().toString();
+		int anyo = (int) txtAnyo.getValue();
+		int duracion = (int) txtDuracion.getValue();
+		String actor = txtActor.getText();
+		String actriz = txtActriz.getText();
+
+		if (titulo.isEmpty() || autor.isEmpty() || formato.isEmpty() || actor.isEmpty() || actriz.isEmpty())
 		{
-			String titulo = txtTitulo.getText();
-			String autor = txtAutor.getText();
-			String formato = listFormato.getSelectedItem().toString();
-			int anyo = (int) txtAnyo.getValue();
-			int duracion = (int) txtDuracion.getValue();
-			String actor = txtActor.getText();
-			String actriz = txtActriz.getText();
-
-			if (titulo.isEmpty() || autor.isEmpty() || formato.isEmpty() || actor.isEmpty() || actriz.isEmpty())
-			{
-				JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos");
-				return;
-			}
-
-			multimediaController.altaPelicula(titulo, autor, formato, anyo, duracion, actor, actriz);
-
-			JOptionPane.showMessageDialog(null, "Peli agregada correctamente");
-
-			txtTitulo.setText("");
-			txtAutor.setText("");
-			txtActriz.setText("");
-			txtActor.setText("");
-			listFormato.setSelectedIndex(0);
-			txtAnyo.setValue(2003);
-			txtDuracion.setValue("0");
+			JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos");
+			return;
 		}
+
+		multimediaController.altaPelicula(titulo, autor, formato, anyo, duracion, actor, actriz);
+
+		JOptionPane.showMessageDialog(null, "Pelicula agregada correctamente");
+
+		txtTitulo.setText("");
+		txtAutor.setText("");
+		txtActriz.setText("");
+		txtActor.setText("");
+		listFormato.setSelectedIndex(0);
+		txtAnyo.setValue(2003);
+		txtDuracion.setValue("0");
 	}
 }
