@@ -38,8 +38,20 @@ public class AlquilerController
 		return alquiler;
 	}
 
-	public ArrayList<Alquiler> returnStuff()
+	public ArrayList<Alquiler> returnStuff(String nif)
 	{
-		return alquilerDAO.getListAlquiler();
+
+		ArrayList<Alquiler> listArrayList =  alquilerDAO.getListAlquiler();
+		ArrayList<Alquiler> listAlquilerFilratado = new ArrayList<>();
+
+		for (Alquiler alquiler : listArrayList)
+		{
+				if (alquiler.getNif().equals(nif))
+				{
+					listAlquilerFilratado.add(alquiler);
+				}
+		}
+
+		return listAlquilerFilratado;
 	}
 }

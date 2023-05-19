@@ -19,14 +19,6 @@ public class Socio
 		poblacion = "RANDOM";
 	}
 
-	public Socio(String nif, String nombre, LocalDate fechaNacimiento, String poblacion)
-	{
-		this.nif = nif;
-		this.nombre = nombre;
-		setFechaNacimiento(fechaNacimiento);
-		this.poblacion = poblacion;
-	}
-
 	public Socio(String nif, String nombre, String fechaNacimiento, String poblacion)
 	{
 		this();
