@@ -4,6 +4,7 @@ import com.videoclub.model.Alquiler;
 import com.videoclub.model.AlquilerDAO;
 import com.videoclub.model.Multimedia;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AlquilerController
@@ -35,6 +36,11 @@ public class AlquilerController
 		alquilerDAO.eliminarAlquiler(id);
 
 		return alquiler;
+	}
+
+	public ArrayList<Alquiler> returnStuff()
+	{
+		return alquilerDAO.getListAlquiler();
 	}
 
 	public HashMap<Integer, Multimedia> alquileresDeSocio(String nif)

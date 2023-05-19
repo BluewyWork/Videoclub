@@ -26,6 +26,11 @@ public class AlquilerDAO
 		return txt.toString();
 	}
 
+	public ArrayList<Alquiler> getListAlquiler()
+	{
+		return listAlquiler;
+	}
+
 	public Alquiler encontrarAlquiler(int id)
 	{
 		Alquiler alquiler = null;
