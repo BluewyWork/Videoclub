@@ -16,18 +16,6 @@ public class Videojuego extends Multimedia
 		setPlatform(Plataforma.valueOf(platform));
 	}
 
-	public Videojuego(String title, String author, String format, int year, Plataforma platforma)
-	{
-		super(title, author, format, year);
-		setPlatform(platforma);
-	}
-
-	public Videojuego(String title, String author, Formato formato, int year, Plataforma platforma)
-	{
-		super(title, author, formato, year);
-		setPlatform(platforma);
-	}
-
 	@Override
 	public String toString()
 	{

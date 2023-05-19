@@ -18,6 +18,9 @@ public class Alquiler
 	{
 		setContador(contadorID++);
 		nif = "RANDOM";
+		multimedia = null;
+		deudaInicial = 0;
+		deudaFinal = 0;
 		fechaAlquiler = LocalDate.now();
 		fechaDevolucion = LocalDate.now().plusDays(Constantes.RENT_MAX_DURATION);
 	}

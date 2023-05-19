@@ -14,14 +14,6 @@ public class Pelicula extends Multimedia
 		actrizPrincipal = "GOD";
 	}
 
-	public Pelicula(String title, String author, Formato formato, int year, int duracion, String actorPrincipal, String actrizPrincipal)
-	{
-		super(title, author, formato, year);
-		setDuracion(duracion);
-		setActorPrincipal(actorPrincipal);
-		setActrizPrincipal(actrizPrincipal);
-	}
-
 	public Pelicula(String title, String author, String format, int year, int duracion, String actorPrincipal, String actrizPrincipal)
 	{
 		super(title, author, format, year);
