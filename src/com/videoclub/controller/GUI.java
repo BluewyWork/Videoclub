@@ -50,6 +50,7 @@ public class GUI implements ActionListener
 
 		menuView.setVisible(true);
 		menuView.setBounds(250, 25, 1000, 780);
+		menuView.setResizable(false);
 	}
 
 	@Override
