@@ -4,11 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class MenuView extends JFrame implements ActionListener
 {
+	IntroduccionView introduccionView;
+	AltasView altasView;
+	AlquilerView alquilerView;
+	DevolverView devolverView;
+	ListarView listarView;
 	private JPanel contentPane;
 	private JPanel buttonPanel;
 	private CardLayout cardLayout;
@@ -18,11 +21,6 @@ public class MenuView extends JFrame implements ActionListener
 	private JMenuItem menuHome2;
 	private JMenuItem altaSocio, altaPelicula, altaVideojuego;
 	private JMenuItem listarMultimedia, listarPelicula, listarCancion, listarVideojuego, listarAlquiler, listarSocio;
-	IntroduccionView introduccionView;
-	AltasView altasView;
-	AlquilerView alquilerView;
-	DevolverView devolverView;
-	ListarView listarView;
 
 	public MenuView()
 	{
@@ -162,7 +160,7 @@ public class MenuView extends JFrame implements ActionListener
 		{
 			System.exit(0);
 		}
-		else if(e.getSource().equals(altaSocio))
+		else if (e.getSource().equals(altaSocio))
 		{
 			System.exit(0);
 		}

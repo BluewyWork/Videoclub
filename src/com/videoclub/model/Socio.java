@@ -74,7 +74,8 @@ public class Socio
 		return myPeriod.getYears() >= 18;
 	}
 
-	private boolean isValidYear(int year) {
+	private boolean isValidYear(int year)
+	{
 		return year > 1900;
 	}
 }

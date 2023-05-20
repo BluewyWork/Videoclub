@@ -3,8 +3,6 @@ package com.videoclub.view;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.model.Formato;
 import com.videoclub.model.Plataforma;
-import com.videoclub.model.Videojuego;
-import com.videoclub.util.Serializador;
 
 import javax.swing.*;
 import java.awt.*;

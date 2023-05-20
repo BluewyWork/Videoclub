@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 public class GUI implements ActionListener
 {
+	private static IntroduccionView introduccionView;
 	private AltasView altasView;
 	private AlquilerView alquilerView;
 	private DevolverView devolverView;
@@ -14,11 +15,9 @@ public class GUI implements ActionListener
 	private AltaSocioView altaSocioView;
 	private AltaPeliculaView altaPeliculaView;
 	private AltaVideojuegoView altaVideojuegoView;
-
 	private SocioController socioController;
 	private MultimediaController multimediaController;
 	private AlquilerController alquilerController;
-	private static IntroduccionView introduccionView;
 
 	public static void main(String[] args)
 	{

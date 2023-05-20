@@ -5,7 +5,6 @@ import com.videoclub.model.AlquilerDAO;
 import com.videoclub.model.Multimedia;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class AlquilerController
 {
@@ -40,16 +39,15 @@ public class AlquilerController
 
 	public ArrayList<Alquiler> returnStuff(String nif)
 	{
-
-		ArrayList<Alquiler> listArrayList =  alquilerDAO.getListAlquiler();
+		ArrayList<Alquiler> listArrayList = alquilerDAO.getListAlquiler();
 		ArrayList<Alquiler> listAlquilerFilratado = new ArrayList<>();
 
 		for (Alquiler alquiler : listArrayList)
 		{
-				if (alquiler.getNif().equals(nif))
-				{
-					listAlquilerFilratado.add(alquiler);
-				}
+			if (alquiler.getNif().equals(nif))
+			{
+				listAlquilerFilratado.add(alquiler);
+			}
 		}
 
 		return listAlquilerFilratado;

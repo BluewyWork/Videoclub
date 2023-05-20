@@ -21,6 +21,16 @@ public class Cancion extends Disco
 		this.name = name;
 	}
 
+	@Override
+	public String toString()
+	{
+		return
+				"Cancion: " + "\n" +
+						super.toString() + "\n" +
+						"\t" + "Nombre: '" + name + '\'' +
+						"\t" + "Duracion: " + duration;
+	}
+
 	public int getDuration()
 	{
 		return duration;
@@ -36,15 +46,5 @@ public class Cancion extends Disco
 		{
 			throw new RuntimeException("Song: Duration can't be lower than 0");
 		}
-	}
-
-	@Override
-	public String toString()
-	{
-		return
-				"Cancion: " + "\n" +
-						super.toString() + "\n" +
-						"\t" + "Nombre: '" + name + '\'' +
-						"\t" + "Duracion: " + duration;
 	}
 }

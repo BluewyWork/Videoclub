@@ -24,7 +24,8 @@ public class SocioController
 		socioDAO.eliminarSocio(nif);
 	}
 
-	public Socio encontrarSocio(String nif){
+	public Socio encontrarSocio(String nif)
+	{
 		return socioDAO.encontrarSocio(nif);
 	}
 

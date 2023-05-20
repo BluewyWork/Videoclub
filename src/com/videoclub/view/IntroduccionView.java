@@ -1,9 +1,10 @@
 package com.videoclub.view;
 
-import javax.swing.*;
-import java.awt.*;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class IntroduccionView extends JPanel
 {
