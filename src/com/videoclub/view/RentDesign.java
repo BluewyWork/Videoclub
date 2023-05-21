@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 @SuppressWarnings("JoinDeclarationAndAssignmentJava")
-public class LookUpDesign extends JFrame implements ActionListener
+public class RentDesign extends JFrame implements ActionListener
 {
 	private GridLayout grdLayout;
 	private JComboBox<String> cmboBoxOptions;
@@ -28,7 +28,7 @@ public class LookUpDesign extends JFrame implements ActionListener
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
 
-	public LookUpDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
+	public RentDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
 	{
 		this.socioController = socioController;
 		this.multimediaController = multimediaController;

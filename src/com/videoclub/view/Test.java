@@ -1,47 +1,45 @@
-package com.videoclub.view;
-
 import javax.swing.*;
-import java.awt.*;
-import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Test
-{
-	public static void main(String[] args) {
-		JFrame frame = new JFrame("Uneditable Table Example");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+public class Test extends JFrame {
+	public Test() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Drop-down Button Example");
 
-		// Create the table data
-		Object[][] data = {
-				{"John Doe", 25, "Male"},
-				{"Jane Smith", 32, "Female"},
-				{"Bob Johnson", 42, "Male"}
-		};
+		// Create a combo box
+		JComboBox<String> comboBox = new JComboBox<>();
+		comboBox.addItem("Option 1");
+		comboBox.addItem("Option 2");
+		comboBox.addItem("Option 3");
 
-		// Create the column names
-		String[] columnNames = {"Name", "Age", "Gender"};
+		// Create a button
+		JButton button = new JButton("Click Me");
 
-		// Create the table model with the data and column names
-		DefaultTableModel tableModel = new DefaultTableModel(data, columnNames) {
+		// Add action listener to the button
+		button.addActionListener(new ActionListener() {
 			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;  // Make all cells uneditable
+			public void actionPerformed(ActionEvent e) {
+				// Perform some action when the button is clicked
+				System.out.println("Button clicked!");
 			}
-		};
+		});
 
-		// Create the JTable with the custom table model
-		JTable table = new JTable(tableModel);
+		// Create a panel and add the combo box and button to it
+		JPanel panel = new JPanel();
+		panel.add(comboBox);
+		panel.add(button);
 
-		// Set table properties
-		table.setFillsViewportHeight(true);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		// Add the panel to the frame
+		getContentPane().add(panel);
 
-		// Create a JScrollPane and add the JTable to it
-		JScrollPane scrollPane = new JScrollPane(table);
+		pack();
+		setVisible(true);
+	}
 
-		// Add the JScrollPane to the JFrame's content pane
-		frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
-
-		frame.setSize(400, 300);
-		frame.setVisible(true);
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(() -> {
+			new Test();
+		});
 	}
 }

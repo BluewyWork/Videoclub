@@ -31,9 +31,18 @@ public class SocioController
 		return socioDAO.encontrarSocio(nif);
 	}
 
-	public ArrayList<Socio> stuff()
+	public ArrayList<Socio> todosLosSocios()
 	{
 		return socioDAO.getListSocios();
 	}
 
+	public ArrayList<Socio> filtroPorNombre(String nombre)
+	{
+		return socioDAO.filtroPorNombre(nombre);
+	}
+
+	public ArrayList<Socio> filtroPorNIF(String nIF)
+	{
+		return socioDAO.filtroPorNif(nIF);
+	}
 }

@@ -50,6 +50,36 @@ public class SocioDAO
 		return socio;
 	}
 
+	public ArrayList<Socio> filtroPorNombre(String nombre)
+	{
+		ArrayList<Socio> listSocios = new ArrayList<>();
+
+		for (Socio socio: this.listSocios)
+		{
+			if (socio.getNombre().equals(nombre))
+			{
+				listSocios.add(socio);
+			}
+		}
+
+		return listSocios;
+	}
+
+	public ArrayList<Socio> filtroPorNif(String nIF)
+	{
+		ArrayList<Socio> listSocio = new ArrayList<>();
+
+		for (Socio socio : this.listSocios)
+		{
+			if (socio.getNif().equals(nIF))
+			{
+				listSocios.add(socio);
+			}
+		}
+
+		return listSocio;
+	}
+
 	public void aniadirSocio(Socio socio)
 	{
 		listSocios.add(socio);
