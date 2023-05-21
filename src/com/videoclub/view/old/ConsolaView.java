@@ -1,4 +1,4 @@
-package com.videoclub.view;
+package com.videoclub.view.old;
 
 public class ConsolaView
 {

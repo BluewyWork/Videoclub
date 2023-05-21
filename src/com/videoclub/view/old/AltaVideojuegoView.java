@@ -1,4 +1,4 @@
-package com.videoclub.view;
+package com.videoclub.view.old;
 
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.model.Formato;

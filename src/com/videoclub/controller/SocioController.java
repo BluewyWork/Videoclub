@@ -3,6 +3,8 @@ package com.videoclub.controller;
 import com.videoclub.model.Socio;
 import com.videoclub.model.SocioDAO;
 
+import java.util.ArrayList;
+
 public class SocioController
 {
 	private final SocioDAO socioDAO;
@@ -27,6 +29,11 @@ public class SocioController
 	public Socio encontrarSocio(String nif)
 	{
 		return socioDAO.encontrarSocio(nif);
+	}
+
+	public ArrayList<Socio> stuff()
+	{
+		return socioDAO.getListSocios();
 	}
 
 }

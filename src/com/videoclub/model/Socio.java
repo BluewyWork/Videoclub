@@ -41,6 +41,16 @@ public class Socio
 						"\t" + "Poblacion: " + poblacion;
 	}
 
+	public String getNombre()
+	{
+		return nombre;
+	}
+
+	public LocalDate getFechaNacimiento()
+	{
+		return fechaNacimiento;
+	}
+
 	public String getNif()
 	{
 		return nif;

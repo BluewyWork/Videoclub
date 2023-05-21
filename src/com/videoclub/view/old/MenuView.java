@@ -1,4 +1,4 @@
-package com.videoclub.view;
+package com.videoclub.view.old;
 
 import javax.swing.*;
 import java.awt.*;

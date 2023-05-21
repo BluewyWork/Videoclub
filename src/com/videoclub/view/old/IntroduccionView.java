@@ -1,4 +1,4 @@
-package com.videoclub.view;
+package com.videoclub.view.old;
 
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
@@ -6,47 +6,19 @@ import com.videoclub.controller.SocioController;
 import javax.swing.*;
 import java.awt.*;
 
-public class AltasView extends JPanel
+public class IntroduccionView extends JPanel
 {
 	SocioController socioController;
 	MultimediaController multimediaController;
 	private JTextArea txtAreaOutput;
 	private JScrollPane scrollPane;
-	private JButton btnAltaASocio;
-	private JButton btnAltaPelicula;
-	private JButton btnAltaVideojuego;
 
-	public AltasView(SocioController socioController, MultimediaController multimediaController)
+	public IntroduccionView(SocioController socioController, MultimediaController multimediaController)
 	{
 		this.socioController = socioController;
 		this.multimediaController = multimediaController;
 
 		initComponents();
-	}
-
-	public JTextArea getTxtAreaOutput()
-	{
-		return txtAreaOutput;
-	}
-
-	public JScrollPane getScrollPane()
-	{
-		return scrollPane;
-	}
-
-	public JButton getBtnAltaASocio()
-	{
-		return btnAltaASocio;
-	}
-
-	public JButton getBtnAltaPelicula()
-	{
-		return btnAltaPelicula;
-	}
-
-	public JButton getBtnAltaVideojuego()
-	{
-		return btnAltaVideojuego;
 	}
 
 	public void initComponents()
@@ -62,7 +34,7 @@ public class AltasView extends JPanel
 		c.fill = GridBagConstraints.HORIZONTAL;
 
 		txtAreaOutput = new JTextArea();
-		txtAreaOutput.setPreferredSize(new Dimension(320, 180));
+		txtAreaOutput.setPreferredSize(new Dimension(850, 180));
 		scrollPane = new JScrollPane(txtAreaOutput);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -77,9 +49,6 @@ public class AltasView extends JPanel
 		c.anchor = GridBagConstraints.CENTER;
 		c.fill = GridBagConstraints.HORIZONTAL;
 
-		btnAltaASocio = new JButton("Alta a Socio");
-		add(btnAltaASocio, c);
-
 		c = new GridBagConstraints();
 		c.gridx = 1;
 		c.gridy = 1;
@@ -88,9 +57,6 @@ public class AltasView extends JPanel
 		c.anchor = GridBagConstraints.CENTER;
 		c.fill = GridBagConstraints.HORIZONTAL;
 
-		btnAltaPelicula = new JButton("Alta a Pelicula");
-		add(btnAltaPelicula, c);
-
 		c = new GridBagConstraints();
 		c.gridx = 2;
 		c.gridy = 1;
@@ -98,8 +64,5 @@ public class AltasView extends JPanel
 		c.insets = new Insets(10, 10, 10, 10);
 		c.anchor = GridBagConstraints.CENTER;
 		c.fill = GridBagConstraints.HORIZONTAL;
-
-		btnAltaVideojuego = new JButton("Alta a Videojuego");
-		add(btnAltaVideojuego, c);
 	}
 }

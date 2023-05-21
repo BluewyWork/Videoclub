@@ -24,6 +24,11 @@ public class SocioDAO
 		return text;
 	}
 
+	public ArrayList<Socio> getListSocios()
+	{
+		return listSocios;
+	}
+
 	public ArrayList<Socio> getListMembers()
 	{
 		return listSocios;

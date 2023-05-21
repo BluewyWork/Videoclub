@@ -3,7 +3,7 @@
 //import com.videoclub.lib.Input;
 //import com.videoclub.model.Alquiler;
 //import com.videoclub.model.Multimedia;
-//import com.videoclub.view.ConsolaView;
+//import com.videoclub.view.old.ConsolaView;
 //
 //public class Consola
 //{
