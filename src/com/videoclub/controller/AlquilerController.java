@@ -52,4 +52,19 @@ public class AlquilerController
 
 		return listAlquilerFilratado;
 	}
+
+	public ArrayList<Alquiler> listarAlquileresSocio(String nif)
+	{
+		return alquilerDAO.listarAlquileresSocio(nif);
+	}
+
+	public ArrayList<Alquiler> listarTitulosAlquilerSocio(String nif)
+	{
+		return alquilerDAO.listarTitulosAlquilerSocio(nif);
+	}
+
+	public ArrayList<Alquiler> listarSocioRecargo()
+	{
+		return alquilerDAO.listarSocioRecargo();
+	}
 }

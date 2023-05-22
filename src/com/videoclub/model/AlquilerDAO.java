@@ -95,43 +95,43 @@ public class AlquilerDAO
 		return pendingPayments;
 	}
 
-	public ArrayList<String> listarAlquileresSocio(String nif)
+	public ArrayList<Alquiler> listarAlquileresSocio(String nif)
 	{
-		ArrayList<String> listAlquileresSocio = new ArrayList<>();
+		ArrayList<Alquiler> listAlquileresSocio = new ArrayList<>();
 
 		for (Alquiler alquiler : listAlquiler)
 		{
 			if (alquiler.getNif().equals(nif))
 			{
-				listAlquileresSocio.add(alquiler.toString());
+				listAlquileresSocio.add(alquiler);
 			}
 		}
 		return listAlquileresSocio;
 	}
 
-	public ArrayList<String> listarTitulosAlquilerSocio(String nif)
+	public ArrayList<Alquiler> listarTitulosAlquilerSocio(String nif)
 	{
-		ArrayList<String> listAlquileresSocio = new ArrayList<>();
+		ArrayList<Alquiler> listAlquileresSocio = new ArrayList<>();
 
 		for (Alquiler alquiler : listAlquiler)
 		{
 			if (alquiler.getNif().equals(nif))
 			{
-				listAlquileresSocio.add(alquiler.listaAlquileres());
+				listAlquileresSocio.add(alquiler);
 			}
 		}
 		return listAlquileresSocio;
 	}
 
-	public ArrayList<String> listarSocioRecargo()
+	public ArrayList<Alquiler> listarSocioRecargo()
 	{
-		ArrayList<String> listSocioRecargo = new ArrayList<>();
+		ArrayList<Alquiler> listSocioRecargo = new ArrayList<>();
 
 		for (Alquiler alquiler : listAlquiler)
 		{
 			if (alquiler.esAtrasado())
 			{
-				listSocioRecargo.add(alquiler.getNif());
+				listSocioRecargo.add(alquiler);
 			}
 		}
 		return listSocioRecargo;

@@ -23,7 +23,7 @@ public class GUI
 		alquilerController = new AlquilerController();
 
 		LookUpDesign lookUpDesign = new LookUpDesign(socioController, multimediaController, alquilerController);
-		lookUpDesign.setVisible(false);
+		lookUpDesign.setVisible(true);
 		lookUpDesign.setBounds(100, 100, 900, 900);
 
 		socioController.registrarSocio("1","a","10/10/2000", "uwu");
