@@ -66,20 +66,24 @@ public class RentDesign extends JFrame implements ActionListener
 			{
 				JOptionPane.showMessageDialog(null, "NIF no válido", "Error", JOptionPane.ERROR_MESSAGE);
 			}
-			if (actionEvent.getSource().equals(btnRent)){
+		}
+		if (actionEvent.getSource().equals(btnRent))
+		{
 
-				int filaSeleccionada = tblResults.getSelectedRow();
-
-				if (filaSeleccionada != -1) {
-					Multimedia multimedia = tblModel.getObjectAt(filaSeleccionada);
-					alquilerController.alquilarMultimedia(nif, multimedia);
-				} else {
-					JOptionPane.showMessageDialog(null, "NIF no válido", "Error", JOptionPane.ERROR_MESSAGE);
-				}
+			int filaSeleccionada = tblResults.getSelectedRow();
+			String nif = txtFieldPrompt.getText();
 
 
+			if (filaSeleccionada != -1)
+			{
+				Multimedia multimedia = tblModel.getObjectAt(filaSeleccionada);
+				alquilerController.alquilarMultimedia(nif, multimedia);
+				JOptionPane.showMessageDialog(null, "Multimedia alquilada", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "NIF no válido", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
@@ -145,6 +149,7 @@ public class RentDesign extends JFrame implements ActionListener
 		mainPanel.add(cmboBoxOptions);
 		mainPanel.add(txtFieldPrompt);
 		mainPanel.add(btnFind);
+		mainPanel.add(btnRent);
 
 		//
 		add(mainPanel);
@@ -168,7 +173,8 @@ public class RentDesign extends JFrame implements ActionListener
 			this.columnNames = columnNames;
 		}
 
-		public Multimedia getObjectAt(int x){
+		public Multimedia getObjectAt(int x)
+		{
 			return data.get(x);
 		}
 
