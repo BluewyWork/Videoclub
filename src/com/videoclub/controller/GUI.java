@@ -3,9 +3,6 @@ package com.videoclub.controller;
 import com.videoclub.view.LookUpDesign;
 import com.videoclub.view.old.*;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 public class GUI
 {
 	private static IntroduccionView introduccionView;
