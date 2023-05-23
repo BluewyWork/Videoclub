@@ -1,12 +1,14 @@
 package com.videoclub.controller;
 
 import com.videoclub.view.AltaPeliculaMainView;
+import com.videoclub.view.AltaVideojuegoMainView;
 
 import java.awt.*;
 
 public class Test
 {
 	AltaPeliculaMainView altaPeliculaMainView;
+	AltaVideojuegoMainView altaVideojuegoMainView;
 	MultimediaController multimediaController;
 
 	public static void main(String[] args)
@@ -22,5 +24,11 @@ public class Test
 		altaPeliculaMainView.setVisible(true);
 		altaPeliculaMainView.setBounds(300, 100, 800, 500);
 		altaPeliculaMainView.getContentPane().setBackground(Color.black);
+
+		multimediaController = new MultimediaController();
+		altaVideojuegoMainView = new AltaVideojuegoMainView(multimediaController);
+		altaVideojuegoMainView.setVisible(true);
+		altaVideojuegoMainView.setBounds(300, 100, 800, 500);
+		altaVideojuegoMainView.getContentPane().setBackground(Color.blue);
 	}
 }

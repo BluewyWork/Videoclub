@@ -109,19 +109,19 @@ public class AlquilerDAO
 		return listAlquileresSocio;
 	}
 
-	public ArrayList<String> listarTitulosAlquilerSocio(String nif)
-	{
-		ArrayList<String> listAlquileresSocio = new ArrayList<>();
-
-		for (Alquiler alquiler : listAlquiler)
-		{
-			if (alquiler.getNif().equals(nif))
-			{
-				listAlquileresSocio.add(alquiler.listaAlquileres());
-			}
-		}
-		return listAlquileresSocio;
-	}
+//	public ArrayList<String> listarTitulosAlquilerSocio(String nif)
+//	{
+//		ArrayList<String> listAlquileresSocio = new ArrayList<>();
+//
+//		for (Alquiler alquiler : listAlquiler)
+//		{
+//			if (alquiler.getNif().equals(nif))
+//			{
+//				listAlquileresSocio.add(alquiler.listaAlquileres());
+//			}
+//		}
+//		return listAlquileresSocio;
+//	}
 
 	public ArrayList<String> listarSocioRecargo()
 	{
