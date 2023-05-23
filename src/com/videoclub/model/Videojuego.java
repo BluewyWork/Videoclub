@@ -1,5 +1,7 @@
 package com.videoclub.model;
 
+import java.util.List;
+
 public class Videojuego extends Multimedia
 {
 	private Plataforma platforma;

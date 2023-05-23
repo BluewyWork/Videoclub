@@ -58,4 +58,14 @@ public class MultimediaController
 	{
 		return multimediaDAO.filtroPorAutor(autor);
 	}
+
+	public ArrayList<Cancion> obtenerCancionesPorDuracion(Disco disco)
+	{
+		return multimediaDAO.obtenerCancionesPorDuracion(disco);
+	}
+
+	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAño()
+	{
+		return multimediaDAO.obtenerVideojuegosOrdenadosPorAnio();
+	}
 }
