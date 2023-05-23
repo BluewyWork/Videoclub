@@ -73,7 +73,7 @@ public class SocioDAO
 		{
 			if (socio.getNif().equals(nIF))
 			{
-				listSocios.add(socio);
+				listSocio.add(socio);
 			}
 		}
 

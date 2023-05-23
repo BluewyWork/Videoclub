@@ -90,4 +90,34 @@ public class MultimediaDAO
 
 		return listPeliculasTitulo;
 	}
+
+	public ArrayList<Multimedia> filtroPorTitulo(String titulo)
+	{
+		ArrayList<Multimedia> listMultimedia = new ArrayList<>();
+
+		for (Multimedia multimedia : this.listMultimedia)
+		{
+			if (multimedia.getTitulo().equals(titulo))
+			{
+				listMultimedia.add(multimedia);
+			}
+		}
+
+		return listMultimedia;
+	}
+
+	public ArrayList<Multimedia> filtroPorAutor(String autor)
+	{
+		ArrayList<Multimedia> listMultimedia = new ArrayList<>();
+
+		for (Multimedia multimedia : this.listMultimedia)
+		{
+			if (multimedia.getAutor().equals(autor))
+			{
+				listMultimedia.add(multimedia);
+			}
+		}
+
+		return listMultimedia;
+	}
 }

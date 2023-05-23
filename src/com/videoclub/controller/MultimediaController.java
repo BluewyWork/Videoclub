@@ -1,9 +1,6 @@
 package com.videoclub.controller;
 
-import com.videoclub.model.Multimedia;
-import com.videoclub.model.MultimediaDAO;
-import com.videoclub.model.Pelicula;
-import com.videoclub.model.Videojuego;
+import com.videoclub.model.*;
 
 import java.util.ArrayList;
 
@@ -52,4 +49,13 @@ public class MultimediaController
 		return multimediaDAO.getListMultimedia();
 	}
 
+	public ArrayList<Multimedia> filtroPorTitulo(String titulo)
+	{
+		return multimediaDAO.filtroPorTitulo(titulo);
+	}
+
+	public ArrayList<Multimedia> filtroPorAutor(String autor)
+	{
+		return multimediaDAO.filtroPorAutor(autor);
+	}
 }

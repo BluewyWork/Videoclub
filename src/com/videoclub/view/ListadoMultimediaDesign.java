@@ -3,6 +3,7 @@ package com.videoclub.view;
 import com.videoclub.controller.AlquilerController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
+import com.videoclub.model.Multimedia;
 import com.videoclub.model.Socio;
 
 import javax.swing.*;
@@ -14,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 @SuppressWarnings("JoinDeclarationAndAssignmentJava")
-public class ListadoSocioDesign extends JFrame implements ActionListener
+public class ListadoMultimediaDesign extends JFrame implements ActionListener
 {
 	private GridLayout grdLayout;
 	private JComboBox<String> cmboBoxOptions;
@@ -28,7 +29,7 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
 
-	public ListadoSocioDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
+	public ListadoMultimediaDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
 	{
 		this.socioController = socioController;
 		this.multimediaController = multimediaController;
@@ -71,18 +72,18 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 
 		//
 		cmboBoxOptions.addItem("Sin filtro");
-		cmboBoxOptions.addItem("Buscar por NIF");
-		cmboBoxOptions.addItem("Buscar por Nombre");
+		cmboBoxOptions.addItem("Buscar por título");
+		cmboBoxOptions.addItem("Buscar por autor");
 
 		//
 		btnFind.setText("Find");
 		btnFind.addActionListener(this);
 
 		//
-		ArrayList<Socio> listSocio = socioController.todosLosSocios();
-		String[] columnNames = {"NIF", "Nombre", "Fecha Naciemiento", "Poblacion"};
+		ArrayList<Multimedia> listMultimedia = multimediaController.returnStuff();
+		String[] columnNames = {"Titulo", "Autor", "Formato", "Año"};
 
-		tblModel.setData(listSocio);
+		tblModel.setData(listMultimedia);
 		tblModel.setColumnNames(columnNames);
 
 		tblModel.fireTableDataChanged();
@@ -102,17 +103,17 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 	{
 		String userInputText = txtFieldPrompt.getText();
 
-		if (cmboBoxOptions.getSelectedItem().equals("Buscar por NIF"))
+		if (cmboBoxOptions.getSelectedItem().equals("Buscar por título"))
 		{
-			tblModel.setData(socioController.filtroPorNIF(userInputText));
+			tblModel.setData(multimediaController.filtroPorTitulo(userInputText));
 		}
-		else if (cmboBoxOptions.getSelectedItem().equals("Buscar por Nombre"))
+		else if (cmboBoxOptions.getSelectedItem().equals("Buscar por autor"))
 		{
-			tblModel.setData(socioController.filtroPorNombre(userInputText));
+			tblModel.setData(multimediaController.filtroPorAutor(userInputText));
 		}
 		else if (cmboBoxOptions.getSelectedItem().equals("Sin filtro"))
 		{
-			tblModel.setData(socioController.todosLosSocios());
+			tblModel.setData(multimediaController.returnStuff());
 		}
 
 		tblModel.fireTableDataChanged();
@@ -120,7 +121,7 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 
 	class MemberTableModel extends AbstractTableModel
 	{
-		private ArrayList<Socio> data;
+		private ArrayList<Multimedia> data;
 		private String[] columnNames;
 
 		public MemberTableModel()
@@ -129,9 +130,9 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 			columnNames = new String[]{"Column1", "Column2", "Column3", "Column4"};
 		}
 
-		public MemberTableModel(ArrayList<Socio> listSocio, String[] columnNames)
+		public MemberTableModel(ArrayList<Multimedia> listMultimedia, String[] columnNames)
 		{
-			this.data = listSocio;
+			this.data = listMultimedia;
 			this.columnNames = columnNames;
 		}
 
@@ -150,26 +151,23 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 		@Override
 		public Object getValueAt(int row, int column)
 		{
-			Socio socio = data.get(row);
+			Multimedia multimedia = data.get(row);
 
 			if (column == 0)
 			{
-				return socio.getNif();
+				return multimedia.getTitulo();
 			}
 			else if (column == 1)
 			{
-				return socio.getNombre();
+				return multimedia.getAutor();
 			}
 			else if (column == 2)
 			{
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-				String formattedDate = socio.getFechaNacimiento().format(formatter);
-
-				return formattedDate;
+				return multimedia.getFormat();
 			}
 			else if (column == 3)
 			{
-				return socio.getPoblacion();
+				return multimedia.getAnio();
 			}
 
 			return null;
@@ -181,7 +179,7 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 			return columnNames[column];
 		}
 
-		public void setData(ArrayList<Socio> data)
+		public void setData(ArrayList<Multimedia> data)
 		{
 			this.data = data;
 		}
