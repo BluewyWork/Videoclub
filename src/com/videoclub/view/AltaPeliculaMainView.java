@@ -1,4 +1,4 @@
-package com.videoclub.view.old;
+package com.videoclub.view;
 
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.model.Formato;
@@ -8,7 +8,44 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AltaPeliculaView extends JFrame implements ActionListener
+public class AltaPeliculaMainView extends JFrame implements ActionListener
+{
+	private MultimediaController multimediaController;
+	AltaPeliculaView firstPanel;
+	private JPanel secondPanel;
+
+	public AltaPeliculaMainView(MultimediaController multimedia)
+	{
+		multimediaController = multimedia;
+		initComponents();
+	}
+
+	public void initComponents()
+	{
+		firstPanel = new AltaPeliculaView(multimediaController);
+		firstPanel.setPreferredSize(new Dimension(350, 450));
+
+		secondPanel = new JPanel();
+		secondPanel.setPreferredSize(new Dimension(350, 400));
+
+		secondPanel.setBackground(Color.black);
+		setLayout(new FlowLayout());
+		add(firstPanel);
+		add(secondPanel);
+		pack();
+
+		setVisible(true);
+		setTitle("Alta pelicula");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	}
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+	}
+}
+
+class AltaPeliculaView extends JPanel implements ActionListener
 {
 	private JLabel lblTitulo, lblAutor, lblFormato, lblAnyo, lblDuracion, lblActor, lblActriz;
 	private JTextField txtTitulo, txtAutor, txtActor, txtActriz;
@@ -63,7 +100,8 @@ public class AltaPeliculaView extends JFrame implements ActionListener
 
 		btnDarAlta = new JButton("Dar alta película");
 
-		setLayout(new GridLayout(8, 8));
+		setSize(400, 300);
+		setLayout(new GridLayout(8, 2));
 		add(lblTitulo);
 		add(txtTitulo);
 		add(lblAutor);
@@ -81,7 +119,6 @@ public class AltaPeliculaView extends JFrame implements ActionListener
 		add(btnDarAlta);
 
 		btnDarAlta.addActionListener(this);
-		setVisible(true);
 	}
 
 	public void accionDarAltaPelicula()

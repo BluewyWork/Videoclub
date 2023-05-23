@@ -1,5 +1,6 @@
 package com.videoclub.controller;
 
+import com.videoclub.view.AltaPeliculaMainView;
 import com.videoclub.view.LookUpDesign;
 import com.videoclub.view.old.*;
 
@@ -11,7 +12,7 @@ public class GUI
 	private DevolverView devolverView;
 	private ListarView listarView;
 	private AltaSocioView altaSocioView;
-	private AltaPeliculaView altaPeliculaView;
+	private AltaPeliculaMainView altaPeliculaView;
 	private AltaVideojuegoView altaVideojuegoView;
 	private SocioController socioController;
 	private MultimediaController multimediaController;
@@ -33,6 +34,6 @@ public class GUI
 
 		LookUpDesign lookUpDesign = new LookUpDesign(socioController, multimediaController, alquilerController);
 		lookUpDesign.setVisible(true);
-		lookUpDesign.setBounds(100, 100, 900, 900);
+		lookUpDesign.setBounds(300, 100, 900, 600);
 	}
 }
