@@ -58,11 +58,6 @@ public class AlquilerController
 		return alquilerDAO.listarAlquileresSocio(nif);
 	}
 
-	public ArrayList<Alquiler> listarTitulosAlquilerSocio(String nif)
-	{
-		return alquilerDAO.listarTitulosAlquilerSocio(nif);
-	}
-
 	public ArrayList<Alquiler> listarSocioRecargo()
 	{
 		return alquilerDAO.listarSocioRecargo();

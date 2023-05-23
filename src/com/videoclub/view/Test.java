@@ -2,8 +2,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Test extends JFrame {
-	public Test() {
+public class Test extends JFrame
+{
+	public Test()
+	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Drop-down Button Example");
 
@@ -17,9 +19,11 @@ public class Test extends JFrame {
 		JButton button = new JButton("Click Me");
 
 		// Add action listener to the button
-		button.addActionListener(new ActionListener() {
+		button.addActionListener(new ActionListener()
+		{
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e)
+			{
 				// Perform some action when the button is clicked
 				System.out.println("Button clicked!");
 			}
@@ -37,8 +41,10 @@ public class Test extends JFrame {
 		setVisible(true);
 	}
 
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(() -> {
+	public static void main(String[] args)
+	{
+		SwingUtilities.invokeLater(() ->
+		{
 			new Test();
 		});
 	}

@@ -8,11 +8,9 @@ import com.videoclub.model.Socio;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 @SuppressWarnings("JoinDeclarationAndAssignmentJava")
@@ -72,7 +70,6 @@ public class RentDesign extends JFrame implements ActionListener
 
 			int filaSeleccionada = tblResults.getSelectedRow();
 			String nif = txtFieldPrompt.getText();
-
 
 			if (filaSeleccionada != -1)
 			{

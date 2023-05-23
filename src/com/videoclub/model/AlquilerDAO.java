@@ -109,20 +109,6 @@ public class AlquilerDAO
 		return listAlquileresSocio;
 	}
 
-	public ArrayList<Alquiler> listarTitulosAlquilerSocio(String nif)
-	{
-		ArrayList<Alquiler> listAlquileresSocio = new ArrayList<>();
-
-		for (Alquiler alquiler : listAlquiler)
-		{
-			if (alquiler.getNif().equals(nif))
-			{
-				listAlquileresSocio.add(alquiler);
-			}
-		}
-		return listAlquileresSocio;
-	}
-
 	public ArrayList<Alquiler> listarSocioRecargo()
 	{
 		ArrayList<Alquiler> listSocioRecargo = new ArrayList<>();

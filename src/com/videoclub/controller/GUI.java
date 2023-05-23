@@ -5,7 +5,6 @@ import com.videoclub.view.RentDesign;
 
 public class GUI
 {
-
 	private SocioController socioController;
 	private MultimediaController multimediaController;
 	private AlquilerController alquilerController;
@@ -22,15 +21,17 @@ public class GUI
 		multimediaController = new MultimediaController();
 		alquilerController = new AlquilerController();
 
+		socioController.registrarSocio("123", "Chitan", "12/12/1999", "Algo");
+
 		LookUpDesign lookUpDesign = new LookUpDesign(socioController, multimediaController, alquilerController);
 		lookUpDesign.setVisible(true);
-		lookUpDesign.setBounds(100, 100, 900, 900);
+		lookUpDesign.setBounds(300, 100, 900, 600);
 
-		socioController.registrarSocio("1","a","10/10/2000", "uwu");
+		socioController.registrarSocio("1", "a", "10/10/2000", "uwu");
 		multimediaController.altaVideojuego("uwu", "uwu2", "DVD", 12, "PC");
 
 		RentDesign r = new RentDesign(socioController, multimediaController, alquilerController);
 		r.setVisible(true);
-		r.setBounds(100,100,900,900);
+		r.setBounds(100, 100, 900, 900);
 	}
 }

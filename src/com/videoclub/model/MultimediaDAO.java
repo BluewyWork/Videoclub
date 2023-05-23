@@ -1,6 +1,7 @@
 package com.videoclub.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MultimediaDAO
 {
@@ -58,5 +59,35 @@ public class MultimediaDAO
 		{
 			throw new RuntimeException("Multimedia Not Found");
 		}
+	}
+
+	public ArrayList<String> listarMultimedias()
+	{
+		ArrayList<String> listMultimedias = new ArrayList<>();
+
+		for (Multimedia multimedia : listMultimedia)
+		{
+			//listMultimedias.add(multimedia.getTitulo());
+			listMultimedias.add(multimedia.toString());
+		}
+
+		return listMultimedias;
+	}
+
+	public ArrayList<String> listarPeliculasTitulo()
+	{
+		ArrayList<String> listPeliculasTitulo = new ArrayList<>();
+		ArrayList<Multimedia> copyListMultimedia = listMultimedia;
+		Collections.sort(listMultimedia);
+
+		for (Multimedia multimedia : copyListMultimedia)
+		{
+			if (multimedia instanceof Pelicula)
+			{
+				listPeliculasTitulo.add(multimedia.toString());
+			}
+		}
+
+		return listPeliculasTitulo;
 	}
 }
