@@ -31,12 +31,13 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 		firstPanel = new AltaPeliculaView(multimediaController);
 		firstPanel.setPreferredSize(new Dimension(350, 450));
 
-		ImageIcon imageIcon = new ImageIcon("Fondo.jpg");
-		Image image = imageIcon.getImage();
+//		ImageIcon imageIcon = new ImageIcon("Fondo.jpg");
+//		Image image = imageIcon.getImage();
 
+		secondPanel = new JPanel();
 		secondPanel.setPreferredSize(new Dimension(350, 400));
-
 		secondPanel.setBackground(Color.black);
+
 		setLayout(new FlowLayout());
 		add(firstPanel);
 		add(secondPanel);
