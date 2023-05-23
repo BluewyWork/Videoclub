@@ -96,7 +96,8 @@ public abstract class Multimedia implements Comparable<Multimedia>
 	}
 
 	@Override
-	public int compareTo(Multimedia other) {
+	public int compareTo(Multimedia other)
+	{
 		return this.getTitulo().compareTo(other.getTitulo());
 	}
 }

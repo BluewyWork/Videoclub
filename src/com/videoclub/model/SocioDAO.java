@@ -54,7 +54,7 @@ public class SocioDAO
 	{
 		ArrayList<Socio> listSocios = new ArrayList<>();
 
-		for (Socio socio: this.listSocios)
+		for (Socio socio : this.listSocios)
 		{
 			if (socio.getNombre().equals(nombre))
 			{
