@@ -2,6 +2,9 @@ package com.videoclub.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 
 public class MultimediaDAO
 {
@@ -60,6 +63,34 @@ public class MultimediaDAO
 			throw new RuntimeException("Multimedia Not Found");
 		}
 	}
+	public List<Cancion> obtenerCancionesPorDuracion(Disco disco) {
+		List<Cancion> canciones = disco.getListSongs();
+
+		canciones.sort(Comparator.comparingInt(Cancion::getDuration));
+
+		return canciones;
+	}
+	public List<Videojuego> obtenerTodosLosVideojuegos() {
+		List<Videojuego> videojuegos = new ArrayList<>();
+
+		for (Multimedia multimedia : listMultimedia) {
+			if (multimedia instanceof Videojuego) {
+				videojuegos.add((Videojuego) multimedia);
+			}
+		}
+		return videojuegos;
+	}
+
+	public List<Videojuego> obtenerVideojuegosOrdenadosPorAño() {
+		List<Videojuego> videojuegos = obtenerTodosLosVideojuegos();
+
+		videojuegos.sort(Comparator.comparingInt(Videojuego::getAnio));
+
+		return videojuegos;
+	}
+
+
+
 
 	public ArrayList<String> listarMultimedias()
 	{
