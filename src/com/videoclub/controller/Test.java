@@ -1,14 +1,14 @@
 package com.videoclub.controller;
 
-import com.videoclub.view.AltaPeliculaMainView;
-import com.videoclub.view.AltaVideojuegoMainView;
+import com.videoclub.view.AltaPeliculaDesign;
+import com.videoclub.view.AltaVideojuegoDesign;
 
 import java.awt.*;
 
 public class Test
 {
-	AltaPeliculaMainView altaPeliculaMainView;
-	AltaVideojuegoMainView altaVideojuegoMainView;
+	AltaPeliculaDesign altaPeliculaDesign;
+	AltaVideojuegoDesign altaVideojuegoDesign;
 	MultimediaController multimediaController;
 
 	public static void main(String[] args)
@@ -20,15 +20,15 @@ public class Test
 	public void run()
 	{
 		multimediaController = new MultimediaController();
-		altaPeliculaMainView = new AltaPeliculaMainView(multimediaController);
-		altaPeliculaMainView.setVisible(true);
-		altaPeliculaMainView.setBounds(300, 100, 800, 500);
-		altaPeliculaMainView.getContentPane().setBackground(Color.black);
+		altaPeliculaDesign = new AltaPeliculaDesign(multimediaController);
+		altaPeliculaDesign.setVisible(true);
+		altaPeliculaDesign.setBounds(300, 100, 800, 500);
+		altaPeliculaDesign.getContentPane().setBackground(Color.black);
 
 		multimediaController = new MultimediaController();
-		altaVideojuegoMainView = new AltaVideojuegoMainView(multimediaController);
-		altaVideojuegoMainView.setVisible(true);
-		altaVideojuegoMainView.setBounds(300, 100, 800, 500);
-		altaVideojuegoMainView.getContentPane().setBackground(Color.blue);
+		altaVideojuegoDesign = new AltaVideojuegoDesign(multimediaController);
+		altaVideojuegoDesign.setVisible(true);
+		altaVideojuegoDesign.setBounds(300, 100, 800, 500);
+		altaVideojuegoDesign.getContentPane().setBackground(Color.blue);
 	}
 }
