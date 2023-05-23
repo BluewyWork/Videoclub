@@ -44,6 +44,11 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 		setTitle("Alta pelicula");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+		ImageIcon imageIcon = new ImageIcon("src/com/videoclub/rsc/Fondo.jpg");
+		Image image = imageIcon.getImage();
+
+		ImagePanel panel = new ImagePanel(image);
+		panel.setLayout(new FlowLayout());
 	}
 
 	public class ImagePanel extends JComponent
@@ -59,7 +64,7 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 		protected void paintComponent(Graphics g)
 		{
 			super.paintComponent(g);
-			g.drawImage(image, 0, 0, this);
+			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 		}
 	}
 
