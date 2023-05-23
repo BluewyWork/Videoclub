@@ -31,7 +31,9 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 		firstPanel = new AltaPeliculaView(multimediaController);
 		firstPanel.setPreferredSize(new Dimension(350, 450));
 
-		secondPanel = new JPanel();
+		ImageIcon imageIcon = new ImageIcon("Fondo.jpg");
+		Image image = imageIcon.getImage();
+
 		secondPanel.setPreferredSize(new Dimension(350, 400));
 
 		secondPanel.setBackground(Color.black);
@@ -44,23 +46,6 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 		setTitle("Alta pelicula");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-	}
-
-	public class ImagePanel extends JComponent
-	{
-		private Image image;
-
-		public ImagePanel(Image image)
-		{
-			this.image = image;
-		}
-
-		@Override
-		protected void paintComponent(Graphics g)
-		{
-			super.paintComponent(g);
-			g.drawImage(image, 0, 0, this);
-		}
 	}
 
 	class AltaPeliculaView extends JPanel implements ActionListener
