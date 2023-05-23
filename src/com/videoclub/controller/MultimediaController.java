@@ -1,11 +1,10 @@
 package com.videoclub.controller;
 
-import com.videoclub.model.Multimedia;
-import com.videoclub.model.MultimediaDAO;
-import com.videoclub.model.Pelicula;
-import com.videoclub.model.Videojuego;
+import com.videoclub.model.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class MultimediaController
 {
@@ -52,5 +51,13 @@ public class MultimediaController
 		return multimediaDAO.getListMultimedia();
 	}
 
+	public List<Cancion> obtenerCancionesPorDuracion(Disco disco)
+	{
+		return multimediaDAO.obtenerCancionesPorDuracion(disco);
+	}
 
+	public List<Videojuego> obtenerVideojuegosOrdenadosPorAño()
+	{
+		return multimediaDAO.obtenerVideojuegosOrdenadosPorAño();
+	}
 }
