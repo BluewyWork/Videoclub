@@ -1,6 +1,6 @@
 package com.videoclub.model;
 
-public abstract class Multimedia
+public abstract class Multimedia implements Comparable<Multimedia>
 {
 	private String titulo;
 	private String autor;
@@ -93,5 +93,11 @@ public abstract class Multimedia
 	public double calcularPrecioAlquiler()
 	{
 		return Constantes.BASE_PRICE;
+	}
+
+	@Override
+	public int compareTo(Multimedia other)
+	{
+		return this.getTitulo().compareTo(other.getTitulo());
 	}
 }

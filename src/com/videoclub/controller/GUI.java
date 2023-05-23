@@ -1,11 +1,10 @@
 package com.videoclub.controller;
 
-import com.videoclub.view.LookUpDesign;
-import com.videoclub.view.RentDesign;
+import com.videoclub.view.ListadoSocioDesign;
+import com.videoclub.view.AquilerDesign;
 
 public class GUI
 {
-
 	private SocioController socioController;
 	private MultimediaController multimediaController;
 	private AlquilerController alquilerController;
@@ -22,15 +21,17 @@ public class GUI
 		multimediaController = new MultimediaController();
 		alquilerController = new AlquilerController();
 
-		LookUpDesign lookUpDesign = new LookUpDesign(socioController, multimediaController, alquilerController);
-		lookUpDesign.setVisible(false);
-		lookUpDesign.setBounds(100, 100, 900, 900);
+		socioController.registrarSocio("123", "Chitan", "12/12/1999", "Algo");
 
-		socioController.registrarSocio("1","a","10/10/2000", "uwu");
+		ListadoSocioDesign listadoSocioDesign = new ListadoSocioDesign(socioController, multimediaController, alquilerController);
+		listadoSocioDesign.setVisible(true);
+		listadoSocioDesign.setBounds(300, 100, 900, 600);
+
+		socioController.registrarSocio("1", "a", "10/10/2000", "uwu");
 		multimediaController.altaVideojuego("uwu", "uwu2", "DVD", 12, "PC");
 
-		RentDesign r = new RentDesign(socioController, multimediaController, alquilerController);
+		AquilerDesign r = new AquilerDesign(socioController, multimediaController, alquilerController);
 		r.setVisible(true);
-		r.setBounds(100,100,900,900);
+		r.setBounds(100, 100, 900, 900);
 	}
 }

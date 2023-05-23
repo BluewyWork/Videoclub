@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+
 public class MultimediaDAO
 {
 	private ArrayList<Multimedia> listMultimedia;
@@ -89,4 +90,35 @@ public class MultimediaDAO
 	}
 
 
+
+
+	public ArrayList<String> listarMultimedias()
+	{
+		ArrayList<String> listMultimedias = new ArrayList<>();
+
+		for (Multimedia multimedia : listMultimedia)
+		{
+			//listMultimedias.add(multimedia.getTitulo());
+			listMultimedias.add(multimedia.toString());
+		}
+
+		return listMultimedias;
+	}
+
+	public ArrayList<String> listarPeliculasTitulo()
+	{
+		ArrayList<String> listPeliculasTitulo = new ArrayList<>();
+		ArrayList<Multimedia> copyListMultimedia = listMultimedia;
+		Collections.sort(listMultimedia);
+
+		for (Multimedia multimedia : copyListMultimedia)
+		{
+			if (multimedia instanceof Pelicula)
+			{
+				listPeliculasTitulo.add(multimedia.toString());
+			}
+		}
+
+		return listPeliculasTitulo;
+	}
 }
