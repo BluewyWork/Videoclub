@@ -15,13 +15,15 @@ public class PrincipalDesign extends JFrame implements ActionListener
 {
 	private JMenuBar menuBar;
 	private JMenu menuSocio, menuMultimedia, menuListar, menuAlquilar, menuDevolver;
-	private JMenuItem altaSocio, altaPelicula, altaVideojuego, alquilar, devolver;
+	private JMenuItem altaSocio, listadoSocio, altaPelicula, altaVideojuego, alquilar, devolver;
 	private JMenuItem listarMultimedia, listarPelicula, listarCancion, listarVideojuego, listarAlquiler, listarSocio;
 	AltaSocioDesign altaSocioDesign;
 	AltaPeliculaDesign altaPeliculaDesign;
 	AltaVideojuegoDesign altaVideojuegoDesign;
 
 	AlquilerDesign alquilerDesign;
+	ListadoSocioDesign listadoSocioDesign;
+	ListadoMultimediaDesign listadoMultimediaDesign;
 
 	SocioController socioController;
 	MultimediaController multimediaController;
@@ -43,6 +45,8 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		altaVideojuegoDesign = new AltaVideojuegoDesign(multimediaController);
 
 		alquilerDesign = new AlquilerDesign(socioController, multimediaController, alquilerController);
+		listadoSocioDesign = new ListadoSocioDesign(socioController, multimediaController, alquilerController);
+		listadoMultimediaDesign = new ListadoMultimediaDesign(socioController, multimediaController, alquilerController);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(400, 300);
@@ -61,16 +65,12 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		alquilar = new JMenuItem("Alquilar multimedia a socio");
 		devolver = new JMenuItem("Devolver multimedia de socio");
 		altaSocio = new JMenuItem("Alta de socio");
+		listadoSocio = new JMenuItem("Listado de socio");
 		altaPelicula = new JMenuItem("Alta de pelicula");
 		altaVideojuego = new JMenuItem("Alta de videojuego");
 
-		altaSocio.addActionListener(this);
-		altaPelicula.addActionListener(this);
-		altaVideojuego.addActionListener(this);
-
-		alquilar.addActionListener(this);
-
 		menuSocio.add(altaSocio);
+		menuSocio.add(listadoSocio);
 
 		menuMultimedia.add(altaPelicula);
 		menuMultimedia.add(altaVideojuego);
@@ -99,6 +99,14 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		menuBar.add(menuDevolver);
 		menuBar.add(menuListar);
 
+		altaSocio.addActionListener(this);
+		altaPelicula.addActionListener(this);
+		altaVideojuego.addActionListener(this);
+
+		alquilar.addActionListener(this);
+		listadoSocio.addActionListener(this);
+		listarMultimedia.addActionListener(this);
+
 		setJMenuBar(menuBar);
 	}
 
@@ -120,6 +128,14 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		else if (e.getSource().equals(alquilar))
 		{
 			alquilerDesign.setVisible(true);
+		}
+		else if (e.getSource().equals(listadoSocio))
+		{
+			listadoSocioDesign.setVisible(true);
+		}
+		else if (e.getSource().equals(listarMultimedia))
+		{
+			listadoMultimediaDesign.setVisible(true);
 		}
 	}
 

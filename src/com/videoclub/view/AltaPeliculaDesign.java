@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 public class AltaPeliculaDesign extends JFrame implements ActionListener
 {
 	AltaPeliculaView firstPanel;
-	private final MultimediaController multimediaController;
+	private MultimediaController multimediaController;
 	private JPanel secondPanel;
 
 	public AltaPeliculaDesign(MultimediaController multimedia)
@@ -31,9 +31,6 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 	{
 		firstPanel = new AltaPeliculaView(multimediaController);
 		firstPanel.setPreferredSize(new Dimension(350, 450));
-
-//		ImageIcon imageIcon = new ImageIcon("Fondo.jpg");
-//		Image image = imageIcon.getImage();
 
 		secondPanel = new JPanel();
 		secondPanel.setPreferredSize(new Dimension(350, 400));
@@ -69,14 +66,13 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			if (e.getSource() == btnDarAlta)
-			{
-				accionDarAltaPelicula();
-			}
+			accionDarAltaPelicula();
 		}
 
 		public void initComponents()
 		{
+			setSize(400, 300);
+
 			multimediaController = new MultimediaController();
 
 			lblTitulo = new JLabel("Título:");
@@ -105,7 +101,6 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 
 			btnDarAlta = new JButton("Dar alta película");
 
-			setSize(400, 300);
 			setLayout(new GridLayout(8, 2));
 			add(lblTitulo);
 			add(txtTitulo);
@@ -121,6 +116,7 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 			add(txtActor);
 			add(lblActriz);
 			add(txtActriz);
+			add(new JPanel()); // Espacio en blanco
 			add(btnDarAlta);
 
 			btnDarAlta.addActionListener(this);

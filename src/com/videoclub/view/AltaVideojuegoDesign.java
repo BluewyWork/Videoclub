@@ -12,8 +12,8 @@ import java.awt.event.ActionListener;
 
 public class AltaVideojuegoDesign extends JFrame implements ActionListener
 {
+	private MultimediaController multimediaController;
 	AltaVideojuegoView firstPanel;
-	private final MultimediaController multimediaController;
 	private JPanel secondPanel;
 
 	public AltaVideojuegoDesign(MultimediaController multimedia)
@@ -35,8 +35,8 @@ public class AltaVideojuegoDesign extends JFrame implements ActionListener
 
 		secondPanel = new JPanel();
 		secondPanel.setPreferredSize(new Dimension(350, 400));
-
 		secondPanel.setBackground(Color.blue);
+
 		setLayout(new FlowLayout());
 		add(firstPanel);
 		add(secondPanel);
@@ -76,19 +76,24 @@ public class AltaVideojuegoDesign extends JFrame implements ActionListener
 			setSize(400, 300);
 
 			lblTitulo = new JLabel("- Título -");
-			lblAutor = new JLabel("- Autor -");
-			lblFormato = new JLabel("- Formato -");
-			lblAnyo = new JLabel("- Año lanzamiento -");
-			lblPlataforma = new JLabel("- Plataforma -");
 			txtTitulo = new JTextField("");
+
+			lblAutor = new JLabel("- Autor -");
 			txtAutor = new JTextField("");
-			modelAnyo = new SpinnerNumberModel(2023, 1950, 2023, 1);
-			txtAnyo = new JSpinner(modelAnyo);
-			btnDarAlta = new JButton("Dar alta videojuego");
+
+			lblFormato = new JLabel("- Formato -");
 			Formato[] formatos = Formato.values();
 			listFormato = new JComboBox(formatos);
+
+			lblAnyo = new JLabel("- Año lanzamiento -");
+			modelAnyo = new SpinnerNumberModel(2023, 1950, 2023, 1);
+			txtAnyo = new JSpinner(modelAnyo);
+
+			lblPlataforma = new JLabel("- Plataforma -");
 			Plataforma[] plataformas = Plataforma.values();
 			listPlataforma = new JComboBox(plataformas);
+
+			btnDarAlta = new JButton("Dar alta videojuego");
 
 			setLayout(new GridLayout(6, 2));
 			add(lblTitulo);
@@ -101,10 +106,10 @@ public class AltaVideojuegoDesign extends JFrame implements ActionListener
 			add(txtAnyo);
 			add(lblPlataforma);
 			add(listPlataforma);
+			add(new JPanel()); // Espacio en blanco
 			add(btnDarAlta);
 
 			btnDarAlta.addActionListener(this);
-			setVisible(true);
 		}
 
 		public void accionDarAltaVideojuego()

@@ -74,7 +74,7 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 		//
 		cmboBoxOptions.addItem("Sin filtro");
 		cmboBoxOptions.addItem("Buscar por NIF");
-		cmboBoxOptions.addItem("Buscar por Nombre");
+		cmboBoxOptions.addItem("Buscar por nombre");
 
 		//
 		btnFind.setText("Find");

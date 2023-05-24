@@ -11,8 +11,8 @@ import java.awt.event.ActionListener;
 public class AltaSocioDesign extends JFrame implements ActionListener
 {
     private SocioController socioController;
-    AltaSocioView secondPanel;
     private JPanel firstPanel;
+    AltaSocioView secondPanel;
 
     public AltaSocioDesign(SocioController socio)
     {
@@ -28,13 +28,12 @@ public class AltaSocioDesign extends JFrame implements ActionListener
 
     public void initComponents()
     {
-        secondPanel = new AltaSocioView(socioController);
-        secondPanel.setPreferredSize(new Dimension(350, 450));
-
         firstPanel = new JPanel();
         firstPanel.setPreferredSize(new Dimension(350, 400));
         firstPanel.setBackground(Color.pink);
 
+        secondPanel = new AltaSocioView(socioController);
+        secondPanel.setPreferredSize(new Dimension(350, 450));
 
         setLayout(new FlowLayout());
         add(firstPanel);
@@ -99,9 +98,6 @@ public class AltaSocioDesign extends JFrame implements ActionListener
             add(new JPanel()); // Espacio en blanco
             add(btnGuardar);
 
-            // Mostrar la ventana
-            setVisible(true);
-
             // Asignar el ActionListener al botón de guardar
             btnGuardar.addActionListener(this);
         }
@@ -133,7 +129,6 @@ public class AltaSocioDesign extends JFrame implements ActionListener
             txtNombre.setText("");
             txtFechaNacimiento.setText("");
             txtPoblacion.setText("");
-            //setDefaultCloseOperation(EXIT_ON_CLOSE);
         }
     }
 }
