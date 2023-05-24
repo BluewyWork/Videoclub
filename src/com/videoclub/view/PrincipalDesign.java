@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 public class PrincipalDesign extends JFrame implements ActionListener
 {
+	private JButton btnGuardar;
+	private JPanel panel;
 	private JMenuBar menuBar;
 	private JMenu menuSocio, menuMultimedia, menuListar, menuAlquilar, menuDevolver;
 	private JMenuItem altaSocio, listadoSocio, altaPelicula, altaVideojuego, alquilar, devolver;
@@ -24,6 +26,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 	AlquilerDesign alquilerDesign;
 	ListadoSocioDesign listadoSocioDesign;
 	ListadoMultimediaDesign listadoMultimediaDesign;
+	ListadoPeliculaDesign listadoPeliculaDesign;
 
 	SocioController socioController;
 	MultimediaController multimediaController;
@@ -47,6 +50,14 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		alquilerDesign = new AlquilerDesign(socioController, multimediaController, alquilerController);
 		listadoSocioDesign = new ListadoSocioDesign(socioController, multimediaController, alquilerController);
 		listadoMultimediaDesign = new ListadoMultimediaDesign(socioController, multimediaController, alquilerController);
+		listadoPeliculaDesign = new ListadoPeliculaDesign(socioController, multimediaController, alquilerController);
+
+		panel = new JPanel();
+		btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(this);
+
+		this.add(panel);
+		panel.add(btnGuardar);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(400, 300);
@@ -106,6 +117,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		alquilar.addActionListener(this);
 		listadoSocio.addActionListener(this);
 		listarMultimedia.addActionListener(this);
+		listarPelicula.addActionListener(this);
 
 		setJMenuBar(menuBar);
 	}
@@ -136,6 +148,14 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		else if (e.getSource().equals(listarMultimedia))
 		{
 			listadoMultimediaDesign.setVisible(true);
+		}
+		else if (e.getSource().equals(listarPelicula))
+		{
+			listadoPeliculaDesign.refreshTable();
+			listadoPeliculaDesign.setVisible(true);
+		}
+		else if (e.getSource().equals(btnGuardar))
+		{
 		}
 	}
 
