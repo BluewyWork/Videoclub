@@ -4,6 +4,7 @@ import com.videoclub.controller.AlquilerController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
 import com.videoclub.model.Multimedia;
+import com.videoclub.util.Database;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -156,6 +157,11 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		}
 		else if (e.getSource().equals(btnGuardar))
 		{
+			Database db = new Database(socioController, multimediaController, alquilerController);
+
+			db.updateSocioTable();
+			db.updateTablePelicula();
+			db.updateTableVideojuego();
 		}
 	}
 

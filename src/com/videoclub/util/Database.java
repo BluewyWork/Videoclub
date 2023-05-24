@@ -12,9 +12,9 @@ import java.util.ArrayList;
 public class Database
 {
 	String url = "jdbc:postgresql://localhost:5432/";
-	String db = "bluewy";
+	String db = "postgres";
 	String driver = "org.postgresql.Driver";
-	String user = "bluewy";
+	String user = "postrges";
 	String pass = "1234";
 
 	SocioController socioController;
