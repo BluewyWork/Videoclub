@@ -11,10 +11,11 @@ import javax.swing.table.AbstractTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 @SuppressWarnings("JoinDeclarationAndAssignmentJava")
-public class AquilerDesign extends JFrame implements ActionListener
+public class ListadoMultimediaDesign extends JFrame implements ActionListener
 {
 	private GridLayout grdLayout;
 	private JComboBox<String> cmboBoxOptions;
@@ -22,21 +23,13 @@ public class AquilerDesign extends JFrame implements ActionListener
 	private JTable tblResults;
 	private JTextField txtFieldPrompt;
 	private MemberTableModel tblModel;
-	private final SocioController socioController;
-	private final MultimediaController multimediaController;
-	private final AlquilerController alquilerController;
+	private SocioController socioController;
+	private MultimediaController multimediaController;
+	private AlquilerController alquilerController;
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
 
-	private JLabel lblNSocio;
-	private JLabel lblNombreSocio;
-	private JLabel lblDniSocio;
-	private TextField txtFieldNSocio;
-	private TextField txtFieldNombreSocio;
-	private TextField txtFieldDniSocio;
-	private JButton btnRent;
-
-	public AquilerDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
+	public ListadoMultimediaDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
 	{
 		this.socioController = socioController;
 		this.multimediaController = multimediaController;
@@ -51,42 +44,7 @@ public class AquilerDesign extends JFrame implements ActionListener
 	{
 		if (actionEvent.getSource().equals(btnFind))
 		{
-			String nif = txtFieldPrompt.getText();
-
-			Socio socio = socioController.encontrarSocio(nif);
-
-			if (socio != null)
-			{
-				JOptionPane.showMessageDialog(null, "Socio encontrado", "Success", JOptionPane.INFORMATION_MESSAGE);
-				txtFieldNombreSocio.setText(socio.getNombre());
-				txtFieldDniSocio.setText(socio.getNif());
-			}
-			else
-			{
-				JOptionPane.showMessageDialog(null, "NIF no válido", "Error", JOptionPane.ERROR_MESSAGE);
-			}
-		}
-		if (actionEvent.getSource().equals(btnRent))
-		{
-			int filaSeleccionada = tblResults.getSelectedRow();
-			String nif = txtFieldPrompt.getText();
-			Socio socio = socioController.encontrarSocio(nif);
-
-			if (filaSeleccionada != -1 && socio != null)
-			{
-				Multimedia multimedia = tblModel.getObjectAt(filaSeleccionada);
-				alquilerController.alquilarMultimedia(nif, multimedia);
-				JOptionPane.showMessageDialog(null, "Multimedia alquilada", "Success", JOptionPane.INFORMATION_MESSAGE);
-
-			}
-			else if (filaSeleccionada == -1)
-			{
-				JOptionPane.showMessageDialog(null, "Seleccione una multimedia para alquilar", "Error", JOptionPane.ERROR_MESSAGE);
-			}
-			else
-			{
-				JOptionPane.showMessageDialog(null, "NIF no válido", "Error", JOptionPane.ERROR_MESSAGE);
-			}
+			updateTable();
 		}
 	}
 
@@ -98,15 +56,9 @@ public class AquilerDesign extends JFrame implements ActionListener
 		btnFind = new JButton();
 		txtFieldPrompt = new JTextField();
 		tblModel = new MemberTableModel();
-		lblNombreSocio = new JLabel();
-		lblDniSocio = new JLabel();
-		lblNSocio = new JLabel();
-		txtFieldNSocio = new TextField();
-		txtFieldNombreSocio = new TextField();
-		txtFieldDniSocio = new TextField();
-		btnRent = new JButton();
 		tblResults = new JTable(tblModel);
 		scrollPane = new JScrollPane(tblResults);
+
 	}
 
 	public void configComponents()
@@ -119,28 +71,19 @@ public class AquilerDesign extends JFrame implements ActionListener
 		txtFieldPrompt.setPreferredSize(new Dimension(200, 30));
 
 		//
-		cmboBoxOptions.addItem("Buscar por NIF");
-		cmboBoxOptions.addItem("Buscar por Nombre");
-
-		//
-		lblNombreSocio.setText("Socio: ");
-
-		//
-		lblNSocio.setText("DNI: ");
+		cmboBoxOptions.addItem("Sin filtro");
+		cmboBoxOptions.addItem("Buscar por título");
+		cmboBoxOptions.addItem("Buscar por autor");
 
 		//
 		btnFind.setText("Find");
 		btnFind.addActionListener(this);
 
 		//
-		btnRent.setText("Rent");
-		btnRent.addActionListener(this);
-
-		//
-		ArrayList<Multimedia> listMultimedias = multimediaController.returnStuff();
+		ArrayList<Multimedia> listMultimedia = multimediaController.returnStuff();
 		String[] columnNames = {"Titulo", "Autor", "Formato", "Año"};
 
-		tblModel.setData(listMultimedias);
+		tblModel.setData(listMultimedia);
 		tblModel.setColumnNames(columnNames);
 
 		tblModel.fireTableDataChanged();
@@ -150,11 +93,30 @@ public class AquilerDesign extends JFrame implements ActionListener
 		mainPanel.add(cmboBoxOptions);
 		mainPanel.add(txtFieldPrompt);
 		mainPanel.add(btnFind);
-		mainPanel.add(btnRent);
 
 		//
 		add(mainPanel);
 		add(scrollPane);
+	}
+
+	public void updateTable()
+	{
+		String userInputText = txtFieldPrompt.getText();
+
+		if (cmboBoxOptions.getSelectedItem().equals("Buscar por título"))
+		{
+			tblModel.setData(multimediaController.filtroPorTitulo(userInputText));
+		}
+		else if (cmboBoxOptions.getSelectedItem().equals("Buscar por autor"))
+		{
+			tblModel.setData(multimediaController.filtroPorAutor(userInputText));
+		}
+		else if (cmboBoxOptions.getSelectedItem().equals("Sin filtro"))
+		{
+			tblModel.setData(multimediaController.returnStuff());
+		}
+
+		tblModel.fireTableDataChanged();
 	}
 
 	class MemberTableModel extends AbstractTableModel
@@ -168,15 +130,10 @@ public class AquilerDesign extends JFrame implements ActionListener
 			columnNames = new String[]{"Column1", "Column2", "Column3", "Column4"};
 		}
 
-		public MemberTableModel(ArrayList<Multimedia> listSocio, String[] columnNames)
+		public MemberTableModel(ArrayList<Multimedia> listMultimedia, String[] columnNames)
 		{
-			this.data = listSocio;
+			this.data = listMultimedia;
 			this.columnNames = columnNames;
-		}
-
-		public Multimedia getObjectAt(int x)
-		{
-			return data.get(x);
 		}
 
 		@Override
@@ -206,7 +163,7 @@ public class AquilerDesign extends JFrame implements ActionListener
 			}
 			else if (column == 2)
 			{
-				return multimedia.getFormat().toString();
+				return multimedia.getFormat();
 			}
 			else if (column == 3)
 			{

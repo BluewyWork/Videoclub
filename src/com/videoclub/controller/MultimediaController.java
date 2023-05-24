@@ -3,6 +3,7 @@ package com.videoclub.controller;
 import com.videoclub.model.*;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 public class MultimediaController
@@ -50,13 +51,23 @@ public class MultimediaController
 		return multimediaDAO.getListMultimedia();
 	}
 
-	public List<Cancion> obtenerCancionesPorDuracion(Disco disco)
+	public ArrayList<Multimedia> filtroPorTitulo(String titulo)
+	{
+		return multimediaDAO.filtroPorTitulo(titulo);
+	}
+
+	public ArrayList<Multimedia> filtroPorAutor(String autor)
+	{
+		return multimediaDAO.filtroPorAutor(autor);
+	}
+
+	public ArrayList<Cancion> obtenerCancionesPorDuracion(Disco disco)
 	{
 		return multimediaDAO.obtenerCancionesPorDuracion(disco);
 	}
 
-	public List<Videojuego> obtenerVideojuegosOrdenadosPorAño()
+	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAño()
 	{
-		return multimediaDAO.obtenerVideojuegosOrdenadosPorAño();
+		return multimediaDAO.obtenerVideojuegosOrdenadosPorAnio();
 	}
 }

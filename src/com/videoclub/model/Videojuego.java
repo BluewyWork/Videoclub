@@ -36,5 +36,4 @@ public class Videojuego extends Multimedia
 	{
 		this.platforma = platforma;
 	}
-
 }

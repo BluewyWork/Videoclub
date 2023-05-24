@@ -70,6 +70,7 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 		txtFieldPrompt.setPreferredSize(new Dimension(200, 30));
 
 		//
+		cmboBoxOptions.addItem("Sin filtro");
 		cmboBoxOptions.addItem("Buscar por NIF");
 		cmboBoxOptions.addItem("Buscar por Nombre");
 
@@ -103,11 +104,15 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 
 		if (cmboBoxOptions.getSelectedItem().equals("Buscar por NIF"))
 		{
-			tblModel.setData(socioController.filtroPorNombre(userInputText));
+			tblModel.setData(socioController.filtroPorNIF(userInputText));
 		}
 		else if (cmboBoxOptions.getSelectedItem().equals("Buscar por Nombre"))
 		{
-			tblModel.setData(socioController.filtroPorNIF(userInputText));
+			tblModel.setData(socioController.filtroPorNombre(userInputText));
+		}
+		else if (cmboBoxOptions.getSelectedItem().equals("Sin filtro"))
+		{
+			tblModel.setData(socioController.todosLosSocios());
 		}
 
 		tblModel.fireTableDataChanged();
