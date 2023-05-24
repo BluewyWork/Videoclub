@@ -10,8 +10,8 @@ import java.awt.event.ActionListener;
 
 public class AltaPeliculaDesign extends JFrame implements ActionListener
 {
-	private MultimediaController multimediaController;
 	AltaPeliculaView firstPanel;
+	private final MultimediaController multimediaController;
 	private JPanel secondPanel;
 
 	public AltaPeliculaDesign(MultimediaController multimedia)

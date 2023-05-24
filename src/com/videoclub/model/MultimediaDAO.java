@@ -5,10 +5,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-
 public class MultimediaDAO
 {
-	private ArrayList<Multimedia> listMultimedia;
+	private final ArrayList<Multimedia> listMultimedia;
 
 	public MultimediaDAO()
 	{
@@ -63,34 +62,38 @@ public class MultimediaDAO
 			throw new RuntimeException("Multimedia Not Found");
 		}
 	}
-	public List<Cancion> obtenerCancionesPorDuracion(Disco disco) {
+
+	public List<Cancion> obtenerCancionesPorDuracion(Disco disco)
+	{
 		List<Cancion> canciones = disco.getListSongs();
 
 		canciones.sort(Comparator.comparingInt(Cancion::getDuration));
 
 		return canciones;
 	}
-	public List<Videojuego> obtenerTodosLosVideojuegos() {
+
+	public List<Videojuego> obtenerTodosLosVideojuegos()
+	{
 		List<Videojuego> videojuegos = new ArrayList<>();
 
-		for (Multimedia multimedia : listMultimedia) {
-			if (multimedia instanceof Videojuego) {
+		for (Multimedia multimedia : listMultimedia)
+		{
+			if (multimedia instanceof Videojuego)
+			{
 				videojuegos.add((Videojuego) multimedia);
 			}
 		}
 		return videojuegos;
 	}
 
-	public List<Videojuego> obtenerVideojuegosOrdenadosPorAño() {
+	public List<Videojuego> obtenerVideojuegosOrdenadosPorAño()
+	{
 		List<Videojuego> videojuegos = obtenerTodosLosVideojuegos();
 
 		videojuegos.sort(Comparator.comparingInt(Videojuego::getAnio));
 
 		return videojuegos;
 	}
-
-
-
 
 	public ArrayList<String> listarMultimedias()
 	{

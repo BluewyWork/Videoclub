@@ -11,7 +11,7 @@ public class Alquiler
 	private Multimedia multimedia;
 	private double deudaInicial;
 	private double deudaFinal;
-	private LocalDate fechaAlquiler;
+	private final LocalDate fechaAlquiler;
 
 	public Alquiler()
 	{

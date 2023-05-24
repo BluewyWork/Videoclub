@@ -22,9 +22,9 @@ public class AquilerDesign extends JFrame implements ActionListener
 	private JTable tblResults;
 	private JTextField txtFieldPrompt;
 	private MemberTableModel tblModel;
-	private SocioController socioController;
-	private MultimediaController multimediaController;
-	private AlquilerController alquilerController;
+	private final SocioController socioController;
+	private final MultimediaController multimediaController;
+	private final AlquilerController alquilerController;
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
 
