@@ -4,23 +4,18 @@ import com.videoclub.controller.AlquilerController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
 import com.videoclub.model.Constantes;
-import com.videoclub.model.Multimedia;
+import com.videoclub.model.Pelicula;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 @SuppressWarnings("JoinDeclarationAndAssignmentJava")
-public class ListadoMultimediaDesign extends JFrame implements ActionListener
+public class ListadoPeliculaDesign extends JFrame implements ActionListener
 {
-	private GridLayout grdLayout;
-	private JComboBox<String> cmboBoxOptions;
-	private JButton btnFind;
 	private JTable tblResults;
-	private JTextField txtFieldPrompt;
 	private MemberTableModel tblModel;
 	private SocioController socioController;
 	private MultimediaController multimediaController;
@@ -28,7 +23,7 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
 
-	public ListadoMultimediaDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
+	public ListadoPeliculaDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
 	{
 		this.socioController = socioController;
 		this.multimediaController = multimediaController;
@@ -41,58 +36,39 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent actionEvent)
 	{
-		if (actionEvent.getSource().equals(btnFind))
-		{
-			updateTable();
-		}
+		updateTable();
 	}
 
 	public void initComponents()
 	{
-		grdLayout = new GridLayout();
 		mainPanel = new JPanel();
-		cmboBoxOptions = new JComboBox<>();
-		btnFind = new JButton();
-		txtFieldPrompt = new JTextField();
 		tblModel = new MemberTableModel();
 		tblResults = new JTable(tblModel);
 		scrollPane = new JScrollPane(tblResults);
 
 	}
 
+	public void refreshTable()
+	{
+		tblModel.setData(multimediaController.listarPeliculasTitulo());
+		tblModel.fireTableDataChanged();
+	}
+
 	public void configComponents()
 	{
 		//
-		setLayout(grdLayout);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
 
 		//
-		txtFieldPrompt.setPreferredSize(new Dimension(200, 30));
+		ArrayList<Pelicula> listPelicula = multimediaController.listarPeliculasTitulo();
+		String[] columnNames = {"Titulo", "Autor", "Formato", "Año", "algo", "algo", "algo"};
 
-		//
-		cmboBoxOptions.addItem("Sin filtro");
-		cmboBoxOptions.addItem("Buscar por título");
-		cmboBoxOptions.addItem("Buscar por autor");
-
-		//
-		btnFind.setText("Find");
-		btnFind.addActionListener(this);
-
-		//
-		ArrayList<Multimedia> listMultimedia = multimediaController.returnStuff();
-		String[] columnNames = {"Titulo", "Autor", "Formato", "Año"};
-
-		tblModel.setData(listMultimedia);
+		tblModel.setData(listPelicula);
 		tblModel.setColumnNames(columnNames);
 
 		tblModel.fireTableDataChanged();
 		tblModel.fireTableStructureChanged();
-
-		//
-		mainPanel.add(cmboBoxOptions);
-		mainPanel.add(txtFieldPrompt);
-		mainPanel.add(btnFind);
 
 		//
 		add(mainPanel);
@@ -101,38 +77,23 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 
 	public void updateTable()
 	{
-		String userInputText = txtFieldPrompt.getText();
-
-		if (cmboBoxOptions.getSelectedItem().equals("Buscar por título"))
-		{
-			tblModel.setData(multimediaController.filtroPorTitulo(userInputText));
-		}
-		else if (cmboBoxOptions.getSelectedItem().equals("Buscar por autor"))
-		{
-			tblModel.setData(multimediaController.filtroPorAutor(userInputText));
-		}
-		else if (cmboBoxOptions.getSelectedItem().equals("Sin filtro"))
-		{
-			tblModel.setData(multimediaController.returnStuff());
-		}
-
 		tblModel.fireTableDataChanged();
 	}
 
 	class MemberTableModel extends AbstractTableModel
 	{
-		private ArrayList<Multimedia> data;
+		private ArrayList<Pelicula> data;
 		private String[] columnNames;
 
 		public MemberTableModel()
 		{
 			data = new ArrayList<>();
-			columnNames = new String[]{"Column1", "Column2", "Column3", "Column4"};
+			columnNames = new String[]{"Column1", "Column2", "Column3", "Column4", "Column5", "Column6", "Column7"};
 		}
 
-		public MemberTableModel(ArrayList<Multimedia> listMultimedia, String[] columnNames)
+		public MemberTableModel(ArrayList<Pelicula> listPelicula, String[] columnNames)
 		{
-			this.data = listMultimedia;
+			this.data = listPelicula;
 			this.columnNames = columnNames;
 		}
 
@@ -151,23 +112,35 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 		@Override
 		public Object getValueAt(int row, int column)
 		{
-			Multimedia multimedia = data.get(row);
+			Pelicula pelicula = data.get(row);
 
 			if (column == 0)
 			{
-				return multimedia.getTitulo();
+				return pelicula.getTitulo();
 			}
 			else if (column == 1)
 			{
-				return multimedia.getAutor();
+				return pelicula.getAutor();
 			}
 			else if (column == 2)
 			{
-				return multimedia.getFormat();
+				return pelicula.getFormat();
 			}
 			else if (column == 3)
 			{
-				return multimedia.getAnio();
+				return pelicula.getAnio();
+			}
+			else if (column == 4)
+			{
+				return pelicula.getDuracion();
+			}
+			else if (column == 5)
+			{
+				return pelicula.getActorPrincipal();
+			}
+			else if (column == 6)
+			{
+				return pelicula.getActrizPrincipal();
 			}
 
 			return null;
@@ -179,7 +152,7 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 			return columnNames[column];
 		}
 
-		public void setData(ArrayList<Multimedia> data)
+		public void setData(ArrayList<Pelicula> data)
 		{
 			this.data = data;
 		}

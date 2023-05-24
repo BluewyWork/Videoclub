@@ -3,8 +3,6 @@ package com.videoclub.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
-
 
 public class MultimediaDAO
 {
@@ -64,7 +62,8 @@ public class MultimediaDAO
 		}
 	}
 
-	public ArrayList<Cancion> obtenerCancionesPorDuracion(Disco disco) {
+	public ArrayList<Cancion> obtenerCancionesPorDuracion(Disco disco)
+	{
 		ArrayList<Cancion> canciones = disco.getListSongs();
 
 		canciones.sort(Comparator.comparingInt(Cancion::getDuration));
@@ -72,7 +71,8 @@ public class MultimediaDAO
 		return canciones;
 	}
 
-public ArrayList<Videojuego> obtenerTodosLosVideojuegos() {
+	public ArrayList<Videojuego> obtenerTodosLosVideojuegos()
+	{
 		ArrayList<Videojuego> videojuegos = new ArrayList<>();
 
 		for (Multimedia multimedia : listMultimedia)
@@ -85,42 +85,43 @@ public ArrayList<Videojuego> obtenerTodosLosVideojuegos() {
 		return videojuegos;
 	}
 
-
-	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAnio() {
+	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAnio()
+	{
 		ArrayList<Videojuego> videojuegos = obtenerTodosLosVideojuegos();
 		videojuegos.sort(Comparator.comparingInt(Videojuego::getAnio));
 
 		return videojuegos;
 	}
 
-	public ArrayList<Multimedia> listarMultimedias()
-
+	public ArrayList<Pelicula> listarPeliculasTitulo()
 	{
-		ArrayList<Multimedia> listMultimedias = new ArrayList<>();
-
-		for (Multimedia multimedia : listMultimedia)
-		{
-			listMultimedias.add(multimedia);
-		}
-
-		return listMultimedias;
-	}
-
-	public ArrayList<String> listarPeliculasTitulo()
-	{
-		ArrayList<String> listPeliculasTitulo = new ArrayList<>();
+		ArrayList<Pelicula> listPeliculasTitulo = new ArrayList<>();
 		ArrayList<Multimedia> copyListMultimedia = listMultimedia;
 		Collections.sort(listMultimedia);
 
-		for (Multimedia multimedia : copyListMultimedia)
+		for (int i = 0; i < copyListMultimedia.size(); i++)
 		{
-			if (multimedia instanceof Pelicula)
+			if (copyListMultimedia.get(i) instanceof Pelicula)
 			{
-				listPeliculasTitulo.add(multimedia.getTitulo());
+				listPeliculasTitulo.add(((Pelicula) copyListMultimedia.get(i)));
 			}
 		}
 
 		return listPeliculasTitulo;
+	}
+
+	public ArrayList<Pelicula> todosLosPelis()
+	{
+		ArrayList<Pelicula> peli = new ArrayList<>();
+
+		for (Multimedia multimedia : listMultimedia)
+		{
+			if (multimedia instanceof Pelicula)
+			{
+				peli.add((Pelicula) multimedia);
+			}
+		}
+		return peli;
 	}
 
 	public ArrayList<Multimedia> filtroPorTitulo(String titulo)

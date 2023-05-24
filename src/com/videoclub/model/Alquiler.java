@@ -55,7 +55,6 @@ public class Alquiler
 		return text.toString();
 	}
 
-
 	public double getDeudaInicial()
 	{
 		return deudaInicial;

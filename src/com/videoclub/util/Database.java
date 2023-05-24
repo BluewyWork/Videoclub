@@ -5,13 +5,9 @@ import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
 import com.videoclub.model.*;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.sql.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class Database
 {
@@ -374,6 +370,7 @@ public class Database
 			e.printStackTrace();
 		}
 	}
+
 	public void loadVideojuegos()
 	{
 		Connection con = null;
@@ -409,6 +406,7 @@ public class Database
 			e.printStackTrace();
 		}
 	}
+
 	public void loadDiscos()
 	{
 		Connection con = null;

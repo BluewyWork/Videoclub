@@ -4,7 +4,6 @@ import com.videoclub.controller.AlquilerController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
 import com.videoclub.model.Alquiler;
-import com.videoclub.model.Multimedia;
 import com.videoclub.model.Socio;
 
 import javax.swing.*;
@@ -145,8 +144,6 @@ public class DevolverDesign extends JFrame implements ActionListener
 		String[] columnNames = {"Contador", "DNI socio", "Titulo", "Autor"};
 
 		tblModel.setColumnNames(columnNames);
-
-
 
 		//
 		mainPanel.add(cmboBoxOptions);

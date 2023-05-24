@@ -1,6 +1,7 @@
 package com.videoclub.view;
 
 import com.videoclub.controller.MultimediaController;
+import com.videoclub.model.Constantes;
 import com.videoclub.model.Formato;
 
 import javax.swing.*;
@@ -11,7 +12,7 @@ import java.awt.event.ActionListener;
 public class AltaPeliculaDesign extends JFrame implements ActionListener
 {
 	AltaPeliculaView firstPanel;
-	private final MultimediaController multimediaController;
+	private MultimediaController multimediaController;
 	private JPanel secondPanel;
 
 	public AltaPeliculaDesign(MultimediaController multimedia)
@@ -31,9 +32,6 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 		firstPanel = new AltaPeliculaView(multimediaController);
 		firstPanel.setPreferredSize(new Dimension(350, 450));
 
-//		ImageIcon imageIcon = new ImageIcon("Fondo.jpg");
-//		Image image = imageIcon.getImage();
-
 		secondPanel = new JPanel();
 		secondPanel.setPreferredSize(new Dimension(350, 400));
 		secondPanel.setBackground(Color.black);
@@ -43,9 +41,10 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 		add(secondPanel);
 		pack();
 
-		setVisible(true);
+		getContentPane().setBackground(Color.black);
+		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
 		setTitle("Alta pelicula");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
 	class AltaPeliculaView extends JPanel implements ActionListener
@@ -67,15 +66,12 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			if (e.getSource() == btnDarAlta)
-			{
-				accionDarAltaPelicula();
-			}
+			accionDarAltaPelicula();
 		}
 
 		public void initComponents()
 		{
-			multimediaController = new MultimediaController();
+			setSize(400, 300);
 
 			lblTitulo = new JLabel("Título:");
 			txtTitulo = new JTextField(20);
@@ -103,7 +99,6 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 
 			btnDarAlta = new JButton("Dar alta película");
 
-			setSize(400, 300);
 			setLayout(new GridLayout(8, 2));
 			add(lblTitulo);
 			add(txtTitulo);
@@ -119,6 +114,7 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 			add(txtActor);
 			add(lblActriz);
 			add(txtActriz);
+			add(new JPanel()); // Espacio en blanco
 			add(btnDarAlta);
 
 			btnDarAlta.addActionListener(this);
@@ -136,7 +132,8 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 
 			if (titulo.isEmpty() || autor.isEmpty() || formato.isEmpty() || actor.isEmpty() || actriz.isEmpty())
 			{
-				JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos");
+				JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos,",
+						"ERROR", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 
@@ -149,8 +146,8 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 			txtActriz.setText("");
 			txtActor.setText("");
 			listFormato.setSelectedIndex(0);
-			txtAnyo.setValue(2003);
-			txtDuracion.setValue("0");
+			txtAnyo.setValue(2023);
+			txtDuracion.setValue(0);
 		}
 	}
 }
