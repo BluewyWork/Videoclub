@@ -18,6 +18,7 @@ public class MultimediaController
 	public void altaPelicula(String title, String author, String format, int year, int duration, String maleLead, String femaleLead)
 	{
 		Pelicula pelicula = new Pelicula(title, author, format, year, duration, maleLead, femaleLead);
+		System.out.println(pelicula.toString());
 		multimediaDAO.aniadirMultimedia(pelicula);
 	}
 

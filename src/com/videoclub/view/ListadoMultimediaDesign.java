@@ -80,6 +80,8 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 		btnFind.addActionListener(this);
 
 		//
+		multimediaController.altaPelicula("Man", "Chitan", "CD", 2023, 1234, "Actor", "Actora");
+
 		ArrayList<Multimedia> listMultimedia = multimediaController.returnStuff();
 		String[] columnNames = {"Titulo", "Autor", "Formato", "Año"};
 
