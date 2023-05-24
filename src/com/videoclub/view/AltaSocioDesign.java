@@ -35,8 +35,8 @@ public class AltaSocioDesign extends JFrame implements ActionListener
         firstPanel.setBackground(Color.pink);
 
         setLayout(new FlowLayout());
-        add(secondPanel);
         add(firstPanel);
+        add(secondPanel);
         pack();
 
         setVisible(true);

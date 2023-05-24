@@ -89,13 +89,13 @@ public class MultimediaDAO
 		return videojuegos;
 	}
 
-	public ArrayList<String> listarMultimedias()
+	public ArrayList<Multimedia> listarMultimedias()
 	{
-		ArrayList<String> listMultimedias = new ArrayList<>();
+		ArrayList<Multimedia> listMultimedias = new ArrayList<>();
 
 		for (Multimedia multimedia : listMultimedia)
 		{
-			listMultimedias.add(multimedia.toString());
+			listMultimedias.add(multimedia);
 		}
 
 		return listMultimedias;
@@ -111,7 +111,7 @@ public class MultimediaDAO
 		{
 			if (multimedia instanceof Pelicula)
 			{
-				listPeliculasTitulo.add(multimedia.toString());
+				listPeliculasTitulo.add(multimedia.getTitulo());
 			}
 		}
 

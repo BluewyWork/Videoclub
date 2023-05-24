@@ -107,7 +107,6 @@ public class AquilerDesign extends JFrame implements ActionListener
 		btnRent = new JButton();
 		tblResults = new JTable(tblModel);
 		scrollPane = new JScrollPane(tblResults);
-
 	}
 
 	public void configComponents()
