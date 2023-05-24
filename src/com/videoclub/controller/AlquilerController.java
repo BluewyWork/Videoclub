@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class AlquilerController
 {
-	private AlquilerDAO alquilerDAO;
+	private final AlquilerDAO alquilerDAO;
 
 	public AlquilerController()
 	{
@@ -61,5 +61,10 @@ public class AlquilerController
 	public ArrayList<Alquiler> listarSocioRecargo()
 	{
 		return alquilerDAO.listarSocioRecargo();
+	}
+
+	public ArrayList<Alquiler> todosLosAlquileres()
+	{
+		return alquilerDAO.getListAlquiler();
 	}
 }

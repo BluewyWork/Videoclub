@@ -52,11 +52,6 @@ public class Socio
 		return fechaNacimiento;
 	}
 
-	public String getNif()
-	{
-		return nif;
-	}
-
 	public void setFechaNacimiento(LocalDate fechaNacimiento)
 	{
 		if (isAdult(fechaNacimiento) && isValidYear(fechaNacimiento.getYear()))
@@ -69,6 +64,11 @@ public class Socio
 					"ERROR", JOptionPane.ERROR_MESSAGE);
 			throw new RuntimeException("Member must be an ADULT (+18) or have a valid year");
 		}
+	}
+
+	public String getNif()
+	{
+		return nif;
 	}
 
 	public String getPoblacion()

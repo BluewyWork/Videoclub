@@ -12,8 +12,8 @@ import java.awt.event.ActionListener;
 
 public class AltaVideojuegoDesign extends JFrame implements ActionListener
 {
-	private MultimediaController multimediaController;
 	AltaVideojuegoView firstPanel;
+	private final MultimediaController multimediaController;
 	private JPanel secondPanel;
 
 	public AltaVideojuegoDesign(MultimediaController multimedia)
@@ -57,7 +57,7 @@ public class AltaVideojuegoDesign extends JFrame implements ActionListener
 		private JComboBox listFormato, listPlataforma;
 		private SpinnerNumberModel modelAnyo;
 		private JSpinner txtAnyo;
-		private MultimediaController multimediaController;
+		private final MultimediaController multimediaController;
 
 		public AltaVideojuegoView(MultimediaController mc)
 		{

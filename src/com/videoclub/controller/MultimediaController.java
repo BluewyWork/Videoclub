@@ -4,6 +4,8 @@ import com.videoclub.model.*;
 
 import java.util.ArrayList;
 
+import java.util.List;
+
 public class MultimediaController
 {
 	MultimediaDAO multimediaDAO;
