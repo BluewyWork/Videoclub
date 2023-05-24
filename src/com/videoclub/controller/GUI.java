@@ -1,10 +1,11 @@
 package com.videoclub.controller;
 
 
-import com.videoclub.view.ListadoMultimediaDesign;
-import com.videoclub.view.ListadoSocioDesign;
+import com.videoclub.model.Multimedia;
+import com.videoclub.model.Pelicula;
+import com.videoclub.model.Videojuego;
+import com.videoclub.view.*;
 
-import com.videoclub.view.AquilerDesign;
 import com.videoclub.view.ListadoSocioDesign;
 
 public class GUI
@@ -28,7 +29,7 @@ public class GUI
 		socioController.registrarSocio("123", "Chitan", "12/12/1999", "China");
 
 		ListadoSocioDesign listadoSocioDesign = new ListadoSocioDesign(socioController, multimediaController, alquilerController);
-		listadoSocioDesign.setVisible(true);
+		listadoSocioDesign.setVisible(false);
 		listadoSocioDesign.setTitle("Listado Socio");
 		listadoSocioDesign.setBounds(300, 100, 900, 600);
 
@@ -36,7 +37,7 @@ public class GUI
 		multimediaController.altaVideojuego("uwu", "uwu2", "DVD", 12, "PC");
 
 		ListadoMultimediaDesign listadoMultimediaDesign = new ListadoMultimediaDesign(socioController, multimediaController, alquilerController);
-		listadoMultimediaDesign.setVisible(true);
+		listadoMultimediaDesign.setVisible(false);
 		listadoMultimediaDesign.setTitle("Listado Multimedia");
 		listadoMultimediaDesign.setBounds(300, 100, 900, 600);
 
@@ -46,5 +47,13 @@ public class GUI
 		r.setVisible(true);
 		r.setTitle("Listado Alquiler");
 		r.setBounds(300, 100, 900, 600);
+
+
+
+		alquilerController.alquilarMultimedia("123", new Videojuego("uwuu", "uwuuu", "DVD", 12, "PC"));
+
+		DevolverDesign devolverDesign = new DevolverDesign(socioController, multimediaController, alquilerController);
+		devolverDesign.setVisible(true);
+		devolverDesign.setBounds(100,100,900,900);
 	}
 }

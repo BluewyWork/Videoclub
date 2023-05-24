@@ -349,18 +349,88 @@ public class Database
 			try
 			{
 				Statement st = con.createStatement();
-				ResultSet res = st.executeQuery("select * from peliculas;");
+				ResultSet res = st.executeQuery("select * from pelicula;");
 				while (res.next())
 				{
 					String titulo = res.getString("titulo");
 					String autor = res.getString("nombre");
-					String formato = res.getString("fecha_nacimiento");
+					String formato = res.getString("format");
 					int anio = Integer.parseInt(res.getString("anio"));
 					int duracion = Integer.parseInt(res.getString("duracion"));
 					String actorPrincipal = res.getString("actor_principal");
 					String actrizPrincipal = res.getString("actriz_principal");
 
 					multimediaController.altaPelicula(titulo, autor, formato, anio, duracion, actorPrincipal, actrizPrincipal);
+				}
+				con.close();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	public void loadVideojuegos()
+	{
+		Connection con = null;
+
+		try
+		{
+			Class.forName(driver);
+			con = DriverManager.getConnection(url + db, user, pass);
+
+			try
+			{
+				Statement st = con.createStatement();
+				ResultSet res = st.executeQuery("select * from videojuego;");
+				while (res.next())
+				{
+					String titulo = res.getString("titulo");
+					String autor = res.getString("nombre");
+					String formato = res.getString("format");
+					int anio = Integer.parseInt(res.getString("anio"));
+					String plataforma = res.getString("platforma");
+
+					multimediaController.altaVideojuego(titulo, autor, formato, anio, plataforma);
+				}
+				con.close();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	public void loadDiscos()
+	{
+		Connection con = null;
+
+		try
+		{
+			Class.forName(driver);
+			con = DriverManager.getConnection(url + db, user, pass);
+
+			try
+			{
+				Statement st = con.createStatement();
+				ResultSet res = st.executeQuery("select * from disco;");
+				while (res.next())
+				{
+					String titulo = res.getString("titulo");
+					String autor = res.getString("nombre");
+					String formato = res.getString("format");
+					int anio = Integer.parseInt(res.getString("anio"));
+					String plataforma = res.getString("platforma");
+
+					//multimediaController.altaDisco(titulo, autor, formato, anio, plataforma);
 				}
 				con.close();
 			}
