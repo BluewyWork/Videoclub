@@ -34,8 +34,7 @@ public class Socio
 	@Override
 	public String toString()
 	{
-		return
-				"Socio: " + "\n" +
+		return "Socio: " + "\n" +
 						"\t" + "Nif: " + nif + "\n" +
 						"\t" + "Nombre: " + nombre + "\n" +
 						"\t" + "FechaNac: " + fechaNacimiento + "\n" +
@@ -87,8 +86,8 @@ public class Socio
 		return myPeriod.getYears() >= 18;
 	}
 
-	private boolean isValidYear(int year)
+	private boolean isValidYear(int anio)
 	{
-		return year > 1900;
+		return anio > 1900;
 	}
 }
