@@ -1,18 +1,17 @@
 package com.videoclub.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class Alquiler
 {
 	private static int contadorID = 0;
+	private final LocalDate fechaDevolucion;
 	private int contador;
 	private String nif;
 	private Multimedia multimedia;
 	private double deudaInicial;
 	private double deudaFinal;
-	private LocalDate fechaAlquiler;
-	private final LocalDate fechaDevolucion;
+	private final LocalDate fechaAlquiler;
 
 	public Alquiler()
 	{
@@ -55,6 +54,7 @@ public class Alquiler
 
 		return text.toString();
 	}
+
 
 	public double getDeudaInicial()
 	{

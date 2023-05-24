@@ -5,11 +5,10 @@ import com.videoclub.model.AlquilerDAO;
 import com.videoclub.model.Multimedia;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class AlquilerController
 {
-	private AlquilerDAO alquilerDAO;
+	private final AlquilerDAO alquilerDAO;
 
 	public AlquilerController()
 	{
@@ -40,18 +39,32 @@ public class AlquilerController
 
 	public ArrayList<Alquiler> returnStuff(String nif)
 	{
-
-		ArrayList<Alquiler> listArrayList =  alquilerDAO.getListAlquiler();
+		ArrayList<Alquiler> listArrayList = alquilerDAO.getListAlquiler();
 		ArrayList<Alquiler> listAlquilerFilratado = new ArrayList<>();
 
 		for (Alquiler alquiler : listArrayList)
 		{
-				if (alquiler.getNif().equals(nif))
-				{
-					listAlquilerFilratado.add(alquiler);
-				}
+			if (alquiler.getNif().equals(nif))
+			{
+				listAlquilerFilratado.add(alquiler);
+			}
 		}
 
 		return listAlquilerFilratado;
+	}
+
+	public ArrayList<Alquiler> listarAlquileresSocio(String nif)
+	{
+		return alquilerDAO.listarAlquileresSocio(nif);
+	}
+
+	public ArrayList<Alquiler> listarSocioRecargo()
+	{
+		return alquilerDAO.listarSocioRecargo();
+	}
+
+	public ArrayList<Alquiler> todosLosAlquileres()
+	{
+		return alquilerDAO.getListAlquiler();
 	}
 }

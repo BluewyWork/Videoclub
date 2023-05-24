@@ -1,12 +1,14 @@
 package com.videoclub.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+
 
 public class MultimediaDAO
 {
-	private ArrayList<Multimedia> listMultimedia;
+	private final ArrayList<Multimedia> listMultimedia;
 
 	public MultimediaDAO()
 	{
@@ -60,5 +62,94 @@ public class MultimediaDAO
 		{
 			throw new RuntimeException("Multimedia Not Found");
 		}
+	}
+
+	public ArrayList<Cancion> obtenerCancionesPorDuracion(Disco disco) {
+		ArrayList<Cancion> canciones = disco.getListSongs();
+
+		canciones.sort(Comparator.comparingInt(Cancion::getDuration));
+
+		return canciones;
+	}
+
+public ArrayList<Videojuego> obtenerTodosLosVideojuegos() {
+		ArrayList<Videojuego> videojuegos = new ArrayList<>();
+
+		for (Multimedia multimedia : listMultimedia)
+		{
+			if (multimedia instanceof Videojuego)
+			{
+				videojuegos.add((Videojuego) multimedia);
+			}
+		}
+		return videojuegos;
+	}
+
+
+	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAnio() {
+		ArrayList<Videojuego> videojuegos = obtenerTodosLosVideojuegos();
+		videojuegos.sort(Comparator.comparingInt(Videojuego::getAnio));
+
+		return videojuegos;
+	}
+
+	public ArrayList<Multimedia> listarMultimedias()
+
+	{
+		ArrayList<Multimedia> listMultimedias = new ArrayList<>();
+
+		for (Multimedia multimedia : listMultimedia)
+		{
+			listMultimedias.add(multimedia);
+		}
+
+		return listMultimedias;
+	}
+
+	public ArrayList<String> listarPeliculasTitulo()
+	{
+		ArrayList<String> listPeliculasTitulo = new ArrayList<>();
+		ArrayList<Multimedia> copyListMultimedia = listMultimedia;
+		Collections.sort(listMultimedia);
+
+		for (Multimedia multimedia : copyListMultimedia)
+		{
+			if (multimedia instanceof Pelicula)
+			{
+				listPeliculasTitulo.add(multimedia.getTitulo());
+			}
+		}
+
+		return listPeliculasTitulo;
+	}
+
+	public ArrayList<Multimedia> filtroPorTitulo(String titulo)
+	{
+		ArrayList<Multimedia> listMultimedia = new ArrayList<>();
+
+		for (Multimedia multimedia : this.listMultimedia)
+		{
+			if (multimedia.getTitulo().equals(titulo))
+			{
+				listMultimedia.add(multimedia);
+			}
+		}
+
+		return listMultimedia;
+	}
+
+	public ArrayList<Multimedia> filtroPorAutor(String autor)
+	{
+		ArrayList<Multimedia> listMultimedia = new ArrayList<>();
+
+		for (Multimedia multimedia : this.listMultimedia)
+		{
+			if (multimedia.getAutor().equals(autor))
+			{
+				listMultimedia.add(multimedia);
+			}
+		}
+
+		return listMultimedia;
 	}
 }

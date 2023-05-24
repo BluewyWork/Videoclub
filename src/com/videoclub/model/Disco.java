@@ -57,4 +57,5 @@ public class Disco extends Multimedia
 	{
 		this.listCancions = listCancions;
 	}
+
 }

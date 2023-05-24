@@ -24,6 +24,11 @@ public class SocioDAO
 		return text;
 	}
 
+	public ArrayList<Socio> getListSocios()
+	{
+		return listSocios;
+	}
+
 	public ArrayList<Socio> getListMembers()
 	{
 		return listSocios;
@@ -43,6 +48,36 @@ public class SocioDAO
 			}
 		}
 		return socio;
+	}
+
+	public ArrayList<Socio> filtroPorNombre(String nombre)
+	{
+		ArrayList<Socio> listSocios = new ArrayList<>();
+
+		for (Socio socio : this.listSocios)
+		{
+			if (socio.getNombre().equals(nombre))
+			{
+				listSocios.add(socio);
+			}
+		}
+
+		return listSocios;
+	}
+
+	public ArrayList<Socio> filtroPorNif(String nIF)
+	{
+		ArrayList<Socio> listSocio = new ArrayList<>();
+
+		for (Socio socio : this.listSocios)
+		{
+			if (socio.getNif().equals(nIF))
+			{
+				listSocio.add(socio);
+			}
+		}
+
+		return listSocio;
 	}
 
 	public void aniadirSocio(Socio socio)

@@ -41,9 +41,14 @@ public class Socio
 						"\t" + "Poblacion: " + poblacion;
 	}
 
-	public String getNif()
+	public String getNombre()
 	{
-		return nif;
+		return nombre;
+	}
+
+	public LocalDate getFechaNacimiento()
+	{
+		return fechaNacimiento;
 	}
 
 	public void setFechaNacimiento(LocalDate fechaNacimiento)
@@ -56,6 +61,11 @@ public class Socio
 		{
 			throw new RuntimeException("Member must be an ADULT (+18) and have a valid year");
 		}
+	}
+
+	public String getNif()
+	{
+		return nif;
 	}
 
 	public String getPoblacion()
@@ -74,7 +84,8 @@ public class Socio
 		return myPeriod.getYears() >= 18;
 	}
 
-	private boolean isValidYear(int year) {
+	private boolean isValidYear(int year)
+	{
 		return year > 1900;
 	}
 }

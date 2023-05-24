@@ -1,24 +1,18 @@
 package com.videoclub.controller;
 
+
+import com.videoclub.model.Multimedia;
+import com.videoclub.model.Pelicula;
+import com.videoclub.model.Videojuego;
 import com.videoclub.view.*;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import com.videoclub.view.ListadoSocioDesign;
 
-public class GUI implements ActionListener
+public class GUI
 {
-	private AltasView altasView;
-	private AlquilerView alquilerView;
-	private DevolverView devolverView;
-	private ListarView listarView;
-	private AltaSocioView altaSocioView;
-	private AltaPeliculaView altaPeliculaView;
-	private AltaVideojuegoView altaVideojuegoView;
-
 	private SocioController socioController;
 	private MultimediaController multimediaController;
 	private AlquilerController alquilerController;
-	private static IntroduccionView introduccionView;
 
 	public static void main(String[] args)
 	{
@@ -32,45 +26,34 @@ public class GUI implements ActionListener
 		multimediaController = new MultimediaController();
 		alquilerController = new AlquilerController();
 
-		altasView = new AltasView(socioController, multimediaController);
-		altasView.getBtnAltaASocio().addActionListener(this);
-		altasView.getBtnAltaPelicula().addActionListener(this);
-		altasView.getBtnAltaVideojuego().addActionListener(this);
+		socioController.registrarSocio("123", "Chitan", "12/12/1999", "China");
 
-		alquilerView = new AlquilerView(socioController, multimediaController, alquilerController);
+		ListadoSocioDesign listadoSocioDesign = new ListadoSocioDesign(socioController, multimediaController, alquilerController);
+		listadoSocioDesign.setVisible(false);
+		listadoSocioDesign.setTitle("Listado Socio");
+		listadoSocioDesign.setBounds(300, 100, 900, 600);
 
-		devolverView = new DevolverView(socioController, multimediaController, alquilerController);
+		multimediaController.altaPelicula("Iron man", "Chitan", "CD", 2023, 1234, "Actor", "Actora");
+		multimediaController.altaVideojuego("uwu", "uwu2", "DVD", 12, "PC");
 
-		listarView = new ListarView(socioController, multimediaController, alquilerController);
+		ListadoMultimediaDesign listadoMultimediaDesign = new ListadoMultimediaDesign(socioController, multimediaController, alquilerController);
+		listadoMultimediaDesign.setVisible(false);
+		listadoMultimediaDesign.setTitle("Listado Multimedia");
+		listadoMultimediaDesign.setBounds(300, 100, 900, 600);
 
-		// other panels
-		introduccionView = new IntroduccionView(socioController, multimediaController);
+		socioController.registrarSocio("1", "a", "10/10/2000", "uwu");
 
-		MenuView menuView = new MenuView(introduccionView, altasView, alquilerView, devolverView, listarView);
+		AquilerDesign r = new AquilerDesign(socioController, multimediaController, alquilerController);
+		r.setVisible(true);
+		r.setTitle("Listado Alquiler");
+		r.setBounds(300, 100, 900, 600);
 
-		menuView.setVisible(true);
-		menuView.setBounds(250, 25, 1000, 780);
-		menuView.setResizable(false);
-	}
 
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-		if (e.getSource().equals(altasView.getBtnAltaASocio()))
-		{
-			//memberControllear.registrarMiembros("minecraft", "minecraft", "03/10/2003", "minecraft");
-			altaSocioView = new AltaSocioView(socioController);
-			//memberController.registrarSocio("minecraft", "minecraft", "03/10/2003", "minecraft");
-		}
-		else if (e.getSource().equals(altasView.getBtnAltaPelicula()))
-		{
-			altaPeliculaView = new AltaPeliculaView(multimediaController);
-			altaPeliculaView.setVisible(true);
-			altaPeliculaView.setBounds(100, 100, 500, 500);
-		}
-		else if (e.getSource().equals(altasView.getBtnAltaVideojuego()))
-		{
-			altaVideojuegoView = new AltaVideojuegoView(multimediaController);
-		}
+
+		alquilerController.alquilarMultimedia("123", new Videojuego("uwuu", "uwuuu", "DVD", 12, "PC"));
+
+		DevolverDesign devolverDesign = new DevolverDesign(socioController, multimediaController, alquilerController);
+		devolverDesign.setVisible(true);
+		devolverDesign.setBounds(100,100,900,900);
 	}
 }
