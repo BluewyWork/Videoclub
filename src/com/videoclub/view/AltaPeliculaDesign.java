@@ -73,8 +73,6 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 		{
 			setSize(400, 300);
 
-			multimediaController = new MultimediaController();
-
 			lblTitulo = new JLabel("Título:");
 			txtTitulo = new JTextField(20);
 
