@@ -1,6 +1,7 @@
 package com.videoclub.view;
 
 import com.videoclub.controller.SocioController;
+import com.videoclub.model.Constantes;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,8 +11,8 @@ import java.awt.event.ActionListener;
 public class AltaSocioDesign extends JFrame implements ActionListener
 {
     private SocioController socioController;
-    AltaSocioView secondPanel;
     private JPanel firstPanel;
+    AltaSocioView secondPanel;
 
     public AltaSocioDesign(SocioController socio)
     {
@@ -27,21 +28,22 @@ public class AltaSocioDesign extends JFrame implements ActionListener
 
     public void initComponents()
     {
-        secondPanel = new AltaSocioView(socioController);
-        secondPanel.setPreferredSize(new Dimension(350, 450));
-
         firstPanel = new JPanel();
         firstPanel.setPreferredSize(new Dimension(350, 400));
         firstPanel.setBackground(Color.pink);
+
+        secondPanel = new AltaSocioView(socioController);
+        secondPanel.setPreferredSize(new Dimension(350, 450));
 
         setLayout(new FlowLayout());
         add(firstPanel);
         add(secondPanel);
         pack();
 
-        setVisible(true);
+        getContentPane().setBackground(Color.pink);
+        setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
         setTitle("Alta Socio");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     public class AltaSocioView extends JPanel implements ActionListener
@@ -96,9 +98,6 @@ public class AltaSocioDesign extends JFrame implements ActionListener
             add(new JPanel()); // Espacio en blanco
             add(btnGuardar);
 
-            // Mostrar la ventana
-            setVisible(true);
-
             // Asignar el ActionListener al botón de guardar
             btnGuardar.addActionListener(this);
         }
@@ -114,7 +113,8 @@ public class AltaSocioDesign extends JFrame implements ActionListener
             // Validar que los campos no estén vacíos
             if (nif.isEmpty() || nombre.isEmpty() || fechaNacimientoText.isEmpty() || poblacion.isEmpty())
             {
-                JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos");
+                JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -129,7 +129,6 @@ public class AltaSocioDesign extends JFrame implements ActionListener
             txtNombre.setText("");
             txtFechaNacimiento.setText("");
             txtPoblacion.setText("");
-            //setDefaultCloseOperation(EXIT_ON_CLOSE);
         }
     }
 }

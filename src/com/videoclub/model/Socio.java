@@ -3,6 +3,7 @@ package com.videoclub.model;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import javax.swing.*;
 
 public class Socio
 {
@@ -59,7 +60,9 @@ public class Socio
 		}
 		else
 		{
-			throw new RuntimeException("Member must be an ADULT (+18) and have a valid year");
+			JOptionPane.showMessageDialog(null, "Member must be an ADULT (+18) or have a valid year",
+					"ERROR", JOptionPane.ERROR_MESSAGE);
+			throw new RuntimeException("Member must be an ADULT (+18) or have a valid year");
 		}
 	}
 

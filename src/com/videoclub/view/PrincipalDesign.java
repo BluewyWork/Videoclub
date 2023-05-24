@@ -13,18 +13,52 @@ import java.util.ArrayList;
 
 public class PrincipalDesign extends JFrame implements ActionListener
 {
+	private JButton btnGuardar;
+	private JPanel panel;
 	private JMenuBar menuBar;
 	private JMenu menuSocio, menuMultimedia, menuListar, menuAlquilar, menuDevolver;
-	private JMenuItem altaSocio, altaPelicula, altaVideojuego;
+	private JMenuItem altaSocio, listadoSocio, altaPelicula, altaVideojuego, alquilar, devolver;
 	private JMenuItem listarMultimedia, listarPelicula, listarCancion, listarVideojuego, listarAlquiler, listarSocio;
+	AltaSocioDesign altaSocioDesign;
+	AltaPeliculaDesign altaPeliculaDesign;
+	AltaVideojuegoDesign altaVideojuegoDesign;
 
-	public PrincipalDesign()
+	AlquilerDesign alquilerDesign;
+	ListadoSocioDesign listadoSocioDesign;
+	ListadoMultimediaDesign listadoMultimediaDesign;
+	ListadoPeliculaDesign listadoPeliculaDesign;
+
+	SocioController socioController;
+	MultimediaController multimediaController;
+	AlquilerController alquilerController;
+
+	public PrincipalDesign(SocioController sc, MultimediaController mc, AlquilerController ac)
 	{
+		socioController = sc;
+		multimediaController = mc;
+		alquilerController = ac;
+
 		initComponents();
 	}
 
 	public void initComponents()
 	{
+		altaSocioDesign = new AltaSocioDesign(socioController);
+		altaPeliculaDesign = new AltaPeliculaDesign(multimediaController);
+		altaVideojuegoDesign = new AltaVideojuegoDesign(multimediaController);
+
+		alquilerDesign = new AlquilerDesign(socioController, multimediaController, alquilerController);
+		listadoSocioDesign = new ListadoSocioDesign(socioController, multimediaController, alquilerController);
+		listadoMultimediaDesign = new ListadoMultimediaDesign(socioController, multimediaController, alquilerController);
+		listadoPeliculaDesign = new ListadoPeliculaDesign(socioController, multimediaController, alquilerController);
+
+		panel = new JPanel();
+		btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(this);
+
+		this.add(panel);
+		panel.add(btnGuardar);
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(400, 300);
 		setTitle("JAMA Videoclub");
@@ -36,17 +70,24 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		menuBar = new JMenuBar();
 		menuSocio = new JMenu("Socio");
 		menuMultimedia = new JMenu("Multimedia");
-		menuAlquilar = new JMenu("Alquilar Multimedia");
-		menuDevolver = new JMenu("Devolver Multimedia");
+		menuAlquilar = new JMenu("Alquilar");
+		menuDevolver = new JMenu("Devolver");
+
+		alquilar = new JMenuItem("Alquilar multimedia a socio");
+		devolver = new JMenuItem("Devolver multimedia de socio");
 		altaSocio = new JMenuItem("Alta de socio");
-		altaSocio.addActionListener(this);
+		listadoSocio = new JMenuItem("Listado de socio");
 		altaPelicula = new JMenuItem("Alta de pelicula");
 		altaVideojuego = new JMenuItem("Alta de videojuego");
 
 		menuSocio.add(altaSocio);
+		menuSocio.add(listadoSocio);
 
 		menuMultimedia.add(altaPelicula);
 		menuMultimedia.add(altaVideojuego);
+
+		menuAlquilar.add(alquilar);
+		menuDevolver.add(devolver);
 
 		menuListar = new JMenu("Listados");
 		listarMultimedia = new JMenuItem("Todos los objetos multimedia");
@@ -63,12 +104,20 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		menuListar.add(listarAlquiler);
 		menuListar.add(listarSocio);
 
-		menuAlquilar = new JMenu("Alquilar");
-		menuDevolver = new JMenu("Devolver");
-
+		menuBar.add(menuSocio);
+		menuBar.add(menuMultimedia);
 		menuBar.add(menuAlquilar);
 		menuBar.add(menuDevolver);
 		menuBar.add(menuListar);
+
+		altaSocio.addActionListener(this);
+		altaPelicula.addActionListener(this);
+		altaVideojuego.addActionListener(this);
+
+		alquilar.addActionListener(this);
+		listadoSocio.addActionListener(this);
+		listarMultimedia.addActionListener(this);
+		listarPelicula.addActionListener(this);
 
 		setJMenuBar(menuBar);
 	}
@@ -76,9 +125,37 @@ public class PrincipalDesign extends JFrame implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		if (e.getSource().equals(listarMultimedia))
+		if (e.getSource().equals(altaSocio))
 		{
-
+			altaSocioDesign.setVisible(true);
+		}
+		else if (e.getSource().equals(altaPelicula))
+		{
+			altaPeliculaDesign.setVisible(true);
+		}
+		else if (e.getSource().equals(altaVideojuego))
+		{
+			altaVideojuegoDesign.setVisible(true);
+		}
+		else if (e.getSource().equals(alquilar))
+		{
+			alquilerDesign.setVisible(true);
+		}
+		else if (e.getSource().equals(listadoSocio))
+		{
+			listadoSocioDesign.setVisible(true);
+		}
+		else if (e.getSource().equals(listarMultimedia))
+		{
+			listadoMultimediaDesign.setVisible(true);
+		}
+		else if (e.getSource().equals(listarPelicula))
+		{
+			listadoPeliculaDesign.refreshTable();
+			listadoPeliculaDesign.setVisible(true);
+		}
+		else if (e.getSource().equals(btnGuardar))
+		{
 		}
 	}
 
@@ -133,9 +210,9 @@ public class PrincipalDesign extends JFrame implements ActionListener
 				columnNames = new String[]{"Column1", "Column2", "Column3", "Column4"};
 			}
 
-			public MemberTableModel(ArrayList<Multimedia> listSocio, String[] columnNames)
+			public MemberTableModel(ArrayList<Multimedia> listMultimedia, String[] columnNames)
 			{
-				this.data = listSocio;
+				this.data = listMultimedia;
 				this.columnNames = columnNames;
 			}
 
