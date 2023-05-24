@@ -89,17 +89,17 @@ public class MultimediaDAO
 		return videojuegos;
 	}
 
-	public ArrayList<Multimedia> listarMultimedias()
-	{
-		ArrayList<Multimedia> listMultimedias = new ArrayList<>();
-
-		for (Multimedia multimedia : listMultimedia)
-		{
-			listMultimedias.add(multimedia);
-		}
-
-		return listMultimedias;
-	}
+//	public ArrayList<Multimedia> listarMultimedias()
+//	{
+//		ArrayList<Multimedia> listMultimedias = new ArrayList<>();
+//
+//		for (Multimedia multimedia : listMultimedia)
+//		{
+//			listMultimedias.add(multimedia);
+//		}
+//
+//		return listMultimedias;
+//	}
 
 	public ArrayList<String> listarPeliculasTitulo()
 	{

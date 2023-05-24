@@ -1,6 +1,7 @@
 package com.videoclub.view;
 
 import com.videoclub.controller.SocioController;
+import com.videoclub.model.Constantes;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,14 +35,16 @@ public class AltaSocioDesign extends JFrame implements ActionListener
         firstPanel.setPreferredSize(new Dimension(350, 400));
         firstPanel.setBackground(Color.pink);
 
+
         setLayout(new FlowLayout());
         add(firstPanel);
         add(secondPanel);
         pack();
 
-        setVisible(true);
+        getContentPane().setBackground(Color.pink);
+        setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
         setTitle("Alta Socio");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     public class AltaSocioView extends JPanel implements ActionListener
@@ -114,7 +117,8 @@ public class AltaSocioDesign extends JFrame implements ActionListener
             // Validar que los campos no estén vacíos
             if (nif.isEmpty() || nombre.isEmpty() || fechaNacimientoText.isEmpty() || poblacion.isEmpty())
             {
-                JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos");
+                JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 

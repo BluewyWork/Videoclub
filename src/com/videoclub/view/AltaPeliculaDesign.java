@@ -1,6 +1,7 @@
 package com.videoclub.view;
 
 import com.videoclub.controller.MultimediaController;
+import com.videoclub.model.Constantes;
 import com.videoclub.model.Formato;
 
 import javax.swing.*;
@@ -43,9 +44,10 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 		add(secondPanel);
 		pack();
 
-		setVisible(true);
+		getContentPane().setBackground(Color.black);
+		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
 		setTitle("Alta pelicula");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
 	class AltaPeliculaView extends JPanel implements ActionListener
@@ -136,7 +138,8 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 
 			if (titulo.isEmpty() || autor.isEmpty() || formato.isEmpty() || actor.isEmpty() || actriz.isEmpty())
 			{
-				JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos");
+				JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos,",
+						"ERROR", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 
@@ -149,8 +152,8 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 			txtActriz.setText("");
 			txtActor.setText("");
 			listFormato.setSelectedIndex(0);
-			txtAnyo.setValue(2003);
-			txtDuracion.setValue("0");
+			txtAnyo.setValue(2023);
+			txtDuracion.setValue(0);
 		}
 	}
 }

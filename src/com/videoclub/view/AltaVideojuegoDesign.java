@@ -1,6 +1,7 @@
 package com.videoclub.view;
 
 import com.videoclub.controller.MultimediaController;
+import com.videoclub.model.Constantes;
 import com.videoclub.model.Formato;
 import com.videoclub.model.Plataforma;
 
@@ -41,9 +42,10 @@ public class AltaVideojuegoDesign extends JFrame implements ActionListener
 		add(secondPanel);
 		pack();
 
-		setVisible(true);
+		getContentPane().setBackground(Color.blue);
+		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
 		setTitle("Alta videojuego");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 	}
 
@@ -78,8 +80,8 @@ public class AltaVideojuegoDesign extends JFrame implements ActionListener
 			lblFormato = new JLabel("- Formato -");
 			lblAnyo = new JLabel("- Año lanzamiento -");
 			lblPlataforma = new JLabel("- Plataforma -");
-			txtTitulo = new JTextField("Escriba el título aquí");
-			txtAutor = new JTextField("Escriba el autor aquí");
+			txtTitulo = new JTextField("");
+			txtAutor = new JTextField("");
 			modelAnyo = new SpinnerNumberModel(2023, 1950, 2023, 1);
 			txtAnyo = new JSpinner(modelAnyo);
 			btnDarAlta = new JButton("Dar alta videojuego");
@@ -115,13 +117,14 @@ public class AltaVideojuegoDesign extends JFrame implements ActionListener
 
 			if (titulo.isEmpty() || autor.isEmpty() || formato.isEmpty())
 			{
-				JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos");
+				JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos",
+						"ERROR", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 
 			multimediaController.altaVideojuego(titulo, autor, formato, anyo, plataforma);
 
-			JOptionPane.showMessageDialog(null, "videojuego agregada correctamente");
+			JOptionPane.showMessageDialog(null, "Videojuego agregada correctamente");
 
 			txtTitulo.setText("");
 			txtAutor.setText("");

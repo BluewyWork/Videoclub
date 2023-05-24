@@ -3,6 +3,7 @@ package com.videoclub.view;
 import com.videoclub.controller.AlquilerController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
+import com.videoclub.model.Constantes;
 import com.videoclub.model.Multimedia;
 import com.videoclub.model.Socio;
 
@@ -14,7 +15,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 @SuppressWarnings("JoinDeclarationAndAssignmentJava")
-public class AquilerDesign extends JFrame implements ActionListener
+public class AlquilerDesign extends JFrame implements ActionListener
 {
 	private GridLayout grdLayout;
 	private JComboBox<String> cmboBoxOptions;
@@ -36,7 +37,7 @@ public class AquilerDesign extends JFrame implements ActionListener
 	private TextField txtFieldDniSocio;
 	private JButton btnRent;
 
-	public AquilerDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
+	public AlquilerDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
 	{
 		this.socioController = socioController;
 		this.multimediaController = multimediaController;
@@ -113,7 +114,9 @@ public class AquilerDesign extends JFrame implements ActionListener
 	{
 		//
 		setLayout(grdLayout);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
+		setTitle("Alquiler");
 
 		//
 		txtFieldPrompt.setPreferredSize(new Dimension(200, 30));
