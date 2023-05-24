@@ -3,10 +3,12 @@ package com.videoclub.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
+
 
 public class MultimediaDAO
 {
-	private ArrayList<Multimedia> listMultimedia;
+	private final ArrayList<Multimedia> listMultimedia;
 
 	public MultimediaDAO()
 	{
@@ -70,26 +72,29 @@ public class MultimediaDAO
 		return canciones;
 	}
 
-	public ArrayList<Videojuego> obtenerTodosLosVideojuegos() {
+public ArrayList<Videojuego> obtenerTodosLosVideojuegos() {
 		ArrayList<Videojuego> videojuegos = new ArrayList<>();
 
-		for (Multimedia multimedia : listMultimedia) {
-			if (multimedia instanceof Videojuego) {
+		for (Multimedia multimedia : listMultimedia)
+		{
+			if (multimedia instanceof Videojuego)
+			{
 				videojuegos.add((Videojuego) multimedia);
 			}
 		}
 		return videojuegos;
 	}
 
+
 	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAnio() {
 		ArrayList<Videojuego> videojuegos = obtenerTodosLosVideojuegos();
-
 		videojuegos.sort(Comparator.comparingInt(Videojuego::getAnio));
 
 		return videojuegos;
 	}
 
 	public ArrayList<Multimedia> listarMultimedias()
+
 	{
 		ArrayList<Multimedia> listMultimedias = new ArrayList<>();
 

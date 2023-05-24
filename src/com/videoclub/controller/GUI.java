@@ -1,8 +1,11 @@
 package com.videoclub.controller;
 
+
 import com.videoclub.view.ListadoMultimediaDesign;
 import com.videoclub.view.ListadoSocioDesign;
+
 import com.videoclub.view.AquilerDesign;
+import com.videoclub.view.ListadoSocioDesign;
 
 public class GUI
 {

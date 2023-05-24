@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class AlquilerDAO
 {
-	private ArrayList<Alquiler> listAlquiler;
+	private final ArrayList<Alquiler> listAlquiler;
 
 	public AlquilerDAO()
 	{
