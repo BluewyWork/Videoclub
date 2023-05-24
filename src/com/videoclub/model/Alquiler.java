@@ -112,22 +112,22 @@ public class Alquiler
 
 	public double calcularDeudaInicial()
 	{
-		double debt = 0;
+		double deuda = 0;
 
-		debt += multimedia.calcularPrecioAlquiler();
+		deuda += multimedia.calcularPrecioAlquiler();
 
-		return debt;
+		return deuda;
 	}
 
 	public double calcularDeudaFinal()
 	{
-		double debt = 0;
+		double deuda = 0;
 
 		if (esAtrasado())
 		{
-			debt += diasAtrasado() * Constantes.SURCHARGE_PER_DAY;
+			deuda += diasAtrasado() * Constantes.SURCHARGE_PER_DAY;
 		}
 
-		return debt + deudaInicial;
+		return deuda + deudaInicial;
 	}
 }

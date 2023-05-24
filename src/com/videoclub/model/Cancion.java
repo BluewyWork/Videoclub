@@ -2,23 +2,23 @@ package com.videoclub.model;
 
 public class Cancion extends Disco
 {
-	private String name;
-	private int duration;
+	private String nombre;
+	private int duracion;
 
-	public Cancion(String name, int duration)
+	public Cancion(String nombre, int duracion)
 	{
-		this.name = name;
-		this.duration = duration;
+		this.nombre = nombre;
+		this.duracion = duracion;
 	}
 
-	public String getName()
+	public String getNombre()
 	{
-		return name;
+		return nombre;
 	}
 
-	public void setName(String name)
+	public void setNombre(String nombre)
 	{
-		this.name = name;
+		this.nombre = nombre;
 	}
 
 	@Override
@@ -27,24 +27,24 @@ public class Cancion extends Disco
 		return
 				"Cancion: " + "\n" +
 						super.toString() + "\n" +
-						"\t" + "Nombre: '" + name + '\'' +
-						"\t" + "Duracion: " + duration;
+						"\t" + "Nombre: '" + nombre + '\'' +
+						"\t" + "Duracion: " + duracion;
 	}
 
-	public int getDuration()
+	public int getDuracion()
 	{
-		return duration;
+		return duracion;
 	}
 
-	public void setDuration(int duration)
+	public void setDuracion(int duracion)
 	{
-		if (duration > 0)
+		if (duracion > 0)
 		{
-			this.duration = duration;
+			this.duracion = duracion;
 		}
 		else
 		{
-			throw new RuntimeException("Song: Duration can't be lower than 0");
+			throw new RuntimeException("La duracion de la cancion no puede ser menor que 0");
 		}
 	}
 }
