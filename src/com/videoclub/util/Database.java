@@ -6,6 +6,7 @@ import com.videoclub.controller.SocioController;
 import com.videoclub.model.*;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -14,8 +15,8 @@ public class Database
 	String url = "jdbc:postgresql://localhost:5432/";
 	String db = "postgres";
 	String driver = "org.postgresql.Driver";
-	String user = "postrges";
-	String pass = "1234";
+	String user = "postgres";
+	String pass = "DAM1234.";
 
 	SocioController socioController;
 	MultimediaController multimediaController;
@@ -44,10 +45,11 @@ public class Database
 			try
 			{
 				Statement statement = connection.createStatement();
+				statement.execute("drop table if exists socio;");
 
 				String query = "";
 
-				query += "create table if not exists socio\n" +
+				query += "create table socio\n" +
 						"(\n" +
 						"    nif text,\n" +
 						"    nombre text,\n" +
@@ -57,7 +59,7 @@ public class Database
 						"\tprimary key(nif)\n" +
 						");"
 				;
-				statement.executeQuery(query);
+				statement.execute(query);
 			}
 			catch (Exception e)
 			{
@@ -66,19 +68,19 @@ public class Database
 
 			try
 			{
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 
 				PreparedStatement pstmt = connection.prepareStatement("INSERT INTO socio(nif, nombre, fecha_nacimiento, poblacion) VALUES (?, ?, ?, ?)");
 
-				for (Socio socio : listSocio)
-				{
+				for (Socio socio : listSocio) {
 					pstmt.setString(1, socio.getNif());
 					pstmt.setString(2, socio.getNombre());
-					pstmt.setString(3, socio.getFechaNacimiento().format(formatter));
+					pstmt.setDate(3, java.sql.Date.valueOf(socio.getFechaNacimiento()));
 					pstmt.setString(4, socio.getPoblacion());
-					pstmt.executeUpdate();
+					pstmt.addBatch(); // Add the prepared statement to the batch
 				}
-				pstmt.executeBatch();
+
+				pstmt.executeBatch(); // Execute the batch
 
 				connection.close();
 			}
@@ -309,6 +311,9 @@ public class Database
 
 			try
 			{
+				DateTimeFormatter sourceFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+				DateTimeFormatter targetFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
 				Statement st = con.createStatement();
 				ResultSet res = st.executeQuery("select * from socio;");
 				while (res.next())
@@ -316,9 +321,13 @@ public class Database
 					String nif = res.getString("nif");
 					String nombre = res.getString("nombre");
 					String fechaNacimiento = res.getString("fecha_nacimiento");
+					String formattedDate = fechaNacimiento.replace("-", "/");
+					LocalDate date = LocalDate.parse(formattedDate, sourceFormatter);
+
+					String format2 = date.format(targetFormatter);
 					String poblacion = res.getString("poblacion");
 
-					socioController.registrarSocio(nif, nombre, fechaNacimiento, poblacion);
+					socioController.registrarSocio(nif, nombre, format2, poblacion);
 				}
 				con.close();
 			}

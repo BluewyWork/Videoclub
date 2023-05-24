@@ -33,6 +33,8 @@ public class PrincipalDesign extends JFrame implements ActionListener
 	MultimediaController multimediaController;
 	AlquilerController alquilerController;
 
+	Database db;
+
 	public PrincipalDesign(SocioController sc, MultimediaController mc, AlquilerController ac)
 	{
 		socioController = sc;
@@ -64,6 +66,10 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		setSize(400, 300);
 		setTitle("JAMA Videoclub");
 		initMenuBar();
+
+		db = new Database(socioController, multimediaController, alquilerController);
+		db.loadSocios();
+
 	}
 
 	public void initMenuBar()
@@ -157,11 +163,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		}
 		else if (e.getSource().equals(btnGuardar))
 		{
-			Database db = new Database(socioController, multimediaController, alquilerController);
-
 			db.updateSocioTable();
-			db.updateTablePelicula();
-			db.updateTableVideojuego();
 		}
 	}
 }
