@@ -57,7 +57,6 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 		tblModel = new MemberTableModel();
 		tblResults = new JTable(tblModel);
 		scrollPane = new JScrollPane(tblResults);
-
 	}
 
 	public void configComponents()

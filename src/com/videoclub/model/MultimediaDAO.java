@@ -63,7 +63,8 @@ public class MultimediaDAO
 		}
 	}
 
-	public ArrayList<Cancion> obtenerCancionesPorDuracion(Disco disco) {
+	public ArrayList<Cancion> obtenerCancionesPorDuracion(Disco disco)
+	{
 		ArrayList<Cancion> canciones = disco.getListSongs();
 
 		canciones.sort(Comparator.comparingInt(Cancion::getDuracion));
@@ -71,7 +72,8 @@ public class MultimediaDAO
 		return canciones;
 	}
 
-public ArrayList<Videojuego> obtenerTodosLosVideojuegos() {
+	public ArrayList<Videojuego> obtenerTodosLosVideojuegos()
+	{
 		ArrayList<Videojuego> videojuegos = new ArrayList<>();
 
 		for (Multimedia multimedia : listMultimedia)
@@ -85,7 +87,8 @@ public ArrayList<Videojuego> obtenerTodosLosVideojuegos() {
 	}
 
 
-	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAnio() {
+	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAnio()
+	{
 		ArrayList<Videojuego> videojuegos = obtenerTodosLosVideojuegos();
 		videojuegos.sort(Comparator.comparingInt(Videojuego::getAnio));
 
@@ -109,18 +112,18 @@ public ArrayList<Videojuego> obtenerTodosLosVideojuegos() {
 		return listPeliculasTitulo;
 	}
 
-	public ArrayList<Pelicula> todosLosPelis()
+	public ArrayList<Pelicula> todosLasPeliculas()
 	{
-		ArrayList<Pelicula> peli = new ArrayList<>();
+		ArrayList<Pelicula> peliculas = new ArrayList<>();
 
 		for (Multimedia multimedia : listMultimedia)
 		{
 			if (multimedia instanceof Pelicula)
 			{
-				peli.add((Pelicula) multimedia);
+				peliculas.add((Pelicula) multimedia);
 			}
 		}
-		return peli;
+		return peliculas;
 	}
 
 	public ArrayList<Multimedia> filtroPorTitulo(String titulo)

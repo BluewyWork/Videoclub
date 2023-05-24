@@ -1,6 +1,6 @@
 package com.videoclub.model;
 
-public class Cancion extends Disco
+public class Cancion
 {
 	private String nombre;
 	private int duracion;
