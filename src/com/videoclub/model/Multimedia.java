@@ -14,16 +14,16 @@ public abstract class Multimedia implements Comparable<Multimedia>
 		titulo = "Multimedia Vacio";
 		autor = "N/a";
 		formato = Formato.CD;
-		anio = 9999;
+		anio = 2000;
 		precioTotalAlquiler = calcularPrecioAlquiler();
 	}
 
-	public Multimedia(String titulo, String autor, String format, int anio)
+	public Multimedia(String titulo, String autor, String formato, int anio)
 	{
 		this();
 		setTitulo(titulo);
 		setAutor(autor);
-		setFormat(Formato.valueOf(format));
+		setFormat(Formato.valueOf(formato));
 		setAnio(anio);
 	}
 
@@ -75,9 +75,9 @@ public abstract class Multimedia implements Comparable<Multimedia>
 		return anio;
 	}
 
-	public void setAnio(int año)
+	public void setAnio(int anio)
 	{
-		this.anio = año;
+		this.anio = anio;
 	}
 
 	public double getPrecioTotalAlquiler()
