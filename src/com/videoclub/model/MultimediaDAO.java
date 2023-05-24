@@ -66,7 +66,7 @@ public class MultimediaDAO
 	public ArrayList<Cancion> obtenerCancionesPorDuracion(Disco disco) {
 		ArrayList<Cancion> canciones = disco.getListSongs();
 
-		canciones.sort(Comparator.comparingInt(Cancion::getDuration));
+		canciones.sort(Comparator.comparingInt(Cancion::getDuracion));
 
 		return canciones;
 	}
