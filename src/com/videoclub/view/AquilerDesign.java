@@ -57,6 +57,7 @@ public class AquilerDesign extends JFrame implements ActionListener
 
 			if (socio != null)
 			{
+				JOptionPane.showMessageDialog(null, "Socio encontrado", "Success", JOptionPane.INFORMATION_MESSAGE);
 				txtFieldNombreSocio.setText(socio.getNombre());
 				txtFieldDniSocio.setText(socio.getNif());
 			}
@@ -67,16 +68,20 @@ public class AquilerDesign extends JFrame implements ActionListener
 		}
 		if (actionEvent.getSource().equals(btnRent))
 		{
-
 			int filaSeleccionada = tblResults.getSelectedRow();
 			String nif = txtFieldPrompt.getText();
+			Socio socio = socioController.encontrarSocio(nif);
 
-			if (filaSeleccionada != -1)
+			if (filaSeleccionada != -1 && socio != null)
 			{
 				Multimedia multimedia = tblModel.getObjectAt(filaSeleccionada);
 				alquilerController.alquilarMultimedia(nif, multimedia);
 				JOptionPane.showMessageDialog(null, "Multimedia alquilada", "Success", JOptionPane.INFORMATION_MESSAGE);
 
+			}
+			else if (filaSeleccionada == -1)
+			{
+				JOptionPane.showMessageDialog(null, "Seleccione una multimedia para alquilar", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 			else
 			{

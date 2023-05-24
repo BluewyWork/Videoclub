@@ -22,7 +22,7 @@ public class GUI
 		multimediaController = new MultimediaController();
 		alquilerController = new AlquilerController();
 
-		socioController.registrarSocio("123", "Chitan", "12/12/1999", "Algo");
+		socioController.registrarSocio("123", "Chitan", "12/12/1999", "China");
 
 		ListadoSocioDesign listadoSocioDesign = new ListadoSocioDesign(socioController, multimediaController, alquilerController);
 		listadoSocioDesign.setVisible(true);
