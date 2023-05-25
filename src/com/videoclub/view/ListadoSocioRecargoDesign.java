@@ -109,11 +109,11 @@ public class ListadoSocioRecargoDesign extends JFrame implements ActionListener
 		if (cmboBoxOptions.getSelectedItem().equals("Buscar por NIF"))
 		{
 			//Cambiar metodo
-//			tblModel.setData(socioController.filtroPorNIF(userInputText));
+			tblModel.setData(socioController.filtroPorNIF(userInputText));
 		}
 		else if (cmboBoxOptions.getSelectedItem().equals("Buscar por Nombre"))
 		{
-//			tblModel.setData(socioController.filtroPorNombre(userInputText));
+			tblModel.setData(socioController.filtroPorNombre(userInputText));
 		}
 		else if (cmboBoxOptions.getSelectedItem().equals("Sin filtro"))
 		{

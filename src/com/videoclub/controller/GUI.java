@@ -63,6 +63,5 @@ public class GUI
 		principalDesign.setVisible(true);
 		principalDesign.setTitle("JAMA Videoclub");
 		principalDesign.setBounds(300, 100, 900, 600);
-
 	}
 }
