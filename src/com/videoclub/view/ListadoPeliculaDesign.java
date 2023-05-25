@@ -58,6 +58,7 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 		//
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
+		setTitle("Listados peliculas ordenados por titulo");
 
 		//
 		ArrayList<Pelicula> listPelicula = multimediaController.listarPeliculasTitulo();

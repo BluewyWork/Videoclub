@@ -48,6 +48,16 @@ public class Disco extends Multimedia
 		}
 	}
 
+	public String getNombre()
+	{
+		return nombre;
+	}
+
+	public void setNombre(String nombre)
+	{
+		this.nombre = nombre;
+	}
+
 	public ArrayList<Cancion> getListSongs()
 	{
 		return listaCanciones;

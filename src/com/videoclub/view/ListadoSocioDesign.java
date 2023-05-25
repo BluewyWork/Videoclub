@@ -67,6 +67,7 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 		setLayout(grdLayout);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
+		setTitle("Listado socios");
 
 		//
 		txtFieldPrompt.setPreferredSize(new Dimension(200, 30));
