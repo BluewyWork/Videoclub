@@ -25,6 +25,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 	AltaVideojuegoDesign altaVideojuegoDesign;
 
 	AlquilerDesign alquilerDesign;
+	DevolverDesign devolverDesign;
 	ListadoSocioDesign listadoSocioDesign;
 	ListadoMultimediaDesign listadoMultimediaDesign;
 	ListadoPeliculaDesign listadoPeliculaDesign;
@@ -52,6 +53,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		altaVideojuegoDesign = new AltaVideojuegoDesign(multimediaController);
 
 		alquilerDesign = new AlquilerDesign(socioController, multimediaController, alquilerController);
+		devolverDesign = new DevolverDesign(socioController, multimediaController, alquilerController);
 		listadoSocioDesign = new ListadoSocioDesign(socioController, multimediaController, alquilerController);
 		listadoMultimediaDesign = new ListadoMultimediaDesign(socioController, multimediaController, alquilerController);
 		listadoPeliculaDesign = new ListadoPeliculaDesign(socioController, multimediaController, alquilerController);
@@ -126,6 +128,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		altaVideojuego.addActionListener(this);
 
 		alquilar.addActionListener(this);
+		devolver.addActionListener(this);
 		listadoSocio.addActionListener(this);
 		listarMultimedia.addActionListener(this);
 		listarPelicula.addActionListener(this);
@@ -152,6 +155,10 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		else if (e.getSource().equals(alquilar))
 		{
 			alquilerDesign.setVisible(true);
+		}
+		else if (e.getSource().equals(devolver))
+		{
+			devolverDesign.setVisible(true);
 		}
 		else if (e.getSource().equals(listadoSocio))
 		{

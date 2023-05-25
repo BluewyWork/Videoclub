@@ -47,11 +47,10 @@ public class GUI
 		def.add(e);
 		def.add(x);
 		def.add(f);
-		// Aqui acaba el test
-
 
 		multimediaController.altaDisco("Disco 1", abc);
 		multimediaController.altaDisco("Disco 2", def);
+		// Aqui acaba el test
 
 		PrincipalDesign principalDesign = new PrincipalDesign(socioController, multimediaController, alquilerController);
 		principalDesign.setVisible(true);
