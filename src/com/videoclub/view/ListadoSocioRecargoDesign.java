@@ -3,8 +3,8 @@ package com.videoclub.view;
 import com.videoclub.controller.AlquilerController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
+import com.videoclub.model.Alquiler;
 import com.videoclub.model.Constantes;
-import com.videoclub.model.Multimedia;
 import com.videoclub.model.Socio;
 
 import javax.swing.*;
@@ -12,10 +12,11 @@ import javax.swing.table.AbstractTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 @SuppressWarnings("JoinDeclarationAndAssignmentJava")
-public class AlquilerDesign extends JFrame implements ActionListener
+public class ListadoSocioRecargoDesign extends JFrame implements ActionListener
 {
 	private GridLayout grdLayout;
 	private JComboBox<String> cmboBoxOptions;
@@ -29,15 +30,7 @@ public class AlquilerDesign extends JFrame implements ActionListener
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
 
-	private JLabel lblNSocio;
-	private JLabel lblNombreSocio;
-	private JLabel lblDniSocio;
-	private TextField txtFieldNSocio;
-	private TextField txtFieldNombreSocio;
-	private TextField txtFieldDniSocio;
-	private JButton btnRent;
-
-	public AlquilerDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
+	public ListadoSocioRecargoDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
 	{
 		this.socioController = socioController;
 		this.multimediaController = multimediaController;
@@ -52,43 +45,7 @@ public class AlquilerDesign extends JFrame implements ActionListener
 	{
 		if (actionEvent.getSource().equals(btnFind))
 		{
-			String nif = txtFieldPrompt.getText();
-
-			Socio socio = socioController.encontrarSocio(nif);
-
-			if (socio != null)
-			{
-				JOptionPane.showMessageDialog(null, "Socio encontrado", "Success", JOptionPane.INFORMATION_MESSAGE);
-				txtFieldNombreSocio.setText(socio.getNombre());
-				txtFieldDniSocio.setText(socio.getNif());
-			}
-			else
-			{
-				JOptionPane.showMessageDialog(null, "NIF no válido", "Error", JOptionPane.ERROR_MESSAGE);
-			}
-		}
-		if (actionEvent.getSource().equals(btnRent))
-		{
-			int filaSeleccionada = tblResults.getSelectedRow();
-			String nif = txtFieldPrompt.getText();
-			Socio socio = socioController.encontrarSocio(nif);
-
-			if (filaSeleccionada != -1 && socio != null)
-			{
-				Multimedia multimedia = tblModel.getObjectAt(filaSeleccionada);
-				alquilerController.alquilarMultimedia(nif, multimedia);
-				multimediaController.eliminarMultimediaDisponible(multimedia.getTitulo(), multimedia.getAutor());
-				tblModel.fireTableDataChanged();
-				JOptionPane.showMessageDialog(null, "Multimedia alquilada", "Success", JOptionPane.INFORMATION_MESSAGE);
-			}
-			else if (filaSeleccionada == -1)
-			{
-				JOptionPane.showMessageDialog(null, "Seleccione una multimedia para alquilar", "Error", JOptionPane.ERROR_MESSAGE);
-			}
-			else
-			{
-				JOptionPane.showMessageDialog(null, "NIF no válido", "Error", JOptionPane.ERROR_MESSAGE);
-			}
+			updateTable();
 		}
 	}
 
@@ -100,15 +57,9 @@ public class AlquilerDesign extends JFrame implements ActionListener
 		btnFind = new JButton();
 		txtFieldPrompt = new JTextField();
 		tblModel = new MemberTableModel();
-		lblNombreSocio = new JLabel();
-		lblDniSocio = new JLabel();
-		lblNSocio = new JLabel();
-		txtFieldNSocio = new TextField();
-		txtFieldNombreSocio = new TextField();
-		txtFieldDniSocio = new TextField();
-		btnRent = new JButton();
 		tblResults = new JTable(tblModel);
 		scrollPane = new JScrollPane(tblResults);
+
 	}
 
 	public void configComponents()
@@ -117,34 +68,25 @@ public class AlquilerDesign extends JFrame implements ActionListener
 		setLayout(grdLayout);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
-		setTitle("Alquilar multimedia a un socio");
+		setTitle("Listado socios con recargo");
 
 		//
 		txtFieldPrompt.setPreferredSize(new Dimension(200, 30));
 
 		//
+		cmboBoxOptions.addItem("Sin filtro");
 		cmboBoxOptions.addItem("Buscar por NIF");
-		cmboBoxOptions.addItem("Buscar por Nombre");
-
-		//
-		lblNombreSocio.setText("Socio: ");
-
-		//
-		lblNSocio.setText("DNI: ");
+		cmboBoxOptions.addItem("Buscar por nombre");
 
 		//
 		btnFind.setText("Find");
 		btnFind.addActionListener(this);
 
 		//
-		btnRent.setText("Rent");
-		btnRent.addActionListener(this);
+		ArrayList<Socio> listSocio = listSocioRecargo();
+		String[] columnNames = {"NIF", "Nombre", "Fecha Naciemiento", "Poblacion"};
 
-		//
-		ArrayList<Multimedia> listMultimedias = multimediaController.returnStuff();
-		String[] columnNames = {"Titulo", "Autor", "Formato", "Año"};
-
-		tblModel.setData(listMultimedias);
+		tblModel.setData(listSocio);
 		tblModel.setColumnNames(columnNames);
 
 		tblModel.fireTableDataChanged();
@@ -154,16 +96,48 @@ public class AlquilerDesign extends JFrame implements ActionListener
 		mainPanel.add(cmboBoxOptions);
 		mainPanel.add(txtFieldPrompt);
 		mainPanel.add(btnFind);
-		mainPanel.add(btnRent);
 
 		//
 		add(mainPanel);
 		add(scrollPane);
 	}
 
+	public void updateTable()
+	{
+		String userInputText = txtFieldPrompt.getText();
+
+		if (cmboBoxOptions.getSelectedItem().equals("Buscar por NIF"))
+		{
+			//Cambiar metodo
+			tblModel.setData(socioController.filtroPorNIF(userInputText));
+		}
+		else if (cmboBoxOptions.getSelectedItem().equals("Buscar por Nombre"))
+		{
+			tblModel.setData(socioController.filtroPorNombre(userInputText));
+		}
+		else if (cmboBoxOptions.getSelectedItem().equals("Sin filtro"))
+		{
+			tblModel.setData(listSocioRecargo());
+		}
+
+		tblModel.fireTableDataChanged();
+	}
+
+	public ArrayList<Socio> listSocioRecargo()
+	{
+		ArrayList<Socio> listSocioRecargo = new ArrayList<>();
+		ArrayList<Alquiler> listAlquilerAux = alquilerController.listarSocioRecargo();
+		for (Alquiler alquiler : listAlquilerAux)
+		{
+			listSocioRecargo.add(socioController.encontrarSocio(alquiler.getNif()));
+		}
+
+		return listSocioRecargo;
+	}
+
 	class MemberTableModel extends AbstractTableModel
 	{
-		private ArrayList<Multimedia> data;
+		private ArrayList<Socio> data;
 		private String[] columnNames;
 
 		public MemberTableModel()
@@ -172,15 +146,10 @@ public class AlquilerDesign extends JFrame implements ActionListener
 			columnNames = new String[]{"Column1", "Column2", "Column3", "Column4"};
 		}
 
-		public MemberTableModel(ArrayList<Multimedia> listSocio, String[] columnNames)
+		public MemberTableModel(ArrayList<Socio> listSocio, String[] columnNames)
 		{
 			this.data = listSocio;
 			this.columnNames = columnNames;
-		}
-
-		public Multimedia getObjectAt(int x)
-		{
-			return data.get(x);
 		}
 
 		@Override
@@ -198,23 +167,26 @@ public class AlquilerDesign extends JFrame implements ActionListener
 		@Override
 		public Object getValueAt(int row, int column)
 		{
-			Multimedia multimedia = data.get(row);
+			Socio socio = data.get(row);
 
 			if (column == 0)
 			{
-				return multimedia.getTitulo();
+				return socio.getNif();
 			}
 			else if (column == 1)
 			{
-				return multimedia.getAutor();
+				return socio.getNombre();
 			}
 			else if (column == 2)
 			{
-				return multimedia.getFormat().toString();
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				String formattedDate = socio.getFechaNacimiento().format(formatter);
+
+				return formattedDate;
 			}
 			else if (column == 3)
 			{
-				return multimedia.getAnio();
+				return socio.getPoblacion();
 			}
 
 			return null;
@@ -226,7 +198,7 @@ public class AlquilerDesign extends JFrame implements ActionListener
 			return columnNames[column];
 		}
 
-		public void setData(ArrayList<Multimedia> data)
+		public void setData(ArrayList<Socio> data)
 		{
 			this.data = data;
 		}

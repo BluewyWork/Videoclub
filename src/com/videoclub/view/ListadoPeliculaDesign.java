@@ -58,10 +58,11 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 		//
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
+		setTitle("Listado peliculas ordenados por titulo");
 
 		//
 		ArrayList<Pelicula> listPelicula = multimediaController.listarPeliculasTitulo();
-		String[] columnNames = {"Titulo", "Autor", "Formato", "Año", "algo", "algo", "algo"};
+		String[] columnNames = {"Titulo", "Autor", "Formato", "Año", "Duracion", "Actor", "Actriz"};
 
 		tblModel.setData(listPelicula);
 		tblModel.setColumnNames(columnNames);

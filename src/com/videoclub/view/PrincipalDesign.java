@@ -25,10 +25,14 @@ public class PrincipalDesign extends JFrame implements ActionListener
 	AltaVideojuegoDesign altaVideojuegoDesign;
 
 	AlquilerDesign alquilerDesign;
+	DevolverDesign devolverDesign;
 	ListadoSocioDesign listadoSocioDesign;
 	ListadoMultimediaDesign listadoMultimediaDesign;
 	ListadoPeliculaDesign listadoPeliculaDesign;
 	ListadoCancionDesign listadoCancionDesign;
+	ListadoVideojuegoDesign listadoVideojuegoDesign;
+	ListadoAlquilerSocioDesign listadoAlquilerSocioDesign;
+	ListadoSocioRecargoDesign listadoSocioRecargoDesign;
 
 	SocioController socioController;
 	MultimediaController multimediaController;
@@ -52,10 +56,14 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		altaVideojuegoDesign = new AltaVideojuegoDesign(multimediaController);
 
 		alquilerDesign = new AlquilerDesign(socioController, multimediaController, alquilerController);
+		devolverDesign = new DevolverDesign(socioController, multimediaController, alquilerController);
 		listadoSocioDesign = new ListadoSocioDesign(socioController, multimediaController, alquilerController);
 		listadoMultimediaDesign = new ListadoMultimediaDesign(socioController, multimediaController, alquilerController);
 		listadoPeliculaDesign = new ListadoPeliculaDesign(socioController, multimediaController, alquilerController);
 		listadoCancionDesign = new ListadoCancionDesign(multimediaController);
+		listadoVideojuegoDesign = new ListadoVideojuegoDesign(socioController, multimediaController, alquilerController);
+		listadoAlquilerSocioDesign = new ListadoAlquilerSocioDesign(socioController, multimediaController, alquilerController);
+		listadoSocioRecargoDesign = new ListadoSocioRecargoDesign(socioController, multimediaController, alquilerController);
 
 		panel = new JPanel();
 		btnGuardar = new JButton("Guardar");
@@ -126,10 +134,14 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		altaVideojuego.addActionListener(this);
 
 		alquilar.addActionListener(this);
+		devolver.addActionListener(this);
 		listadoSocio.addActionListener(this);
 		listarMultimedia.addActionListener(this);
 		listarPelicula.addActionListener(this);
 		listarCancion.addActionListener(this);
+		listarVideojuego.addActionListener(this);
+		listarAlquiler.addActionListener(this);
+		listarSocio.addActionListener(this);
 
 		setJMenuBar(menuBar);
 	}
@@ -153,6 +165,10 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		{
 			alquilerDesign.setVisible(true);
 		}
+		else if (e.getSource().equals(devolver))
+		{
+			devolverDesign.setVisible(true);
+		}
 		else if (e.getSource().equals(listadoSocio))
 		{
 			listadoSocioDesign.setVisible(true);
@@ -169,6 +185,18 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		else if (e.getSource().equals(listarCancion))
 		{
 			listadoCancionDesign.setVisible(true);
+		}
+		else if (e.getSource().equals(listarVideojuego))
+		{
+			listadoVideojuegoDesign.setVisible(true);
+		}
+		else if (e.getSource().equals(listarAlquiler))
+		{
+			listadoAlquilerSocioDesign.setVisible(true);
+		}
+		else if (e.getSource().equals(listarSocio))
+		{
+			listadoSocioRecargoDesign.setVisible(true);
 		}
 		else if (e.getSource().equals(btnGuardar))
 		{

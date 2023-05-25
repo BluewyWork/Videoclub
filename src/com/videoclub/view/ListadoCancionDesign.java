@@ -24,7 +24,8 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 	private MultimediaController multimediaController;
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
-	Disco[] discosList;
+	String[] discoNameList;
+	ArrayList<Disco> discos;
 
 	public ListadoCancionDesign(MultimediaController multimediaController)
 	{
@@ -58,6 +59,7 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 		setLayout(grdLayout);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
+		setTitle("Listado canciones de un disco ordenados por duracion");
 
 		//
 		lblDisco.setText("Selecciona un disco");
@@ -73,14 +75,15 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 			}
 		}
 
-		discosList = new Disco[discosAux.size()];
+		discos = discosAux;
+		discoNameList = new String[discosAux.size()];
 
 		for (int i = 0; i < discosAux.size(); i++)
 		{
-			discosList[i] = discosAux.get(i);
+			discoNameList[i] = discosAux.get(i).getNombre();
 		}
 
-		cmboBoxOptions = new JComboBox(discosList);
+		cmboBoxOptions = new JComboBox(discoNameList);
 
 		//
 		btnSeleccionar.setText("Seleccionar");
@@ -113,7 +116,13 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 	}
 
 	public Disco getSelectedDisco() {
-		return (Disco) cmboBoxOptions.getSelectedItem();
+		Disco discoSeleccionado = null;
+		for (Disco disco : discos)
+		{
+			if (cmboBoxOptions.getSelectedItem().equals(disco.getNombre()))
+				discoSeleccionado = disco;
+		}
+		return discoSeleccionado;
 	}
 
 	class MemberTableModel extends AbstractTableModel
