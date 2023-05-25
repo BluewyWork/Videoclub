@@ -1,11 +1,8 @@
 package com.videoclub.controller;
 
-import com.videoclub.model.Socio;
 import com.videoclub.view.AltaPeliculaDesign;
 import com.videoclub.view.AltaSocioDesign;
 import com.videoclub.view.AltaVideojuegoDesign;
-
-import java.awt.*;
 
 public class Test
 {

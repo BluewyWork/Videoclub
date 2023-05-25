@@ -4,6 +4,7 @@ import com.videoclub.controller.AlquilerController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
 import com.videoclub.model.Multimedia;
+import com.videoclub.util.Database;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -32,6 +33,8 @@ public class PrincipalDesign extends JFrame implements ActionListener
 	SocioController socioController;
 	MultimediaController multimediaController;
 	AlquilerController alquilerController;
+
+	Database db;
 
 	public PrincipalDesign(SocioController sc, MultimediaController mc, AlquilerController ac)
 	{
@@ -65,6 +68,12 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		setSize(400, 300);
 		setTitle("JAMA Videoclub");
 		initMenuBar();
+
+		db = new Database(socioController, multimediaController, alquilerController);
+		db.loadSocios();
+		db.loadPeliculas();
+		db.loadVideojuegos();
+
 	}
 
 	public void initMenuBar()
@@ -163,6 +172,9 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		}
 		else if (e.getSource().equals(btnGuardar))
 		{
+			db.updateSocioTable();
+			db.updateTableVideojuego();
+			db.updateTablePelicula();
 		}
 	}
 }

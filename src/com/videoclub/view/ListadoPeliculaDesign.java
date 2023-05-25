@@ -52,6 +52,7 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 		tblModel.setData(multimediaController.listarPeliculasTitulo());
 		tblModel.fireTableDataChanged();
 	}
+
 	public void configComponents()
 	{
 		//

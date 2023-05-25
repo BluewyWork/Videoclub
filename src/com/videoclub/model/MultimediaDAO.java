@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-
 public class MultimediaDAO
 {
 	private final ArrayList<Multimedia> listMultimedia;
@@ -86,7 +85,6 @@ public class MultimediaDAO
 		return videojuegos;
 	}
 
-
 	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAnio()
 	{
 		ArrayList<Videojuego> videojuegos = obtenerTodosLosVideojuegos();
@@ -105,7 +103,7 @@ public class MultimediaDAO
 		{
 			if (copyListMultimedia.get(i) instanceof Pelicula)
 			{
-				listPeliculasTitulo.add(((Pelicula)copyListMultimedia.get(i)));
+				listPeliculasTitulo.add(((Pelicula) copyListMultimedia.get(i)));
 			}
 		}
 

@@ -1,9 +1,9 @@
 package com.videoclub.model;
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import javax.swing.*;
 
 public class Socio
 {
