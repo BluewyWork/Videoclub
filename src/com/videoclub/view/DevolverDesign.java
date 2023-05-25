@@ -118,7 +118,7 @@ public class DevolverDesign extends JFrame implements ActionListener
 	{
 		//
 		setLayout(grdLayout);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
 		setTitle("Devolver multimedia de un socio");
 
