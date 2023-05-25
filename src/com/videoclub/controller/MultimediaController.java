@@ -25,6 +25,12 @@ public class MultimediaController
 		multimediaDAO.aniadirMultimedia(videoJuego);
 	}
 
+	public void altaDisco(String nombre, ArrayList<Cancion> listCanciones)
+	{
+		Disco disco = new Disco(nombre, listCanciones);
+		multimediaDAO.aniadirMultimedia(disco);
+	}
+
 	public void storeDisc()
 	{
 		throw new UnsupportedOperationException();
@@ -66,7 +72,7 @@ public class MultimediaController
 
 	public ArrayList<Pelicula> todosLosPelis()
 	{
-		return multimediaDAO.todosLosPelis();
+		return multimediaDAO.todosLasPeliculas();
 	}
 
 	public ArrayList<Cancion> obtenerCancionesPorDuracion(Disco disco)
