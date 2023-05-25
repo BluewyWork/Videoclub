@@ -110,18 +110,18 @@ public class MultimediaDAO
 		return listPeliculasTitulo;
 	}
 
-	public ArrayList<Pelicula> todosLosPelis()
+	public ArrayList<Pelicula> todosLasPeliculas()
 	{
-		ArrayList<Pelicula> peli = new ArrayList<>();
+		ArrayList<Pelicula> peliculas = new ArrayList<>();
 
 		for (Multimedia multimedia : listMultimedia)
 		{
 			if (multimedia instanceof Pelicula)
 			{
-				peli.add((Pelicula) multimedia);
+				peliculas.add((Pelicula) multimedia);
 			}
 		}
-		return peli;
+		return peliculas;
 	}
 
 	public ArrayList<Multimedia> filtroPorTitulo(String titulo)

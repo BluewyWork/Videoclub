@@ -214,7 +214,7 @@ public class Database
 						pstmt.setString(5, Integer.toString(((Pelicula) multimedia).getDuracion()));
 						pstmt.setString(6, ((Pelicula) multimedia).getActorPrincipal());
 						pstmt.setString(7, ((Pelicula) multimedia).getActrizPrincipal());
-						pstmt.executeUpdate();
+						pstmt.addBatch();
 					}
 				}
 				pstmt.executeBatch();
@@ -282,7 +282,7 @@ public class Database
 						pstmt.setString(3, multimedia.getFormat().toString());
 						pstmt.setString(4, Integer.toString(multimedia.getAnio()));
 						pstmt.setString(5, ((Videojuego) multimedia).getPlatform().toString());
-						pstmt.executeUpdate();
+						pstmt.addBatch();
 					}
 
 				}

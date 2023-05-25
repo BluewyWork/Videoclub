@@ -45,7 +45,6 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 		tblModel = new MemberTableModel();
 		tblResults = new JTable(tblModel);
 		scrollPane = new JScrollPane(tblResults);
-
 	}
 
 	public void refreshTable()

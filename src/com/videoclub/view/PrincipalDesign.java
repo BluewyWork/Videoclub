@@ -28,6 +28,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 	ListadoSocioDesign listadoSocioDesign;
 	ListadoMultimediaDesign listadoMultimediaDesign;
 	ListadoPeliculaDesign listadoPeliculaDesign;
+	ListadoCancionDesign listadoCancionDesign;
 
 	SocioController socioController;
 	MultimediaController multimediaController;
@@ -54,6 +55,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		listadoSocioDesign = new ListadoSocioDesign(socioController, multimediaController, alquilerController);
 		listadoMultimediaDesign = new ListadoMultimediaDesign(socioController, multimediaController, alquilerController);
 		listadoPeliculaDesign = new ListadoPeliculaDesign(socioController, multimediaController, alquilerController);
+		listadoCancionDesign = new ListadoCancionDesign(multimediaController);
 
 		panel = new JPanel();
 		btnGuardar = new JButton("Guardar");
@@ -69,6 +71,8 @@ public class PrincipalDesign extends JFrame implements ActionListener
 
 		db = new Database(socioController, multimediaController, alquilerController);
 		db.loadSocios();
+		db.loadPeliculas();
+		db.loadVideojuegos();
 
 	}
 
@@ -125,6 +129,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		listadoSocio.addActionListener(this);
 		listarMultimedia.addActionListener(this);
 		listarPelicula.addActionListener(this);
+		listarCancion.addActionListener(this);
 
 		setJMenuBar(menuBar);
 	}
@@ -161,9 +166,15 @@ public class PrincipalDesign extends JFrame implements ActionListener
 			listadoPeliculaDesign.refreshTable();
 			listadoPeliculaDesign.setVisible(true);
 		}
+		else if (e.getSource().equals(listarCancion))
+		{
+			listadoCancionDesign.setVisible(true);
+		}
 		else if (e.getSource().equals(btnGuardar))
 		{
 			db.updateSocioTable();
+			db.updateTableVideojuego();
+			db.updateTablePelicula();
 		}
 	}
 }
