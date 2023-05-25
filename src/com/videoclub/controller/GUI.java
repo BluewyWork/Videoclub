@@ -48,8 +48,8 @@ public class GUI
 		def.add(x);
 		def.add(f);
 
-		multimediaController.altaDisco("Disco 1", abc);
-		multimediaController.altaDisco("Disco 2", def);
+		multimediaController.altaDisco("Disco 1", "Chitan", "CD", 2020, abc);
+		multimediaController.altaDisco("Disco 2", "Chitan", "DVD", 2022, def);
 		// Aqui acaba el test
 
 		PrincipalDesign principalDesign = new PrincipalDesign(socioController, multimediaController, alquilerController);

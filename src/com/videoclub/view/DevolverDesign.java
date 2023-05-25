@@ -5,6 +5,7 @@ import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
 import com.videoclub.model.Alquiler;
 import com.videoclub.model.Constantes;
+import com.videoclub.model.Multimedia;
 import com.videoclub.model.Socio;
 
 import javax.swing.*;
@@ -21,7 +22,7 @@ public class DevolverDesign extends JFrame implements ActionListener
 	private JButton btnFind;
 	private JTable tblResults;
 	private JTextField txtFieldPrompt;
-	private DevolverDesign.MemberTableModel tblModel;
+	private MemberTableModel tblModel;
 	private SocioController socioController;
 	private MultimediaController multimediaController;
 	private AlquilerController alquilerController;
@@ -81,6 +82,8 @@ public class DevolverDesign extends JFrame implements ActionListener
 			{
 				Alquiler alquiler = tblModel.getObjectAt(filaSeleccionada);
 				alquilerController.delvolverAlquiler(alquiler.getContador());
+				//multimediaController.(multimedia.getTitulo(), multimedia.getAutor());
+				tblModel.fireTableDataChanged();
 				JOptionPane.showMessageDialog(null, "Multimedia devuelta", "Success", JOptionPane.INFORMATION_MESSAGE);
 
 			}
@@ -145,7 +148,6 @@ public class DevolverDesign extends JFrame implements ActionListener
 
 		//
 		String[] columnNames = {"Contador", "DNI socio", "Titulo", "Autor"};
-
 		tblModel.setColumnNames(columnNames);
 
 		//
