@@ -25,10 +25,9 @@ public class MultimediaController
 		multimediaDAO.aniadirMultimedia(videoJuego);
 	}
 
-	public void altaDisco(ArrayList<Cancion> listCanciones)
+	public void altaDisco(String nombre, ArrayList<Cancion> listCanciones)
 	{
-		Disco disco = new Disco(listCanciones);
-		System.out.println(disco.toString());
+		Disco disco = new Disco(nombre, listCanciones);
 		multimediaDAO.aniadirMultimedia(disco);
 	}
 

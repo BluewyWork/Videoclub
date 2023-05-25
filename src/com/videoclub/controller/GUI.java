@@ -48,8 +48,8 @@ public class GUI
 		def.add(e);
 		def.add(f);
 
-		multimediaController.altaDisco(abc);
-		multimediaController.altaDisco(def);
+		multimediaController.altaDisco("Disco 1", abc);
+		multimediaController.altaDisco("Disco 2", def);
 
 		PrincipalDesign principalDesign = new PrincipalDesign(socioController, multimediaController, alquilerController);
 		principalDesign.setVisible(true);
