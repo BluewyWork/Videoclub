@@ -6,10 +6,20 @@ import java.io.PrintWriter;
 
 public class Logger
 {
-	public static void log(String rutaArchivo, String mensaje)
+	public static void log(String mensaje)
 	{
+		try
+		{
+			AppData.setUp();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 		try (
-				FileWriter fileWriter = new FileWriter(rutaArchivo, true);
+
+				FileWriter fileWriter = new FileWriter(AppData.rutaArchivo().resolve("xd.txt").toFile(), true);
+
 				PrintWriter printWriter = new PrintWriter(fileWriter)
 		)
 		{
