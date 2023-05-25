@@ -3,6 +3,7 @@ package com.videoclub.view;
 import com.videoclub.controller.AlquilerController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
+import com.videoclub.model.Alquiler;
 import com.videoclub.model.Constantes;
 import com.videoclub.model.Multimedia;
 import com.videoclub.model.Socio;
@@ -15,7 +16,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 @SuppressWarnings("JoinDeclarationAndAssignmentJava")
-public class AlquilerDesign extends JFrame implements ActionListener
+public class ListadoAlquilerSocioDesign extends JFrame implements ActionListener
 {
 	private GridLayout grdLayout;
 	private JComboBox<String> cmboBoxOptions;
@@ -35,9 +36,8 @@ public class AlquilerDesign extends JFrame implements ActionListener
 	private TextField txtFieldNSocio;
 	private TextField txtFieldNombreSocio;
 	private TextField txtFieldDniSocio;
-	private JButton btnRent;
 
-	public AlquilerDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
+	public ListadoAlquilerSocioDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
 	{
 		this.socioController = socioController;
 		this.multimediaController = multimediaController;
@@ -61,27 +61,8 @@ public class AlquilerDesign extends JFrame implements ActionListener
 				JOptionPane.showMessageDialog(null, "Socio encontrado", "Success", JOptionPane.INFORMATION_MESSAGE);
 				txtFieldNombreSocio.setText(socio.getNombre());
 				txtFieldDniSocio.setText(socio.getNif());
-			}
-			else
-			{
-				JOptionPane.showMessageDialog(null, "NIF no válido", "Error", JOptionPane.ERROR_MESSAGE);
-			}
-		}
-		if (actionEvent.getSource().equals(btnRent))
-		{
-			int filaSeleccionada = tblResults.getSelectedRow();
-			String nif = txtFieldPrompt.getText();
-			Socio socio = socioController.encontrarSocio(nif);
-
-			if (filaSeleccionada != -1 && socio != null)
-			{
-				Multimedia multimedia = tblModel.getObjectAt(filaSeleccionada);
-				alquilerController.alquilarMultimedia(nif, multimedia);
-				JOptionPane.showMessageDialog(null, "Multimedia alquilada", "Success", JOptionPane.INFORMATION_MESSAGE);
-			}
-			else if (filaSeleccionada == -1)
-			{
-				JOptionPane.showMessageDialog(null, "Seleccione una multimedia para alquilar", "Error", JOptionPane.ERROR_MESSAGE);
+				tblModel.setData(alquilerController.listarAlquileresSocio(nif));
+				tblModel.fireTableDataChanged();
 			}
 			else
 			{
@@ -104,7 +85,6 @@ public class AlquilerDesign extends JFrame implements ActionListener
 		txtFieldNSocio = new TextField();
 		txtFieldNombreSocio = new TextField();
 		txtFieldDniSocio = new TextField();
-		btnRent = new JButton();
 		tblResults = new JTable(tblModel);
 		scrollPane = new JScrollPane(tblResults);
 	}
@@ -135,14 +115,10 @@ public class AlquilerDesign extends JFrame implements ActionListener
 		btnFind.addActionListener(this);
 
 		//
-		btnRent.setText("Rent");
-		btnRent.addActionListener(this);
-
-		//
-		ArrayList<Multimedia> listMultimedias = multimediaController.returnStuff();
+		ArrayList<Alquiler> listarAlquileresSocio = alquilerController.listarAlquileresSocio(txtFieldPrompt.getText());
 		String[] columnNames = {"Titulo", "Autor", "Formato", "Año"};
 
-		tblModel.setData(listMultimedias);
+		tblModel.setData(listarAlquileresSocio);
 		tblModel.setColumnNames(columnNames);
 
 		tblModel.fireTableDataChanged();
@@ -152,7 +128,6 @@ public class AlquilerDesign extends JFrame implements ActionListener
 		mainPanel.add(cmboBoxOptions);
 		mainPanel.add(txtFieldPrompt);
 		mainPanel.add(btnFind);
-		mainPanel.add(btnRent);
 
 		//
 		add(mainPanel);
@@ -161,7 +136,7 @@ public class AlquilerDesign extends JFrame implements ActionListener
 
 	class MemberTableModel extends AbstractTableModel
 	{
-		private ArrayList<Multimedia> data;
+		private ArrayList<Alquiler> data;
 		private String[] columnNames;
 
 		public MemberTableModel()
@@ -170,13 +145,13 @@ public class AlquilerDesign extends JFrame implements ActionListener
 			columnNames = new String[]{"Column1", "Column2", "Column3", "Column4"};
 		}
 
-		public MemberTableModel(ArrayList<Multimedia> listSocio, String[] columnNames)
+		public MemberTableModel(ArrayList<Alquiler> listAlquileresSocio, String[] columnNames)
 		{
-			this.data = listSocio;
+			this.data = listAlquileresSocio;
 			this.columnNames = columnNames;
 		}
 
-		public Multimedia getObjectAt(int x)
+		public Alquiler getObjectAt(int x)
 		{
 			return data.get(x);
 		}
@@ -196,23 +171,23 @@ public class AlquilerDesign extends JFrame implements ActionListener
 		@Override
 		public Object getValueAt(int row, int column)
 		{
-			Multimedia multimedia = data.get(row);
+			Alquiler alquiler = data.get(row);
 
 			if (column == 0)
 			{
-				return multimedia.getTitulo();
+				return alquiler.getMultimedia().getTitulo();
 			}
 			else if (column == 1)
 			{
-				return multimedia.getAutor();
+				return alquiler.getMultimedia().getAutor();
 			}
 			else if (column == 2)
 			{
-				return multimedia.getFormat().toString();
+				return alquiler.getMultimedia().getFormat().toString();
 			}
 			else if (column == 3)
 			{
-				return multimedia.getAnio();
+				return alquiler.getMultimedia().getAnio();
 			}
 
 			return null;
@@ -224,7 +199,7 @@ public class AlquilerDesign extends JFrame implements ActionListener
 			return columnNames[column];
 		}
 
-		public void setData(ArrayList<Multimedia> data)
+		public void setData(ArrayList<Alquiler> data)
 		{
 			this.data = data;
 		}
