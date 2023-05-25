@@ -72,7 +72,8 @@ public class Database
 
 				PreparedStatement pstmt = connection.prepareStatement("INSERT INTO socio(nif, nombre, fecha_nacimiento, poblacion) VALUES (?, ?, ?, ?)");
 
-				for (Socio socio : listSocio) {
+				for (Socio socio : listSocio)
+				{
 					pstmt.setString(1, socio.getNif());
 					pstmt.setString(2, socio.getNombre());
 					pstmt.setDate(3, java.sql.Date.valueOf(socio.getFechaNacimiento()));
