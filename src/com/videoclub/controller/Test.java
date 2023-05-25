@@ -1,5 +1,7 @@
 package com.videoclub.controller;
 
+import com.videoclub.util.AppData;
+import com.videoclub.util.Logger;
 import com.videoclub.view.AltaPeliculaDesign;
 import com.videoclub.view.AltaSocioDesign;
 import com.videoclub.view.AltaVideojuegoDesign;
@@ -20,16 +22,6 @@ public class Test
 
 	public void run()
 	{
-		multimediaController = new MultimediaController();
-		altaPeliculaDesign = new AltaPeliculaDesign(multimediaController);
-		altaPeliculaDesign.setVisible(true);
-
-		multimediaController = new MultimediaController();
-		altaVideojuegoDesign = new AltaVideojuegoDesign(multimediaController);
-		altaVideojuegoDesign.setVisible(true);
-
-		socioController = new SocioController();
-		altaSocioDesign = new AltaSocioDesign(socioController);
-		altaSocioDesign.setVisible(true);
+		Logger.log("hitler");
 	}
 }
