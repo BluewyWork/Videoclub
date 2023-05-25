@@ -90,7 +90,7 @@ public class SocioDAO
 		Socio socio = encontrarSocio(nif);
 		if (socio != null)
 		{
-			listSocios.remove(encontrarSocio(nif));
+			listSocios.remove(socio);
 		}
 		else
 		{
