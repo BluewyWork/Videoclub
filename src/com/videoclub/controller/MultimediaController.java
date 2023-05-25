@@ -84,4 +84,10 @@ public class MultimediaController
 	{
 		return multimediaDAO.obtenerVideojuegosOrdenadosPorAnio();
 	}
+	public ArrayList<Videojuego> todosLosVideojuegos(){
+		return multimediaDAO.obtenerTodosLosVideojuegos();
+	}
+	public void eliminarMultimediaDisponible(String titulo, String autor){
+		multimediaDAO.eliminarMultimedia(titulo, autor);
+	}
 }

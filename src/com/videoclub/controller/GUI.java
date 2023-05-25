@@ -33,6 +33,8 @@ public class GUI
 		Cancion e = new Cancion("Vaya", 94);
 		Cancion f = new Cancion("kk", 12);
 
+
+
 		ArrayList<Cancion> abc = new ArrayList<>();
 		abc.add(a);
 		abc.add(b);
