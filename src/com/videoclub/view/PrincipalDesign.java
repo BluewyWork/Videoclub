@@ -69,6 +69,8 @@ public class PrincipalDesign extends JFrame implements ActionListener
 
 		db = new Database(socioController, multimediaController, alquilerController);
 		db.loadSocios();
+		db.loadPeliculas();
+		db.loadVideojuegos();
 
 	}
 
@@ -164,6 +166,8 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		else if (e.getSource().equals(btnGuardar))
 		{
 			db.updateSocioTable();
+			db.updateTableVideojuego();
+			db.updateTablePelicula();
 		}
 	}
 }
