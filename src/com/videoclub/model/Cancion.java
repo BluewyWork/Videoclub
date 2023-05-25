@@ -24,8 +24,7 @@ public class Cancion
 	@Override
 	public String toString()
 	{
-		return
-				"Cancion: " + "\n" +
+		return "Cancion: " + "\n" +
 						super.toString() + "\n" +
 						"\t" + "Nombre: '" + nombre + '\'' +
 						"\t" + "Duracion: " + duracion;

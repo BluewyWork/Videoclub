@@ -4,12 +4,11 @@ import java.util.ArrayList;
 
 public class Disco extends Multimedia
 {
-	private String nombre;
 	private int duracion;
 	private ArrayList<Cancion> listaCanciones;
 
-	public Disco(String nombre, ArrayList<Cancion> listCanciones) {
-		this.nombre = nombre;
+	public Disco(String titulo, String autor, String formato, int anio, ArrayList<Cancion> listCanciones) {
+		super(titulo, autor, formato, anio);
 		this.listaCanciones = listCanciones;
 		setDuration();
 	}
@@ -46,16 +45,6 @@ public class Disco extends Multimedia
 		{
 			duracion += a.getDuracion();
 		}
-	}
-
-	public String getNombre()
-	{
-		return nombre;
-	}
-
-	public void setNombre(String nombre)
-	{
-		this.nombre = nombre;
 	}
 
 	public ArrayList<Cancion> getListSongs()

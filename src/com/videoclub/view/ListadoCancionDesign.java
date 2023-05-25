@@ -80,7 +80,7 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 
 		for (int i = 0; i < discosAux.size(); i++)
 		{
-			discoNameList[i] = discosAux.get(i).getNombre();
+			discoNameList[i] = discosAux.get(i).getTitulo();
 		}
 
 		cmboBoxOptions = new JComboBox(discoNameList);
@@ -119,7 +119,7 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 		Disco discoSeleccionado = null;
 		for (Disco disco : discos)
 		{
-			if (cmboBoxOptions.getSelectedItem().equals(disco.getNombre()))
+			if (cmboBoxOptions.getSelectedItem().equals(disco.getTitulo()))
 				discoSeleccionado = disco;
 		}
 		return discoSeleccionado;

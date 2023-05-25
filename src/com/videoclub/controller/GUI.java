@@ -37,8 +37,6 @@ public class GUI
 		Cancion f = new Cancion("kk", 12);
 		Cancion x = new Cancion("Adios", 0);
 
-
-
 		ArrayList<Cancion> abc = new ArrayList<>();
 		abc.add(a);
 		abc.add(b);
