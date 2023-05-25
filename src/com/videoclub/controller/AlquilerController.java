@@ -20,6 +20,7 @@ public class AlquilerController
 		if (!alquilerDAO.pagosPendientes(memberNIF))
 		{
 			Alquiler alquiler = new Alquiler(memberNIF, multimedia);
+
 			alquilerDAO.aniadir(alquiler);
 		}
 		else

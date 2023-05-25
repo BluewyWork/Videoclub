@@ -72,7 +72,8 @@ public class Database
 
 				PreparedStatement pstmt = connection.prepareStatement("INSERT INTO socio(nif, nombre, fecha_nacimiento, poblacion) VALUES (?, ?, ?, ?)");
 
-				for (Socio socio : listSocio) {
+				for (Socio socio : listSocio)
+				{
 					pstmt.setString(1, socio.getNif());
 					pstmt.setString(2, socio.getNombre());
 					pstmt.setDate(3, java.sql.Date.valueOf(socio.getFechaNacimiento()));
@@ -112,6 +113,8 @@ public class Database
 			try
 			{
 				Statement statement = connection.createStatement();
+				statement.execute("drop table if exists Multimedia;");
+
 
 				String query = "";
 
@@ -162,7 +165,7 @@ public class Database
 	public void updateTablePelicula()
 	{
 		ArrayList<Socio> listSocio = socioController.todosLosSocios();
-		ArrayList<Multimedia> listMultimedia = multimediaController.returnStuff();
+		ArrayList<Pelicula> listMultimedia = multimediaController.todosLosPelis();
 		ArrayList<Alquiler> listAlquiler = alquilerController.todosLosAlquileres();
 
 		Connection connection = null;
@@ -175,10 +178,12 @@ public class Database
 			try
 			{
 				Statement statement = connection.createStatement();
+				statement.execute("drop table if exists pelicula;");
+
 
 				String query = "";
 
-				query += "create table if not exists pelicula\n" +
+				query += "create table pelicula\n" +
 						"(\n" +
 						"    titulo text,\n" +
 						"    autor text,\n" +
@@ -191,7 +196,7 @@ public class Database
 						"    primary key(titulo, autor)\n" +
 						");"
 				;
-				statement.executeQuery(query);
+				statement.execute(query);
 			}
 			catch (Exception e)
 			{
@@ -200,7 +205,7 @@ public class Database
 
 			try
 			{
-				PreparedStatement pstmt = connection.prepareStatement("INSERT INTO pelicula(titulo, autor, formato, anio, duracion, actor_principal, actriz_principal) VALUES (?, ?, ?, ?, ?, ?, ?)");
+				PreparedStatement pstmt = connection.prepareStatement("INSERT INTO pelicula(titulo, autor, format, anio, duracion, actor_principal, actriz_principal) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
 				for (Multimedia multimedia : listMultimedia)
 				{
@@ -209,8 +214,8 @@ public class Database
 						pstmt.setString(1, multimedia.getTitulo());
 						pstmt.setString(2, multimedia.getAutor());
 						pstmt.setString(3, multimedia.getFormat().toString());
-						pstmt.setString(4, Integer.toString(multimedia.getAnio()));
-						pstmt.setString(5, Integer.toString(((Pelicula) multimedia).getDuracion()));
+						pstmt.setInt(4, (multimedia.getAnio()));
+						pstmt.setInt(5, ((Pelicula) multimedia).getDuracion());
 						pstmt.setString(6, ((Pelicula) multimedia).getActorPrincipal());
 						pstmt.setString(7, ((Pelicula) multimedia).getActrizPrincipal());
 						pstmt.addBatch();
@@ -234,7 +239,7 @@ public class Database
 	public void updateTableVideojuego()
 	{
 		ArrayList<Socio> listSocio = socioController.todosLosSocios();
-		ArrayList<Multimedia> listMultimedia = multimediaController.returnStuff();
+		ArrayList<Videojuego> listMultimedia = multimediaController.todosLosVideojuegos();
 		ArrayList<Alquiler> listAlquiler = alquilerController.todosLosAlquileres();
 
 		Connection connection = null;
@@ -247,6 +252,8 @@ public class Database
 			try
 			{
 				Statement statement = connection.createStatement();
+				statement.execute("drop table if exists videojuego;");
+
 
 				String query = "";
 
@@ -261,7 +268,7 @@ public class Database
 						"    primary key(titulo, autor)\n" +
 						");"
 				;
-				statement.executeQuery(query);
+				statement.execute(query);
 			}
 			catch (Exception e)
 			{
@@ -270,7 +277,7 @@ public class Database
 
 			try
 			{
-				PreparedStatement pstmt = connection.prepareStatement("INSERT INTO pelicula(titulo, autor, formato, anio, plataforma) VALUES (?, ?, ?, ?, ?)");
+				PreparedStatement pstmt = connection.prepareStatement("INSERT INTO videojuego(titulo, autor, format, anio, plataforma) VALUES (?, ?, ?, ?, ?)");
 
 				for (Multimedia multimedia : listMultimedia)
 				{
@@ -279,7 +286,7 @@ public class Database
 						pstmt.setString(1, multimedia.getTitulo());
 						pstmt.setString(2, multimedia.getAutor());
 						pstmt.setString(3, multimedia.getFormat().toString());
-						pstmt.setString(4, Integer.toString(multimedia.getAnio()));
+						pstmt.setInt(4, (multimedia.getAnio()));
 						pstmt.setString(5, ((Videojuego) multimedia).getPlatform().toString());
 						pstmt.addBatch();
 					}
@@ -315,6 +322,7 @@ public class Database
 				DateTimeFormatter targetFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 				Statement st = con.createStatement();
+
 				ResultSet res = st.executeQuery("select * from socio;");
 				while (res.next())
 				{
@@ -358,7 +366,7 @@ public class Database
 				while (res.next())
 				{
 					String titulo = res.getString("titulo");
-					String autor = res.getString("nombre");
+					String autor = res.getString("autor");
 					String formato = res.getString("format");
 					int anio = Integer.parseInt(res.getString("anio"));
 					int duracion = Integer.parseInt(res.getString("duracion"));
@@ -396,10 +404,10 @@ public class Database
 				while (res.next())
 				{
 					String titulo = res.getString("titulo");
-					String autor = res.getString("nombre");
+					String autor = res.getString("autor");
 					String formato = res.getString("format");
 					int anio = Integer.parseInt(res.getString("anio"));
-					String plataforma = res.getString("platforma");
+					String plataforma = res.getString("plataforma");
 
 					multimediaController.altaVideojuego(titulo, autor, formato, anio, plataforma);
 				}
@@ -435,7 +443,7 @@ public class Database
 					String autor = res.getString("nombre");
 					String formato = res.getString("format");
 					int anio = Integer.parseInt(res.getString("anio"));
-					String plataforma = res.getString("platforma");
+					String plataforma = res.getString("plataforma");
 
 					//multimediaController.altaDisco(titulo, autor, formato, anio, plataforma);
 				}

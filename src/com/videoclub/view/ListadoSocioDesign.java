@@ -20,6 +20,7 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 	private GridLayout grdLayout;
 	private JComboBox<String> cmboBoxOptions;
 	private JButton btnFind;
+	private JButton btnDelete;
 	private JTable tblResults;
 	private JTextField txtFieldPrompt;
 	private MemberTableModel tblModel;
@@ -46,6 +47,12 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 		{
 			updateTable();
 		}
+		else if (actionEvent.getSource().equals(btnDelete))
+		{
+			eliminarSocio();
+			JOptionPane.showMessageDialog(null, "Socio eliminado", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+		}
 	}
 
 	public void initComponents()
@@ -54,6 +61,7 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 		mainPanel = new JPanel();
 		cmboBoxOptions = new JComboBox<>();
 		btnFind = new JButton();
+		btnDelete = new JButton();
 		txtFieldPrompt = new JTextField();
 		tblModel = new MemberTableModel();
 		tblResults = new JTable(tblModel);
@@ -82,6 +90,10 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 		btnFind.addActionListener(this);
 
 		//
+		btnDelete.setText("Delete");
+		btnDelete.addActionListener(this);
+
+		//
 		ArrayList<Socio> listSocio = socioController.todosLosSocios();
 		String[] columnNames = {"NIF", "Nombre", "Fecha Naciemiento", "Poblacion"};
 
@@ -95,6 +107,7 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 		mainPanel.add(cmboBoxOptions);
 		mainPanel.add(txtFieldPrompt);
 		mainPanel.add(btnFind);
+		mainPanel.add(btnDelete);
 
 		//
 		add(mainPanel);
@@ -120,6 +133,18 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 
 		tblModel.fireTableDataChanged();
 	}
+
+	public void eliminarSocio(){
+		int columnaNif = 0;
+		int filaSeleccionada = tblResults.getSelectedRow();
+
+		String nif = tblResults.getValueAt(filaSeleccionada, columnaNif).toString();
+
+		socioController.darDeBaja(nif);
+
+		tblModel.fireTableDataChanged();
+	}
+
 
 	class MemberTableModel extends AbstractTableModel
 	{
