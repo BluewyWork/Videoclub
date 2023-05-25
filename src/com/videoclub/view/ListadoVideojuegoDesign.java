@@ -5,6 +5,7 @@ import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
 import com.videoclub.model.Constantes;
 import com.videoclub.model.Pelicula;
+import com.videoclub.model.Videojuego;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -13,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 @SuppressWarnings("JoinDeclarationAndAssignmentJava")
-public class ListadoPeliculaDesign extends JFrame implements ActionListener
+public class ListadoVideojuegoDesign extends JFrame implements ActionListener
 {
 	private JTable tblResults;
 	private MemberTableModel tblModel;
@@ -23,7 +24,7 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
 
-	public ListadoPeliculaDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
+	public ListadoVideojuegoDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
 	{
 		this.socioController = socioController;
 		this.multimediaController = multimediaController;
@@ -49,7 +50,7 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 
 	public void refreshTable()
 	{
-		tblModel.setData(multimediaController.listarPeliculasTitulo());
+		tblModel.setData(multimediaController.obtenerVideojuegosOrdenadosPorAnio());
 		tblModel.fireTableDataChanged();
 	}
 
@@ -61,10 +62,10 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 		setTitle("Listado peliculas ordenados por titulo");
 
 		//
-		ArrayList<Pelicula> listPelicula = multimediaController.listarPeliculasTitulo();
-		String[] columnNames = {"Titulo", "Autor", "Formato", "Año", "Duracion", "Actor", "Actriz"};
+		ArrayList<Videojuego> listVideojuego = multimediaController.obtenerVideojuegosOrdenadosPorAnio();
+		String[] columnNames = {"Titulo", "Autor", "Formato", "Año", "Plataforma"};
 
-		tblModel.setData(listPelicula);
+		tblModel.setData(listVideojuego);
 		tblModel.setColumnNames(columnNames);
 
 		tblModel.fireTableDataChanged();
@@ -82,18 +83,18 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 
 	class MemberTableModel extends AbstractTableModel
 	{
-		private ArrayList<Pelicula> data;
+		private ArrayList<Videojuego> data;
 		private String[] columnNames;
 
 		public MemberTableModel()
 		{
 			data = new ArrayList<>();
-			columnNames = new String[]{"Column1", "Column2", "Column3", "Column4", "Column5", "Column6", "Column7"};
+			columnNames = new String[]{"Column1", "Column2", "Column3", "Column4", "Column5"};
 		}
 
-		public MemberTableModel(ArrayList<Pelicula> listPelicula, String[] columnNames)
+		public MemberTableModel(ArrayList<Videojuego> listVideojuego, String[] columnNames)
 		{
-			this.data = listPelicula;
+			this.data = listVideojuego;
 			this.columnNames = columnNames;
 		}
 
@@ -112,35 +113,27 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 		@Override
 		public Object getValueAt(int row, int column)
 		{
-			Pelicula pelicula = data.get(row);
+			Videojuego videojuego = data.get(row);
 
 			if (column == 0)
 			{
-				return pelicula.getTitulo();
+				return videojuego.getTitulo();
 			}
 			else if (column == 1)
 			{
-				return pelicula.getAutor();
+				return videojuego.getAutor();
 			}
 			else if (column == 2)
 			{
-				return pelicula.getFormat();
+				return videojuego.getFormat();
 			}
 			else if (column == 3)
 			{
-				return pelicula.getAnio();
+				return videojuego.getAnio();
 			}
 			else if (column == 4)
 			{
-				return pelicula.getDuracion();
-			}
-			else if (column == 5)
-			{
-				return pelicula.getActorPrincipal();
-			}
-			else if (column == 6)
-			{
-				return pelicula.getActrizPrincipal();
+				return videojuego.getPlatform();
 			}
 
 			return null;
@@ -152,7 +145,7 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 			return columnNames[column];
 		}
 
-		public void setData(ArrayList<Pelicula> data)
+		public void setData(ArrayList<Videojuego> data)
 		{
 			this.data = data;
 		}
@@ -163,3 +156,4 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 		}
 	}
 }
+

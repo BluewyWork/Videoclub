@@ -30,6 +30,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 	ListadoMultimediaDesign listadoMultimediaDesign;
 	ListadoPeliculaDesign listadoPeliculaDesign;
 	ListadoCancionDesign listadoCancionDesign;
+	ListadoVideojuegoDesign listadoVideojuegoDesign;
 
 	SocioController socioController;
 	MultimediaController multimediaController;
@@ -58,6 +59,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		listadoMultimediaDesign = new ListadoMultimediaDesign(socioController, multimediaController, alquilerController);
 		listadoPeliculaDesign = new ListadoPeliculaDesign(socioController, multimediaController, alquilerController);
 		listadoCancionDesign = new ListadoCancionDesign(multimediaController);
+		listadoVideojuegoDesign = new ListadoVideojuegoDesign(socioController, multimediaController, alquilerController);
 
 		panel = new JPanel();
 		btnGuardar = new JButton("Guardar");
@@ -133,6 +135,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		listarMultimedia.addActionListener(this);
 		listarPelicula.addActionListener(this);
 		listarCancion.addActionListener(this);
+		listarVideojuego.addActionListener(this);
 
 		setJMenuBar(menuBar);
 	}
@@ -176,6 +179,10 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		else if (e.getSource().equals(listarCancion))
 		{
 			listadoCancionDesign.setVisible(true);
+		}
+		else if (e.getSource().equals(listarVideojuego))
+		{
+			listadoVideojuegoDesign.setVisible(true);
 		}
 		else if (e.getSource().equals(btnGuardar))
 		{

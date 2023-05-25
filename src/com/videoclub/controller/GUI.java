@@ -52,6 +52,11 @@ public class GUI
 		multimediaController.altaDisco("Disco 2", def);
 		// Aqui acaba el test
 
+		// Test Videojuego
+		multimediaController.altaVideojuego("Mario karts 2", "Chitan", "CD", 2020, "NINTENDO");
+		multimediaController.altaVideojuego("Mario karts", "Chitan", "CD", 2000, "NINTENDO");
+		// Aqui acaba el test
+
 		PrincipalDesign principalDesign = new PrincipalDesign(socioController, multimediaController, alquilerController);
 		principalDesign.setVisible(true);
 		principalDesign.setTitle("JAMA Videoclub");
