@@ -6,7 +6,10 @@ import com.videoclub.controller.SocioController;
 import com.videoclub.model.*;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.*;
@@ -41,9 +44,11 @@ public class Database
 		try
 		{
 			String configFilePath = getConfigFilePath();
-			if (configFilePath == null)
+			Path path = Paths.get(configFilePath);
+
+			if (!Files.exists(path) || !Files.isRegularFile(path))
 			{
-				// Use default values
+				createDefaultConfigFile();
 				return;
 			}
 
@@ -67,7 +72,38 @@ public class Database
 		}
 		catch (Exception e)
 		{
-			// Failed to read config file, use default values
+			e.printStackTrace();
+		}
+	}
+
+	private void createDefaultConfigFile()
+	{
+		try
+		{
+			String configDir = FolderPathResolver.getUserConfigPath();
+			if (configDir != null)
+			{
+				File configFileDir = new File(configDir, "VideoClub");
+				if (!configFileDir.exists())
+				{
+					configFileDir.mkdirs(); // Create the folder if it does not exist
+				}
+				File configFile = new File(configFileDir, "config.txt");
+				if (!configFile.exists())
+				{
+					configFile.createNewFile(); // Create the config file if it does not exist
+					FileWriter writer = new FileWriter(configFile);
+					writer.write("url=jdbc:postgresql://localhost:5432/\n");
+					writer.write("db=postgres\n");
+					writer.write("driver=org.postgresql.Driver\n");
+					writer.write("user=postgres\n");
+					writer.write("pass=DAM1234.\n");
+					writer.close();
+				}
+			}
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 	}
