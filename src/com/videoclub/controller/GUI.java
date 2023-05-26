@@ -4,14 +4,12 @@ import com.videoclub.model.Cancion;
 import com.videoclub.view.PrincipalDesign;
 
 import java.util.ArrayList;
-import com.videoclub.util.Database;
 
 public class GUI
 {
 	private SocioController socioController;
 	private MultimediaController multimediaController;
 	private AlquilerController alquilerController;
-	private Database db;
 
 	public static void main(String[] args)
 	{
@@ -24,8 +22,6 @@ public class GUI
 		socioController = new SocioController();
 		multimediaController = new MultimediaController();
 		alquilerController = new AlquilerController();
-
-		db = new Database(socioController, multimediaController, alquilerController);
 
 		// Test Canciones y disco
 		Cancion a = new Cancion("Makapaka", 3);

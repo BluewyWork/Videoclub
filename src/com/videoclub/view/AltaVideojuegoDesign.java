@@ -4,28 +4,23 @@ import com.videoclub.controller.MultimediaController;
 import com.videoclub.model.Constantes;
 import com.videoclub.model.Formato;
 import com.videoclub.model.Plataforma;
+import com.videoclub.util.Logger;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AltaVideojuegoDesign extends JFrame implements ActionListener
+public class AltaVideojuegoDesign extends JFrame
 {
-	private MultimediaController multimediaController;
 	AltaVideojuegoView firstPanel;
+	private MultimediaController multimediaController;
 	private JPanel secondPanel;
 
 	public AltaVideojuegoDesign(MultimediaController multimedia)
 	{
 		multimediaController = multimedia;
 		initComponents();
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-
 	}
 
 	public void initComponents()
@@ -51,13 +46,13 @@ public class AltaVideojuegoDesign extends JFrame implements ActionListener
 
 	class AltaVideojuegoView extends JPanel implements ActionListener
 	{
+		private final MultimediaController multimediaController;
 		private JLabel lblTitulo, lblAutor, lblFormato, lblAnyo, lblPlataforma;
 		private JTextField txtTitulo, txtAutor;
 		private JButton btnDarAlta;
 		private JComboBox listFormato, listPlataforma;
 		private SpinnerNumberModel modelAnyo;
 		private JSpinner txtAnyo;
-		private final MultimediaController multimediaController;
 
 		public AltaVideojuegoView(MultimediaController mc)
 		{
@@ -69,6 +64,8 @@ public class AltaVideojuegoDesign extends JFrame implements ActionListener
 		public void actionPerformed(ActionEvent e)
 		{
 			accionDarAltaVideojuego();
+
+			Logger.log("VideoJuego Creado");
 		}
 
 		public void initComponents()
@@ -123,7 +120,8 @@ public class AltaVideojuegoDesign extends JFrame implements ActionListener
 			if (titulo.isEmpty() || autor.isEmpty() || formato.isEmpty())
 			{
 				JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos",
-						"ERROR", JOptionPane.ERROR_MESSAGE);
+						"ERROR", JOptionPane.ERROR_MESSAGE
+				);
 				return;
 			}
 

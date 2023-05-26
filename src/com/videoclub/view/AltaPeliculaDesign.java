@@ -3,6 +3,7 @@ package com.videoclub.view;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.model.Constantes;
 import com.videoclub.model.Formato;
+import com.videoclub.util.Logger;
 
 import javax.swing.*;
 import java.awt.*;
@@ -67,6 +68,8 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 		public void actionPerformed(ActionEvent e)
 		{
 			accionDarAltaPelicula();
+
+			Logger.log("Pelicula Creada");
 		}
 
 		public void initComponents()
@@ -133,7 +136,8 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 			if (titulo.isEmpty() || autor.isEmpty() || formato.isEmpty() || actor.isEmpty() || actriz.isEmpty())
 			{
 				JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos,",
-						"ERROR", JOptionPane.ERROR_MESSAGE);
+						"ERROR", JOptionPane.ERROR_MESSAGE
+				);
 				return;
 			}
 

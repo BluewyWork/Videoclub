@@ -6,6 +6,7 @@ import com.videoclub.controller.SocioController;
 import com.videoclub.model.Constantes;
 import com.videoclub.model.Multimedia;
 import com.videoclub.model.Socio;
+import com.videoclub.util.Logger;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -17,15 +18,15 @@ import java.util.ArrayList;
 @SuppressWarnings("JoinDeclarationAndAssignmentJava")
 public class AlquilerDesign extends JFrame implements ActionListener
 {
+	private final SocioController socioController;
+	private final MultimediaController multimediaController;
+	private final AlquilerController alquilerController;
 	private GridLayout grdLayout;
 	private JComboBox<String> cmboBoxOptions;
 	private JButton btnFind;
 	private JTable tblResults;
 	private JTextField txtFieldPrompt;
 	private MemberTableModel tblModel;
-	private final SocioController socioController;
-	private final MultimediaController multimediaController;
-	private final AlquilerController alquilerController;
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
 
@@ -80,6 +81,8 @@ public class AlquilerDesign extends JFrame implements ActionListener
 				multimediaController.eliminarMultimediaDisponible(multimedia.getTitulo(), multimedia.getAutor());
 				tblModel.fireTableDataChanged();
 				JOptionPane.showMessageDialog(null, "Multimedia alquilada", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+				Logger.log("Multimedia Alquilada");
 			}
 			else if (filaSeleccionada == -1)
 			{

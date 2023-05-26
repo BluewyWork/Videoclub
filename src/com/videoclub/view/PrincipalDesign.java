@@ -3,27 +3,17 @@ package com.videoclub.view;
 import com.videoclub.controller.AlquilerController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
-import com.videoclub.model.Multimedia;
 import com.videoclub.util.Database;
 
 import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class PrincipalDesign extends JFrame implements ActionListener
 {
-	private JButton btnGuardar;
-	private JPanel panel;
-	private JMenuBar menuBar;
-	private JMenu menuSocio, menuMultimedia, menuListar, menuAlquilar, menuDevolver;
-	private JMenuItem altaSocio, listadoSocio, altaPelicula, altaVideojuego, alquilar, devolver;
-	private JMenuItem listarMultimedia, listarPelicula, listarCancion, listarVideojuego, listarAlquiler, listarSocio;
 	AltaSocioDesign altaSocioDesign;
 	AltaPeliculaDesign altaPeliculaDesign;
 	AltaVideojuegoDesign altaVideojuegoDesign;
-
 	AlquilerDesign alquilerDesign;
 	DevolverDesign devolverDesign;
 	ListadoSocioDesign listadoSocioDesign;
@@ -33,12 +23,16 @@ public class PrincipalDesign extends JFrame implements ActionListener
 	ListadoVideojuegoDesign listadoVideojuegoDesign;
 	ListadoAlquilerSocioDesign listadoAlquilerSocioDesign;
 	ListadoSocioRecargoDesign listadoSocioRecargoDesign;
-
 	SocioController socioController;
 	MultimediaController multimediaController;
 	AlquilerController alquilerController;
-
 	Database db;
+	private JButton btnGuardar;
+	private JPanel panel;
+	private JMenuBar menuBar;
+	private JMenu menuSocio, menuMultimedia, menuListar, menuAlquilar, menuDevolver;
+	private JMenuItem altaSocio, listadoSocio, altaPelicula, altaVideojuego, alquilar, devolver;
+	private JMenuItem listarMultimedia, listarPelicula, listarCancion, listarVideojuego, listarAlquiler, listarSocio;
 
 	public PrincipalDesign(SocioController sc, MultimediaController mc, AlquilerController ac)
 	{

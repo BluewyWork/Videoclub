@@ -17,8 +17,8 @@ public class Disco extends Multimedia
 	public String toString()
 	{
 		return super.toString() + "\n" +
-						"\t" + "Duracion: " + duracion +
-						"\t" + "Canciones: '" + listaCanciones + '\'';
+				"\t" + "Duracion: " + duracion +
+				"\t" + "Canciones: '" + listaCanciones + '\'';
 	}
 
 	@Override

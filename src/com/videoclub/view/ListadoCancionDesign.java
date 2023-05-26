@@ -15,6 +15,8 @@ import java.util.ArrayList;
 @SuppressWarnings("JoinDeclarationAndAssignmentJava")
 public class ListadoCancionDesign extends JFrame implements ActionListener
 {
+	private String[] discoNameList;
+	private ArrayList<Disco> discos;
 	private GridLayout grdLayout;
 	private JComboBox<String> cmboBoxOptions;
 	private JLabel lblDisco;
@@ -24,8 +26,6 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 	private MultimediaController multimediaController;
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
-	String[] discoNameList;
-	ArrayList<Disco> discos;
 
 	public ListadoCancionDesign(MultimediaController multimediaController)
 	{
@@ -71,7 +71,7 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 		{
 			if (multimediaController.returnStuff().get(i) instanceof Disco)
 			{
-				discosAux.add((Disco)multimediaController.returnStuff().get(i));
+				discosAux.add((Disco) multimediaController.returnStuff().get(i));
 			}
 		}
 
@@ -115,7 +115,8 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 		tblModel.fireTableDataChanged();
 	}
 
-	public Disco getSelectedDisco() {
+	public Disco getSelectedDisco()
+	{
 		Disco discoSeleccionado = null;
 		for (Disco disco : discos)
 		{

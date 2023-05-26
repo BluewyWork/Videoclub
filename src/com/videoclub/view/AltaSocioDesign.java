@@ -2,28 +2,23 @@ package com.videoclub.view;
 
 import com.videoclub.controller.SocioController;
 import com.videoclub.model.Constantes;
+import com.videoclub.util.Logger;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AltaSocioDesign extends JFrame implements ActionListener
+public class AltaSocioDesign extends JFrame
 {
+	AltaSocioView secondPanel;
 	private SocioController socioController;
 	private JPanel firstPanel;
-	AltaSocioView secondPanel;
 
 	public AltaSocioDesign(SocioController socio)
 	{
 		socioController = socio;
 		initComponents();
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-
 	}
 
 	public void initComponents()
@@ -63,6 +58,8 @@ public class AltaSocioDesign extends JFrame implements ActionListener
 		public void actionPerformed(ActionEvent e)
 		{
 			accionDarAltaSocio();
+
+			Logger.log("Socio Creado");
 		}
 
 		public void initComponents()
@@ -114,7 +111,8 @@ public class AltaSocioDesign extends JFrame implements ActionListener
 			if (nif.isEmpty() || nombre.isEmpty() || fechaNacimientoText.isEmpty() || poblacion.isEmpty())
 			{
 				JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos",
-						"ERROR", JOptionPane.ERROR_MESSAGE);
+						"ERROR", JOptionPane.ERROR_MESSAGE
+				);
 				return;
 			}
 
