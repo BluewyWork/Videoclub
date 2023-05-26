@@ -1,6 +1,5 @@
 package com.videoclub.controller;
 
-import com.videoclub.util.AppData;
 import com.videoclub.util.Logger;
 import com.videoclub.view.AltaPeliculaDesign;
 import com.videoclub.view.AltaSocioDesign;
