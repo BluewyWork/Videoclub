@@ -18,15 +18,15 @@ import java.util.ArrayList;
 @SuppressWarnings("JoinDeclarationAndAssignmentJava")
 public class ListadoSocioRecargoDesign extends JFrame implements ActionListener
 {
+	private final SocioController socioController;
+	private final MultimediaController multimediaController;
+	private final AlquilerController alquilerController;
 	private GridLayout grdLayout;
 	private JComboBox<String> cmboBoxOptions;
 	private JButton btnFind;
 	private JTable tblResults;
 	private JTextField txtFieldPrompt;
 	private MemberTableModel tblModel;
-	private final SocioController socioController;
-	private final MultimediaController multimediaController;
-	private final AlquilerController alquilerController;
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
 

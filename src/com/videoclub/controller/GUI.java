@@ -4,7 +4,6 @@ import com.videoclub.model.Cancion;
 import com.videoclub.view.PrincipalDesign;
 
 import java.util.ArrayList;
-import com.videoclub.util.Database;
 
 public class GUI
 {

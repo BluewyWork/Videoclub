@@ -35,10 +35,10 @@ public class Socio
 	public String toString()
 	{
 		return "Socio: " + "\n" +
-						"\t" + "Nif: " + nif + "\n" +
-						"\t" + "Nombre: " + nombre + "\n" +
-						"\t" + "FechaNac: " + fechaNacimiento + "\n" +
-						"\t" + "Poblacion: " + poblacion;
+				"\t" + "Nif: " + nif + "\n" +
+				"\t" + "Nombre: " + nombre + "\n" +
+				"\t" + "FechaNac: " + fechaNacimiento + "\n" +
+				"\t" + "Poblacion: " + poblacion;
 	}
 
 	public String getNombre()
@@ -60,7 +60,8 @@ public class Socio
 		else
 		{
 			JOptionPane.showMessageDialog(null, "Member must be an ADULT (+18) or have a valid year",
-					"ERROR", JOptionPane.ERROR_MESSAGE);
+					"ERROR", JOptionPane.ERROR_MESSAGE
+			);
 			throw new RuntimeException("Member must be an ADULT (+18) or have a valid year");
 		}
 	}

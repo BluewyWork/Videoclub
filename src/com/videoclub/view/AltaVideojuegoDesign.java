@@ -13,8 +13,8 @@ import java.awt.event.ActionListener;
 
 public class AltaVideojuegoDesign extends JFrame implements ActionListener
 {
-	private MultimediaController multimediaController;
 	AltaVideojuegoView firstPanel;
+	private MultimediaController multimediaController;
 	private JPanel secondPanel;
 
 	public AltaVideojuegoDesign(MultimediaController multimedia)
@@ -52,13 +52,13 @@ public class AltaVideojuegoDesign extends JFrame implements ActionListener
 
 	class AltaVideojuegoView extends JPanel implements ActionListener
 	{
+		private final MultimediaController multimediaController;
 		private JLabel lblTitulo, lblAutor, lblFormato, lblAnyo, lblPlataforma;
 		private JTextField txtTitulo, txtAutor;
 		private JButton btnDarAlta;
 		private JComboBox listFormato, listPlataforma;
 		private SpinnerNumberModel modelAnyo;
 		private JSpinner txtAnyo;
-		private final MultimediaController multimediaController;
 
 		public AltaVideojuegoView(MultimediaController mc)
 		{
@@ -126,7 +126,8 @@ public class AltaVideojuegoDesign extends JFrame implements ActionListener
 			if (titulo.isEmpty() || autor.isEmpty() || formato.isEmpty())
 			{
 				JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos",
-						"ERROR", JOptionPane.ERROR_MESSAGE);
+						"ERROR", JOptionPane.ERROR_MESSAGE
+				);
 				return;
 			}
 

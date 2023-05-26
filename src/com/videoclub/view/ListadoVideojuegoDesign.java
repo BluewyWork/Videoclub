@@ -4,7 +4,6 @@ import com.videoclub.controller.AlquilerController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
 import com.videoclub.model.Constantes;
-import com.videoclub.model.Pelicula;
 import com.videoclub.model.Videojuego;
 
 import javax.swing.*;

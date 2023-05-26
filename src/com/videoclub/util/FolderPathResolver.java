@@ -12,6 +12,10 @@ public class FolderPathResolver
 		{
 			return System.getenv("XDG_CONFIG_HOME");
 		}
+		else if (IS_WINDOWS)
+		{
+			return System.getenv("APPDATA");
+		}
 		else
 		{
 			throw new RuntimeException("User config path not supported on this operating system");

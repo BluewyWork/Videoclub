@@ -11,9 +11,9 @@ import java.awt.event.ActionListener;
 
 public class AltaSocioDesign extends JFrame implements ActionListener
 {
+	AltaSocioView secondPanel;
 	private SocioController socioController;
 	private JPanel firstPanel;
-	AltaSocioView secondPanel;
 
 	public AltaSocioDesign(SocioController socio)
 	{
@@ -117,7 +117,8 @@ public class AltaSocioDesign extends JFrame implements ActionListener
 			if (nif.isEmpty() || nombre.isEmpty() || fechaNacimientoText.isEmpty() || poblacion.isEmpty())
 			{
 				JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos",
-						"ERROR", JOptionPane.ERROR_MESSAGE);
+						"ERROR", JOptionPane.ERROR_MESSAGE
+				);
 				return;
 			}
 

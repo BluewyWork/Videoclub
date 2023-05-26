@@ -136,7 +136,8 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 			if (titulo.isEmpty() || autor.isEmpty() || formato.isEmpty() || actor.isEmpty() || actriz.isEmpty())
 			{
 				JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos,",
-						"ERROR", JOptionPane.ERROR_MESSAGE);
+						"ERROR", JOptionPane.ERROR_MESSAGE
+				);
 				return;
 			}
 

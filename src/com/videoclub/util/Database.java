@@ -5,6 +5,10 @@ import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
 import com.videoclub.model.*;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -27,6 +31,81 @@ public class Database
 		socioController = sc;
 		multimediaController = mc;
 		alquilerController = ac;
+
+		// Read configuration file and set attributes
+		readConfigFile();
+	}
+
+	private void readConfigFile()
+	{
+		try
+		{
+			String configFilePath = getConfigFilePath();
+			if (configFilePath == null)
+			{
+				// Use default values
+				return;
+			}
+
+			BufferedReader reader = new BufferedReader(new FileReader(configFilePath));
+			String line;
+			while ((line = reader.readLine()) != null)
+			{
+				line = line.trim();
+				if (!line.isEmpty())
+				{
+					String[] parts = line.split("=");
+					if (parts.length == 2)
+					{
+						String key = parts[0].trim();
+						String value = parts[1].trim();
+						setAttribute(key, value);
+					}
+				}
+			}
+			reader.close();
+		}
+		catch (Exception e)
+		{
+			// Failed to read config file, use default values
+			e.printStackTrace();
+		}
+	}
+
+	private String getConfigFilePath()
+	{
+		String configDir = FolderPathResolver.getUserConfigPath();
+		if (configDir != null)
+		{
+			Path configPath = Paths.get(configDir, "VideoClub", "config.txt");
+			return configPath.toString();
+		}
+		return null;
+	}
+
+	private void setAttribute(String key, String value)
+	{
+		switch (key)
+		{
+			case "url":
+				url = value;
+				break;
+			case "db":
+				db = value;
+				break;
+			case "driver":
+				driver = value;
+				break;
+			case "user":
+				user = value;
+				break;
+			case "pass":
+				pass = value;
+				break;
+			default:
+				// Ignore unrecognized keys
+				break;
+		}
 	}
 
 	public void updateSocioTable()
@@ -115,7 +194,6 @@ public class Database
 				Statement statement = connection.createStatement();
 				statement.execute("drop table if exists Multimedia;");
 
-
 				String query = "";
 
 				query += "create table if not exists multimedia\n" +
@@ -179,7 +257,6 @@ public class Database
 			{
 				Statement statement = connection.createStatement();
 				statement.execute("drop table if exists pelicula;");
-
 
 				String query = "";
 
@@ -253,7 +330,6 @@ public class Database
 			{
 				Statement statement = connection.createStatement();
 				statement.execute("drop table if exists videojuego;");
-
 
 				String query = "";
 

@@ -8,7 +8,8 @@ public class Disco extends Multimedia
 	private int duracion;
 	private ArrayList<Cancion> listaCanciones;
 
-	public Disco(String nombre, ArrayList<Cancion> listCanciones) {
+	public Disco(String nombre, ArrayList<Cancion> listCanciones)
+	{
 		this.nombre = nombre;
 		this.listaCanciones = listCanciones;
 		setDuration();
@@ -18,8 +19,8 @@ public class Disco extends Multimedia
 	public String toString()
 	{
 		return super.toString() + "\n" +
-						"\t" + "Duracion: " + duracion +
-						"\t" + "Canciones: '" + listaCanciones + '\'';
+				"\t" + "Duracion: " + duracion +
+				"\t" + "Canciones: '" + listaCanciones + '\'';
 	}
 
 	@Override

@@ -6,12 +6,12 @@ public class Alquiler
 {
 	private static int contadorID = 0;
 	private final LocalDate fechaDevolucion;
+	private final LocalDate fechaAlquiler;
 	private int contador;
 	private String nif;
 	private Multimedia multimedia;
 	private double deudaInicial;
 	private double deudaFinal;
-	private final LocalDate fechaAlquiler;
 
 	public Alquiler()
 	{
