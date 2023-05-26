@@ -6,6 +6,7 @@ import com.videoclub.controller.SocioController;
 import com.videoclub.model.Alquiler;
 import com.videoclub.model.Constantes;
 import com.videoclub.model.Socio;
+import com.videoclub.util.Logger;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -65,6 +66,7 @@ public class DevolverDesign extends JFrame implements ActionListener
 				tblModel.fireTableDataChanged();
 				tblModel.fireTableStructureChanged();
 
+				Logger.log("Multimedia Devuelto");
 			}
 			else
 			{

@@ -11,7 +11,6 @@ public class GUI
 	private SocioController socioController;
 	private MultimediaController multimediaController;
 	private AlquilerController alquilerController;
-	private Database db;
 
 	public static void main(String[] args)
 	{
@@ -25,8 +24,6 @@ public class GUI
 		multimediaController = new MultimediaController();
 		alquilerController = new AlquilerController();
 
-		db = new Database(socioController, multimediaController, alquilerController);
-
 		// Test Canciones y disco
 		Cancion a = new Cancion("Makapaka", 3);
 		Cancion b = new Cancion("Waka", 2);
@@ -36,8 +33,6 @@ public class GUI
 		Cancion e = new Cancion("Vaya", 94);
 		Cancion f = new Cancion("kk", 12);
 		Cancion x = new Cancion("Adios", 0);
-
-
 
 		ArrayList<Cancion> abc = new ArrayList<>();
 		abc.add(a);

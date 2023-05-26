@@ -9,10 +9,6 @@ import java.nio.file.Paths;
 
 public class Logger
 {
-	private static final String OS = System.getProperty("os.name").toLowerCase();
-	private static final boolean IS_WINDOWS = OS.contains("win");
-	private static final boolean IS_UNIX = OS.contains("nix") || OS.contains("nux") || OS.contains("aix");
-
 	public static void log(String message)
 	{
 		try
@@ -35,23 +31,7 @@ public class Logger
 
 	private static Path getLogFolderPath()
 	{
-		String appDataPath = getApplicationDataPath();
+		String appDataPath = FolderPathResolver.getUserDataPath();
 		return Paths.get(appDataPath, "VideoClub");
-	}
-
-	private static String getApplicationDataPath()
-	{
-		if (IS_WINDOWS)
-		{
-			return System.getenv("APPDATA");
-		}
-		else if (IS_UNIX)
-		{
-			return System.getenv("XDG_DATA_HOME");
-		}
-		else
-		{
-			throw new RuntimeException("OS not supported");
-		}
 	}
 }

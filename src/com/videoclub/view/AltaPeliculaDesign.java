@@ -3,6 +3,7 @@ package com.videoclub.view;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.model.Constantes;
 import com.videoclub.model.Formato;
+import com.videoclub.util.Logger;
 
 import javax.swing.*;
 import java.awt.*;
@@ -67,6 +68,8 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 		public void actionPerformed(ActionEvent e)
 		{
 			accionDarAltaPelicula();
+
+			Logger.log("Pelicula Creada");
 		}
 
 		public void initComponents()

@@ -4,6 +4,7 @@ import com.videoclub.controller.MultimediaController;
 import com.videoclub.model.Constantes;
 import com.videoclub.model.Formato;
 import com.videoclub.model.Plataforma;
+import com.videoclub.util.Logger;
 
 import javax.swing.*;
 import java.awt.*;
@@ -69,6 +70,8 @@ public class AltaVideojuegoDesign extends JFrame implements ActionListener
 		public void actionPerformed(ActionEvent e)
 		{
 			accionDarAltaVideojuego();
+
+			Logger.log("VideoJuego Creado");
 		}
 
 		public void initComponents()
