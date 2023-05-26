@@ -102,7 +102,6 @@ public class Alquiler
 
 	public boolean esAtrasado()
 	{
-		System.out.println(diasAtrasado());
 		return diasAtrasado() > 0;
 	}
 
