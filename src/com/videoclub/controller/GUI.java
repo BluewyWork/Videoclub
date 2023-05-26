@@ -1,9 +1,6 @@
 package com.videoclub.controller;
 
-import com.videoclub.model.Cancion;
 import com.videoclub.view.PrincipalDesign;
-
-import java.util.ArrayList;
 
 public class GUI
 {
@@ -24,7 +21,7 @@ public class GUI
 		alquilerController = new AlquilerController();
 
 		// Test Canciones y disco
-		Cancion a = new Cancion("Makapaka", 3);
+		/*Cancion a = new Cancion("Makapaka", 3);
 		Cancion b = new Cancion("Waka", 2);
 		Cancion c = new Cancion("Doremi", 65);
 		Cancion y = new Cancion("Hola", 0);
@@ -45,7 +42,7 @@ public class GUI
 		def.add(f);
 
 		multimediaController.altaDisco("Disco 1", "Chitan", "CD", 2020, abc);
-		multimediaController.altaDisco("Disco 2", "Chitan", "DVD", 2022, def);
+		multimediaController.altaDisco("Disco 2", "Chitan", "DVD", 2022, def);*/
 		// Aqui acaba el test
 
 		PrincipalDesign principalDesign = new PrincipalDesign(socioController, multimediaController, alquilerController);

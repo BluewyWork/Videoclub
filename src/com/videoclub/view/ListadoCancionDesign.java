@@ -90,7 +90,17 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 		btnSeleccionar.addActionListener(this);
 
 		//
-		ArrayList<Cancion> listCanciones = multimediaController.obtenerCancionesPorDuracion(getSelectedDisco());
+		ArrayList<Cancion> listCanciones = new ArrayList<>();
+
+		try
+		{
+			listCanciones = multimediaController.obtenerCancionesPorDuracion(getSelectedDisco());
+		}
+		catch (Exception e)
+		{
+			JOptionPane.showMessageDialog(null, "No se han dado alta ni un disco", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+
 		String[] columnNames = {"Nombre", "Duracion"};
 
 		tblModel.setData(listCanciones);
