@@ -17,7 +17,7 @@ public class Logger
 	{
 		try
 		{
-			Path folderPath = getFolderPath();
+			Path folderPath = getLogFolderPath();
 			Files.createDirectories(folderPath);
 
 			String logFilePath = folderPath.resolve("xd.txt").toString();
@@ -33,13 +33,13 @@ public class Logger
 		}
 	}
 
-	private static Path getFolderPath()
+	private static Path getLogFolderPath()
 	{
-		String appDataPath = getLocalAppDataRoute();
+		String appDataPath = getApplicationDataPath();
 		return Paths.get(appDataPath, "VideoClub");
 	}
 
-	private static String getLocalAppDataRoute()
+	private static String getApplicationDataPath()
 	{
 		if (IS_WINDOWS)
 		{
