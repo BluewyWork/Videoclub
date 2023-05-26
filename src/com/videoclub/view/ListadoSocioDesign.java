@@ -50,8 +50,6 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 		else if (actionEvent.getSource().equals(btnDelete))
 		{
 			eliminarSocio();
-			JOptionPane.showMessageDialog(null, "Socio eliminado", "Success", JOptionPane.INFORMATION_MESSAGE);
-
 		}
 	}
 
@@ -137,13 +135,22 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 	public void eliminarSocio()
 	{
 		int columnaNif = 0;
-		int filaSeleccionada = tblResults.getSelectedRow();
+		try
+		{
+			int filaSeleccionada = tblResults.getSelectedRow();
 
-		String nif = tblResults.getValueAt(filaSeleccionada, columnaNif).toString();
+			String nif = tblResults.getValueAt(filaSeleccionada, columnaNif).toString();
 
-		socioController.darDeBaja(nif);
+			socioController.darBajaSocio(nif);
 
-		tblModel.fireTableDataChanged();
+			tblModel.setData(socioController.todosLosSocios());
+			tblModel.fireTableDataChanged();
+
+			JOptionPane.showMessageDialog(null, "Socio eliminado", "Success", JOptionPane.INFORMATION_MESSAGE);
+		} catch (Exception e)
+		{
+			JOptionPane.showMessageDialog(null, "Seleccione un socio para eliminar", "Error", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	class MemberTableModel extends AbstractTableModel

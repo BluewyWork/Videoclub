@@ -21,7 +21,7 @@ public class SocioController
 		socioDAO.aniadirSocio(socio);
 	}
 
-	public void darDeBaja(String nif)
+	public void darBajaSocio(String nif)
 	{
 		socioDAO.eliminarSocio(nif);
 	}

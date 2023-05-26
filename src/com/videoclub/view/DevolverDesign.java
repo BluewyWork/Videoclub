@@ -87,7 +87,9 @@ public class DevolverDesign extends JFrame implements ActionListener
 				//multimediaController.(multimedia.getTitulo(), multimedia.getAutor());
 				tblModel.fireTableDataChanged();
 				JOptionPane.showMessageDialog(null, "Multimedia devuelta", "Success", JOptionPane.INFORMATION_MESSAGE);
-
+				ArrayList<Alquiler> listMultimediasAlquiladas = alquilerController.returnStuff(nif);
+				tblModel.setData(listMultimediasAlquiladas);
+				tblModel.fireTableDataChanged();
 			}
 			else if (filaSeleccionada == -1)
 			{

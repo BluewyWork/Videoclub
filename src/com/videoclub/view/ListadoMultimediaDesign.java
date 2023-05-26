@@ -19,6 +19,7 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 	private GridLayout grdLayout;
 	private JComboBox<String> cmboBoxOptions;
 	private JButton btnFind;
+	private JButton btnDelete;
 	private JTable tblResults;
 	private JTextField txtFieldPrompt;
 	private MemberTableModel tblModel;
@@ -45,6 +46,10 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 		{
 			updateTable();
 		}
+		else if (actionEvent.getSource().equals(btnDelete))
+		{
+			eliminarMultimedia();
+		}
 	}
 
 	public void initComponents()
@@ -53,6 +58,7 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 		mainPanel = new JPanel();
 		cmboBoxOptions = new JComboBox<>();
 		btnFind = new JButton();
+		btnDelete = new JButton();
 		txtFieldPrompt = new JTextField();
 		tblModel = new MemberTableModel();
 		tblResults = new JTable(tblModel);
@@ -80,6 +86,10 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 		btnFind.addActionListener(this);
 
 		//
+		btnDelete.setText("Delete");
+		btnDelete.addActionListener(this);
+
+		//
 		ArrayList<Multimedia> listMultimedia = multimediaController.returnStuff();
 		String[] columnNames = {"Titulo", "Autor", "Formato", "Año"};
 
@@ -93,6 +103,7 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 		mainPanel.add(cmboBoxOptions);
 		mainPanel.add(txtFieldPrompt);
 		mainPanel.add(btnFind);
+		mainPanel.add(btnDelete);
 
 		//
 		add(mainPanel);
@@ -117,6 +128,29 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 		}
 
 		tblModel.fireTableDataChanged();
+	}
+
+	public void eliminarMultimedia()
+	{
+		int columnaTitulo = 0;
+		int columnaAutor = 1;
+		try
+		{
+			int filaSeleccionada = tblResults.getSelectedRow();
+
+			String titulo = tblResults.getValueAt(filaSeleccionada, columnaTitulo).toString();
+			String autor = tblResults.getValueAt(filaSeleccionada, columnaAutor).toString();
+
+			multimediaController.darBajaMultimedia(titulo, autor);
+
+			tblModel.setData(multimediaController.returnStuff());
+			tblModel.fireTableDataChanged();
+
+			JOptionPane.showMessageDialog(null, "Multimedia eliminada", "Success", JOptionPane.INFORMATION_MESSAGE);
+		} catch (Exception e)
+		{
+			JOptionPane.showMessageDialog(null, "Seleccione una multimedia para eliminar", "Error", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	class MemberTableModel extends AbstractTableModel
