@@ -78,7 +78,7 @@ public class AlquilerDesign extends JFrame implements ActionListener
 			{
 				Multimedia multimedia = tblModel.getObjectAt(filaSeleccionada);
 				alquilerController.alquilarMultimedia(nif, multimedia);
-				multimediaController.eliminarMultimediaDisponible(multimedia.getTitulo(), multimedia.getAutor());
+				multimediaController.darBajaMultimedia(multimedia.getTitulo(), multimedia.getAutor());
 				tblModel.fireTableDataChanged();
 				JOptionPane.showMessageDialog(null, "Multimedia alquilada", "Success", JOptionPane.INFORMATION_MESSAGE);
 

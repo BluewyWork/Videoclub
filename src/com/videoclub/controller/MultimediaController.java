@@ -25,9 +25,9 @@ public class MultimediaController
 		multimediaDAO.aniadirMultimedia(videoJuego);
 	}
 
-	public void altaDisco(String nombre, ArrayList<Cancion> listCanciones)
+	public void altaDisco(String titulo, String autor, String formato, int anio, ArrayList<Cancion> listCanciones)
 	{
-		Disco disco = new Disco(nombre, listCanciones);
+		Disco disco = new Disco(titulo, autor, formato, anio, listCanciones);
 		multimediaDAO.aniadirMultimedia(disco);
 	}
 
@@ -90,7 +90,7 @@ public class MultimediaController
 		return multimediaDAO.obtenerTodosLosVideojuegos();
 	}
 
-	public void eliminarMultimediaDisponible(String titulo, String autor)
+	public void darBajaMultimedia(String titulo, String autor)
 	{
 		multimediaDAO.eliminarMultimedia(titulo, autor);
 	}
