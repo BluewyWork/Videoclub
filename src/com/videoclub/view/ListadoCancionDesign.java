@@ -15,8 +15,8 @@ import java.util.ArrayList;
 @SuppressWarnings("JoinDeclarationAndAssignmentJava")
 public class ListadoCancionDesign extends JFrame implements ActionListener
 {
-	String[] discoNameList;
-	ArrayList<Disco> discos;
+	private String[] discoNameList;
+	private ArrayList<Disco> discos;
 	private GridLayout grdLayout;
 	private JComboBox<String> cmboBoxOptions;
 	private JLabel lblDisco;

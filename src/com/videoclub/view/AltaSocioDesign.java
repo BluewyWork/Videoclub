@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AltaSocioDesign extends JFrame implements ActionListener
+public class AltaSocioDesign extends JFrame
 {
 	AltaSocioView secondPanel;
 	private SocioController socioController;
@@ -19,12 +19,6 @@ public class AltaSocioDesign extends JFrame implements ActionListener
 	{
 		socioController = socio;
 		initComponents();
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-
 	}
 
 	public void initComponents()

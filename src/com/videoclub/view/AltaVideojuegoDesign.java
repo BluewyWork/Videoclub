@@ -11,7 +11,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AltaVideojuegoDesign extends JFrame implements ActionListener
+public class AltaVideojuegoDesign extends JFrame
 {
 	AltaVideojuegoView firstPanel;
 	private MultimediaController multimediaController;
@@ -21,12 +21,6 @@ public class AltaVideojuegoDesign extends JFrame implements ActionListener
 	{
 		multimediaController = multimedia;
 		initComponents();
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-
 	}
 
 	public void initComponents()
