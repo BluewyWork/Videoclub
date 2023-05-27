@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AltaCancionDesign extends JFrame implements ActionListener
+public class AltaCancionDesign extends JFrame
 {
 	AltaCancionView firstPanel;
 	private CancionController cancionController;
@@ -19,12 +19,6 @@ public class AltaCancionDesign extends JFrame implements ActionListener
 	{
 		this.cancionController = cancionController;
 		initComponents();
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-
 	}
 
 	public void initComponents()

@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AltaPeliculaDesign extends JFrame implements ActionListener
+public class AltaPeliculaDesign extends JFrame
 {
 	AltaPeliculaView firstPanel;
 	private MultimediaController multimediaController;
@@ -20,12 +20,6 @@ public class AltaPeliculaDesign extends JFrame implements ActionListener
 	{
 		multimediaController = multimedia;
 		initComponents();
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-
 	}
 
 	public void initComponents()

@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class AltaDiscoDesign extends JFrame implements ActionListener
+public class AltaDiscoDesign extends JFrame
 {
 	AltaDiscoView firstPanel;
 	private MultimediaController multimediaController;
@@ -22,12 +22,6 @@ public class AltaDiscoDesign extends JFrame implements ActionListener
 	{
 		multimediaController = multimedia;
 		initComponents();
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-
 	}
 
 	public void initComponents()

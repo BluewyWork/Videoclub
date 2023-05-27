@@ -1,4 +1,6 @@
-package com.videoclub.model;
+package com.videoclub.util;
+
+import com.videoclub.model.Videojuego;
 
 import java.util.Comparator;
 

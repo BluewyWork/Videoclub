@@ -210,6 +210,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		}
 		else if (e.getSource().equals(listarVideojuego))
 		{
+			listadoVideojuegoDesign.refreshTable();
 			listadoVideojuegoDesign.setVisible(true);
 		}
 		else if (e.getSource().equals(listarAlquiler))
