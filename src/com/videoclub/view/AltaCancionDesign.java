@@ -1,7 +1,6 @@
 package com.videoclub.view;
 
 import com.videoclub.controller.CancionController;
-import com.videoclub.controller.MultimediaController;
 import com.videoclub.model.Constantes;
 import com.videoclub.util.Logger;
 
@@ -44,7 +43,7 @@ public class AltaCancionDesign extends JFrame implements ActionListener
 
 		getContentPane().setBackground(Color.red);
 		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
-		setTitle("Alta pelicula");
+		setTitle("Alta cancion");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 

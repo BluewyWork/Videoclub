@@ -62,6 +62,35 @@ public class MultimediaDAO
 		}
 	}
 
+	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAnio() {
+		ArrayList<Videojuego> videojuegos = obtenerTodosLosVideojuegos();
+		videojuegos.sort(new VideojuegoComparator());
+
+		return videojuegos;
+	}
+
+	public ArrayList<Pelicula> obtenerPeliculasOrdenadosPorTitulo()
+	{
+		ArrayList<Pelicula> listPeliculasTitulo = obtenerTodasLasPeliculas();
+		Collections.sort(listPeliculasTitulo);
+
+		return listPeliculasTitulo;
+	}
+
+	public ArrayList<Pelicula> obtenerTodasLasPeliculas()
+	{
+		ArrayList<Pelicula> peliculas = new ArrayList<>();
+
+		for (Multimedia multimedia : listMultimedia)
+		{
+			if (multimedia instanceof Pelicula)
+			{
+				peliculas.add((Pelicula) multimedia);
+			}
+		}
+		return peliculas;
+	}
+
 	public ArrayList<Videojuego> obtenerTodosLosVideojuegos()
 	{
 		ArrayList<Videojuego> videojuegos = new ArrayList<>();
@@ -76,43 +105,18 @@ public class MultimediaDAO
 		return videojuegos;
 	}
 
-	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAnio()
+	public ArrayList<Disco> obtenerTodosLosDiscos()
 	{
-		ArrayList<Videojuego> videojuegos = obtenerTodosLosVideojuegos();
-		videojuegos.sort(Comparator.comparingInt(Videojuego::getAnio));
-
-		return videojuegos;
-	}
-
-	public ArrayList<Pelicula> listarPeliculasTitulo()
-	{
-		ArrayList<Pelicula> listPeliculasTitulo = new ArrayList<>();
-		ArrayList<Multimedia> copyListMultimedia = listMultimedia;
-		Collections.sort(listMultimedia);
-
-		for (int i = 0; i < copyListMultimedia.size(); i++)
-		{
-			if (copyListMultimedia.get(i) instanceof Pelicula)
-			{
-				listPeliculasTitulo.add(((Pelicula) copyListMultimedia.get(i)));
-			}
-		}
-
-		return listPeliculasTitulo;
-	}
-
-	public ArrayList<Pelicula> todosLasPeliculas()
-	{
-		ArrayList<Pelicula> peliculas = new ArrayList<>();
+		ArrayList<Disco> discos = new ArrayList<>();
 
 		for (Multimedia multimedia : listMultimedia)
 		{
-			if (multimedia instanceof Pelicula)
+			if (multimedia instanceof Disco)
 			{
-				peliculas.add((Pelicula) multimedia);
+				discos.add((Disco) multimedia);
 			}
 		}
-		return peliculas;
+		return discos;
 	}
 
 	public ArrayList<Multimedia> filtroPorTitulo(String titulo)

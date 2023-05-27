@@ -67,7 +67,7 @@ public class MultimediaController
 
 	public ArrayList<Pelicula> obtenerPeliculasOrdenadosPorTitulo()
 	{
-		return multimediaDAO.listarPeliculasTitulo();
+		return multimediaDAO.obtenerPeliculasOrdenadosPorTitulo();
 	}
 
 	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAnio()
@@ -77,12 +77,17 @@ public class MultimediaController
 
 	public ArrayList<Pelicula> todosLosPelis()
 	{
-		return multimediaDAO.todosLasPeliculas();
+		return multimediaDAO.obtenerTodasLasPeliculas();
 	}
 
 	public ArrayList<Videojuego> todosLosVideojuegos()
 	{
 		return multimediaDAO.obtenerTodosLosVideojuegos();
+	}
+
+	public ArrayList<Disco> todosLosDiscos()
+	{
+		return multimediaDAO.obtenerTodosLosDiscos();
 	}
 
 	public void darBajaMultimedia(String titulo, String autor)

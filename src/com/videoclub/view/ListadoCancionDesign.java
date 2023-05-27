@@ -16,7 +16,6 @@ import java.util.ArrayList;
 @SuppressWarnings("JoinDeclarationAndAssignmentJava")
 public class ListadoCancionDesign extends JFrame implements ActionListener
 {
-	private String[] discoNameList;
 	private ArrayList<Disco> discos;
 	private GridLayout grdLayout;
 	private JComboBox<String> cmboBoxOptions;
@@ -68,22 +67,12 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 		lblDisco.setText("Selecciona un disco");
 
 		//
-		ArrayList<Disco> discosAux = new ArrayList<>();
+		discos = multimediaController.todosLosDiscos();
+		String[] discoNameList = new String[discos.size()];
 
-		for (int i = 0; i < multimediaController.returnStuff().size(); i++)
+		for (int i = 0; i < discos.size(); i++)
 		{
-			if (multimediaController.returnStuff().get(i) instanceof Disco)
-			{
-				discosAux.add((Disco) multimediaController.returnStuff().get(i));
-			}
-		}
-
-		discos = discosAux;
-		discoNameList = new String[discosAux.size()];
-
-		for (int i = 0; i < discosAux.size(); i++)
-		{
-			discoNameList[i] = discosAux.get(i).getTitulo();
+			discoNameList[i] = discos.get(i).getTitulo();
 		}
 
 		cmboBoxOptions = new JComboBox(discoNameList);
@@ -94,7 +83,6 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 
 		//
 		ArrayList<Cancion> listCanciones = new ArrayList<>();
-
 		String[] columnNames = {"Nombre", "Duracion"};
 
 		tblModel.setData(listCanciones);
@@ -115,8 +103,17 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 
 	public void refreshTable()
 	{
-		tblModel.setData(cancionController.obtenerCancionesPorDuracion(getSelectedDisco()));
-		tblModel.fireTableDataChanged();
+		try
+		{
+			tblModel.setData(cancionController.obtenerCancionesPorDuracion(getSelectedDisco()));
+			tblModel.fireTableDataChanged();
+		}
+		catch (Exception e)
+		{
+			JOptionPane.showMessageDialog(null, "No existe ningun disco",
+					"ERROR", JOptionPane.ERROR_MESSAGE
+			);
+		}
 	}
 
 	public Disco getSelectedDisco()
