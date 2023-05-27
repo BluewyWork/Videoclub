@@ -1,5 +1,6 @@
 package com.videoclub.view;
 
+import com.videoclub.controller.CancionController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.model.Cancion;
 import com.videoclub.model.Constantes;
@@ -24,12 +25,14 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 	private JTable tblResults;
 	private MemberTableModel tblModel;
 	private MultimediaController multimediaController;
+	private CancionController cancionController;
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
 
-	public ListadoCancionDesign(MultimediaController multimediaController)
+	public ListadoCancionDesign(MultimediaController multimediaController, CancionController cancionController)
 	{
 		this.multimediaController = multimediaController;
+		this.cancionController = cancionController;
 
 		initComponents();
 		configComponents();
@@ -112,7 +115,7 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 
 	public void refreshTable()
 	{
-		tblModel.setData(multimediaController.obtenerCancionesPorDuracion(getSelectedDisco()));
+		tblModel.setData(cancionController.obtenerCancionesPorDuracion(getSelectedDisco()));
 		tblModel.fireTableDataChanged();
 	}
 

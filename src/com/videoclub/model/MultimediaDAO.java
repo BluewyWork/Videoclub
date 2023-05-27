@@ -31,11 +31,11 @@ public class MultimediaDAO
 		return listMultimedia;
 	}
 
-	public Multimedia encontrarMultimedia(String title, String author)
+	public Multimedia encontrarMultimedia(String titulo, String autor)
 	{
 		for (Multimedia multimedia : listMultimedia)
 		{
-			if (multimedia.getTitulo().equalsIgnoreCase(title) && multimedia.getAutor().equalsIgnoreCase(author))
+			if (multimedia.getTitulo().equalsIgnoreCase(titulo) && multimedia.getAutor().equalsIgnoreCase(autor))
 			{
 				return multimedia;
 			}
@@ -48,9 +48,9 @@ public class MultimediaDAO
 		listMultimedia.add(multimedia);
 	}
 
-	public void eliminarMultimedia(String title, String author)
+	public void eliminarMultimedia(String titulo, String autor)
 	{
-		Multimedia multimedia = encontrarMultimedia(title, author);
+		Multimedia multimedia = encontrarMultimedia(titulo, autor);
 
 		if (multimedia != null)
 		{
@@ -60,15 +60,6 @@ public class MultimediaDAO
 		{
 			throw new RuntimeException("Multimedia Not Found");
 		}
-	}
-
-	public ArrayList<Cancion> obtenerCancionesPorDuracion(Disco disco)
-	{
-		ArrayList<Cancion> canciones = disco.getListSongs();
-
-		canciones.sort(Comparator.comparingInt(Cancion::getDuracion));
-
-		return canciones;
 	}
 
 	public ArrayList<Videojuego> obtenerTodosLosVideojuegos()

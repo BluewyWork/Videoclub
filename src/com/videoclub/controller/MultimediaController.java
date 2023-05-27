@@ -41,11 +41,11 @@ public class MultimediaController
 		multimediaDAO.aniadirMultimedia(multimedia);
 	}
 
-	public Multimedia recuperarMultimedias(String title, String author)
+	public Multimedia recuperarMultimedia(String titulo, String autor)
 	{
-		Multimedia multimedia = multimediaDAO.encontrarMultimedia(title, author);
+		Multimedia multimedia = multimediaDAO.encontrarMultimedia(titulo, autor);
 
-		multimediaDAO.eliminarMultimedia(title, author);
+		multimediaDAO.eliminarMultimedia(titulo, autor);
 
 		return multimedia;
 	}
@@ -65,24 +65,19 @@ public class MultimediaController
 		return multimediaDAO.filtroPorAutor(autor);
 	}
 
-	public ArrayList<Pelicula> listarPeliculasTitulo()
+	public ArrayList<Pelicula> obtenerPeliculasOrdenadosPorTitulo()
 	{
 		return multimediaDAO.listarPeliculasTitulo();
-	}
-
-	public ArrayList<Pelicula> todosLosPelis()
-	{
-		return multimediaDAO.todosLasPeliculas();
-	}
-
-	public ArrayList<Cancion> obtenerCancionesPorDuracion(Disco disco)
-	{
-		return multimediaDAO.obtenerCancionesPorDuracion(disco);
 	}
 
 	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAnio()
 	{
 		return multimediaDAO.obtenerVideojuegosOrdenadosPorAnio();
+	}
+
+	public ArrayList<Pelicula> todosLosPelis()
+	{
+		return multimediaDAO.todosLasPeliculas();
 	}
 
 	public ArrayList<Videojuego> todosLosVideojuegos()

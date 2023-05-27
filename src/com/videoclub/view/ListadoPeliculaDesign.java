@@ -49,7 +49,7 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 
 	public void refreshTable()
 	{
-		tblModel.setData(multimediaController.listarPeliculasTitulo());
+		tblModel.setData(multimediaController.obtenerPeliculasOrdenadosPorTitulo());
 		tblModel.fireTableDataChanged();
 	}
 
@@ -61,7 +61,7 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 		setTitle("Listado peliculas ordenados por titulo");
 
 		//
-		ArrayList<Pelicula> listPelicula = multimediaController.listarPeliculasTitulo();
+		ArrayList<Pelicula> listPelicula = multimediaController.obtenerPeliculasOrdenadosPorTitulo();
 		String[] columnNames = {"Titulo", "Autor", "Formato", "Año", "Duracion", "Actor", "Actriz"};
 
 		tblModel.setData(listPelicula);
