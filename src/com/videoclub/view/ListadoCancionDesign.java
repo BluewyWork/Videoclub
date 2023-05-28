@@ -67,15 +67,7 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 		lblDisco.setText("Selecciona un disco");
 
 		//
-		discos = multimediaController.todosLosDiscos();
-		String[] discoNameList = new String[discos.size()];
-
-		for (int i = 0; i < discos.size(); i++)
-		{
-			discoNameList[i] = discos.get(i).getTitulo();
-		}
-
-		cmboBoxOptions = new JComboBox(discoNameList);
+		cmboBoxOptions = new JComboBox(multimediaController.obtenerDiscosTitulo());
 
 		//
 		btnSeleccionar.setText("Seleccionar");
@@ -105,7 +97,7 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 	{
 		try
 		{
-			tblModel.setData(cancionController.obtenerCancionesPorDuracion(getSelectedDisco()));
+			tblModel.setData(cancionController.obtenerCancionesPorDuracion(multimediaController.filtroDiscoPorTitulo(cmboBoxOptions.getSelectedItem().toString())));
 			tblModel.fireTableDataChanged();
 		}
 		catch (Exception e)
@@ -116,15 +108,10 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 		}
 	}
 
-	public Disco getSelectedDisco()
+	public void refreshComboBox()
 	{
-		Disco discoSeleccionado = null;
-		for (Disco disco : discos)
-		{
-			if (cmboBoxOptions.getSelectedItem().equals(disco.getTitulo()))
-				discoSeleccionado = disco;
-		}
-		return discoSeleccionado;
+		DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(multimediaController.obtenerDiscosTitulo());
+		cmboBoxOptions.setModel(model);
 	}
 
 	class MemberTableModel extends AbstractTableModel

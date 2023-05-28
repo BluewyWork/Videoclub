@@ -18,6 +18,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 	AltaVideojuegoDesign altaVideojuegoDesign;
 	AltaCancionDesign altaCancionDesign;
 	AltaDiscoDesign altaDiscoDesign;
+	AddCancionDiscoDesign addCancionDiscoDesign;
 
 	AlquilerDesign alquilerDesign;
 	DevolverDesign devolverDesign;
@@ -39,7 +40,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 	private JPanel panel;
 	private JMenuBar menuBar;
 	private JMenu menuSocio, menuMultimedia, menuListar, menuAlquilar, menuDevolver;
-	private JMenuItem altaSocio, listadoSocio, altaPelicula, altaVideojuego, altaCancion, altaDisco, alquilar, devolver;
+	private JMenuItem altaSocio, listadoSocio, altaPelicula, altaVideojuego, altaCancion, altaDisco, addCancionToDisco, alquilar, devolver;
 	private JMenuItem listarMultimedia, listarPelicula, listarCancion, listarVideojuego, listarAlquiler, listarSocio;
 
 	public PrincipalDesign(SocioController sc, MultimediaController mc, CancionController cc, AlquilerController ac)
@@ -59,6 +60,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		altaVideojuegoDesign = new AltaVideojuegoDesign(multimediaController);
 		altaCancionDesign = new AltaCancionDesign(cancionController);
 		altaDiscoDesign = new AltaDiscoDesign(multimediaController);
+		addCancionDiscoDesign = new AddCancionDiscoDesign(multimediaController, cancionController);
 
 		alquilerDesign = new AlquilerDesign(socioController, multimediaController, alquilerController);
 		devolverDesign = new DevolverDesign(socioController, multimediaController, alquilerController);
@@ -107,6 +109,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		altaVideojuego = new JMenuItem("Alta de videojuego");
 		altaCancion = new JMenuItem("Alta de cancion");
 		altaDisco = new JMenuItem("Alta de disco");
+		addCancionToDisco = new JMenuItem("Añadir cancion a Disco");
 
 		menuSocio.add(altaSocio);
 		menuSocio.add(listadoSocio);
@@ -115,6 +118,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		menuMultimedia.add(altaVideojuego);
 		menuMultimedia.add(altaCancion);
 		menuMultimedia.add(altaDisco);
+		menuMultimedia.add(addCancionToDisco);
 
 		menuAlquilar.add(alquilar);
 		menuDevolver.add(devolver);
@@ -145,6 +149,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		altaVideojuego.addActionListener(this);
 		altaCancion.addActionListener(this);
 		altaDisco.addActionListener(this);
+		addCancionToDisco.addActionListener(this);
 
 		alquilar.addActionListener(this);
 		devolver.addActionListener(this);
@@ -183,6 +188,11 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		{
 			altaDiscoDesign.setVisible(true);
 		}
+		else if (e.getSource().equals(addCancionToDisco))
+		{
+			addCancionDiscoDesign.refreshComboBox();
+			addCancionDiscoDesign.setVisible(true);
+		}
 		else if (e.getSource().equals(alquilar))
 		{
 			alquilerDesign.setVisible(true);
@@ -207,6 +217,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		else if (e.getSource().equals(listarCancion))
 		{
 			listadoCancionDesign.refreshTable();
+			listadoCancionDesign.refreshComboBox();
 			listadoCancionDesign.setVisible(true);
 		}
 		else if (e.getSource().equals(listarVideojuego))

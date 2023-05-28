@@ -69,4 +69,29 @@ public class CancionDAO
 
 		return canciones;
 	}
+
+	public String[] obtenerCancionesNombre()
+	{
+		String[] cancionNameList = new String[getListCancion().size()];
+
+		for (int i = 0; i < getListCancion().size(); i++)
+		{
+			cancionNameList[i] = getListCancion().get(i).getNombre();
+		}
+
+		return cancionNameList;
+	}
+
+	public Cancion filtroCancionPorNombre(String nombre)
+	{
+		ArrayList<Cancion> listCancion = getListCancion();
+		Cancion cancion = null;
+
+		for (Cancion cancionAux : listCancion)
+		{
+			if (nombre.equals(cancionAux.getNombre()))
+				cancion = cancionAux;
+		}
+		return cancion;
+	}
 }

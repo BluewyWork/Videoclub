@@ -149,4 +149,34 @@ public class MultimediaDAO
 
 		return listMultimedia;
 	}
+
+	public Disco filtroDiscoPorTitulo(String titulo)
+	{
+		ArrayList<Disco> listDisco = obtenerTodosLosDiscos();
+		Disco disco = null;
+
+		for (Disco discoAux : listDisco)
+		{
+			if (titulo.equals(discoAux.getTitulo()))
+				disco = discoAux;
+		}
+		return disco;
+	}
+
+	public String[] obtenerDiscosTitulo()
+	{
+		String[] discoNameList = new String[obtenerTodosLosDiscos().size()];
+
+		for (int i = 0; i < obtenerTodosLosDiscos().size(); i++)
+		{
+			discoNameList[i] = obtenerTodosLosDiscos().get(i).getTitulo();
+		}
+
+		return discoNameList;
+	}
+
+	public void aniadirCancionToDisco(Cancion cancion, Disco disco)
+	{
+		disco.addCancion(cancion);
+	}
 }

@@ -9,7 +9,7 @@ public class Disco extends Multimedia
 
 	public Disco(String titulo, String autor, String formato, int anio, ArrayList<Cancion> listCanciones) {
 		super(titulo, autor, formato, anio);
-		this.listaCanciones = listCanciones;
+		setListSongs(listCanciones);
 		setDuration();
 	}
 
@@ -55,6 +55,11 @@ public class Disco extends Multimedia
 	public void setListSongs(ArrayList<Cancion> listaCanciones)
 	{
 		this.listaCanciones = listaCanciones;
+	}
+
+	public void addCancion(Cancion cancion)
+	{
+		listaCanciones.add(cancion);
 	}
 
 }

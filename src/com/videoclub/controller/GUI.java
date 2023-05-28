@@ -1,6 +1,9 @@
 package com.videoclub.controller;
 
+import com.videoclub.model.Cancion;
 import com.videoclub.view.PrincipalDesign;
+
+import java.util.ArrayList;
 
 public class GUI
 {
@@ -21,6 +24,8 @@ public class GUI
 		multimediaController = new MultimediaController();
 		cancionController = new CancionController();
 		alquilerController = new AlquilerController();
+
+		multimediaController.altaDisco("Disco hardcode", "Chitan", "CD", 2023, new ArrayList<Cancion>());
 
 		PrincipalDesign principalDesign = new PrincipalDesign(socioController, multimediaController, cancionController, alquilerController);
 		principalDesign.setVisible(true);

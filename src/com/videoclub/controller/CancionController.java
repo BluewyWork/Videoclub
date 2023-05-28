@@ -28,6 +28,15 @@ public class CancionController
 		return cancionDAO.obtenerCancionesPorDuracion(disco);
 	}
 
+	public String[] obtenerCancionesNombre()
+	{
+		return cancionDAO.obtenerCancionesNombre();
+	}
+	public Cancion filtroCancionPorNombre(String nombre)
+	{
+		return cancionDAO.filtroCancionPorNombre(nombre);
+	}
+
 	public void darBajaCancion(String nombre, int duracion)
 	{
 		cancionDAO.eliminarCancion(nombre, duracion);

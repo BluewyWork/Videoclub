@@ -2,6 +2,7 @@ package com.videoclub.controller;
 
 import com.videoclub.model.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MultimediaController
@@ -64,6 +65,10 @@ public class MultimediaController
 	{
 		return multimediaDAO.filtroPorAutor(autor);
 	}
+	public Disco filtroDiscoPorTitulo(String titulo)
+	{
+		return multimediaDAO.filtroDiscoPorTitulo(titulo);
+	}
 
 	public ArrayList<Pelicula> obtenerPeliculasOrdenadosPorTitulo()
 	{
@@ -88,6 +93,15 @@ public class MultimediaController
 	public ArrayList<Disco> todosLosDiscos()
 	{
 		return multimediaDAO.obtenerTodosLosDiscos();
+	}
+
+	public String[] obtenerDiscosTitulo()
+	{
+		return  multimediaDAO.obtenerDiscosTitulo();
+	}
+	public void aniadirCancionToDisco(Cancion cancion, Disco disco)
+	{
+		multimediaDAO.aniadirCancionToDisco(cancion, disco);
 	}
 
 	public void darBajaMultimedia(String titulo, String autor)
