@@ -2,6 +2,7 @@ package com.videoclub.controller;
 
 import com.videoclub.model.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MultimediaController
@@ -41,11 +42,11 @@ public class MultimediaController
 		multimediaDAO.aniadirMultimedia(multimedia);
 	}
 
-	public Multimedia recuperarMultimedias(String title, String author)
+	public Multimedia recuperarMultimedia(String titulo, String autor)
 	{
-		Multimedia multimedia = multimediaDAO.encontrarMultimedia(title, author);
+		Multimedia multimedia = multimediaDAO.encontrarMultimedia(titulo, autor);
 
-		multimediaDAO.eliminarMultimedia(title, author);
+		multimediaDAO.eliminarMultimedia(titulo, autor);
 
 		return multimedia;
 	}
@@ -64,20 +65,14 @@ public class MultimediaController
 	{
 		return multimediaDAO.filtroPorAutor(autor);
 	}
-
-	public ArrayList<Pelicula> listarPeliculasTitulo()
+	public Disco filtroDiscoPorTitulo(String titulo)
 	{
-		return multimediaDAO.listarPeliculasTitulo();
+		return multimediaDAO.filtroDiscoPorTitulo(titulo);
 	}
 
-	public ArrayList<Pelicula> todosLosPelis()
+	public ArrayList<Pelicula> obtenerPeliculasOrdenadosPorTitulo()
 	{
-		return multimediaDAO.todosLasPeliculas();
-	}
-
-	public ArrayList<Cancion> obtenerCancionesPorDuracion(Disco disco)
-	{
-		return multimediaDAO.obtenerCancionesPorDuracion(disco);
+		return multimediaDAO.obtenerPeliculasOrdenadosPorTitulo();
 	}
 
 	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAnio()
@@ -85,9 +80,28 @@ public class MultimediaController
 		return multimediaDAO.obtenerVideojuegosOrdenadosPorAnio();
 	}
 
+	public ArrayList<Pelicula> todosLosPelis()
+	{
+		return multimediaDAO.obtenerTodasLasPeliculas();
+	}
+
 	public ArrayList<Videojuego> todosLosVideojuegos()
 	{
 		return multimediaDAO.obtenerTodosLosVideojuegos();
+	}
+
+	public ArrayList<Disco> todosLosDiscos()
+	{
+		return multimediaDAO.obtenerTodosLosDiscos();
+	}
+
+	public String[] obtenerDiscosTitulo()
+	{
+		return  multimediaDAO.obtenerDiscosTitulo();
+	}
+	public void aniadirCancionToDisco(Cancion cancion, Disco disco)
+	{
+		multimediaDAO.aniadirCancionToDisco(cancion, disco);
 	}
 
 	public void darBajaMultimedia(String titulo, String autor)

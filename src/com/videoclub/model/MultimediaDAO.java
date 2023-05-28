@@ -1,8 +1,9 @@
 package com.videoclub.model;
 
+import com.videoclub.util.VideojuegoComparator;
+
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 public class MultimediaDAO
 {
@@ -31,11 +32,11 @@ public class MultimediaDAO
 		return listMultimedia;
 	}
 
-	public Multimedia encontrarMultimedia(String title, String author)
+	public Multimedia encontrarMultimedia(String titulo, String autor)
 	{
 		for (Multimedia multimedia : listMultimedia)
 		{
-			if (multimedia.getTitulo().equalsIgnoreCase(title) && multimedia.getAutor().equalsIgnoreCase(author))
+			if (multimedia.getTitulo().equalsIgnoreCase(titulo) && multimedia.getAutor().equalsIgnoreCase(autor))
 			{
 				return multimedia;
 			}
@@ -48,9 +49,9 @@ public class MultimediaDAO
 		listMultimedia.add(multimedia);
 	}
 
-	public void eliminarMultimedia(String title, String author)
+	public void eliminarMultimedia(String titulo, String autor)
 	{
-		Multimedia multimedia = encontrarMultimedia(title, author);
+		Multimedia multimedia = encontrarMultimedia(titulo, autor);
 
 		if (multimedia != null)
 		{
@@ -62,13 +63,33 @@ public class MultimediaDAO
 		}
 	}
 
-	public ArrayList<Cancion> obtenerCancionesPorDuracion(Disco disco)
+	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAnio() {
+		ArrayList<Videojuego> videojuegos = obtenerTodosLosVideojuegos();
+		videojuegos.sort(new VideojuegoComparator());
+
+		return videojuegos;
+	}
+
+	public ArrayList<Pelicula> obtenerPeliculasOrdenadosPorTitulo()
 	{
-		ArrayList<Cancion> canciones = disco.getListSongs();
+		ArrayList<Pelicula> listPeliculasTitulo = obtenerTodasLasPeliculas();
+		Collections.sort(listPeliculasTitulo);
 
-		canciones.sort(Comparator.comparingInt(Cancion::getDuracion));
+		return listPeliculasTitulo;
+	}
 
-		return canciones;
+	public ArrayList<Pelicula> obtenerTodasLasPeliculas()
+	{
+		ArrayList<Pelicula> peliculas = new ArrayList<>();
+
+		for (Multimedia multimedia : listMultimedia)
+		{
+			if (multimedia instanceof Pelicula)
+			{
+				peliculas.add((Pelicula) multimedia);
+			}
+		}
+		return peliculas;
 	}
 
 	public ArrayList<Videojuego> obtenerTodosLosVideojuegos()
@@ -85,43 +106,18 @@ public class MultimediaDAO
 		return videojuegos;
 	}
 
-	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAnio()
+	public ArrayList<Disco> obtenerTodosLosDiscos()
 	{
-		ArrayList<Videojuego> videojuegos = obtenerTodosLosVideojuegos();
-		videojuegos.sort(Comparator.comparingInt(Videojuego::getAnio));
-
-		return videojuegos;
-	}
-
-	public ArrayList<Pelicula> listarPeliculasTitulo()
-	{
-		ArrayList<Pelicula> listPeliculasTitulo = new ArrayList<>();
-		ArrayList<Multimedia> copyListMultimedia = listMultimedia;
-		Collections.sort(listMultimedia);
-
-		for (int i = 0; i < copyListMultimedia.size(); i++)
-		{
-			if (copyListMultimedia.get(i) instanceof Pelicula)
-			{
-				listPeliculasTitulo.add(((Pelicula) copyListMultimedia.get(i)));
-			}
-		}
-
-		return listPeliculasTitulo;
-	}
-
-	public ArrayList<Pelicula> todosLasPeliculas()
-	{
-		ArrayList<Pelicula> peliculas = new ArrayList<>();
+		ArrayList<Disco> discos = new ArrayList<>();
 
 		for (Multimedia multimedia : listMultimedia)
 		{
-			if (multimedia instanceof Pelicula)
+			if (multimedia instanceof Disco)
 			{
-				peliculas.add((Pelicula) multimedia);
+				discos.add((Disco) multimedia);
 			}
 		}
-		return peliculas;
+		return discos;
 	}
 
 	public ArrayList<Multimedia> filtroPorTitulo(String titulo)
@@ -152,5 +148,35 @@ public class MultimediaDAO
 		}
 
 		return listMultimedia;
+	}
+
+	public Disco filtroDiscoPorTitulo(String titulo)
+	{
+		ArrayList<Disco> listDisco = obtenerTodosLosDiscos();
+		Disco disco = null;
+
+		for (Disco discoAux : listDisco)
+		{
+			if (titulo.equals(discoAux.getTitulo()))
+				disco = discoAux;
+		}
+		return disco;
+	}
+
+	public String[] obtenerDiscosTitulo()
+	{
+		String[] discoNameList = new String[obtenerTodosLosDiscos().size()];
+
+		for (int i = 0; i < obtenerTodosLosDiscos().size(); i++)
+		{
+			discoNameList[i] = obtenerTodosLosDiscos().get(i).getTitulo();
+		}
+
+		return discoNameList;
+	}
+
+	public void aniadirCancionToDisco(Cancion cancion, Disco disco)
+	{
+		disco.addCancion(cancion);
 	}
 }

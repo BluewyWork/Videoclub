@@ -1,6 +1,7 @@
 package com.videoclub.view;
 
 import com.videoclub.controller.MultimediaController;
+import com.videoclub.model.Cancion;
 import com.videoclub.model.Constantes;
 import com.videoclub.model.Formato;
 import com.videoclub.util.Logger;
@@ -9,14 +10,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-public class AltaPeliculaDesign extends JFrame
+public class AltaDiscoDesign extends JFrame
 {
-	AltaPeliculaView firstPanel;
+	AltaDiscoView firstPanel;
 	private MultimediaController multimediaController;
 	private JPanel secondPanel;
 
-	public AltaPeliculaDesign(MultimediaController multimedia)
+	public AltaDiscoDesign(MultimediaController multimedia)
 	{
 		multimediaController = multimedia;
 		initComponents();
@@ -24,35 +26,35 @@ public class AltaPeliculaDesign extends JFrame
 
 	public void initComponents()
 	{
-		firstPanel = new AltaPeliculaView(multimediaController);
+		firstPanel = new AltaDiscoView(multimediaController);
 		firstPanel.setPreferredSize(new Dimension(350, 450));
 
 		secondPanel = new JPanel();
 		secondPanel.setPreferredSize(new Dimension(350, 400));
-		secondPanel.setBackground(Color.black);
+		secondPanel.setBackground(Color.yellow);
 
 		setLayout(new FlowLayout());
 		add(firstPanel);
 		add(secondPanel);
 		pack();
 
-		getContentPane().setBackground(Color.black);
+		getContentPane().setBackground(Color.yellow);
 		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
-		setTitle("Alta pelicula");
+		setTitle("Alta disco");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
-	class AltaPeliculaView extends JPanel implements ActionListener
+	class AltaDiscoView extends JPanel implements ActionListener
 	{
-		private JLabel lblTitulo, lblAutor, lblFormato, lblAnyo, lblDuracion, lblActor, lblActriz;
-		private JTextField txtTitulo, txtAutor, txtActor, txtActriz;
-		private JSpinner txtAnyo, txtDuracion;
+		private JLabel lblTitulo, lblAutor, lblFormato, lblAnyo;
+		private JTextField txtTitulo, txtAutor;
+		private JSpinner txtAnyo;
 		private JButton btnDarAlta;
 		private JComboBox listFormato;
-		private SpinnerNumberModel modelAnyo, modelDuracion;
+		private SpinnerNumberModel modelAnyo;
 		private MultimediaController multimediaController;
 
-		public AltaPeliculaView(MultimediaController multimedia)
+		public AltaDiscoView(MultimediaController multimedia)
 		{
 			multimediaController = multimedia;
 			initComponents();
@@ -63,7 +65,7 @@ public class AltaPeliculaDesign extends JFrame
 		{
 			accionDarAltaPelicula();
 
-			Logger.log("Pelicula Creada");
+			Logger.log("Disco Creada");
 		}
 
 		public void initComponents()
@@ -84,19 +86,9 @@ public class AltaPeliculaDesign extends JFrame
 			modelAnyo = new SpinnerNumberModel(2023, 1890, 2023, 1);
 			txtAnyo = new JSpinner(modelAnyo);
 
-			lblDuracion = new JLabel("Duración:");
-			modelDuracion = new SpinnerNumberModel(0, 0, 3000, 1);
-			txtDuracion = new JSpinner(modelDuracion);
+			btnDarAlta = new JButton("Dar alta disco");
 
-			lblActor = new JLabel("Actor:");
-			txtActor = new JTextField(20);
-
-			lblActriz = new JLabel("Actriz:");
-			txtActriz = new JTextField(20);
-
-			btnDarAlta = new JButton("Dar alta película");
-
-			setLayout(new GridLayout(8, 2));
+			setLayout(new GridLayout(5, 2));
 			add(lblTitulo);
 			add(txtTitulo);
 			add(lblAutor);
@@ -105,12 +97,6 @@ public class AltaPeliculaDesign extends JFrame
 			add(listFormato);
 			add(lblAnyo);
 			add(txtAnyo);
-			add(lblDuracion);
-			add(txtDuracion);
-			add(lblActor);
-			add(txtActor);
-			add(lblActriz);
-			add(txtActriz);
 			add(new JPanel()); // Espacio en blanco
 			add(btnDarAlta);
 
@@ -123,11 +109,9 @@ public class AltaPeliculaDesign extends JFrame
 			String autor = txtAutor.getText();
 			String formato = listFormato.getSelectedItem().toString();
 			int anyo = (int) txtAnyo.getValue();
-			int duracion = (int) txtDuracion.getValue();
-			String actor = txtActor.getText();
-			String actriz = txtActriz.getText();
+			ArrayList<Cancion> listCancion = new ArrayList<>();
 
-			if (titulo.isEmpty() || autor.isEmpty() || formato.isEmpty() || actor.isEmpty() || actriz.isEmpty())
+			if (titulo.isEmpty() || autor.isEmpty() || formato.isEmpty())
 			{
 				JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos,",
 						"ERROR", JOptionPane.ERROR_MESSAGE
@@ -135,17 +119,14 @@ public class AltaPeliculaDesign extends JFrame
 				return;
 			}
 
-			multimediaController.altaPelicula(titulo, autor, formato, anyo, duracion, actor, actriz);
+			multimediaController.altaDisco(titulo, autor, formato, anyo, listCancion);
 
-			JOptionPane.showMessageDialog(null, "Pelicula agregada correctamente");
+			JOptionPane.showMessageDialog(null, "Disco agregada correctamente");
 
 			txtTitulo.setText("");
 			txtAutor.setText("");
-			txtActriz.setText("");
-			txtActor.setText("");
 			listFormato.setSelectedIndex(0);
 			txtAnyo.setValue(2023);
-			txtDuracion.setValue(0);
 		}
 	}
 }

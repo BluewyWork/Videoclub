@@ -58,7 +58,7 @@ public class ListadoVideojuegoDesign extends JFrame implements ActionListener
 		//
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
-		setTitle("Listado peliculas ordenados por titulo");
+		setTitle("Listado videojuegos ordenados por anio");
 
 		//
 		ArrayList<Videojuego> listVideojuego = multimediaController.obtenerVideojuegosOrdenadosPorAnio();

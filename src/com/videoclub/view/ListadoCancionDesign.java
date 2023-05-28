@@ -1,5 +1,6 @@
 package com.videoclub.view;
 
+import com.videoclub.controller.CancionController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.model.Cancion;
 import com.videoclub.model.Constantes;
@@ -15,7 +16,6 @@ import java.util.ArrayList;
 @SuppressWarnings("JoinDeclarationAndAssignmentJava")
 public class ListadoCancionDesign extends JFrame implements ActionListener
 {
-	private String[] discoNameList;
 	private ArrayList<Disco> discos;
 	private GridLayout grdLayout;
 	private JComboBox<String> cmboBoxOptions;
@@ -24,12 +24,14 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 	private JTable tblResults;
 	private MemberTableModel tblModel;
 	private MultimediaController multimediaController;
+	private CancionController cancionController;
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
 
-	public ListadoCancionDesign(MultimediaController multimediaController)
+	public ListadoCancionDesign(MultimediaController multimediaController, CancionController cancionController)
 	{
 		this.multimediaController = multimediaController;
+		this.cancionController = cancionController;
 
 		initComponents();
 		configComponents();
@@ -65,25 +67,7 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 		lblDisco.setText("Selecciona un disco");
 
 		//
-		ArrayList<Disco> discosAux = new ArrayList<>();
-
-		for (int i = 0; i < multimediaController.returnStuff().size(); i++)
-		{
-			if (multimediaController.returnStuff().get(i) instanceof Disco)
-			{
-				discosAux.add((Disco) multimediaController.returnStuff().get(i));
-			}
-		}
-
-		discos = discosAux;
-		discoNameList = new String[discosAux.size()];
-
-		for (int i = 0; i < discosAux.size(); i++)
-		{
-			discoNameList[i] = discosAux.get(i).getTitulo();
-		}
-
-		cmboBoxOptions = new JComboBox(discoNameList);
+		cmboBoxOptions = new JComboBox(multimediaController.obtenerDiscosTitulo());
 
 		//
 		btnSeleccionar.setText("Seleccionar");
@@ -91,7 +75,6 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 
 		//
 		ArrayList<Cancion> listCanciones = new ArrayList<>();
-
 		String[] columnNames = {"Nombre", "Duracion"};
 
 		tblModel.setData(listCanciones);
@@ -112,19 +95,23 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 
 	public void refreshTable()
 	{
-		tblModel.setData(multimediaController.obtenerCancionesPorDuracion(getSelectedDisco()));
-		tblModel.fireTableDataChanged();
+		try
+		{
+			tblModel.setData(cancionController.obtenerCancionesPorDuracion(multimediaController.filtroDiscoPorTitulo(cmboBoxOptions.getSelectedItem().toString())));
+			tblModel.fireTableDataChanged();
+		}
+		catch (Exception e)
+		{
+			JOptionPane.showMessageDialog(null, "No existe ningun disco",
+					"ERROR", JOptionPane.ERROR_MESSAGE
+			);
+		}
 	}
 
-	public Disco getSelectedDisco()
+	public void refreshComboBox()
 	{
-		Disco discoSeleccionado = null;
-		for (Disco disco : discos)
-		{
-			if (cmboBoxOptions.getSelectedItem().equals(disco.getTitulo()))
-				discoSeleccionado = disco;
-		}
-		return discoSeleccionado;
+		DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(multimediaController.obtenerDiscosTitulo());
+		cmboBoxOptions.setModel(model);
 	}
 
 	class MemberTableModel extends AbstractTableModel
