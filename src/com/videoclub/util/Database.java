@@ -421,76 +421,6 @@ public class Database
 			e.printStackTrace();
 		}
 	}
-	public void updateTableDisco()
-	{
-		ArrayList<Socio> listSocio = socioController.todosLosSocios();
-		ArrayList<Disco> listMultimedia = multimediaController.todosLosDiscos();
-		ArrayList<Alquiler> listAlquiler = alquilerController.todosLosAlquileres();
-
-		Connection connection = null;
-
-		try
-		{
-			Class.forName(driver);
-			connection = DriverManager.getConnection(url + db, user, pass);
-
-			try
-			{
-				Statement statement = connection.createStatement();
-				statement.execute("drop table if exists disco;");
-
-				String query = "";
-
-				query += "create table if not exists disco\n" +
-						"(\n" +
-						"    titulo text,\n" +
-						"    autor text,\n" +
-						"    format text,\n" +
-						"    anio integer,\n" +
-						"    plataforma text,\n" +
-						"\n" +
-						"    primary key(titulo, autor)\n" +
-						");"
-				;
-				statement.execute(query);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-			}
-
-			try
-			{
-				PreparedStatement pstmt = connection.prepareStatement("INSERT INTO disco(titulo, autor, format, anio, plataforma) VALUES (?, ?, ?, ?, ?)");
-
-				for (Multimedia multimedia : listMultimedia)
-				{
-					if (multimedia instanceof Disco)
-					{
-						pstmt.setString(1, multimedia.getTitulo());
-						pstmt.setString(2, multimedia.getAutor());
-						pstmt.setString(3, multimedia.getFormat().toString());
-						pstmt.setInt(4, (multimedia.getAnio()));
-						pstmt.setString(5, ((Videojuego) multimedia).getPlatform().toString());
-						pstmt.addBatch();
-					}
-
-				}
-				pstmt.executeBatch();
-
-				connection.close();
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-			}
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-
 
 	public void updateTableDisco()
 	{
@@ -512,7 +442,7 @@ public class Database
 
 				String query = "";
 
-				query += "create table if not exists disco\n" +
+				query += "create table disco\n" +
 						"(\n" +
 						"    titulo text,\n" +
 						"    autor text,\n" +
@@ -562,11 +492,11 @@ public class Database
 		}
 	}
 
-/* PREGUNTAR EN CLASE SI CANCION EXTIENDE DE MULTIMEDIA O DE DISCO
 	public void updateTableCancion()
 	{
 		ArrayList<Socio> listSocio = socioController.todosLosSocios();
 		ArrayList<Cancion> listMultimedia = cancionController.returnCancion();
+		ArrayList<Multimedia> listMultimediaCompleta = multimediaController.returnStuff();
 		ArrayList<Alquiler> listAlquiler = alquilerController.todosLosAlquileres();
 
 		Connection connection = null;
@@ -585,9 +515,10 @@ public class Database
 
 				query += "create table if not exists cancion\n" +
 						"(\n" +
+						"    titulo text default null,\n" +
+						"    autor text default null,\n" +
 						"    nombre text,\n" +
 						"    duracion integer,\n" +
-						"\n" +
 						"    primary key(nombre)\n" +
 						");"
 				;
@@ -600,20 +531,25 @@ public class Database
 
 			try
 			{
-				PreparedStatement pstmt = connection.prepareStatement("INSERT INTO cancion(nombre, duracion) VALUES (?, ?)");
+				PreparedStatement pstmt = connection.prepareStatement("INSERT INTO cancion(titulo, autor, nombre, duracion) VALUES (?, ?, ?, ?)");
 
-				for (Multimedia multimedia : listMultimedia)
+				for (Multimedia multimedia : listMultimediaCompleta)
 				{
 					if (multimedia instanceof Disco)
 					{
-						pstmt.setString(1, multimedia.getTitulo());
-						pstmt.setString(2, multimedia.getAutor());
-						pstmt.setString(3, multimedia.getFormat().toString());
-						pstmt.setInt(4, (multimedia.getAnio()));
-						pstmt.setInt(5, ((Disco) multimedia).getDuracion());
-						pstmt.addBatch();
-					}
 
+						ArrayList<Cancion> listaCanciones = ((Disco) multimedia).getListaCanciones();
+
+						for (Cancion cancion : listaCanciones)
+						{
+							pstmt.setString(1, multimedia.getTitulo());
+							pstmt.setString(2, multimedia.getAutor());
+							pstmt.setString(3, cancion.getNombre());
+							pstmt.setInt(4, cancion.getDuracion());
+							pstmt.addBatch();
+						}
+						pstmt.executeBatch();
+					}
 				}
 				pstmt.executeBatch();
 
@@ -629,7 +565,6 @@ public class Database
 			e.printStackTrace();
 		}
 	}
-*/
 
 	public void loadSocios()
 	{

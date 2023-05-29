@@ -47,6 +47,16 @@ public class Disco extends Multimedia
 		}
 	}
 
+	public ArrayList<Cancion> getListaCanciones()
+	{
+		return listaCanciones;
+	}
+
+	public void setListaCanciones(ArrayList<Cancion> listaCanciones)
+	{
+		this.listaCanciones = listaCanciones;
+	}
+
 	public ArrayList<Cancion> getListSongs()
 	{
 		return listaCanciones;
