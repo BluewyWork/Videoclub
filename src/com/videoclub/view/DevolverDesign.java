@@ -84,6 +84,7 @@ public class DevolverDesign extends JFrame implements ActionListener
 			{
 				Alquiler alquiler = tblModel.getObjectAt(filaSeleccionada);
 				alquilerController.delvolverAlquiler(alquiler.getContador());
+				multimediaController.guardarMultimedia(alquiler.getMultimedia());
 				//multimediaController.(multimedia.getTitulo(), multimedia.getAutor());
 				tblModel.fireTableDataChanged();
 				JOptionPane.showMessageDialog(null, "Multimedia devuelta", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -153,6 +154,8 @@ public class DevolverDesign extends JFrame implements ActionListener
 		//
 		String[] columnNames = {"Contador", "DNI socio", "Titulo", "Autor"};
 		tblModel.setColumnNames(columnNames);
+		tblModel.fireTableDataChanged();
+		tblModel.fireTableStructureChanged();
 
 		//
 		mainPanel.add(cmboBoxOptions);
