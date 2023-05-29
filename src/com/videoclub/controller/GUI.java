@@ -25,8 +25,6 @@ public class GUI
 		cancionController = new CancionController();
 		alquilerController = new AlquilerController();
 
-		multimediaController.altaDisco("Disco hardcode", "Chitan", "CD", 2023, new ArrayList<Cancion>());
-
 		PrincipalDesign principalDesign = new PrincipalDesign(socioController, multimediaController, cancionController, alquilerController);
 		principalDesign.setVisible(true);
 		principalDesign.setTitle("JAMA Videoclub");
