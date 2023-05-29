@@ -85,7 +85,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		setTitle("JAMA Videoclub");
 		initMenuBar();
 
-		db = new Database(socioController, multimediaController, alquilerController);
+		db = new Database(socioController, multimediaController, alquilerController, cancionController);
 		db.loadSocios();
 		db.loadPeliculas();
 		db.loadVideojuegos();
