@@ -107,6 +107,8 @@ public class AltaCancionDesign extends JFrame
 
 			txtNombre.setText("");
 			txtDuracion.setValue(0);
+
+
 		}
 	}
 }

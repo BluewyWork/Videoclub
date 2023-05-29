@@ -238,6 +238,8 @@ public class PrincipalDesign extends JFrame implements ActionListener
 			db.updateSocioTable();
 			db.updateTableVideojuego();
 			db.updateTablePelicula();
+			db.updateTableDisco();
+			db.updateTableCancion();
 		}
 	}
 }
