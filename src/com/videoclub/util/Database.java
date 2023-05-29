@@ -418,6 +418,75 @@ public class Database
 			e.printStackTrace();
 		}
 	}
+	public void updateTableDisco()
+	{
+		ArrayList<Socio> listSocio = socioController.todosLosSocios();
+		ArrayList<Disco> listMultimedia = multimediaController.todosLosDiscos();
+		ArrayList<Alquiler> listAlquiler = alquilerController.todosLosAlquileres();
+
+		Connection connection = null;
+
+		try
+		{
+			Class.forName(driver);
+			connection = DriverManager.getConnection(url + db, user, pass);
+
+			try
+			{
+				Statement statement = connection.createStatement();
+				statement.execute("drop table if exists disco;");
+
+				String query = "";
+
+				query += "create table if not exists disco\n" +
+						"(\n" +
+						"    titulo text,\n" +
+						"    autor text,\n" +
+						"    format text,\n" +
+						"    anio integer,\n" +
+						"    plataforma text,\n" +
+						"\n" +
+						"    primary key(titulo, autor)\n" +
+						");"
+				;
+				statement.execute(query);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+
+			try
+			{
+				PreparedStatement pstmt = connection.prepareStatement("INSERT INTO disco(titulo, autor, format, anio, plataforma) VALUES (?, ?, ?, ?, ?)");
+
+				for (Multimedia multimedia : listMultimedia)
+				{
+					if (multimedia instanceof Disco)
+					{
+						pstmt.setString(1, multimedia.getTitulo());
+						pstmt.setString(2, multimedia.getAutor());
+						pstmt.setString(3, multimedia.getFormat().toString());
+						pstmt.setInt(4, (multimedia.getAnio()));
+						pstmt.setString(5, ((Videojuego) multimedia).getPlatform().toString());
+						pstmt.addBatch();
+					}
+
+				}
+				pstmt.executeBatch();
+
+				connection.close();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
 
 	public void loadSocios()
 	{
