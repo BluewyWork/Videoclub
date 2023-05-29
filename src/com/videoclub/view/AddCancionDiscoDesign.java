@@ -92,7 +92,11 @@ public class AddCancionDiscoDesign extends JFrame implements ActionListener
 					cancionController.filtroCancionPorNombre(cboxCancion.getSelectedItem().toString()),
 					multimediaController.filtroDiscoPorTitulo(cboxDisco.getSelectedItem().toString())
 			);
+			Cancion cancion = cancionController.filtroCancionPorNombre(cboxCancion.getSelectedItem().toString());
+			cancionController.darBajaCancion(cancion.getNombre(), cancion.getDuracion());
 			JOptionPane.showMessageDialog(null, "Cancion agregada al disco correctamente");
+			DefaultComboBoxModel<String> modelCancion = new DefaultComboBoxModel<>(cancionController.obtenerCancionesNombre());
+			cboxCancion.setModel(modelCancion);
 		}
 		catch (Exception exception)
 		{
