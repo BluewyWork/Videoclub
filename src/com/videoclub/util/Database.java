@@ -1,6 +1,7 @@
 package com.videoclub.util;
 
 import com.videoclub.controller.AlquilerController;
+import com.videoclub.controller.CancionController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
 import com.videoclub.model.*;
@@ -28,12 +29,14 @@ public class Database
 	SocioController socioController;
 	MultimediaController multimediaController;
 	AlquilerController alquilerController;
+	CancionController cancionController;
 
-	public Database(SocioController sc, MultimediaController mc, AlquilerController ac)
+	public Database(SocioController sc, MultimediaController mc, AlquilerController ac, CancionController cc)
 	{
 		socioController = sc;
 		multimediaController = mc;
 		alquilerController = ac;
+		cancionController = cc;
 
 		// Read configuration file and set attributes
 		readConfigFile();
@@ -488,6 +491,146 @@ public class Database
 		}
 	}
 
+
+	public void updateTableDisco()
+	{
+		ArrayList<Socio> listSocio = socioController.todosLosSocios();
+		ArrayList<Disco> listMultimedia = multimediaController.todosLosDiscos();
+		ArrayList<Alquiler> listAlquiler = alquilerController.todosLosAlquileres();
+
+		Connection connection = null;
+
+		try
+		{
+			Class.forName(driver);
+			connection = DriverManager.getConnection(url + db, user, pass);
+
+			try
+			{
+				Statement statement = connection.createStatement();
+				statement.execute("drop table if exists disco;");
+
+				String query = "";
+
+				query += "create table if not exists disco\n" +
+						"(\n" +
+						"    titulo text,\n" +
+						"    autor text,\n" +
+						"    format text,\n" +
+						"    anio integer,\n" +
+						"    duracion integer,\n" +
+						"\n" +
+						"    primary key(titulo, autor)\n" +
+						");"
+				;
+				statement.execute(query);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+
+			try
+			{
+				PreparedStatement pstmt = connection.prepareStatement("INSERT INTO disco(titulo, autor, format, anio, duracion) VALUES (?, ?, ?, ?, ?)");
+
+				for (Multimedia multimedia : listMultimedia)
+				{
+					if (multimedia instanceof Disco)
+					{
+						pstmt.setString(1, multimedia.getTitulo());
+						pstmt.setString(2, multimedia.getAutor());
+						pstmt.setString(3, multimedia.getFormat().toString());
+						pstmt.setInt(4, (multimedia.getAnio()));
+						pstmt.setInt(5, ((Disco) multimedia).getDuracion());
+						pstmt.addBatch();
+					}
+
+				}
+				pstmt.executeBatch();
+
+				connection.close();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+/* PREGUNTAR EN CLASE SI CANCION EXTIENDE DE MULTIMEDIA O DE DISCO
+	public void updateTableCancion()
+	{
+		ArrayList<Socio> listSocio = socioController.todosLosSocios();
+		ArrayList<Cancion> listMultimedia = cancionController.returnCancion();
+		ArrayList<Alquiler> listAlquiler = alquilerController.todosLosAlquileres();
+
+		Connection connection = null;
+
+		try
+		{
+			Class.forName(driver);
+			connection = DriverManager.getConnection(url + db, user, pass);
+
+			try
+			{
+				Statement statement = connection.createStatement();
+				statement.execute("drop table if exists cancion;");
+
+				String query = "";
+
+				query += "create table if not exists cancion\n" +
+						"(\n" +
+						"    nombre text,\n" +
+						"    duracion integer,\n" +
+						"\n" +
+						"    primary key(nombre)\n" +
+						");"
+				;
+				statement.execute(query);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+
+			try
+			{
+				PreparedStatement pstmt = connection.prepareStatement("INSERT INTO cancion(nombre, duracion) VALUES (?, ?)");
+
+				for (Multimedia multimedia : listMultimedia)
+				{
+					if (multimedia instanceof Disco)
+					{
+						pstmt.setString(1, multimedia.getTitulo());
+						pstmt.setString(2, multimedia.getAutor());
+						pstmt.setString(3, multimedia.getFormat().toString());
+						pstmt.setInt(4, (multimedia.getAnio()));
+						pstmt.setInt(5, ((Disco) multimedia).getDuracion());
+						pstmt.addBatch();
+					}
+
+				}
+				pstmt.executeBatch();
+
+				connection.close();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+*/
+
 	public void loadSocios()
 	{
 		Connection con = null;
@@ -624,9 +767,9 @@ public class Database
 					String autor = res.getString("nombre");
 					String formato = res.getString("format");
 					int anio = Integer.parseInt(res.getString("anio"));
-					String plataforma = res.getString("plataforma");
+					int duracion = res.getInt("duracion");
 
-					//multimediaController.altaDisco(titulo, autor, formato, anio, plataforma);
+					//multimediaController.altaDisco(titulo, autor, formato, anio, duracion);
 				}
 				con.close();
 			}

@@ -155,6 +155,8 @@ public class DevolverDesign extends JFrame implements ActionListener
 		String[] columnNames = {"Contador", "DNI socio", "Titulo", "Autor"};
 
 		tblModel.setColumnNames(columnNames);
+		tblModel.fireTableDataChanged();
+		tblModel.fireTableStructureChanged();
 
 
 		//
