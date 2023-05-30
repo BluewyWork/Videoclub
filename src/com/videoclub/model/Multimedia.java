@@ -2,6 +2,9 @@ package com.videoclub.model;
 
 public abstract class Multimedia implements Comparable<Multimedia>
 {
+	/**
+	 * atributos de la clase Multimedia
+	 */
 	private String titulo;
 	private String autor;
 	private Formato formato;
@@ -9,6 +12,9 @@ public abstract class Multimedia implements Comparable<Multimedia>
 
 	private double precioTotalAlquiler;
 
+	/**
+	 * constructor por defecto de la clase Multimedia
+	 */
 	public Multimedia()
 	{
 		titulo = "Multimedia Vacio";
@@ -18,6 +24,13 @@ public abstract class Multimedia implements Comparable<Multimedia>
 		precioTotalAlquiler = calcularPrecioAlquiler();
 	}
 
+	/**
+	 * constructor con parámetros de la clase Multimedia
+	 * @param titulo
+	 * @param autor
+	 * @param formato
+	 * @param anio
+	 */
 	public Multimedia(String titulo, String autor, String formato, int anio)
 	{
 		this();
@@ -27,6 +40,10 @@ public abstract class Multimedia implements Comparable<Multimedia>
 		setAnio(anio);
 	}
 
+	/**
+	 * override toString
+	 * @return
+	 */
 	@Override
 	public String toString()
 	{
@@ -40,6 +57,10 @@ public abstract class Multimedia implements Comparable<Multimedia>
 		return text;
 	}
 
+	/**
+	 * getters y setters
+	 * @return
+	 */
 	public String getTitulo()
 	{
 		return titulo;
@@ -90,11 +111,20 @@ public abstract class Multimedia implements Comparable<Multimedia>
 		this.precioTotalAlquiler = precioTotalAlquiler;
 	}
 
+	/**
+	 * método para calcular el precio del alquiler
+	 * @return
+	 */
 	public double calcularPrecioAlquiler()
 	{
 		return Constantes.BASE_PRICE;
 	}
 
+	/**
+	 * override del método compareTo
+	 * @param other the object to be compared.
+	 * @return
+	 */
 	@Override
 	public int compareTo(Multimedia other)
 	{
