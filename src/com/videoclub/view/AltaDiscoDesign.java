@@ -50,6 +50,7 @@ public class AltaDiscoDesign extends JFrame
 		private JTextField txtTitulo, txtAutor;
 		private JSpinner txtAnyo;
 		private JButton btnDarAlta;
+		private JButton btnVolver;
 		private JComboBox listFormato;
 		private SpinnerNumberModel modelAnyo;
 		private MultimediaController multimediaController;
@@ -63,9 +64,16 @@ public class AltaDiscoDesign extends JFrame
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			accionDarAltaPelicula();
+			if (e.getSource().equals(btnDarAlta))
+			{
+				accionDarAltaPelicula();
 
-			Logger.log("Disco Creada");
+				Logger.log("Disco Creada");
+			}
+			else if (e.getSource().equals(btnVolver))
+			{
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
 		}
 
 		public void initComponents()
@@ -86,6 +94,7 @@ public class AltaDiscoDesign extends JFrame
 			modelAnyo = new SpinnerNumberModel(2023, 1890, 2023, 1);
 			txtAnyo = new JSpinner(modelAnyo);
 
+			btnVolver = new JButton("Volver");
 			btnDarAlta = new JButton("Dar alta disco");
 
 			setLayout(new GridLayout(5, 2));
@@ -97,9 +106,10 @@ public class AltaDiscoDesign extends JFrame
 			add(listFormato);
 			add(lblAnyo);
 			add(txtAnyo);
-			add(new JPanel()); // Espacio en blanco
+			add(btnVolver);
 			add(btnDarAlta);
 
+			btnVolver.addActionListener(this);
 			btnDarAlta.addActionListener(this);
 		}
 

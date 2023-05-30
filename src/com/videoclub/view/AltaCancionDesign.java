@@ -47,6 +47,7 @@ public class AltaCancionDesign extends JFrame
 		private JTextField txtNombre;
 		private JSpinner txtDuracion;
 		private JButton btnDarAlta;
+		private JButton btnVolver;
 		private SpinnerNumberModel modelDuracion;
 		private CancionController cancionController;
 
@@ -59,9 +60,16 @@ public class AltaCancionDesign extends JFrame
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			accionDarAltaCancion();
+			if (e.getSource().equals(btnDarAlta))
+			{
+				accionDarAltaCancion();
 
-			Logger.log("Cancion Creada");
+				Logger.log("Cancion Creada");
+			}
+			else if (e.getSource().equals(btnVolver))
+			{
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
 		}
 
 		public void initComponents()
@@ -75,6 +83,7 @@ public class AltaCancionDesign extends JFrame
 			modelDuracion = new SpinnerNumberModel(0, 0, 3000, 1);
 			txtDuracion = new JSpinner(modelDuracion);
 
+			btnVolver = new JButton("Volver");
 			btnDarAlta = new JButton("Dar alta Cancion");
 
 			setLayout(new GridLayout(3, 2));
@@ -82,9 +91,10 @@ public class AltaCancionDesign extends JFrame
 			add(txtNombre);
 			add(lblDuracion);
 			add(txtDuracion);
-			add(new JPanel()); // Espacio en blanco
+			add(btnVolver);
 			add(btnDarAlta);
 
+			btnVolver.addActionListener(this);
 			btnDarAlta.addActionListener(this);
 		}
 
@@ -107,8 +117,6 @@ public class AltaCancionDesign extends JFrame
 
 			txtNombre.setText("");
 			txtDuracion.setValue(0);
-
-
 		}
 	}
 }

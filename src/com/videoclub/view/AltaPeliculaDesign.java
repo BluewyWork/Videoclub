@@ -48,6 +48,7 @@ public class AltaPeliculaDesign extends JFrame
 		private JTextField txtTitulo, txtAutor, txtActor, txtActriz;
 		private JSpinner txtAnyo, txtDuracion;
 		private JButton btnDarAlta;
+		private JButton btnVolver;
 		private JComboBox listFormato;
 		private SpinnerNumberModel modelAnyo, modelDuracion;
 		private MultimediaController multimediaController;
@@ -61,9 +62,16 @@ public class AltaPeliculaDesign extends JFrame
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			accionDarAltaPelicula();
+			if (e.getSource().equals(btnDarAlta))
+			{
+				accionDarAltaPelicula();
 
-			Logger.log("Pelicula Creada");
+				Logger.log("Pelicula Creada");
+			}
+			else if (e.getSource().equals(btnVolver))
+			{
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
 		}
 
 		public void initComponents()
@@ -94,6 +102,7 @@ public class AltaPeliculaDesign extends JFrame
 			lblActriz = new JLabel("Actriz:");
 			txtActriz = new JTextField(20);
 
+			btnVolver = new JButton("Volver");
 			btnDarAlta = new JButton("Dar alta película");
 
 			setLayout(new GridLayout(8, 2));
@@ -111,9 +120,10 @@ public class AltaPeliculaDesign extends JFrame
 			add(txtActor);
 			add(lblActriz);
 			add(txtActriz);
-			add(new JPanel()); // Espacio en blanco
+			add(btnVolver);
 			add(btnDarAlta);
 
+			btnVolver.addActionListener(this);
 			btnDarAlta.addActionListener(this);
 		}
 

@@ -48,6 +48,8 @@ public class AltaSocioDesign extends JFrame
 		private JTextField txtFechaNacimiento;
 		private JTextField txtPoblacion;
 		private SocioController socioController;
+		private JButton btnDarAlta;
+		private JButton btnVolver;
 
 		public AltaSocioView(SocioController socio)
 		{
@@ -57,9 +59,16 @@ public class AltaSocioDesign extends JFrame
 
 		public void actionPerformed(ActionEvent e)
 		{
-			accionDarAltaSocio();
+			if (e.getSource().equals(btnDarAlta))
+			{
+				accionDarAltaSocio();
 
-			Logger.log("Socio Creado");
+				Logger.log("Socio Creado");
+			}
+			else if (e.getSource().equals(btnVolver))
+			{
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
 		}
 
 		public void initComponents()
@@ -80,7 +89,8 @@ public class AltaSocioDesign extends JFrame
 			JLabel lblPoblacion = new JLabel("Poblacion:");
 			txtPoblacion = new JTextField(20);
 
-			JButton btnGuardar = new JButton("Guardar");
+			btnVolver = new JButton("Volver");
+			btnDarAlta = new JButton("Dar alta socio");
 
 			// Configuración del diseño de la ventana
 			setLayout(new GridLayout(5, 2));
@@ -92,11 +102,12 @@ public class AltaSocioDesign extends JFrame
 			add(txtFechaNacimiento);
 			add(lblPoblacion);
 			add(txtPoblacion);
-			add(new JPanel()); // Espacio en blanco
-			add(btnGuardar);
+			add(btnVolver);
+			add(btnDarAlta);
 
 			// Asignar el ActionListener al botón de guardar
-			btnGuardar.addActionListener(this);
+			btnDarAlta.addActionListener(this);
+			btnVolver.addActionListener(this);
 		}
 
 		public void accionDarAltaSocio()

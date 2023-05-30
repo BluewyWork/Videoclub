@@ -49,6 +49,7 @@ public class AltaVideojuegoDesign extends JFrame
 		private final MultimediaController multimediaController;
 		private JLabel lblTitulo, lblAutor, lblFormato, lblAnyo, lblPlataforma;
 		private JTextField txtTitulo, txtAutor;
+		private JButton btnVolver;
 		private JButton btnDarAlta;
 		private JComboBox listFormato, listPlataforma;
 		private SpinnerNumberModel modelAnyo;
@@ -63,9 +64,16 @@ public class AltaVideojuegoDesign extends JFrame
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			accionDarAltaVideojuego();
+			if (e.getSource().equals(btnDarAlta))
+			{
+				accionDarAltaVideojuego();
 
-			Logger.log("VideoJuego Creado");
+				Logger.log("VideoJuego Creado");
+			}
+			else if (e.getSource().equals(btnVolver))
+			{
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
 		}
 
 		public void initComponents()
@@ -90,6 +98,7 @@ public class AltaVideojuegoDesign extends JFrame
 			Plataforma[] plataformas = Plataforma.values();
 			listPlataforma = new JComboBox(plataformas);
 
+			btnVolver = new JButton("Volver");
 			btnDarAlta = new JButton("Dar alta videojuego");
 
 			setLayout(new GridLayout(6, 2));
@@ -103,9 +112,10 @@ public class AltaVideojuegoDesign extends JFrame
 			add(txtAnyo);
 			add(lblPlataforma);
 			add(listPlataforma);
-			add(new JPanel()); // Espacio en blanco
+			add(btnVolver);
 			add(btnDarAlta);
 
+			btnVolver.addActionListener(this);
 			btnDarAlta.addActionListener(this);
 		}
 
