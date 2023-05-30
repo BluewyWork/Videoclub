@@ -216,7 +216,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		}
 		else if (e.getSource().equals(listarCancion))
 		{
-			listadoCancionDesign.refreshTable();
+			//listadoCancionDesign.refreshTable();
 			listadoCancionDesign.refreshComboBox();
 			listadoCancionDesign.setVisible(true);
 		}

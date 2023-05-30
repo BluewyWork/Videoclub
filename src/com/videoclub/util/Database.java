@@ -17,6 +17,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Database
 {
@@ -700,12 +701,12 @@ public class Database
 				while (res.next())
 				{
 					String titulo = res.getString("titulo");
-					String autor = res.getString("nombre");
+					String autor = res.getString("autor");
 					String formato = res.getString("format");
 					int anio = Integer.parseInt(res.getString("anio"));
-					int duracion = res.getInt("duracion");
+					ArrayList<Cancion> canciones = buscarCancionesDeDisco(titulo, autor);
 
-					//multimediaController.altaDisco(titulo, autor, formato, anio, duracion);
+					multimediaController.altaDisco(titulo, autor, formato, anio, canciones);
 				}
 				con.close();
 			}
@@ -719,4 +720,42 @@ public class Database
 			e.printStackTrace();
 		}
 	}
+
+	public ArrayList<Cancion> buscarCancionesDeDisco(String titulo, String autor)
+	{
+		ArrayList<Cancion> cancionesDelDisco = new ArrayList<>();
+		Connection conn = null;
+		try
+		{
+			Class.forName(driver);
+			conn = DriverManager.getConnection(url + db, user, pass);
+			try
+			{
+				PreparedStatement stmt = conn.prepareStatement("SELECT * FROM cancion WHERE titulo = ? AND autor = ?");
+
+				stmt.setString(1, titulo);
+				stmt.setString(2, autor);
+
+				try (ResultSet rs = stmt.executeQuery())
+				{
+					while (rs.next())
+					{
+						Cancion cancion = new Cancion(rs.getString("nombre"), rs.getInt("duracion"));
+						cancionesDelDisco.add(cancion);
+					}
+				}
+			}
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException(e);
+		}
+
+		return cancionesDelDisco;
+	}
+
 }

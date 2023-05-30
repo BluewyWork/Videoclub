@@ -46,12 +46,13 @@ public class AltaDiscoDesign extends JFrame
 
 	class AltaDiscoView extends JPanel implements ActionListener
 	{
-		private JLabel lblTitulo, lblAutor, lblFormato, lblAnyo;
-		private JTextField txtTitulo, txtAutor;
+		private JLabel lblTitulo, lblAutor, lblFormato, lblAnyo, lblDuracion;
+		private JTextField txtTitulo, txtAutor, txtDuracion;
 		private JSpinner txtAnyo;
 		private JButton btnDarAlta;
 		private JButton btnVolver;
 		private JComboBox listFormato;
+
 		private SpinnerNumberModel modelAnyo;
 		private MultimediaController multimediaController;
 
@@ -66,7 +67,7 @@ public class AltaDiscoDesign extends JFrame
 		{
 			if (e.getSource().equals(btnDarAlta))
 			{
-				accionDarAltaPelicula();
+				accionDarAltaDisco();
 
 				Logger.log("Disco Creada");
 			}
@@ -113,7 +114,7 @@ public class AltaDiscoDesign extends JFrame
 			btnDarAlta.addActionListener(this);
 		}
 
-		public void accionDarAltaPelicula()
+		public void accionDarAltaDisco()
 		{
 			String titulo = txtTitulo.getText();
 			String autor = txtAutor.getText();
