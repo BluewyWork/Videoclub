@@ -94,4 +94,17 @@ public class CancionDAO
 		}
 		return cancion;
 	}
+	public ArrayList<Cancion> guardarCancionesEnDisco(Disco disco) {
+		ArrayList<Cancion> cancionesDelDisco = new ArrayList<>();
+
+		for (Cancion cancion : listCancion) {
+			if (cancion.getTitulo().equals(disco.getTitulo()) && cancion.getAutor().equals(disco.getAutor())) {
+				cancionesDelDisco.add(cancion);
+			}
+		}
+
+		disco.setListaCanciones(cancionesDelDisco);
+		return cancionesDelDisco;
+	}
+
 }

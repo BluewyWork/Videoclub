@@ -40,7 +40,8 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent actionEvent)
 	{
-		refreshTable();
+		if (actionEvent.getSource().equals(btnSeleccionar))
+			refreshTable();
 	}
 
 	public void initComponents()
@@ -105,6 +106,7 @@ public class ListadoCancionDesign extends JFrame implements ActionListener
 			JOptionPane.showMessageDialog(null, "No existe ningun disco",
 					"ERROR", JOptionPane.ERROR_MESSAGE
 			);
+			e.printStackTrace();
 		}
 	}
 
