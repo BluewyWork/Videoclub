@@ -1,6 +1,6 @@
 /**
- * The `SocioController` class is responsible for managing the operations related to members of the videoclub.
- * It interacts with the `SocioDAO` to perform CRUD operations on socio (member) objects.
+ * The `SocioController` class is responsible for managing the operations related to members of the videoclub. It
+ * interacts with the `SocioDAO` to perform CRUD operations on socio (member) objects.
  */
 package com.videoclub.controller;
 
@@ -9,13 +9,15 @@ import com.videoclub.model.SocioDAO;
 
 import java.util.ArrayList;
 
-public class SocioController {
+public class SocioController
+{
 	private final SocioDAO socioDAO;
 
 	/**
 	 * Constructs a new `SocioController` object and initializes the `SocioDAO`.
 	 */
-	public SocioController() {
+	public SocioController()
+	{
 		socioDAO = new SocioDAO();
 	}
 
@@ -27,7 +29,8 @@ public class SocioController {
 	 * @param birthDate The birth date of the socio.
 	 * @param town      The town of residence of the socio.
 	 */
-	public void registrarSocio(String nif, String name, String birthDate, String town) {
+	public void registrarSocio(String nif, String name, String birthDate, String town)
+	{
 		Socio socio = new Socio(nif, name, birthDate, town);
 		socioDAO.aniadirSocio(socio);
 	}
@@ -37,7 +40,8 @@ public class SocioController {
 	 *
 	 * @param nif The NIF of the socio to be removed.
 	 */
-	public void darBajaSocio(String nif) {
+	public void darBajaSocio(String nif)
+	{
 		socioDAO.eliminarSocio(nif);
 	}
 
@@ -47,7 +51,8 @@ public class SocioController {
 	 * @param nif The NIF of the socio to be found.
 	 * @return The Socio object matching the specified NIF, or null if not found.
 	 */
-	public Socio encontrarSocio(String nif) {
+	public Socio encontrarSocio(String nif)
+	{
 		return socioDAO.encontrarSocio(nif);
 	}
 
@@ -56,7 +61,8 @@ public class SocioController {
 	 *
 	 * @return An ArrayList of Socio objects representing the socios.
 	 */
-	public ArrayList<Socio> todosLosSocios() {
+	public ArrayList<Socio> todosLosSocios()
+	{
 		return socioDAO.getListSocios();
 	}
 
@@ -66,7 +72,8 @@ public class SocioController {
 	 * @param nombre The name to filter the socios by.
 	 * @return An ArrayList of Socio objects matching the specified name.
 	 */
-	public ArrayList<Socio> filtroPorNombre(String nombre) {
+	public ArrayList<Socio> filtroPorNombre(String nombre)
+	{
 		return socioDAO.filtroPorNombre(nombre);
 	}
 
@@ -76,7 +83,8 @@ public class SocioController {
 	 * @param nIF The NIF to filter the socios by.
 	 * @return An ArrayList of Socio objects matching the specified NIF.
 	 */
-	public ArrayList<Socio> filtroPorNIF(String nIF) {
+	public ArrayList<Socio> filtroPorNIF(String nIF)
+	{
 		return socioDAO.filtroPorNif(nIF);
 	}
 }

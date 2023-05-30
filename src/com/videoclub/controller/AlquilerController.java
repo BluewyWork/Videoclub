@@ -16,13 +16,12 @@ public class AlquilerController
 	}
 
 	/**
-	 * asigna al socio la multimedia que desea
-	 * al metodo se le pasa un String "nif" y un objecto "multimedia"
-	 * utilizando el metodo pagosPendientes pasandole el nif comprueba si y socio tiene algun otro
-	 * multimedia que tenga recargos y si si no le deja alquilar
-	 * se crea un objecto alquiler con los con la informacion necesaria para luego recuperarla
+	 * asigna al socio la multimedia que desea al metodo se le pasa un String "nif" y un objecto "multimedia" utilizando
+	 * el metodo pagosPendientes pasandole el nif comprueba si y socio tiene algun otro multimedia que tenga recargos y
+	 * si si no le deja alquilar se crea un objecto alquiler con los con la informacion necesaria para luego
+	 * recuperarla
 	 *
-	 * @param memberNIF el nif de socio
+	 * @param memberNIF  el nif de socio
 	 * @param multimedia el objecto multimedia que desea alquilar el socio
 	 * @throws RuntimeException si el miembro tiene recargos
 	 */
@@ -42,10 +41,10 @@ public class AlquilerController
 	}
 
 	/**
-	 * elimina el alquiler del array list y retorna dicho alquiler
-	 * utilizando el id para recuperar el alquiler exacto y lo elimina del arraylist
-	 * antes de eso se guarda en un objecto alquiler es que retornado para
-	 * hacer mas acciones como recuperar multimedia...
+	 * elimina el alquiler del array list y retorna dicho alquiler utilizando el id para recuperar el alquiler exacto y
+	 * lo elimina del arraylist antes de eso se guarda en un objecto alquiler es que retornado para hacer mas acciones
+	 * como recuperar multimedia...
+	 *
 	 * @param id
 	 * @return
 	 */
@@ -93,6 +92,7 @@ public class AlquilerController
 
 	/**
 	 * recupera los alquilers con recargos de un socio
+	 *
 	 * @return
 	 */
 	public ArrayList<Alquiler> listarSocioRecargo()
@@ -102,6 +102,7 @@ public class AlquilerController
 
 	/**
 	 * devuelve todos los alquileres actuales
+	 *
 	 * @return
 	 */
 	public ArrayList<Alquiler> todosLosAlquileres()
