@@ -2,6 +2,8 @@ package com.videoclub.model;
 
 public class Cancion
 {
+	private String titulo;
+	private String autor;
 	private String nombre;
 	private int duracion;
 
@@ -28,6 +30,26 @@ public class Cancion
 						super.toString() + "\n" +
 						"\t" + "Nombre: '" + nombre + '\'' +
 						"\t" + "Duracion: " + duracion;
+	}
+
+	public String getTitulo()
+	{
+		return titulo;
+	}
+
+	public void setTitulo(String titulo)
+	{
+		this.titulo = titulo;
+	}
+
+	public String getAutor()
+	{
+		return autor;
+	}
+
+	public void setAutor(String autor)
+	{
+		this.autor = autor;
 	}
 
 	public int getDuracion()
