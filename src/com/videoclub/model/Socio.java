@@ -7,11 +7,17 @@ import java.time.format.DateTimeFormatter;
 
 public class Socio
 {
+	/**
+	 * atributos de la clase Socio
+	 */
 	private String nif;
 	private String nombre;
 	private LocalDate fechaNacimiento;
 	private String poblacion;
 
+	/**
+	 * constructor por defecto de la clase Socio
+	 */
 	public Socio()
 	{
 		nif = "RANDOM";
@@ -20,6 +26,14 @@ public class Socio
 		poblacion = "RANDOM";
 	}
 
+	/**
+	 * constructor por parametros de la clase Socio
+	 * @param nif
+	 * @param nombre
+	 * @param fechaNacimiento
+	 * @param poblacion
+	 * le damos formato a la fecha de dd/MM/yyyy
+	 */
 	public Socio(String nif, String nombre, String fechaNacimiento, String poblacion)
 	{
 		this();
@@ -31,6 +45,10 @@ public class Socio
 		this.poblacion = poblacion;
 	}
 
+	/**
+	 * override del toString
+	 * @return
+	 */
 	@Override
 	public String toString()
 	{
@@ -41,6 +59,10 @@ public class Socio
 				"\t" + "Poblacion: " + poblacion;
 	}
 
+	/**
+	 * getters y setters
+	 * @return
+	 */
 	public String getNombre()
 	{
 		return nombre;
@@ -51,6 +73,11 @@ public class Socio
 		return fechaNacimiento;
 	}
 
+	/**
+	 * comprobacion en el set para controlar que el socio sea mayor de edad y en caso contrario muestra una
+	 * excepcion
+	 * @param fechaNacimiento recibe la fecha para la comprobacion
+	 */
 	public void setFechaNacimiento(LocalDate fechaNacimiento)
 	{
 		if (isAdult(fechaNacimiento) && isValidYear(fechaNacimiento.getYear()))
@@ -81,12 +108,22 @@ public class Socio
 		this.poblacion = poblacion;
 	}
 
+	/**
+	 * metodo que devuelve un booleano en funcion de si es mayor de edad o no el socio
+	 * @param fechaNacimiento recibe la fecha de nacimiento como parametro para comprobar
+	 * @return
+	 */
 	public boolean isAdult(LocalDate fechaNacimiento)
 	{
 		Period myPeriod = Period.between(fechaNacimiento, LocalDate.now());
 		return myPeriod.getYears() >= 18;
 	}
 
+	/**
+	 * metodo para comprobar que el año es valido
+	 * @param anio
+	 * @return
+	 */
 	private boolean isValidYear(int anio)
 	{
 		return anio > 1900;

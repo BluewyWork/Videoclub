@@ -2,10 +2,16 @@ package com.videoclub.model;
 
 public class Pelicula extends Multimedia
 {
+	/**
+	 * atributos de la clase Pelicula
+	 */
 	private int duracion;
 	private String actorPrincipal;
 	private String actrizPrincipal;
 
+	/**
+	 * constructor por defecto de la clase Pelicula
+	 */
 	public Pelicula()
 	{
 		super();
@@ -14,6 +20,16 @@ public class Pelicula extends Multimedia
 		actrizPrincipal = "GOD";
 	}
 
+	/**
+	 * constructor por parametros de la clase Pelicula
+	 * @param titulo
+	 * @param autor
+	 * @param formato
+	 * @param anio
+	 * @param duracion
+	 * @param actor
+	 * @param actriz
+	 */
 	public Pelicula(String titulo, String autor, String formato, int anio, int duracion, String actor, String actriz)
 	{
 		super(titulo, autor, formato, anio);
@@ -22,6 +38,10 @@ public class Pelicula extends Multimedia
 		setActrizPrincipal(actriz);
 	}
 
+	/**
+	 * override del metodo toString
+	 * @return
+	 */
 	@Override
 	public String toString()
 	{
@@ -35,6 +55,10 @@ public class Pelicula extends Multimedia
 		return txt;
 	}
 
+	/**
+	 * metodo para calcular el precio del alquiler de las multimedias
+	 * @return devuelve el precio
+	 */
 	@Override
 	public double calcularPrecioAlquiler()
 	{
@@ -48,6 +72,10 @@ public class Pelicula extends Multimedia
 		}
 	}
 
+	/**
+	 * getters y setters
+	 * @return
+	 */
 	public int getDuracion()
 	{
 		return duracion;
