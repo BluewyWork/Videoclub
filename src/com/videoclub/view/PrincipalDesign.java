@@ -89,7 +89,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		db.loadSocios();
 		db.loadPeliculas();
 		db.loadVideojuegos();
-
+		db.loadDiscos();
 	}
 
 	public void initMenuBar()
