@@ -89,6 +89,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		db.loadSocios();
 		db.loadPeliculas();
 		db.loadVideojuegos();
+		db.loadDiscos();
 
 	}
 
@@ -216,7 +217,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		}
 		else if (e.getSource().equals(listarCancion))
 		{
-			listadoCancionDesign.refreshTable();
+			//listadoCancionDesign.refreshTable();
 			listadoCancionDesign.refreshComboBox();
 			listadoCancionDesign.setVisible(true);
 		}
