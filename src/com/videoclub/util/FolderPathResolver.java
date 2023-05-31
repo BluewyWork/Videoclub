@@ -1,11 +1,20 @@
 package com.videoclub.util;
 
+/**
+ * Esta clase proporciona métodos para resolver las rutas de las carpetas en función del sistema operativo.
+ */
 public class FolderPathResolver
 {
 	private static final String OS = System.getProperty("os.name").toLowerCase();
 	private static final boolean IS_WINDOWS = OS.contains("win");
 	private static final boolean IS_UNIX = OS.contains("nix") || OS.contains("nux") || OS.contains("aix");
 
+	/**
+	 * Devuelve la ruta de la carpeta de configuración del usuario.
+	 *
+	 * @return La ruta de la carpeta de configuración del usuario.
+	 * @throws RuntimeException si la ruta de la carpeta de configuración del usuario no es compatible en este sistema operativo.
+	 */
 	public static String getUserConfigPath()
 	{
 		if (IS_UNIX)
@@ -22,6 +31,12 @@ public class FolderPathResolver
 		}
 	}
 
+	/**
+	 * Devuelve la ruta de la carpeta de datos del usuario.
+	 *
+	 * @return La ruta de la carpeta de datos del usuario.
+	 * @throws RuntimeException si la ruta de la carpeta de datos del usuario no es compatible en este sistema operativo.
+	 */
 	public static String getUserDataPath()
 	{
 		if (IS_WINDOWS)

@@ -2,8 +2,10 @@ package com.videoclub.model;
 
 import java.time.LocalDate;
 
-public class Alquiler
-{
+/**
+ * Representa un alquiler de multimedia realizado por un socio.
+ */
+public class Alquiler {
 	private static int contadorID = 0;
 	private final LocalDate fechaDevolucion;
 	private final LocalDate fechaAlquiler;
@@ -13,8 +15,11 @@ public class Alquiler
 	private double deudaInicial;
 	private double deudaFinal;
 
-	public Alquiler()
-	{
+	/**
+	 * Crea un nuevo objeto Alquiler con valores predeterminados.
+	 * El contador ID se incrementa y se asigna la fecha actual como fecha de alquiler y fecha de devolución.
+	 */
+	public Alquiler() {
 		setContador(contadorID++);
 		nif = "RANDOM";
 		multimedia = null;
@@ -24,17 +29,27 @@ public class Alquiler
 		fechaDevolucion = LocalDate.now().plusDays(Constantes.RENT_MAX_DURATION);
 	}
 
-	public Alquiler(String nif, Multimedia multimedia)
-	{
+	/**
+	 * Crea un nuevo objeto Alquiler con el NIF del socio y la multimedia proporcionados.
+	 * Se asigna la fecha actual como fecha de alquiler y fecha de devolución.
+	 *
+	 * @param nif        NIF del socio que realiza el alquiler
+	 * @param multimedia Multimedia que se alquila
+	 */
+	public Alquiler(String nif, Multimedia multimedia) {
 		this();
 		setNif(nif);
 		setMultimedia(multimedia);
 		setDeudaInicial(calcularDeudaInicial());
 	}
 
+	/**
+	 * Devuelve una representación en formato de cadena del objeto Alquiler.
+	 *
+	 * @return Cadena que representa el objeto Alquiler
+	 */
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return "Alquiler{" +
 				"contador=" + contador +
 				", nif='" + nif + '\'' +
@@ -46,8 +61,12 @@ public class Alquiler
 				'}';
 	}
 
-	public String listaAlquileres()
-	{
+	/**
+	 * Devuelve una representación de cadena de la información del alquiler para su visualización en una lista.
+	 *
+	 * @return Cadena que representa la información del alquiler para su visualización en una lista
+	 */
+	public String listaAlquileres() {
 		StringBuilder text = new StringBuilder();
 
 		text.append(contador).append("||").append(text.append(multimedia.getTitulo()).append("\n\n"));
@@ -55,79 +74,125 @@ public class Alquiler
 		return text.toString();
 	}
 
-	public double getDeudaInicial()
-	{
+	/**
+	 * Obtiene la deuda inicial del alquiler.
+	 *
+	 * @return Deuda inicial del alquiler
+	 */
+	public double getDeudaInicial() {
 		return deudaInicial;
 	}
 
-	public void setDeudaInicial(double deudaInicial)
-	{
+	/**
+	 * Establece la deuda inicial del alquiler.
+	 *
+	 * @param deudaInicial Deuda inicial del alquiler
+	 */
+	public void setDeudaInicial(double deudaInicial) {
 		this.deudaInicial = deudaInicial;
 	}
 
-	public void setDeudaFinal()
-	{
+	/**
+	 * Establece la deuda final del alquiler.
+	 * La deuda final se calcula automáticamente en función de la deuda inicial y los días de retraso.
+	 */
+	public void setDeudaFinal() {
 		deudaFinal = calcularDeudaFinal();
 	}
 
-	public String getNif()
-	{
+	/**
+	 * Obtiene el NIF del socio que realizó el alquiler.
+	 *
+	 * @return NIF del socio
+	 */
+	public String getNif() {
 		return nif;
 	}
 
-	public void setNif(String nif)
-	{
+	/**
+	 * Establece el NIF del socio que realiza el alquiler.
+	 *
+	 * @param nif NIF del socio
+	 */
+	public void setNif(String nif) {
 		this.nif = nif;
 	}
 
-	public Multimedia getMultimedia()
-	{
+	/**
+	 * Obtiene la multimedia alquilada.
+	 *
+	 * @return Multimedia alquilada
+	 */
+	public Multimedia getMultimedia() {
 		return multimedia;
 	}
 
-	public void setMultimedia(Multimedia multimedia)
-	{
+	/**
+	 * Establece la multimedia alquilada.
+	 *
+	 * @param multimedia Multimedia alquilada
+	 */
+	public void setMultimedia(Multimedia multimedia) {
 		this.multimedia = multimedia;
 	}
 
-	public int getContador()
-	{
+	/**
+	 * Obtiene el contador del alquiler.
+	 *
+	 * @return Contador del alquiler
+	 */
+	public int getContador() {
 		return contador;
 	}
 
-	public void setContador(int contador)
-	{
+	/**
+	 * Establece el contador del alquiler.
+	 *
+	 * @param contador Contador del alquiler
+	 */
+	public void setContador(int contador) {
 		this.contador = contador;
 	}
 
-	public boolean esAtrasado()
-	{
+	/**
+	 * Comprueba si el alquiler está atrasado.
+	 *
+	 * @return true si el alquiler está atrasado, false en caso contrario
+	 */
+	public boolean esAtrasado() {
 		return diasAtrasado() > 0;
 	}
 
-	public int diasAtrasado()
-	{
+	/**
+	 * Calcula los días de retraso del alquiler.
+	 *
+	 * @return Número de días de retraso del alquiler
+	 */
+	public int diasAtrasado() {
 		return fechaDevolucion.until(LocalDate.now()).getDays();
 	}
 
-	public double calcularDeudaInicial()
-	{
+	/**
+	 * Calcula la deuda inicial del alquiler.
+	 *
+	 * @return Deuda inicial del alquiler
+	 */
+	public double calcularDeudaInicial() {
 		double deuda = 0;
-
 		deuda += multimedia.calcularPrecioAlquiler();
-
 		return deuda;
 	}
 
-	public double calcularDeudaFinal()
-	{
+	/**
+	 * Calcula la deuda final del alquiler.
+	 *
+	 * @return Deuda final del alquiler
+	 */
+	public double calcularDeudaFinal() {
 		double deuda = 0;
-
-		if (esAtrasado())
-		{
+		if (esAtrasado()) {
 			deuda += diasAtrasado() * Constantes.SURCHARGE_PER_DAY;
 		}
-
 		return deuda + deudaInicial;
 	}
 }

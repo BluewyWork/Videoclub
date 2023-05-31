@@ -7,8 +7,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * Esta clase proporciona métodos para registrar mensajes en un archivo de registro.
+ */
 public class Logger
 {
+	/**
+	 * Registra un mensaje en el archivo de registro.
+	 *
+	 * @param message El mensaje a registrar.
+	 */
 	public static void log(String message)
 	{
 		try
