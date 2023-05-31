@@ -9,18 +9,30 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * La clase `AltaCancionDesign` es una clase que representa la interfaz gráfica para agregar una canción en un
+ * videoclub. Extiende la clase `JFrame` para crear una ventana.
+ */
 public class AltaCancionDesign extends JFrame
 {
-	AltaCancionView firstPanel;
-	private CancionController cancionController;
+	private AltaCancionView firstPanel;
+	private final CancionController cancionController;
 	private JPanel secondPanel;
 
+	/**
+	 * Crea una instancia de `AltaCancionDesign`.
+	 *
+	 * @param cancionController el controlador de canciones
+	 */
 	public AltaCancionDesign(CancionController cancionController)
 	{
 		this.cancionController = cancionController;
 		initComponents();
 	}
 
+	/**
+	 * Inicializa y configura los componentes de la interfaz gráfica.
+	 */
 	public void initComponents()
 	{
 		firstPanel = new AltaCancionView(cancionController);
@@ -36,11 +48,17 @@ public class AltaCancionDesign extends JFrame
 		pack();
 
 		getContentPane().setBackground(Color.red);
-		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
+		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS,
+				Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS
+		);
 		setTitle("Alta cancion");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
+	/**
+	 * La clase `AltaCancionView` es una clase interna que representa el panel de la interfaz gráfica para agregar una
+	 * canción. Extiende la clase `JPanel` e implementa la interfaz `ActionListener` para manejar eventos de botones.
+	 */
 	class AltaCancionView extends JPanel implements ActionListener
 	{
 		private JLabel lblNombre, lblDuracion;
@@ -48,8 +66,13 @@ public class AltaCancionDesign extends JFrame
 		private JSpinner txtDuracion;
 		private JButton btnDarAlta;
 		private SpinnerNumberModel modelDuracion;
-		private CancionController cancionController;
+		private final CancionController cancionController;
 
+		/**
+		 * Crea una instancia de `AltaCancionView`.
+		 *
+		 * @param cancionController el controlador de canciones
+		 */
 		public AltaCancionView(CancionController cancionController)
 		{
 			this.cancionController = cancionController;
@@ -60,10 +83,12 @@ public class AltaCancionDesign extends JFrame
 		public void actionPerformed(ActionEvent e)
 		{
 			accionDarAltaCancion();
-
 			Logger.log("Cancion Creada");
 		}
 
+		/**
+		 * Inicializa y configura los componentes del panel.
+		 */
 		public void initComponents()
 		{
 			setSize(400, 300);
@@ -88,6 +113,9 @@ public class AltaCancionDesign extends JFrame
 			btnDarAlta.addActionListener(this);
 		}
 
+		/**
+		 * Realiza la acción de dar de alta una canción.
+		 */
 		public void accionDarAltaCancion()
 		{
 			String nombre = txtNombre.getText();
@@ -107,8 +135,6 @@ public class AltaCancionDesign extends JFrame
 
 			txtNombre.setText("");
 			txtDuracion.setValue(0);
-
-
 		}
 	}
 }
