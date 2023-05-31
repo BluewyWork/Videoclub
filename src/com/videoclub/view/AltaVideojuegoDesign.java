@@ -129,7 +129,7 @@ public class AltaVideojuegoDesign extends JFrame
 			add(txtAnyo);
 			add(lblPlataforma);
 			add(listPlataforma);
-			add(new JPanel()); // Espacio en blanco
+			add(new JPanel());
 			add(btnDarAlta);
 
 			btnDarAlta.addActionListener(this);

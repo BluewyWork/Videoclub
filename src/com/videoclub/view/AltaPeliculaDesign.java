@@ -136,7 +136,7 @@ public class AltaPeliculaDesign extends JFrame
 			add(txtActor);
 			add(lblActriz);
 			add(txtActriz);
-			add(new JPanel()); // Espacio en blanco
+			add(new JPanel());
 			add(btnDarAlta);
 
 			btnDarAlta.addActionListener(this);

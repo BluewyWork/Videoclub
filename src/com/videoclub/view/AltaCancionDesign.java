@@ -107,7 +107,6 @@ public class AltaCancionDesign extends JFrame
 			add(txtNombre);
 			add(lblDuracion);
 			add(txtDuracion);
-			add(new JPanel()); // Espacio en blanco
 			add(btnDarAlta);
 
 			btnDarAlta.addActionListener(this);

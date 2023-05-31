@@ -69,7 +69,6 @@ public class AltaDiscoDesign extends JFrame
 		private JSpinner txtAnyo;
 		private JButton btnDarAlta;
 		private JComboBox<Formato> listFormato;
-
 		private SpinnerNumberModel modelAnyo;
 		private final MultimediaController multimediaController;
 
@@ -111,6 +110,7 @@ public class AltaDiscoDesign extends JFrame
 			lblAnyo = new JLabel("Año lanzamiento:");
 			modelAnyo = new SpinnerNumberModel(2023, 1890, 2023, 1);
 			txtAnyo = new JSpinner(modelAnyo);
+
 			btnDarAlta = new JButton("Dar alta disco");
 
 			setLayout(new GridLayout(5, 2));
@@ -122,7 +122,7 @@ public class AltaDiscoDesign extends JFrame
 			add(listFormato);
 			add(lblAnyo);
 			add(txtAnyo);
-			add(new JPanel()); // Espacio en blanco
+			add(new JPanel());
 			add(btnDarAlta);
 
 			btnDarAlta.addActionListener(this);

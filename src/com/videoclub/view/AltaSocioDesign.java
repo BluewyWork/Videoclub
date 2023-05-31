@@ -65,7 +65,8 @@ public class AltaSocioDesign extends JFrame
 		private JTextField txtNIF;
 		private JTextField txtFechaNacimiento;
 		private JTextField txtPoblacion;
-		private final SocioController socioController;
+		private SocioController socioController;
+		private JButton btnDarAlta;
 
 		/**
 		 * Crea una instancia de `AltaSocioView`.
@@ -106,7 +107,7 @@ public class AltaSocioDesign extends JFrame
 			JLabel lblPoblacion = new JLabel("Poblacion:");
 			txtPoblacion = new JTextField(20);
 
-			JButton btnGuardar = new JButton("Guardar");
+			btnDarAlta = new JButton("Dar alta socio");
 
 			// Configuración del diseño de la ventana
 			setLayout(new GridLayout(5, 2));
@@ -118,11 +119,11 @@ public class AltaSocioDesign extends JFrame
 			add(txtFechaNacimiento);
 			add(lblPoblacion);
 			add(txtPoblacion);
-			add(new JPanel()); // Espacio en blanco
-			add(btnGuardar);
+			add(new JPanel());
+			add(btnDarAlta);
 
 			// Asignar el ActionListener al botón de guardar
-			btnGuardar.addActionListener(this);
+			btnDarAlta.addActionListener(this);
 		}
 
 		/**
