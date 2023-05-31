@@ -32,9 +32,9 @@ public class ListadoAlquilerSocioDesign extends JFrame implements ActionListener
 	private JLabel lblNSocio;
 	private JLabel lblNombreSocio;
 	private JLabel lblDniSocio;
-	private TextField txtFieldNSocio;
-	private TextField txtFieldNombreSocio;
-	private TextField txtFieldDniSocio;
+	private JTextField txtFieldNSocio;
+	private JTextField txtFieldNombreSocio;
+	private JTextField txtFieldDniSocio;
 
 	/**
 	 * Constructor de la clase ListadoAlquilerSocioDesign.
@@ -91,9 +91,9 @@ public class ListadoAlquilerSocioDesign extends JFrame implements ActionListener
 		lblNombreSocio = new JLabel();
 		lblDniSocio = new JLabel();
 		lblNSocio = new JLabel();
-		txtFieldNSocio = new TextField();
-		txtFieldNombreSocio = new TextField();
-		txtFieldDniSocio = new TextField();
+		txtFieldNSocio = new JTextField();
+		txtFieldNombreSocio = new JTextField();
+		txtFieldDniSocio = new JTextField();
 		tblResults = new JTable(tblModel);
 		scrollPane = new JScrollPane(tblResults);
 	}

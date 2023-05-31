@@ -23,12 +23,19 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 	private JTable tblResults;
 	private JTextField txtFieldPrompt;
 	private MemberTableModel tblModel;
-	private SocioController socioController;
-	private MultimediaController multimediaController;
-	private AlquilerController alquilerController;
+	private final SocioController socioController;
+	private final MultimediaController multimediaController;
+	private final AlquilerController alquilerController;
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
 
+	/**
+	 * Crea una instancia de ListadoMultimediaDesign.
+	 *
+	 * @param socioController      El controlador de socios.
+	 * @param multimediaController El controlador de multimedia.
+	 * @param alquilerController   El controlador de alquileres.
+	 */
 	public ListadoMultimediaDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
 	{
 		this.socioController = socioController;
@@ -52,6 +59,9 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 		}
 	}
 
+	/**
+	 * Inicializa los componentes de la interfaz.
+	 */
 	public void initComponents()
 	{
 		grdLayout = new GridLayout();
@@ -65,6 +75,9 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 		scrollPane = new JScrollPane(tblResults);
 	}
 
+	/**
+	 * Configura los componentes de la interfaz.
+	 */
 	public void configComponents()
 	{
 		//
@@ -82,11 +95,11 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 		cmboBoxOptions.addItem("Buscar por autor");
 
 		//
-		btnFind.setText("Find");
+		btnFind.setText("Buscar");
 		btnFind.addActionListener(this);
 
 		//
-		btnDelete.setText("Delete");
+		btnDelete.setText("Eliminar");
 		btnDelete.addActionListener(this);
 
 		//
@@ -110,6 +123,9 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 		add(scrollPane);
 	}
 
+	/**
+	 * Actualiza la tabla según el filtro seleccionado.
+	 */
 	public void updateTable()
 	{
 		String userInputText = txtFieldPrompt.getText();
@@ -130,6 +146,9 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 		tblModel.fireTableDataChanged();
 	}
 
+	/**
+	 * Elimina el multimedia seleccionado.
+	 */
 	public void eliminarMultimedia()
 	{
 		int columnaTitulo = 0;
@@ -146,13 +165,17 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 			tblModel.setData(multimediaController.returnStuff());
 			tblModel.fireTableDataChanged();
 
-			JOptionPane.showMessageDialog(null, "Multimedia eliminada", "Success", JOptionPane.INFORMATION_MESSAGE);
-		} catch (Exception e)
+			JOptionPane.showMessageDialog(null, "Multimedia eliminada", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+		}
+		catch (Exception e)
 		{
 			JOptionPane.showMessageDialog(null, "Seleccione una multimedia para eliminar", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
+	/**
+	 * Modelo de tabla personalizado para mostrar los datos de multimedia.
+	 */
 	class MemberTableModel extends AbstractTableModel
 	{
 		private ArrayList<Multimedia> data;
@@ -161,7 +184,7 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 		public MemberTableModel()
 		{
 			data = new ArrayList<>();
-			columnNames = new String[]{"Column1", "Column2", "Column3", "Column4"};
+			columnNames = new String[]{"Columna1", "Columna2", "Columna3", "Columna4"};
 		}
 
 		public MemberTableModel(ArrayList<Multimedia> listMultimedia, String[] columnNames)
