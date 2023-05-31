@@ -127,7 +127,7 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 		{
 			tblModel.setData(socioController.filtroPorNIF(userInputText));
 		}
-		else if (cmboBoxOptions.getSelectedItem().equals("Buscar por Nombre"))
+		else if (cmboBoxOptions.getSelectedItem().equals("Buscar por nombre"))
 		{
 			tblModel.setData(socioController.filtroPorNombre(userInputText));
 		}
