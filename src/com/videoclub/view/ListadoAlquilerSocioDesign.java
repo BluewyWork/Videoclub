@@ -32,10 +32,17 @@ public class ListadoAlquilerSocioDesign extends JFrame implements ActionListener
 	private JLabel lblNSocio;
 	private JLabel lblNombreSocio;
 	private JLabel lblDniSocio;
-	private TextField txtFieldNSocio;
-	private TextField txtFieldNombreSocio;
-	private TextField txtFieldDniSocio;
+	private JTextField txtFieldNSocio;
+	private JTextField txtFieldNombreSocio;
+	private JTextField txtFieldDniSocio;
 
+	/**
+	 * Constructor de la clase ListadoAlquilerSocioDesign.
+	 *
+	 * @param socioController      controlador de socio
+	 * @param multimediaController controlador de multimedia
+	 * @param alquilerController   controlador de alquiler
+	 */
 	public ListadoAlquilerSocioDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
 	{
 		this.socioController = socioController;
@@ -57,7 +64,7 @@ public class ListadoAlquilerSocioDesign extends JFrame implements ActionListener
 
 			if (socio != null)
 			{
-				JOptionPane.showMessageDialog(null, "Socio encontrado", "Success", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Socio encontrado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 				txtFieldNombreSocio.setText(socio.getNombre());
 				txtFieldDniSocio.setText(socio.getNif());
 				tblModel.setData(alquilerController.listarAlquileresSocio(nif));
@@ -70,6 +77,9 @@ public class ListadoAlquilerSocioDesign extends JFrame implements ActionListener
 		}
 	}
 
+	/**
+	 * Inicializa los componentes de la interfaz gráfica.
+	 */
 	public void initComponents()
 	{
 		grdLayout = new GridLayout();
@@ -81,41 +91,37 @@ public class ListadoAlquilerSocioDesign extends JFrame implements ActionListener
 		lblNombreSocio = new JLabel();
 		lblDniSocio = new JLabel();
 		lblNSocio = new JLabel();
-		txtFieldNSocio = new TextField();
-		txtFieldNombreSocio = new TextField();
-		txtFieldDniSocio = new TextField();
+		txtFieldNSocio = new JTextField();
+		txtFieldNombreSocio = new JTextField();
+		txtFieldDniSocio = new JTextField();
 		tblResults = new JTable(tblModel);
 		scrollPane = new JScrollPane(tblResults);
 	}
 
+	/**
+	 * Configura los componentes de la interfaz gráfica.
+	 */
 	public void configComponents()
 	{
-		//
 		setLayout(grdLayout);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
 		setTitle("Listado alquileres de un socio");
 
-		//
 		txtFieldPrompt.setPreferredSize(new Dimension(200, 30));
 
-		//
 		cmboBoxOptions.addItem("Buscar por NIF");
 		cmboBoxOptions.addItem("Buscar por Nombre");
 
-		//
 		lblNombreSocio.setText("Socio: ");
 
-		//
 		lblNSocio.setText("DNI: ");
 
-		//
-		btnFind.setText("Find");
+		btnFind.setText("Buscar");
 		btnFind.addActionListener(this);
 
-		//
 		ArrayList<Alquiler> listarAlquileresSocio = alquilerController.listarAlquileresSocio(txtFieldPrompt.getText());
-		String[] columnNames = {"Titulo", "Autor", "Formato", "Año"};
+		String[] columnNames = {"Título", "Autor", "Formato", "Año"};
 
 		tblModel.setData(listarAlquileresSocio);
 		tblModel.setColumnNames(columnNames);
@@ -123,33 +129,49 @@ public class ListadoAlquilerSocioDesign extends JFrame implements ActionListener
 		tblModel.fireTableDataChanged();
 		tblModel.fireTableStructureChanged();
 
-		//
 		mainPanel.add(cmboBoxOptions);
 		mainPanel.add(txtFieldPrompt);
 		mainPanel.add(btnFind);
 
-		//
 		add(mainPanel);
 		add(scrollPane);
 	}
 
+	/**
+	 * Clase interna que implementa el modelo de tabla para los alquileres de los socios.
+	 */
 	class MemberTableModel extends AbstractTableModel
 	{
 		private ArrayList<Alquiler> data;
 		private String[] columnNames;
 
+		/**
+		 * Constructor de la clase MemberTableModel.
+		 */
 		public MemberTableModel()
 		{
 			data = new ArrayList<>();
-			columnNames = new String[]{"Column1", "Column2", "Column3", "Column4"};
+			columnNames = new String[]{"Columna1", "Columna2", "Columna3", "Columna4"};
 		}
 
+		/**
+		 * Constructor de la clase MemberTableModel.
+		 *
+		 * @param listAlquileresSocio lista de alquileres de un socio
+		 * @param columnNames         nombres de las columnas
+		 */
 		public MemberTableModel(ArrayList<Alquiler> listAlquileresSocio, String[] columnNames)
 		{
 			this.data = listAlquileresSocio;
 			this.columnNames = columnNames;
 		}
 
+		/**
+		 * Obtiene el objeto Alquiler en una posición específica de la tabla.
+		 *
+		 * @param x posición del objeto en la tabla
+		 * @return el objeto Alquiler en la posición dada
+		 */
 		public Alquiler getObjectAt(int x)
 		{
 			return data.get(x);
@@ -198,11 +220,21 @@ public class ListadoAlquilerSocioDesign extends JFrame implements ActionListener
 			return columnNames[column];
 		}
 
+		/**
+		 * Establece los datos de la tabla.
+		 *
+		 * @param data los nuevos datos de la tabla
+		 */
 		public void setData(ArrayList<Alquiler> data)
 		{
 			this.data = data;
 		}
 
+		/**
+		 * Establece los nombres de las columnas de la tabla.
+		 *
+		 * @param columnNames los nuevos nombres de las columnas
+		 */
 		public void setColumnNames(String[] columnNames)
 		{
 			this.columnNames = columnNames;

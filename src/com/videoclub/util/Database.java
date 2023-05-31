@@ -168,15 +168,16 @@ public class Database
 
 				String query = "";
 
-				query += "create table socio\n" +
-						"(\n" +
-						"    nif text,\n" +
-						"    nombre text,\n" +
-						"    fecha_nacimiento date,\n" +
-						"\tpoblacion text,\n" +
-						"\n" +
-						"\tprimary key(nif)\n" +
-						");"
+				query += """
+						create table socio
+						(
+						    nif text,
+						    nombre text,
+						    fecha_nacimiento date,
+						\tpoblacion text,
+
+						\tprimary key(nif)
+						);"""
 				;
 				statement.execute(query);
 			}
