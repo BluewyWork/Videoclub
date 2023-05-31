@@ -1,9 +1,10 @@
+/**
+ * The `GUI` class represents the graphical user interface of the videoclub application. It initializes the necessary
+ * controllers and sets up the main window.
+ */
 package com.videoclub.controller;
 
-import com.videoclub.model.Cancion;
 import com.videoclub.view.PrincipalDesign;
-
-import java.util.ArrayList;
 
 public class GUI
 {
@@ -12,12 +13,20 @@ public class GUI
 	private CancionController cancionController;
 	private AlquilerController alquilerController;
 
+	/**
+	 * The entry point of the application.
+	 *
+	 * @param args Command line arguments.
+	 */
 	public static void main(String[] args)
 	{
 		GUI gui = new GUI();
 		gui.run();
 	}
 
+	/**
+	 * Initializes the controllers and sets up the main window of the application.
+	 */
 	public void run()
 	{
 		socioController = new SocioController();
