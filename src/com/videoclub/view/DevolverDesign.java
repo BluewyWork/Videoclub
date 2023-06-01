@@ -135,7 +135,7 @@ public class DevolverDesign extends JFrame implements ActionListener
 
 		//
 		cmboBoxOptions.addItem("Buscar por NIF");
-		cmboBoxOptions.addItem("Buscar por Nombre");
+		cmboBoxOptions.addItem("Buscar por nombre");
 
 		//
 		lblNombreSocio.setText("Socio: ");
