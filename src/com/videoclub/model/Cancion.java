@@ -9,7 +9,7 @@ public class Cancion
 	private String titulo;
 	private String autor;
 	private String nombre;
-	private int duracion;
+	private double duracion;
 
 	/**
 	 * Crea una nueva instancia de la clase Cancion con el nombre y la duración especificados.
@@ -17,7 +17,7 @@ public class Cancion
 	 * @param nombre   El nombre de la canción.
 	 * @param duracion La duración de la canción en segundos.
 	 */
-	public Cancion(String nombre, int duracion)
+	public Cancion(String nombre, double duracion)
 	{
 		this.nombre = nombre;
 		this.duracion = duracion;
@@ -98,22 +98,22 @@ public class Cancion
 	}
 
 	/**
-	 * Devuelve la duración de la canción en segundos.
+	 * Devuelve la duración de la canción en minutos.
 	 *
-	 * @return La duración de la canción en segundos.
+	 * @return La duración de la canción en minutos.
 	 */
-	public int getDuracion()
+	public double getDuracion()
 	{
 		return duracion;
 	}
 
 	/**
-	 * Establece la duración de la canción en segundos.
+	 * Establece la duración de la canción en minutos.
 	 *
-	 * @param duracion La duración de la canción en segundos.
+	 * @param duracion La duración de la canción en minutos.
 	 * @throws RuntimeException si la duración especificada es menor que 0.
 	 */
-	public void setDuracion(int duracion)
+	public void setDuracion(double duracion)
 	{
 		if (duracion > 0)
 		{

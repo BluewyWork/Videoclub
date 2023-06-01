@@ -97,7 +97,7 @@ public class AltaCancionDesign extends JFrame
 			txtNombre = new JTextField(20);
 
 			lblDuracion = new JLabel("Duración:");
-			modelDuracion = new SpinnerNumberModel(0, 0, 3000, 1);
+			modelDuracion = new SpinnerNumberModel(0, 0, 300, 0.1);
 			txtDuracion = new JSpinner(modelDuracion);
 
 			btnDarAlta = new JButton("Dar alta Cancion");
@@ -118,7 +118,7 @@ public class AltaCancionDesign extends JFrame
 		public void accionDarAltaCancion()
 		{
 			String nombre = txtNombre.getText();
-			int duracion = (int) txtDuracion.getValue();
+			double duracion = (double) txtDuracion.getValue();
 
 			if (nombre.isEmpty())
 			{

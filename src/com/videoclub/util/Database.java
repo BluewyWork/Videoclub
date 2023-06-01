@@ -450,7 +450,7 @@ public class Database
 						"    autor text,\n" +
 						"    format text,\n" +
 						"    anio integer,\n" +
-						"    duracion integer,\n" +
+						"    duracion numeric,\n" +
 						"\n" +
 						"    primary key(titulo, autor)\n" +
 						");"
@@ -474,7 +474,7 @@ public class Database
 						pstmt.setString(2, multimedia.getAutor());
 						pstmt.setString(3, multimedia.getFormat().toString());
 						pstmt.setInt(4, (multimedia.getAnio()));
-						pstmt.setInt(5, ((Disco) multimedia).getDuracion());
+						pstmt.setDouble(5, ((Disco) multimedia).getDuracion());
 						pstmt.addBatch();
 					}
 
@@ -520,7 +520,7 @@ public class Database
 						"    titulo text default null,\n" +
 						"    autor text default null,\n" +
 						"    nombre text,\n" +
-						"    duracion integer,\n" +
+						"    duracion numeric,\n" +
 						"    primary key(nombre)\n" +
 						");"
 				;
@@ -547,7 +547,7 @@ public class Database
 							pstmt.setString(1, multimedia.getTitulo());
 							pstmt.setString(2, multimedia.getAutor());
 							pstmt.setString(3, cancion.getNombre());
-							pstmt.setInt(4, cancion.getDuracion());
+							pstmt.setDouble(4, cancion.getDuracion());
 							pstmt.addBatch();
 						}
 						pstmt.executeBatch();
