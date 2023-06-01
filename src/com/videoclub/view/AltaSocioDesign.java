@@ -146,6 +146,13 @@ public class AltaSocioDesign extends JFrame
 				);
 				return;
 			}
+			else if (socioController.encontrarSocio(nif) != null)
+			{
+				JOptionPane.showMessageDialog(null, "Ya existe un socio con ese nif",
+						"ERROR", JOptionPane.ERROR_MESSAGE
+				);
+				return;
+			}
 
 			// Llamar al método para agregar el socio en el controlador de socio
 			socioController.registrarSocio(nif, nombre, fechaNacimientoText, poblacion);
