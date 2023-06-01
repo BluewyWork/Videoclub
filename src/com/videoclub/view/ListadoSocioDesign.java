@@ -30,6 +30,13 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
 
+	/**
+	 * Crea una instancia de ListadoSocioDesign.
+	 *
+	 * @param socioController      El controlador de socios.
+	 * @param multimediaController El controlador de multimedia.
+	 * @param alquilerController   El controlador de alquileres.
+	 */
 	public ListadoSocioDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
 	{
 		this.socioController = socioController;
@@ -53,6 +60,9 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 		}
 	}
 
+	/**
+	 * Inicializa los componentes de la interfaz.
+	 */
 	public void initComponents()
 	{
 		grdLayout = new GridLayout();
@@ -64,36 +74,32 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 		tblModel = new MemberTableModel();
 		tblResults = new JTable(tblModel);
 		scrollPane = new JScrollPane(tblResults);
-
 	}
 
+	/**
+	 * Configura los componentes de la interfaz.
+	 */
 	public void configComponents()
 	{
-		//
 		setLayout(grdLayout);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
 		setTitle("Listado socios");
 
-		//
 		txtFieldPrompt.setPreferredSize(new Dimension(200, 30));
 
-		//
 		cmboBoxOptions.addItem("Sin filtro");
 		cmboBoxOptions.addItem("Buscar por NIF");
 		cmboBoxOptions.addItem("Buscar por nombre");
 
-		//
-		btnFind.setText("Find");
+		btnFind.setText("Buscar");
 		btnFind.addActionListener(this);
 
-		//
-		btnDelete.setText("Delete");
+		btnDelete.setText("Eliminar");
 		btnDelete.addActionListener(this);
 
-		//
 		ArrayList<Socio> listSocio = socioController.todosLosSocios();
-		String[] columnNames = {"NIF", "Nombre", "Fecha Naciemiento", "Poblacion"};
+		String[] columnNames = {"NIF", "Nombre", "Fecha Nacimiento", "Población"};
 
 		tblModel.setData(listSocio);
 		tblModel.setColumnNames(columnNames);
@@ -101,17 +107,18 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 		tblModel.fireTableDataChanged();
 		tblModel.fireTableStructureChanged();
 
-		//
 		mainPanel.add(cmboBoxOptions);
 		mainPanel.add(txtFieldPrompt);
 		mainPanel.add(btnFind);
 		mainPanel.add(btnDelete);
 
-		//
 		add(mainPanel);
 		add(scrollPane);
 	}
 
+	/**
+	 * Actualiza la tabla de resultados según el filtro seleccionado.
+	 */
 	public void updateTable()
 	{
 		String userInputText = txtFieldPrompt.getText();
@@ -132,6 +139,9 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 		tblModel.fireTableDataChanged();
 	}
 
+	/**
+	 * Elimina el socio seleccionado de la tabla y actualiza los datos.
+	 */
 	public void eliminarSocio()
 	{
 		int columnaNif = 0;
@@ -146,13 +156,17 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 			tblModel.setData(socioController.todosLosSocios());
 			tblModel.fireTableDataChanged();
 
-			JOptionPane.showMessageDialog(null, "Socio eliminado", "Success", JOptionPane.INFORMATION_MESSAGE);
-		} catch (Exception e)
+			JOptionPane.showMessageDialog(null, "Socio eliminado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+		}
+		catch (Exception e)
 		{
 			JOptionPane.showMessageDialog(null, "Seleccione un socio para eliminar", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
+	/**
+	 * Clase interna que define el modelo de tabla para los socios.
+	 */
 	class MemberTableModel extends AbstractTableModel
 	{
 		private ArrayList<Socio> data;
@@ -161,9 +175,15 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 		public MemberTableModel()
 		{
 			data = new ArrayList<>();
-			columnNames = new String[]{"Column1", "Column2", "Column3", "Column4"};
+			columnNames = new String[]{"Columna1", "Columna2", "Columna3", "Columna4"};
 		}
 
+		/**
+		 * Crea una instancia de MemberTableModel con datos y nombres de columna especificados.
+		 *
+		 * @param listSocio   Los datos de los socios.
+		 * @param columnNames Los nombres de las columnas.
+		 */
 		public MemberTableModel(ArrayList<Socio> listSocio, String[] columnNames)
 		{
 			this.data = listSocio;

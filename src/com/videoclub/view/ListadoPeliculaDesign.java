@@ -17,12 +17,19 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 {
 	private JTable tblResults;
 	private MemberTableModel tblModel;
-	private SocioController socioController;
-	private MultimediaController multimediaController;
-	private AlquilerController alquilerController;
+	private final SocioController socioController;
+	private final MultimediaController multimediaController;
+	private final AlquilerController alquilerController;
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
 
+	/**
+	 * Crea una instancia de ListadoPeliculaDesign.
+	 *
+	 * @param socioController      El controlador de socios.
+	 * @param multimediaController El controlador de multimedia.
+	 * @param alquilerController   El controlador de alquileres.
+	 */
 	public ListadoPeliculaDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
 	{
 		this.socioController = socioController;
@@ -39,6 +46,9 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 		updateTable();
 	}
 
+	/**
+	 * Inicializa los componentes de la interfaz.
+	 */
 	public void initComponents()
 	{
 		mainPanel = new JPanel();
@@ -47,22 +57,26 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 		scrollPane = new JScrollPane(tblResults);
 	}
 
+	/**
+	 * Actualiza la tabla según los datos disponibles.
+	 */
 	public void refreshTable()
 	{
 		tblModel.setData(multimediaController.obtenerPeliculasOrdenadosPorTitulo());
 		tblModel.fireTableDataChanged();
 	}
 
+	/**
+	 * Configura los componentes de la interfaz.
+	 */
 	public void configComponents()
 	{
-		//
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
-		setTitle("Listado peliculas ordenados por titulo");
+		setTitle("Listado películas ordenados por título");
 
-		//
 		ArrayList<Pelicula> listPelicula = multimediaController.obtenerPeliculasOrdenadosPorTitulo();
-		String[] columnNames = {"Titulo", "Autor", "Formato", "Año", "Duracion", "Actor", "Actriz"};
+		String[] columnNames = {"Título", "Autor", "Formato", "Año", "Duración", "Actor", "Actriz"};
 
 		tblModel.setData(listPelicula);
 		tblModel.setColumnNames(columnNames);
@@ -70,16 +84,21 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 		tblModel.fireTableDataChanged();
 		tblModel.fireTableStructureChanged();
 
-		//
 		add(mainPanel);
 		add(scrollPane);
 	}
 
+	/**
+	 * Actualiza la tabla.
+	 */
 	public void updateTable()
 	{
 		tblModel.fireTableDataChanged();
 	}
 
+	/**
+	 * Modelo de tabla personalizado para mostrar los datos de las películas.
+	 */
 	class MemberTableModel extends AbstractTableModel
 	{
 		private ArrayList<Pelicula> data;
@@ -88,7 +107,7 @@ public class ListadoPeliculaDesign extends JFrame implements ActionListener
 		public MemberTableModel()
 		{
 			data = new ArrayList<>();
-			columnNames = new String[]{"Column1", "Column2", "Column3", "Column4", "Column5", "Column6", "Column7"};
+			columnNames = new String[]{"Columna1", "Columna2", "Columna3", "Columna4", "Columna5", "Columna6", "Columna7"};
 		}
 
 		public MemberTableModel(ArrayList<Pelicula> listPelicula, String[] columnNames)

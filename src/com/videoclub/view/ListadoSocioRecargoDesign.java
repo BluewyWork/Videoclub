@@ -30,6 +30,13 @@ public class ListadoSocioRecargoDesign extends JFrame implements ActionListener
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
 
+	/**
+	 * Constructor de la clase ListadoSocioRecargoDesign.
+	 *
+	 * @param socioController      controlador de socios
+	 * @param multimediaController controlador de multimedia
+	 * @param alquilerController   controlador de alquileres
+	 */
 	public ListadoSocioRecargoDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
 	{
 		this.socioController = socioController;
@@ -40,6 +47,11 @@ public class ListadoSocioRecargoDesign extends JFrame implements ActionListener
 		configComponents();
 	}
 
+	/**
+	 * Maneja los eventos de acción, como hacer clic en el botón de búsqueda.
+	 *
+	 * @param actionEvent el evento de acción
+	 */
 	@Override
 	public void actionPerformed(ActionEvent actionEvent)
 	{
@@ -49,6 +61,9 @@ public class ListadoSocioRecargoDesign extends JFrame implements ActionListener
 		}
 	}
 
+	/**
+	 * Inicializa los componentes de la interfaz de usuario.
+	 */
 	public void initComponents()
 	{
 		grdLayout = new GridLayout();
@@ -59,9 +74,11 @@ public class ListadoSocioRecargoDesign extends JFrame implements ActionListener
 		tblModel = new MemberTableModel();
 		tblResults = new JTable(tblModel);
 		scrollPane = new JScrollPane(tblResults);
-
 	}
 
+	/**
+	 * Configura los componentes de la interfaz de usuario y establece el diseño.
+	 */
 	public void configComponents()
 	{
 		//
@@ -79,12 +96,12 @@ public class ListadoSocioRecargoDesign extends JFrame implements ActionListener
 		cmboBoxOptions.addItem("Buscar por nombre");
 
 		//
-		btnFind.setText("Find");
+		btnFind.setText("Buscar");
 		btnFind.addActionListener(this);
 
 		//
 		ArrayList<Socio> listSocio = listSocioRecargo();
-		String[] columnNames = {"NIF", "Nombre", "Fecha Naciemiento", "Poblacion"};
+		String[] columnNames = {"NIF", "Nombre", "Fecha Nacimiento", "Poblacion"};
 
 		tblModel.setData(listSocio);
 		tblModel.setColumnNames(columnNames);
@@ -102,16 +119,18 @@ public class ListadoSocioRecargoDesign extends JFrame implements ActionListener
 		add(scrollPane);
 	}
 
+	/**
+	 * Actualiza la tabla de resultados según la opción de búsqueda seleccionada y el texto ingresado.
+	 */
 	public void updateTable()
 	{
 		String userInputText = txtFieldPrompt.getText();
 
 		if (cmboBoxOptions.getSelectedItem().equals("Buscar por NIF"))
 		{
-			//Cambiar metodo
 			tblModel.setData(socioController.filtroPorNIF(userInputText));
 		}
-		else if (cmboBoxOptions.getSelectedItem().equals("Buscar por Nombre"))
+		else if (cmboBoxOptions.getSelectedItem().equals("Buscar por nombre"))
 		{
 			tblModel.setData(socioController.filtroPorNombre(userInputText));
 		}
@@ -123,6 +142,11 @@ public class ListadoSocioRecargoDesign extends JFrame implements ActionListener
 		tblModel.fireTableDataChanged();
 	}
 
+	/**
+	 * Obtiene la lista de socios con recargo.
+	 *
+	 * @return lista de socios con recargo
+	 */
 	public ArrayList<Socio> listSocioRecargo()
 	{
 		ArrayList<Socio> listSocioRecargo = new ArrayList<>();
@@ -135,6 +159,9 @@ public class ListadoSocioRecargoDesign extends JFrame implements ActionListener
 		return listSocioRecargo;
 	}
 
+	/**
+	 * Modelo de tabla personalizado para mostrar los datos de los socios.
+	 */
 	class MemberTableModel extends AbstractTableModel
 	{
 		private ArrayList<Socio> data;
@@ -143,7 +170,7 @@ public class ListadoSocioRecargoDesign extends JFrame implements ActionListener
 		public MemberTableModel()
 		{
 			data = new ArrayList<>();
-			columnNames = new String[]{"Column1", "Column2", "Column3", "Column4"};
+			columnNames = new String[]{"NIF", "Nombre", "Fecha Nacimiento", "Poblacion"};
 		}
 
 		public MemberTableModel(ArrayList<Socio> listSocio, String[] columnNames)
@@ -181,7 +208,6 @@ public class ListadoSocioRecargoDesign extends JFrame implements ActionListener
 			{
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 				String formattedDate = socio.getFechaNacimiento().format(formatter);
-
 				return formattedDate;
 			}
 			else if (column == 3)

@@ -5,7 +5,6 @@ import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
 import com.videoclub.model.Alquiler;
 import com.videoclub.model.Constantes;
-import com.videoclub.model.Multimedia;
 import com.videoclub.model.Socio;
 import com.videoclub.util.Logger;
 
@@ -16,6 +15,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * La clase DevolverDesign representa la interfaz gráfica de usuario para devolver elementos multimedia alquilados por
+ * un socio. Proporciona funcionalidad para buscar un socio por su NIF y mostrar los elementos multimedia alquilados
+ * asociados a ese socio. También permite al usuario seleccionar y devolver un elemento multimedia específico.
+ */
 public class DevolverDesign extends JFrame implements ActionListener
 {
 	private GridLayout grdLayout;
@@ -24,9 +28,9 @@ public class DevolverDesign extends JFrame implements ActionListener
 	private JTable tblResults;
 	private JTextField txtFieldPrompt;
 	private MemberTableModel tblModel;
-	private SocioController socioController;
-	private MultimediaController multimediaController;
-	private AlquilerController alquilerController;
+	private final SocioController socioController;
+	private final MultimediaController multimediaController;
+	private final AlquilerController alquilerController;
 	private JPanel mainPanel;
 	private JScrollPane scrollPane;
 
@@ -38,6 +42,13 @@ public class DevolverDesign extends JFrame implements ActionListener
 	private TextField txtFieldDniSocio;
 	private JButton btnDevolver;
 
+	/**
+	 * Construye un objeto DevolverDesign con los controladores especificados para Socio, Multimedia y Alquiler.
+	 *
+	 * @param socioController      el controlador para las operaciones de Socio
+	 * @param multimediaController el controlador para las operaciones de Multimedia
+	 * @param alquilerController   el controlador para las operaciones de Alquiler
+	 */
 	public DevolverDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
 	{
 		this.socioController = socioController;
@@ -48,6 +59,11 @@ public class DevolverDesign extends JFrame implements ActionListener
 		configComponents();
 	}
 
+	/**
+	 * Maneja las acciones realizadas por el usuario.
+	 *
+	 * @param actionEvent el objeto ActionEvent que representa la acción del usuario
+	 */
 	@Override
 	public void actionPerformed(ActionEvent actionEvent)
 	{
@@ -59,7 +75,7 @@ public class DevolverDesign extends JFrame implements ActionListener
 
 			if (socio != null)
 			{
-				JOptionPane.showMessageDialog(null, "Socio encontrado", "Success", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Socio encontrado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 				txtFieldNombreSocio.setText(socio.getNombre());
 				txtFieldDniSocio.setText(socio.getNif());
 				ArrayList<Alquiler> listMultimediasAlquiladas = alquilerController.returnStuff(nif);
@@ -87,7 +103,7 @@ public class DevolverDesign extends JFrame implements ActionListener
 				multimediaController.guardarMultimedia(alquiler.getMultimedia());
 				//multimediaController.(multimedia.getTitulo(), multimedia.getAutor());
 				tblModel.fireTableDataChanged();
-				JOptionPane.showMessageDialog(null, "Multimedia devuelta", "Success", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Multimedia devuelta", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 				ArrayList<Alquiler> listMultimediasAlquiladas = alquilerController.returnStuff(nif);
 				tblModel.setData(listMultimediasAlquiladas);
 				tblModel.fireTableDataChanged();
@@ -103,6 +119,9 @@ public class DevolverDesign extends JFrame implements ActionListener
 		}
 	}
 
+	/**
+	 * Inicializa los componentes de la clase DevolverDesign.
+	 */
 	public void initComponents()
 	{
 		grdLayout = new GridLayout();
@@ -122,6 +141,9 @@ public class DevolverDesign extends JFrame implements ActionListener
 		scrollPane = new JScrollPane(tblResults);
 	}
 
+	/**
+	 * Configura los componentes y el diseño de la clase DevolverDesign.
+	 */
 	public void configComponents()
 	{
 		//
@@ -144,7 +166,7 @@ public class DevolverDesign extends JFrame implements ActionListener
 		lblNSocio.setText("DNI: ");
 
 		//
-		btnFind.setText("Find");
+		btnFind.setText("Buscar");
 		btnFind.addActionListener(this);
 
 		//
@@ -152,12 +174,11 @@ public class DevolverDesign extends JFrame implements ActionListener
 		btnDevolver.addActionListener(this);
 
 		//
-		String[] columnNames = {"Contador", "DNI socio", "Titulo", "Autor"};
+		String[] columnNames = {"Contador", "DNI socio", "Título", "Autor"};
 
 		tblModel.setColumnNames(columnNames);
 		tblModel.fireTableDataChanged();
 		tblModel.fireTableStructureChanged();
-
 
 		//
 		mainPanel.add(cmboBoxOptions);
@@ -170,23 +191,42 @@ public class DevolverDesign extends JFrame implements ActionListener
 		add(scrollPane);
 	}
 
+	/**
+	 * La clase MemberTableModel es una implementación de AbstractTableModel utilizada para mostrar los datos de los
+	 * elementos multimedia alquilados en una tabla.
+	 */
 	class MemberTableModel extends AbstractTableModel
 	{
 		private ArrayList<Alquiler> data;
 		private String[] columnNames;
 
+		/**
+		 * Construye un objeto MemberTableModel vacío con nombres de columnas predeterminados.
+		 */
 		public MemberTableModel()
 		{
 			data = new ArrayList<>();
-			columnNames = new String[]{"Column1", "Column2", "Column3", "Column4"};
+			columnNames = new String[]{"Columna1", "Columna2", "Columna3", "Columna4"};
 		}
 
+		/**
+		 * Construye un objeto MemberTableModel con los datos y los nombres de columnas especificados.
+		 *
+		 * @param alquilers   los datos de los elementos multimedia alquilados
+		 * @param columnNames los nombres de las columnas de la tabla
+		 */
 		public MemberTableModel(ArrayList<Alquiler> alquilers, String[] columnNames)
 		{
 			this.data = alquilers;
 			this.columnNames = columnNames;
 		}
 
+		/**
+		 * Devuelve el objeto Alquiler en la fila especificada.
+		 *
+		 * @param x el índice de la fila
+		 * @return el objeto Alquiler en la fila especificada
+		 */
 		public Alquiler getObjectAt(int x)
 		{
 			return data.get(x);
@@ -235,11 +275,21 @@ public class DevolverDesign extends JFrame implements ActionListener
 			return columnNames[column];
 		}
 
+		/**
+		 * Establece los datos para el modelo de tabla.
+		 *
+		 * @param data los nuevos datos para el modelo de tabla
+		 */
 		public void setData(ArrayList<Alquiler> data)
 		{
 			this.data = data;
 		}
 
+		/**
+		 * Establece los nombres de las columnas para el modelo de tabla.
+		 *
+		 * @param columnNames los nuevos nombres de las columnas para el modelo de tabla
+		 */
 		public void setColumnNames(String[] columnNames)
 		{
 			this.columnNames = columnNames;

@@ -4,13 +4,23 @@ import java.util.ArrayList;
 
 public class SocioDAO
 {
+	/**
+	 * atributos de la clase SocioDAO
+	 */
 	private final ArrayList<Socio> listSocios;
 
+	/**
+	 * constructor por defecto de la clase SocioDAO
+	 */
 	public SocioDAO()
 	{
 		listSocios = new ArrayList<>();
 	}
 
+	/**
+	 * override de toString
+	 * @return
+	 */
 	@Override
 	public String toString()
 	{
@@ -24,6 +34,10 @@ public class SocioDAO
 		return text;
 	}
 
+	/**
+	 * getters y setters
+	 * @return
+	 */
 	public ArrayList<Socio> getListSocios()
 	{
 		return listSocios;
@@ -34,6 +48,11 @@ public class SocioDAO
 		return listSocios;
 	}
 
+	/**
+	 * metodo para encontrar socios mediante el nif
+	 * @param nif
+	 * @return
+	 */
 	public Socio encontrarSocio(String nif)
 	{
 		Socio socio = null;
@@ -50,6 +69,11 @@ public class SocioDAO
 		return socio;
 	}
 
+	/**
+	 * metodo que muestra una lista de los socios filtadros por nombre
+	 * @param nombre
+	 * @return
+	 */
 	public ArrayList<Socio> filtroPorNombre(String nombre)
 	{
 		ArrayList<Socio> listSocios = new ArrayList<>();
@@ -65,6 +89,11 @@ public class SocioDAO
 		return listSocios;
 	}
 
+	/**
+	 * metodo que muestra una lista de los socios filtadros por nif
+	 * @param nIF
+	 * @return
+	 */
 	public ArrayList<Socio> filtroPorNif(String nIF)
 	{
 		ArrayList<Socio> listSocio = new ArrayList<>();
@@ -80,11 +109,19 @@ public class SocioDAO
 		return listSocio;
 	}
 
+	/**
+	 * metodo que añade un socio a la lista de socios
+	 * @param socio
+	 */
 	public void aniadirSocio(Socio socio)
 	{
 		listSocios.add(socio);
 	}
 
+	/**
+	 * metodo que elimina un socio de la lista de socios
+	 * @param nif
+	 */
 	public void eliminarSocio(String nif)
 	{
 		Socio socio = encontrarSocio(nif);

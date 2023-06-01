@@ -4,38 +4,43 @@ import com.videoclub.controller.AlquilerController;
 import com.videoclub.controller.CancionController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
-import com.videoclub.model.Cancion;
 import com.videoclub.util.Database;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * La clase PrincipalDesign representa la interfaz principal de la aplicación del videoclub. Extiende la clase JFrame y
+ * se encarga de gestionar los eventos y las acciones de los elementos de la interfaz.
+ */
 public class PrincipalDesign extends JFrame implements ActionListener
 {
-	AltaSocioDesign altaSocioDesign;
-	AltaPeliculaDesign altaPeliculaDesign;
-	AltaVideojuegoDesign altaVideojuegoDesign;
-	AltaCancionDesign altaCancionDesign;
-	AltaDiscoDesign altaDiscoDesign;
-	AddCancionDiscoDesign addCancionDiscoDesign;
+	// Componentes de la interfaz
+	private AltaSocioDesign altaSocioDesign;
+	private AltaPeliculaDesign altaPeliculaDesign;
+	private AltaVideojuegoDesign altaVideojuegoDesign;
+	private AltaCancionDesign altaCancionDesign;
+	private AltaDiscoDesign altaDiscoDesign;
+	private AddCancionDiscoDesign addCancionDiscoDesign;
+	private AlquilerDesign alquilerDesign;
+	private DevolverDesign devolverDesign;
+	private ListadoSocioDesign listadoSocioDesign;
+	private ListadoMultimediaDesign listadoMultimediaDesign;
+	private ListadoPeliculaDesign listadoPeliculaDesign;
+	private ListadoCancionDesign listadoCancionDesign;
+	private ListadoVideojuegoDesign listadoVideojuegoDesign;
+	private ListadoAlquilerSocioDesign listadoAlquilerSocioDesign;
+	private ListadoSocioRecargoDesign listadoSocioRecargoDesign;
 
-	AlquilerDesign alquilerDesign;
-	DevolverDesign devolverDesign;
+	// Controladores y base de datos
+	private final SocioController socioController;
+	private final MultimediaController multimediaController;
+	private final CancionController cancionController;
+	private final AlquilerController alquilerController;
+	private Database db;
 
-	ListadoSocioDesign listadoSocioDesign;
-	ListadoMultimediaDesign listadoMultimediaDesign;
-	ListadoPeliculaDesign listadoPeliculaDesign;
-	ListadoCancionDesign listadoCancionDesign;
-	ListadoVideojuegoDesign listadoVideojuegoDesign;
-	ListadoAlquilerSocioDesign listadoAlquilerSocioDesign;
-	ListadoSocioRecargoDesign listadoSocioRecargoDesign;
-
-	SocioController socioController;
-	MultimediaController multimediaController;
-	CancionController cancionController;
-	AlquilerController alquilerController;
-	Database db;
+	// Elementos de la interfaz
 	private JButton btnGuardar;
 	private JPanel panel;
 	private JMenuBar menuBar;
@@ -43,28 +48,37 @@ public class PrincipalDesign extends JFrame implements ActionListener
 	private JMenuItem altaSocio, listadoSocio, altaPelicula, altaVideojuego, altaCancion, altaDisco, addCancionToDisco, alquilar, devolver;
 	private JMenuItem listarMultimedia, listarPelicula, listarCancion, listarVideojuego, listarAlquiler, listarSocio;
 
+	/**
+	 * Constructor de la clase PrincipalDesign.
+	 *
+	 * @param sc Controlador de socios
+	 * @param mc Controlador de multimedia
+	 * @param cc Controlador de canciones
+	 * @param ac Controlador de alquileres
+	 */
 	public PrincipalDesign(SocioController sc, MultimediaController mc, CancionController cc, AlquilerController ac)
 	{
 		socioController = sc;
 		multimediaController = mc;
 		cancionController = cc;
 		alquilerController = ac;
-
 		initComponents();
 	}
 
+	/**
+	 * Inicializa los componentes de la interfaz y configura la base de datos.
+	 */
 	public void initComponents()
 	{
+		// Creación de los componentes de la interfaz
 		altaSocioDesign = new AltaSocioDesign(socioController);
 		altaPeliculaDesign = new AltaPeliculaDesign(multimediaController);
 		altaVideojuegoDesign = new AltaVideojuegoDesign(multimediaController);
 		altaCancionDesign = new AltaCancionDesign(cancionController);
 		altaDiscoDesign = new AltaDiscoDesign(multimediaController);
 		addCancionDiscoDesign = new AddCancionDiscoDesign(multimediaController, cancionController);
-
 		alquilerDesign = new AlquilerDesign(socioController, multimediaController, alquilerController);
 		devolverDesign = new DevolverDesign(socioController, multimediaController, alquilerController);
-
 		listadoSocioDesign = new ListadoSocioDesign(socioController, multimediaController, alquilerController);
 		listadoMultimediaDesign = new ListadoMultimediaDesign(socioController, multimediaController, alquilerController);
 		listadoPeliculaDesign = new ListadoPeliculaDesign(socioController, multimediaController, alquilerController);
@@ -77,22 +91,27 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(this);
 
+		// Configuración de la ventana principal
 		this.add(panel);
 		panel.add(btnGuardar);
-
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(400, 300);
 		setTitle("JAMA Videoclub");
+
+		// Configuración del menú
 		initMenuBar();
 
+		// Configuración de la base de datos
 		db = new Database(socioController, multimediaController, alquilerController, cancionController);
 		db.loadSocios();
 		db.loadPeliculas();
 		db.loadVideojuegos();
 		db.loadDiscos();
-
 	}
 
+	/**
+	 * Inicializa la barra de menú de la interfaz y configura los elementos del menú.
+	 */
 	public void initMenuBar()
 	{
 		menuBar = new JMenuBar();
@@ -217,7 +236,6 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		}
 		else if (e.getSource().equals(listarCancion))
 		{
-			//listadoCancionDesign.refreshTable();
 			listadoCancionDesign.refreshComboBox();
 			listadoCancionDesign.setVisible(true);
 		}

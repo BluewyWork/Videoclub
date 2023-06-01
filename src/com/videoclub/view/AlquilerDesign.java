@@ -15,9 +15,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * Esta clase representa una interfaz de usuario para realizar el alquiler de multimedia a un socio en un videoclub.
+ */
 @SuppressWarnings("JoinDeclarationAndAssignmentJava")
 public class AlquilerDesign extends JFrame implements ActionListener
 {
+
+	/**
+	 * Declaración de atributos
+	 */
 	private final SocioController socioController;
 	private final MultimediaController multimediaController;
 	private final AlquilerController alquilerController;
@@ -38,6 +45,13 @@ public class AlquilerDesign extends JFrame implements ActionListener
 	private TextField txtFieldDniSocio;
 	private JButton btnRent;
 
+	/**
+	 * Inicializa una instancia de la clase AlquilerDesign.
+	 *
+	 * @param socioController      el controlador de socios
+	 * @param multimediaController el controlador de multimedia
+	 * @param alquilerController   el controlador de alquileres
+	 */
 	public AlquilerDesign(SocioController socioController, MultimediaController multimediaController, AlquilerController alquilerController)
 	{
 		this.socioController = socioController;
@@ -95,6 +109,9 @@ public class AlquilerDesign extends JFrame implements ActionListener
 		}
 	}
 
+	/**
+	 * Inicializa los componentes de la interfaz gráfica.
+	 */
 	public void initComponents()
 	{
 		grdLayout = new GridLayout();
@@ -114,6 +131,9 @@ public class AlquilerDesign extends JFrame implements ActionListener
 		scrollPane = new JScrollPane(tblResults);
 	}
 
+	/**
+	 * Configura los componentes de la interfaz gráfica.
+	 */
 	public void configComponents()
 	{
 		//
@@ -164,6 +184,9 @@ public class AlquilerDesign extends JFrame implements ActionListener
 		add(scrollPane);
 	}
 
+	/**
+	 * Esta clase interna representa el modelo de datos para la tabla de socios.
+	 */
 	class MemberTableModel extends AbstractTableModel
 	{
 		private ArrayList<Multimedia> data;
@@ -181,6 +204,12 @@ public class AlquilerDesign extends JFrame implements ActionListener
 			this.columnNames = columnNames;
 		}
 
+		/**
+		 * Devuelve el objeto `Multimedia` en la posición especificada.
+		 *
+		 * @param x la posición del objeto
+		 * @return el objeto `Multimedia`
+		 */
 		public Multimedia getObjectAt(int x)
 		{
 			return data.get(x);
@@ -229,11 +258,21 @@ public class AlquilerDesign extends JFrame implements ActionListener
 			return columnNames[column];
 		}
 
+		/**
+		 * Establece los datos del modelo.
+		 *
+		 * @param data los datos a establecer
+		 */
 		public void setData(ArrayList<Multimedia> data)
 		{
 			this.data = data;
 		}
 
+		/**
+		 * Establece los nombres de las columnas del modelo.
+		 *
+		 * @param columnNames los nombres de las columnas a establecer
+		 */
 		public void setColumnNames(String[] columnNames)
 		{
 			this.columnNames = columnNames;
