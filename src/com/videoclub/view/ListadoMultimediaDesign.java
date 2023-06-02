@@ -132,11 +132,31 @@ public class ListadoMultimediaDesign extends JFrame implements ActionListener
 
 		if (cmboBoxOptions.getSelectedItem().equals("Buscar por título"))
 		{
-			tblModel.setData(multimediaController.filtroPorTitulo(userInputText));
+			if (userInputText.isEmpty())
+			{
+				JOptionPane.showMessageDialog(null, "Por favor, introduzca el título que quiere buscar",
+						"ERROR", JOptionPane.ERROR_MESSAGE
+				);
+				return;
+			}
+			else
+			{
+				tblModel.setData(multimediaController.filtroPorTitulo(userInputText));
+			}
 		}
 		else if (cmboBoxOptions.getSelectedItem().equals("Buscar por autor"))
 		{
-			tblModel.setData(multimediaController.filtroPorAutor(userInputText));
+			if (userInputText.isEmpty())
+			{
+				JOptionPane.showMessageDialog(null, "Por favor, introduzca el autor que quiere buscar",
+						"ERROR", JOptionPane.ERROR_MESSAGE
+				);
+				return;
+			}
+			else
+			{
+				tblModel.setData(multimediaController.filtroPorAutor(userInputText));
+			}
 		}
 		else if (cmboBoxOptions.getSelectedItem().equals("Sin filtro"))
 		{

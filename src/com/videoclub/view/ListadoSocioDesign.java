@@ -125,11 +125,31 @@ public class ListadoSocioDesign extends JFrame implements ActionListener
 
 		if (cmboBoxOptions.getSelectedItem().equals("Buscar por NIF"))
 		{
-			tblModel.setData(socioController.filtroPorNIF(userInputText));
+			if (userInputText.isEmpty())
+			{
+				JOptionPane.showMessageDialog(null, "Por favor, introduzca el NIF que quiere buscar",
+						"ERROR", JOptionPane.ERROR_MESSAGE
+				);
+				return;
+			}
+			else
+			{
+				tblModel.setData(socioController.filtroPorNIF(userInputText));
+			}
 		}
 		else if (cmboBoxOptions.getSelectedItem().equals("Buscar por nombre"))
 		{
-			tblModel.setData(socioController.filtroPorNombre(userInputText));
+			if (userInputText.isEmpty())
+			{
+				JOptionPane.showMessageDialog(null, "Por favor, introduzca el nombre que quiere buscar",
+						"ERROR", JOptionPane.ERROR_MESSAGE
+				);
+				return;
+			}
+			else
+			{
+				tblModel.setData(socioController.filtroPorNombre(userInputText));
+			}
 		}
 		else if (cmboBoxOptions.getSelectedItem().equals("Sin filtro"))
 		{
