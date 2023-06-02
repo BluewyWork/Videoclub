@@ -568,6 +568,117 @@ public class Database
 		}
 	}
 
+	public void updateTableAlquiler()
+	{
+		ArrayList<Socio> listSocio = socioController.todosLosSocios();
+		ArrayList<Cancion> listMultimedia = cancionController.returnCancion();
+		ArrayList<Multimedia> listMultimediaCompleta = multimediaController.returnStuff();
+		ArrayList<Alquiler> listAlquiler = alquilerController.todosLosAlquileres();
+
+		Connection connection = null;
+
+		try
+		{
+			Class.forName(driver);
+			connection = DriverManager.getConnection(url + db, user, pass);
+
+			try
+			{
+				Statement statement = connection.createStatement();
+				statement.execute("drop table if exists alquiler;");
+
+				String query = "";
+
+				query += "create table alquiler\n" +
+						"(\n" +
+						"    contador serial,\n" +
+						"    nif text default null,\n" +
+						"    titulo text,\n" +
+						"    autor text,\n" +
+						"    primary key(contador)\n" +
+						");"
+				;
+				statement.execute(query);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+
+			try
+			{
+				PreparedStatement pstmt = connection.prepareStatement("INSERT INTO alquiler(nif, titulo, autor) VALUES (?, ?, ?)");
+
+				for (Alquiler alquiler : listAlquiler)
+				{
+					pstmt.setString(1, alquiler.getNif());
+					pstmt.setString(2, alquiler.getMultimedia().getTitulo());
+					pstmt.setString(3, alquiler.getMultimedia().getAutor());
+					pstmt.addBatch();
+				}
+				pstmt.executeBatch();
+
+				connection.close();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+
+	public void loadAlquileres()
+	{
+		Connection con = null;
+
+		try
+		{
+			Class.forName(driver);
+			con = DriverManager.getConnection(url + db, user, pass);
+
+			try
+			{
+				DateTimeFormatter sourceFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+				DateTimeFormatter targetFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+				Statement st = con.createStatement();
+
+				ResultSet res = st.executeQuery("select * from alquiler;");
+				while (res.next())
+				{
+					String nif = res.getString("nif");
+					String titulo = res.getString("titulo");
+					String autor = res.getString("autor");
+
+					Multimedia multimedia = null;
+					if(multimedia instanceof Pelicula){
+						multimedia = new Pelicula(titulo,autor,"CD",2020,2,"angel","Lucia");
+					}if(multimedia instanceof Videojuego)
+				{
+					multimedia = new Videojuego(titulo, autor, "CD", 2010, "PC");
+				}if (multimedia instanceof Disco){
+						multimedia = new Disco(titulo,autor,"CD",2010,new ArrayList<Cancion>());
+				}
+					alquilerController.alquilarMultimedia(nif,multimedia);
+				}
+				con.close();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
 	public void loadSocios()
 	{
 		Connection con = null;
