@@ -14,7 +14,7 @@ public class GUI
 	private AlquilerController alquilerController;
 
 	/**
-	 * The entry point of the application.
+	 * The entry point of the application
 	 *
 	 * @param args Command line arguments.
 	 */
