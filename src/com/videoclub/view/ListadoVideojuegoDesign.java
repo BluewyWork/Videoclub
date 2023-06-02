@@ -3,6 +3,7 @@ package com.videoclub.view;
 import com.videoclub.controller.AlquilerController;
 import com.videoclub.controller.MultimediaController;
 import com.videoclub.controller.SocioController;
+import com.videoclub.model.Constantes;
 import com.videoclub.model.Videojuego;
 
 import javax.swing.*;
@@ -74,6 +75,7 @@ public class ListadoVideojuegoDesign extends JFrame implements ActionListener
 	public void configComponents()
 	{
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setBounds(Constantes.POSITION_X_WINDOWS, Constantes.POSITION_Y_WINDOWS, Constantes.BOUNDS_WIDTH_WINDOWS, Constantes.BOUNDS_HEIGHT_WINDOWS);
 		setTitle("Listado videojuegos ordenados por año");
 
 		ArrayList<Videojuego> listVideojuego = multimediaController.obtenerVideojuegosOrdenadosPorAnio();
