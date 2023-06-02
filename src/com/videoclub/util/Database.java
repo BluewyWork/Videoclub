@@ -17,7 +17,6 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Database
 {
@@ -474,7 +473,7 @@ public class Database
 						pstmt.setString(2, multimedia.getAutor());
 						pstmt.setString(3, multimedia.getFormat().toString());
 						pstmt.setInt(4, (multimedia.getAnio()));
-						pstmt.setInt(5, ((Disco) multimedia).getDuracion());
+						pstmt.setFloat(5, ((Disco) multimedia).getDuracion());
 						pstmt.addBatch();
 					}
 
@@ -547,7 +546,7 @@ public class Database
 							pstmt.setString(1, multimedia.getTitulo());
 							pstmt.setString(2, multimedia.getAutor());
 							pstmt.setString(3, cancion.getNombre());
-							pstmt.setInt(4, cancion.getDuracion());
+							pstmt.setFloat(4, cancion.getDuracion());
 							pstmt.addBatch();
 						}
 						pstmt.executeBatch();

@@ -55,7 +55,7 @@ public class CancionDAO
 	 * @param duracion La duración de la canción a buscar.
 	 * @return La canción encontrada, o null si no se encontró ninguna canción con los criterios especificados.
 	 */
-	public Cancion encontrarCancion(String nombre, int duracion)
+	public Cancion encontrarCancion(String nombre, float duracion)
 	{
 		for (Cancion cancion : listCancion)
 		{
@@ -84,7 +84,7 @@ public class CancionDAO
 	 * @param duracion La duración de la canción a eliminar.
 	 * @throws RuntimeException si la canción no se encuentra en el DAO.
 	 */
-	public void eliminarCancion(String nombre, int duracion)
+	public void eliminarCancion(String nombre, float duracion)
 	{
 		Cancion cancion = encontrarCancion(nombre, duracion);
 
@@ -108,7 +108,7 @@ public class CancionDAO
 	{
 		ArrayList<Cancion> canciones = disco.getListSongs();
 
-		canciones.sort(Comparator.comparingInt(Cancion::getDuracion));
+		canciones.sort(Comparator.comparingDouble(Cancion::getDuracion));
 
 		return canciones;
 	}

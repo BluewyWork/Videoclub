@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Disco extends Multimedia
 {
-	private int duracion;
+	private float duracion;
 	private ArrayList<Cancion> listaCanciones;
 
 	/**
@@ -62,7 +62,7 @@ public class Disco extends Multimedia
 	 *
 	 * @return La duración total del disco en minutos.
 	 */
-	public int getDuracion()
+	public float getDuracion()
 	{
 		return duracion;
 	}
