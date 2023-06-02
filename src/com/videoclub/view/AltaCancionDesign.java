@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 /**
  * La clase `AltaCancionDesign` es una clase que representa la interfaz gráfica para agregar una canción en un
@@ -97,8 +98,15 @@ public class AltaCancionDesign extends JFrame
 			txtNombre = new JTextField(20);
 
 			lblDuracion = new JLabel("Duración:");
-			modelDuracion = new SpinnerNumberModel(0, 0, 3000, 1);
-			txtDuracion = new JSpinner(modelDuracion);
+			//modelDuracion = new SpinnerNumberModel(0.0, 0.0, 3000.0, 0.1);
+			SpinnerNumberModel model = new SpinnerNumberModel(0.0, 0.0, 100.0, 0.1);
+			JSpinner spinner = new JSpinner(model);
+
+			JSpinner.NumberEditor editor = new JSpinner.NumberEditor(spinner, "0.0");
+			DecimalFormat format = editor.getFormat();
+			format.setMinimumFractionDigits(1);
+			spinner.setEditor(editor);
+			txtDuracion = spinner;
 
 			btnDarAlta = new JButton("Dar alta Cancion");
 
@@ -118,7 +126,8 @@ public class AltaCancionDesign extends JFrame
 		public void accionDarAltaCancion()
 		{
 			String nombre = txtNombre.getText();
-			int duracion = (int) txtDuracion.getValue();
+			double duracion2 = (double) txtDuracion.getValue();
+			float duracion = (float) duracion2;
 
 			if (nombre.isEmpty())
 			{

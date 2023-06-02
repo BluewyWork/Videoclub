@@ -27,7 +27,7 @@ public class CancionController
 	 * @param nombre   The name of the song.
 	 * @param duracion The duration of the song.
 	 */
-	public void altaCancion(String nombre, int duracion)
+	public void altaCancion(String nombre, float duracion)
 	{
 		Cancion cancion = new Cancion(nombre, duracion);
 		cancionDAO.aniadirCancion(cancion);
@@ -81,7 +81,7 @@ public class CancionController
 	 * @param nombre   The name of the song to be removed.
 	 * @param duracion The duration of the song to be removed.
 	 */
-	public void darBajaCancion(String nombre, int duracion)
+	public void darBajaCancion(String nombre, float duracion)
 	{
 		cancionDAO.eliminarCancion(nombre, duracion);
 	}
