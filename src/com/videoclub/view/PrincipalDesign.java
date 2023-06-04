@@ -107,6 +107,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 		db.loadPeliculas();
 		db.loadVideojuegos();
 		db.loadDiscos();
+		db.loadAlquileres();
 	}
 
 	/**
@@ -259,6 +260,7 @@ public class PrincipalDesign extends JFrame implements ActionListener
 			db.updateTablePelicula();
 			db.updateTableDisco();
 			db.updateTableCancion();
+			db.updateTableAlquiler();
 		}
 	}
 }

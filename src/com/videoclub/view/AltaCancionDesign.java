@@ -99,7 +99,7 @@ public class AltaCancionDesign extends JFrame
 
 			lblDuracion = new JLabel("Duración:");
 			//modelDuracion = new SpinnerNumberModel(0.0, 0.0, 3000.0, 0.1);
-			SpinnerNumberModel model = new SpinnerNumberModel(0.0, 0.0, 100.0, 0.1);
+			SpinnerNumberModel model = new SpinnerNumberModel(0.0, 0.0, 1000.0, 0.1);
 			JSpinner spinner = new JSpinner(model);
 
 			JSpinner.NumberEditor editor = new JSpinner.NumberEditor(spinner, "0.0");
@@ -131,18 +131,26 @@ public class AltaCancionDesign extends JFrame
 
 			if (nombre.isEmpty())
 			{
-				JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos,",
+				JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos",
 						"ERROR", JOptionPane.ERROR_MESSAGE
 				);
 				return;
 			}
+			if (duracion == 0.0)
+			{
+				JOptionPane.showMessageDialog(null, "La duracion de la cancion no puede ser 0",
+						"ERROR", JOptionPane.ERROR_MESSAGE
+				);
+			}
+			else
+			{
+				cancionController.altaCancion(nombre, duracion);
 
-			cancionController.altaCancion(nombre, duracion);
+				JOptionPane.showMessageDialog(null, "Cancion agregada correctamente");
 
-			JOptionPane.showMessageDialog(null, "Cancion agregada correctamente");
-
-			txtNombre.setText("");
-			txtDuracion.setValue(0);
+				txtNombre.setText("");
+				txtDuracion.setValue(0.0);
+			}
 		}
 	}
 }
