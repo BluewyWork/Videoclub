@@ -655,14 +655,18 @@ public class Database
 					String autor = res.getString("autor");
 
 					Multimedia multimedia = null;
-					if(multimedia instanceof Pelicula){
+					if(multimedia instanceof Pelicula)
+					{
 						multimedia = new Pelicula(titulo,autor,"CD",2020,2,"angel","Lucia");
-					}if(multimedia instanceof Videojuego)
-				{
-					multimedia = new Videojuego(titulo, autor, "CD", 2010, "PC");
-				}if (multimedia instanceof Disco){
+					}
+					if(multimedia instanceof Videojuego)
+					{
+						multimedia = new Videojuego(titulo, autor, "CD", 2010, "PC");
+					}
+					if (multimedia instanceof Disco)
+					{
 						multimedia = new Disco(titulo,autor,"CD",2010,new ArrayList<Cancion>());
-				}
+					}
 					alquilerController.alquilarMultimedia(nif,multimedia);
 				}
 				con.close();
