@@ -14,6 +14,7 @@ public class Alquiler {
 	private Multimedia multimedia;
 	private double deudaInicial;
 	private double deudaFinal;
+	private String tipo;
 
 	/**
 	 * Crea un nuevo objeto Alquiler con valores predeterminados.
@@ -41,6 +42,7 @@ public class Alquiler {
 		setNif(nif);
 		setMultimedia(multimedia);
 		setDeudaInicial(calcularDeudaInicial());
+		setTipo();
 	}
 
 	/**
@@ -161,6 +163,35 @@ public class Alquiler {
 	 */
 	public boolean esAtrasado() {
 		return diasAtrasado() > 0;
+	}
+
+	/**
+	 * Obtiene el tipo del objeto de multimedia.
+	 *
+	 * @return Contador del alquiler
+	 */
+	public String getTipo()
+	{
+		return tipo;
+	}
+
+	/**
+	 * Establece el tipo de la multimedia
+	 */
+	public void setTipo()
+	{
+		if (multimedia instanceof Pelicula)
+		{
+			tipo = "Pelicula";
+		}
+		else if (multimedia instanceof Videojuego)
+		{
+			tipo = "Videojuego";
+		}
+		else if (multimedia instanceof Disco)
+		{
+			tipo = "Disco";
+		}
 	}
 
 	/**
