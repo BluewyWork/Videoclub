@@ -1,6 +1,6 @@
 /**
- * The `SocioController` class is responsible for managing the operations related to members of the videoclub. It
- * interacts with the `SocioDAO` to perform CRUD operations on socio (member) objects.
+ La clase SocioController se encarga de gestionar las operaciones relacionadas con los miembros del videoclub. Interactúa con SocioDAO
+ para realizar operaciones CRUD en objetos socio.
  */
 package com.videoclub.controller;
 
@@ -14,7 +14,7 @@ public class SocioController
 	private final SocioDAO socioDAO;
 
 	/**
-	 * Constructs a new `SocioController` object and initializes the `SocioDAO`.
+	 * Construye un nuevo objeto `SocioController` e inicializa `SocioDAO`.
 	 */
 	public SocioController()
 	{
@@ -22,23 +22,23 @@ public class SocioController
 	}
 
 	/**
-	 * Registers a new socio (member) in the videoclub with the given details.
+	 * Registra un nuevo socio en el videoclub con los detalles proporcionados.
 	 *
-	 * @param nif       The NIF (identification number) of the socio.
-	 * @param name      The name of the socio.
-	 * @param birthDate The birth date of the socio.
-	 * @param town      The town of residence of the socio.
+	 * @param nif       El NIF (número de identificación) del socio.
+	 * @param nombre    El nombre del socio.
+	 * @param fechaNac  La fecha de nacimiento del socio.
+	 * @param poblacion La poblacion de residencia del socio.
 	 */
-	public void registrarSocio(String nif, String name, String birthDate, String town)
+	public void registrarSocio(String nif, String nombre, String fechaNac, String poblacion)
 	{
-		Socio socio = new Socio(nif, name, birthDate, town);
+		Socio socio = new Socio(nif, nombre, fechaNac, poblacion);
 		socioDAO.aniadirSocio(socio);
 	}
 
 	/**
-	 * Removes a socio (member) from the videoclub based on the NIF (identification number).
+	 * Elimina un socio del videoclub en base al NIF (número de identificación).
 	 *
-	 * @param nif The NIF of the socio to be removed.
+	 * @param nif El NIF del socio a eliminar.
 	 */
 	public void darBajaSocio(String nif)
 	{
@@ -46,10 +46,10 @@ public class SocioController
 	}
 
 	/**
-	 * Finds and retrieves a socio (member) from the videoclub based on the NIF (identification number).
+	 * Encuentra y recupera un socio del videoclub en base al NIF (número de identificación).
 	 *
-	 * @param nif The NIF of the socio to be found.
-	 * @return The Socio object matching the specified NIF, or null if not found.
+	 * @param nif El NIF del socio a encontrar.
+	 * @return El objeto Socio que coincide con el NIF especificado, o null si no se encuentra.
 	 */
 	public Socio encontrarSocio(String nif)
 	{
@@ -57,9 +57,9 @@ public class SocioController
 	}
 
 	/**
-	 * Returns a list of all socios (members) in the videoclub.
+	 * Devuelve una lista de todos los socios en el videoclub.
 	 *
-	 * @return An ArrayList of Socio objects representing the socios.
+	 * @return Un ArrayList de objetos Socio que representan a los socios.
 	 */
 	public ArrayList<Socio> todosLosSocios()
 	{
@@ -67,10 +67,10 @@ public class SocioController
 	}
 
 	/**
-	 * Filters socios (members) in the videoclub by the specified name and returns the matching socios.
+	 * Filtra los socios en el videoclub por el nombre especificado y devuelve los socios que coinciden.
 	 *
-	 * @param nombre The name to filter the socios by.
-	 * @return An ArrayList of Socio objects matching the specified name.
+	 * @param nombre El nombre para filtrar los socios.
+	 * @return Un ArrayList de objetos Socio que coinciden con el nombre especificado.
 	 */
 	public ArrayList<Socio> filtroPorNombre(String nombre)
 	{
@@ -78,10 +78,10 @@ public class SocioController
 	}
 
 	/**
-	 * Filters socios (members) in the videoclub by the specified NIF and returns the matching socios.
+	 * Filtra los socios en el videoclub por el NIF especificado y devuelve los socios que coinciden.
 	 *
-	 * @param nIF The NIF to filter the socios by.
-	 * @return An ArrayList of Socio objects matching the specified NIF.
+	 * @param nIF El NIF para filtrar los socios.
+	 * @return Un ArrayList de objetos Socio que coinciden con el NIF especificado.
 	 */
 	public ArrayList<Socio> filtroPorNIF(String nIF)
 	{

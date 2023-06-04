@@ -8,12 +8,12 @@ import java.util.Collections;
 public class MultimediaDAO
 {
 	/**
-	 * atributos de la clase MultimediDAO
+	 * Atributos de la clase MultimediDAO
 	 */
 	private final ArrayList<Multimedia> listMultimedia;
 
 	/**
-	 * constructor por defecto
+	 * Constructor por defecto
 	 */
 	public MultimediaDAO()
 	{
@@ -21,7 +21,7 @@ public class MultimediaDAO
 	}
 
 	/**
-	 * override toString
+	 * Override toString
 	 * @return
 	 */
 	@Override
@@ -38,7 +38,7 @@ public class MultimediaDAO
 	}
 
 	/**
-	 * get del arrayList que devuelve las multimedias creadas
+	 * Get del arrayList que devuelve las multimedias creadas
 	 * @return
 	 */
 	public ArrayList<Multimedia> getListMultimedia()
@@ -47,7 +47,7 @@ public class MultimediaDAO
 	}
 
 	/**
-	 * metodo para buscar multimedias, recibe dos parametros y comprueba si existe o no la multimedia comparando
+	 * Metodo para buscar multimedias, recibe dos parametros y comprueba si existe o no la multimedia comparando
 	 * el titulo introducido y el autor introducidos con los existentes
 	 * @param titulo
 	 * @param autor
@@ -66,7 +66,7 @@ public class MultimediaDAO
 	}
 
 	/**
-	 * metodo que añade multimedias credas al arrayList de multimedia
+	 * Metodo que añade multimedias credas al arrayList de multimedia
 	 * @param multimedia
 	 */
 	public void aniadirMultimedia(Multimedia multimedia)
@@ -75,7 +75,7 @@ public class MultimediaDAO
 	}
 
 	/**
-	 * método para eliminar una multimedia ya existente que recibe dos parámetros y los busca para eliminarlos o
+	 * Método para eliminar una multimedia ya existente que recibe dos parámetros y los busca para eliminarlos o
 	 * mostrar una excepcion si no se encuentra.
 	 * @param titulo
 	 * @param autor
@@ -95,7 +95,7 @@ public class MultimediaDAO
 	}
 
 	/**
-	 * metodo que muestra un listado con los videojuegos existentes ordenados por anio
+	 * Metodo que muestra un listado con los videojuegos existentes ordenados por anio
 	 * @return
 	 */
 	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAnio() {
@@ -106,7 +106,7 @@ public class MultimediaDAO
 	}
 
 	/**
-	 * metodo para mostrar la lista de películas en funcion de los titulos
+	 * Metodo para mostrar la lista de películas en funcion de los titulos
 	 * @return
 	 */
 	public ArrayList<Pelicula> obtenerPeliculasOrdenadosPorTitulo()
@@ -118,7 +118,7 @@ public class MultimediaDAO
 	}
 
 	/**
-	 * metodo para mostrar todas las peliculas existentes
+	 * Metodo para mostrar todas las peliculas existentes
 	 * @return
 	 */
 	public ArrayList<Pelicula> obtenerTodasLasPeliculas()
@@ -136,7 +136,7 @@ public class MultimediaDAO
 	}
 
 	/**
-	 * metodo que muestra un listado con todos los videojuegos creados
+	 * Metodo que muestra un listado con todos los videojuegos creados
 	 * @return
 	 */
 	public ArrayList<Videojuego> obtenerTodosLosVideojuegos()
@@ -154,7 +154,7 @@ public class MultimediaDAO
 	}
 
 	/**
-	 * metodo para mostrar el listado de todos los discos
+	 * Metodo para mostrar el listado de todos los discos
 	 * @return
 	 */
 	public ArrayList<Disco> obtenerTodosLosDiscos()
@@ -172,7 +172,7 @@ public class MultimediaDAO
 	}
 
 	/**
-	 * metodo que recibe como parametro el titulo para poder filtrar las multimedias en funcion de este
+	 * Metodo que recibe como parametro el titulo para poder filtrar las multimedias en funcion de este
 	 * @param titulo
 	 * @return
 	 */
@@ -192,7 +192,7 @@ public class MultimediaDAO
 	}
 
 	/**
-	 * metodo que filtra las multimedias existentes por autor introducido como parametro
+	 * Metodo que filtra las multimedias existentes por autor introducido como parametro
 	 * @param autor
 	 * @return
 	 */
@@ -212,7 +212,7 @@ public class MultimediaDAO
 	}
 
 	/**
-	 * metodo que muestra los discos filtrados en funcion del titulo introducido
+	 * Metodo que muestra los discos filtrados en funcion del titulo introducido
 	 * @param titulo
 	 * @return
 	 */
@@ -230,7 +230,7 @@ public class MultimediaDAO
 	}
 
 	/**
-	 * metodo para mostrar los discos por titulo
+	 * Metodo para mostrar los discos por titulo
 	 * @return
 	 */
 	public String[] obtenerDiscosTitulo()
@@ -246,7 +246,7 @@ public class MultimediaDAO
 	}
 
 	/**
-	 * metodo que añade una cancion a un disco
+	 * Metodo que añade una cancion a un disco
 	 * @param cancion
 	 * @param disco
 	 */

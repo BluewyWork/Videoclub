@@ -3,12 +3,12 @@ package com.videoclub.model;
 public class Videojuego extends Multimedia
 {
 	/**
-	 * atributos de la clase plataforma
+	 * Atributos de la clase plataforma
 	 */
 	private Plataforma platforma;
 
 	/**
-	 * constructor por defecto de la clase Videojuego
+	 * Constructor por defecto de la clase Videojuego
 	 */
 	public Videojuego()
 	{
@@ -17,7 +17,7 @@ public class Videojuego extends Multimedia
 	}
 
 	/**
-	 * constructor por parametros de la clase videojuego
+	 * Constructor por parametros de la clase videojuego
 	 * @param title
 	 * @param author
 	 * @param format
@@ -31,7 +31,7 @@ public class Videojuego extends Multimedia
 	}
 
 	/**
-	 * override del metodo toString
+	 * Override del metodo toString
 	 * @return
 	 */
 	@Override
@@ -46,7 +46,7 @@ public class Videojuego extends Multimedia
 	}
 
 	/**
-	 * get y set
+	 * Get y set
 	 * @return
 	 */
 	public Plataforma getPlatform()

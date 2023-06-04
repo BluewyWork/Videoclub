@@ -16,7 +16,7 @@ public class AlquilerController
 	}
 
 	/**
-	 * asigna al socio la multimedia que desea al metodo se le pasa un String "nif" y un objecto "multimedia" utilizando
+	 * Asigna al socio la multimedia que desea al metodo se le pasa un String "nif" y un objecto "multimedia" utilizando
 	 * el metodo pagosPendientes pasandole el nif comprueba si y socio tiene algun otro multimedia que tenga recargos y
 	 * si si no le deja alquilar se crea un objecto alquiler con los con la informacion necesaria para luego
 	 * recuperarla
@@ -41,7 +41,7 @@ public class AlquilerController
 	}
 
 	/**
-	 * elimina el alquiler del array list y retorna dicho alquiler utilizando el id para recuperar el alquiler exacto y
+	 * Elimina el alquiler del array list y retorna dicho alquiler utilizando el id para recuperar el alquiler exacto y
 	 * lo elimina del arraylist antes de eso se guarda en un objecto alquiler es que retornado para hacer mas acciones
 	 * como recuperar multimedia...
 	 *
@@ -80,7 +80,7 @@ public class AlquilerController
 	}
 
 	/**
-	 * devuelve los alquiler de dicho socio utilzando el nif
+	 * Devuelve los alquiler de dicho socio utilzando el nif
 	 *
 	 * @param nif
 	 * @return
@@ -91,7 +91,7 @@ public class AlquilerController
 	}
 
 	/**
-	 * recupera los alquilers con recargos de un socio
+	 * Recupera los alquilers con recargos de un socio
 	 *
 	 * @return
 	 */
@@ -101,7 +101,7 @@ public class AlquilerController
 	}
 
 	/**
-	 * devuelve todos los alquileres actuales
+	 * Devuelve todos los alquileres actuales
 	 *
 	 * @return
 	 */

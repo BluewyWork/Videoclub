@@ -115,7 +115,7 @@ public class Cancion
 	 */
 	public void setDuracion(float duracion)
 	{
-		if (duracion > 0)
+		if (duracion > 0.0)
 		{
 			this.duracion = duracion;
 		}

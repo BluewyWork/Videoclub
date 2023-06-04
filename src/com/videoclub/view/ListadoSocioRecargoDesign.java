@@ -92,8 +92,8 @@ public class ListadoSocioRecargoDesign extends JFrame implements ActionListener
 
 		//
 		cmboBoxOptions.addItem("Sin filtro");
-		cmboBoxOptions.addItem("Buscar por NIF");
-		cmboBoxOptions.addItem("Buscar por nombre");
+		/*cmboBoxOptions.addItem("Buscar por NIF");
+		cmboBoxOptions.addItem("Buscar por nombre");*/
 
 		//
 		btnFind.setText("Buscar");
@@ -130,14 +130,14 @@ public class ListadoSocioRecargoDesign extends JFrame implements ActionListener
 		{
 			tblModel.setData(socioController.filtroPorNIF(userInputText));
 		}
-		else if (cmboBoxOptions.getSelectedItem().equals("Buscar por nombre"))
+		/*else if (cmboBoxOptions.getSelectedItem().equals("Buscar por nombre"))
 		{
 			tblModel.setData(socioController.filtroPorNombre(userInputText));
 		}
 		else if (cmboBoxOptions.getSelectedItem().equals("Sin filtro"))
 		{
 			tblModel.setData(listSocioRecargo());
-		}
+		}*/
 
 		tblModel.fireTableDataChanged();
 	}

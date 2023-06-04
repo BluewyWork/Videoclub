@@ -68,7 +68,7 @@ public class Disco extends Multimedia
 	}
 
 	/**
-	 * Calcula y establece la duración total del disco en minutos sumando las duraciones de todas las canciones.
+	 * Calcula y establece la duración total del disco en segundos sumando las duraciones de todas las canciones.
 	 */
 	public void setDuration()
 	{

@@ -1,5 +1,5 @@
 /**
- * The `CancionController` class is responsible for managing the operations related to songs.
+ La clase CancionController se encarga de gestionar las operaciones relacionadas con las canciones.
  */
 package com.videoclub.controller;
 
@@ -14,7 +14,7 @@ public class CancionController
 	CancionDAO cancionDAO;
 
 	/**
-	 * Constructs a new `CancionController` object and initializes the `CancionDAO`.
+	 * Constructor de `CancionController` e inicializa el `CancionDAO`.
 	 */
 	public CancionController()
 	{
@@ -22,10 +22,10 @@ public class CancionController
 	}
 
 	/**
-	 * Adds a new song with the given name and duration to the database.
+	 * Agrega una nueva canción con el nombre y duración proporcionados a la base de datos.
 	 *
-	 * @param nombre   The name of the song.
-	 * @param duracion The duration of the song.
+	 * @param nombre   El nombre de la canción.
+	 * @param duracion La duración de la canción.
 	 */
 	public void altaCancion(String nombre, float duracion)
 	{
@@ -34,9 +34,9 @@ public class CancionController
 	}
 
 	/**
-	 * Returns a list of all songs in the database.
+	 * Devuelve una lista de todas las canciones en la base de datos.
 	 *
-	 * @return An ArrayList of Cancion objects representing the songs.
+	 * @return Un ArrayList de objetos Cancion que representan las canciones.
 	 */
 	public ArrayList<Cancion> returnCancion()
 	{
@@ -44,10 +44,10 @@ public class CancionController
 	}
 
 	/**
-	 * Retrieves a list of songs from the database that belong to the specified disco and have the specified duration.
+	 * Obtiene una lista de canciones de la base de datos que pertenecen al disco especificado y tienen la duración especificada.
 	 *
-	 * @param disco The disco to filter the songs by.
-	 * @return An ArrayList of Cancion objects matching the specified criteria.
+	 * @param disco El disco para filtrar las canciones.
+	 * @return Un ArrayList de objetos Cancion que coinciden con los criterios especificados.
 	 */
 	public ArrayList<Cancion> obtenerCancionesPorDuracion(Disco disco)
 	{
@@ -55,9 +55,9 @@ public class CancionController
 	}
 
 	/**
-	 * Retrieves an array of names of all songs in the database.
+	 * Obtiene un array de nombres de todas las canciones en la base de datos.
 	 *
-	 * @return A String array containing the names of the songs.
+	 * @return Un array de tipo String que contiene los nombres de las canciones.
 	 */
 	public String[] obtenerCancionesNombre()
 	{
@@ -65,10 +65,10 @@ public class CancionController
 	}
 
 	/**
-	 * Filters the songs in the database by the specified name and returns the matching Cancion object.
+	 * Filtra las canciones en la base de datos por el nombre especificado y devuelve el objeto Cancion correspondiente.
 	 *
-	 * @param nombre The name to filter the songs by.
-	 * @return The Cancion object matching the specified name, or null if not found.
+	 * @param nombre El nombre para filtrar las canciones.
+	 * @return El objeto Cancion que coincide con el nombre especificado, o null si no se encuentra.
 	 */
 	public Cancion filtroCancionPorNombre(String nombre)
 	{
@@ -76,10 +76,10 @@ public class CancionController
 	}
 
 	/**
-	 * Removes a song from the database with the given name and duration.
+	 * Elimina una canción de la base de datos con el nombre y duración proporcionados.
 	 *
-	 * @param nombre   The name of the song to be removed.
-	 * @param duracion The duration of the song to be removed.
+	 * @param nombre   El nombre de la canción a eliminar.
+	 * @param duracion La duración de la canción a eliminar.
 	 */
 	public void darBajaCancion(String nombre, float duracion)
 	{

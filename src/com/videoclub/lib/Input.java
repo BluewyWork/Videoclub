@@ -1,3 +1,6 @@
+/**
+ La clase Input proporciona métodos para leer la entrada del usuario desde la consola.
+ */
 package com.videoclub.lib;
 
 import java.util.Scanner;
@@ -6,6 +9,12 @@ public class Input
 {
 	Scanner myScanner = new Scanner(System.in);
 
+	/**
+	 * Lee la entrada del usuario desde la consola y la devuelve como un objeto del tipo especificado.
+	 *
+	 * @param prompt El mensaje que se muestra al usuario como indicación.
+	 * @return El valor ingresado por el usuario como un objeto del tipo especificado.
+	 */
 	public static <T> T readInput(String prompt)
 	{
 		Scanner scanner = new Scanner(System.in);
@@ -26,6 +35,15 @@ public class Input
 		}
 	}
 
+	/**
+	 * Lee la entrada del usuario desde la consola y la devuelve como un objeto del tipo especificado.
+	 * Además, permite especificar el tipo de dato esperado como una cadena de texto.
+	 *
+	 * @param prompt El mensaje que se muestra al usuario como indicación.
+	 * @param type   El tipo de dato esperado ("int", "double", "String" o "boolean").
+	 * @return El valor ingresado por el usuario como un objeto del tipo especificado.
+	 * @throws RuntimeException si el tipo especificado no es válido.
+	 */
 	public static <T> T readInput(String prompt, String type)
 	{
 		Scanner scanner = new Scanner(System.in);

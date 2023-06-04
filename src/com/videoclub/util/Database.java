@@ -594,6 +594,7 @@ public class Database
 						"    nif text default null,\n" +
 						"    titulo text,\n" +
 						"    autor text,\n" +
+						"    tipo text,\n" +
 						"    primary key(contador)\n" +
 						");"
 				;
@@ -613,6 +614,18 @@ public class Database
 					pstmt.setString(1, alquiler.getNif());
 					pstmt.setString(2, alquiler.getMultimedia().getTitulo());
 					pstmt.setString(3, alquiler.getMultimedia().getAutor());
+					if (alquiler.getMultimedia() instanceof Pelicula)
+					{
+						pstmt.setString(4, "Pelicula");
+					}
+					if (alquiler.getMultimedia() instanceof Videojuego)
+					{
+						pstmt.setString(4, "Videojuego");
+					}
+					if (alquiler.getMultimedia() instanceof Disco)
+					{
+						pstmt.setString(4, "Disco");
+					}
 					pstmt.addBatch();
 				}
 				pstmt.executeBatch();
@@ -653,16 +666,21 @@ public class Database
 					String nif = res.getString("nif");
 					String titulo = res.getString("titulo");
 					String autor = res.getString("autor");
+					String tipo = res.getString("tipo");
 
 					Multimedia multimedia = null;
-					if(multimedia instanceof Pelicula){
+					if(tipo.equals("Pelicula"))
+					{
 						multimedia = new Pelicula(titulo,autor,"CD",2020,2,"angel","Lucia");
-					}if(multimedia instanceof Videojuego)
-				{
-					multimedia = new Videojuego(titulo, autor, "CD", 2010, "PC");
-				}if (multimedia instanceof Disco){
+					}
+					if(tipo.equals("Videojuego"))
+					{
+						multimedia = new Videojuego(titulo, autor, "CD", 2010, "PC");
+					}
+					if (tipo.equals("Disco"))
+					{
 						multimedia = new Disco(titulo,autor,"CD",2010,new ArrayList<Cancion>());
-				}
+					}
 					alquilerController.alquilarMultimedia(nif,multimedia);
 				}
 				con.close();

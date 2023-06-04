@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 public class Socio
 {
 	/**
-	 * atributos de la clase Socio
+	 * Atributos de la clase Socio
 	 */
 	private String nif;
 	private String nombre;
@@ -16,7 +16,7 @@ public class Socio
 	private String poblacion;
 
 	/**
-	 * constructor por defecto de la clase Socio
+	 * Constructor por defecto de la clase Socio
 	 */
 	public Socio()
 	{
@@ -27,12 +27,12 @@ public class Socio
 	}
 
 	/**
-	 * constructor por parametros de la clase Socio
+	 * Constructor por parametros de la clase Socio
 	 * @param nif
 	 * @param nombre
 	 * @param fechaNacimiento
 	 * @param poblacion
-	 * le damos formato a la fecha de dd/MM/yyyy
+	 * Le damos formato a la fecha de dd/MM/yyyy
 	 */
 	public Socio(String nif, String nombre, String fechaNacimiento, String poblacion)
 	{
@@ -46,7 +46,7 @@ public class Socio
 	}
 
 	/**
-	 * override del toString
+	 * Override del toString
 	 * @return
 	 */
 	@Override
@@ -74,7 +74,7 @@ public class Socio
 	}
 
 	/**
-	 * comprobacion en el set para controlar que el socio sea mayor de edad y en caso contrario muestra una
+	 * Comprobacion en el set para controlar que el socio sea mayor de edad y en caso contrario muestra una
 	 * excepcion
 	 * @param fechaNacimiento recibe la fecha para la comprobacion
 	 */
@@ -109,7 +109,7 @@ public class Socio
 	}
 
 	/**
-	 * metodo que devuelve un booleano en funcion de si es mayor de edad o no el socio
+	 * Metodo que devuelve un booleano en funcion de si es mayor de edad o no el socio
 	 * @param fechaNacimiento recibe la fecha de nacimiento como parametro para comprobar
 	 * @return
 	 */
@@ -120,7 +120,7 @@ public class Socio
 	}
 
 	/**
-	 * metodo para comprobar que el año es valido
+	 * Metodo para comprobar que el año es valido
 	 * @param anio
 	 * @return
 	 */
