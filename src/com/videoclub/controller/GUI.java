@@ -1,6 +1,6 @@
 /**
- * The `GUI` class represents the graphical user interface of the videoclub application. It initializes the necessary
- * controllers and sets up the main window.
+ La clase GUI representa la interfaz gráfica de usuario de la aplicación del videoclub. Inicializa los controladores
+ necesarios y configura la ventana principal.
  */
 package com.videoclub.controller;
 
@@ -14,9 +14,9 @@ public class GUI
 	private AlquilerController alquilerController;
 
 	/**
-	 * The entry point of the application
+	 * Punto de entrada de la aplicación.
 	 *
-	 * @param args Command line arguments.
+	 * @param args Argumentos de línea de comandos.
 	 */
 	public static void main(String[] args)
 	{
@@ -25,7 +25,7 @@ public class GUI
 	}
 
 	/**
-	 * Initializes the controllers and sets up the main window of the application.
+	 * Inicializa los controladores y configura la ventana principal de la aplicación.
 	 */
 	public void run()
 	{

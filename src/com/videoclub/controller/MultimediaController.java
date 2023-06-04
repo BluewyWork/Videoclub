@@ -1,6 +1,6 @@
 /**
- * The `MultimediaController` class is responsible for managing the operations related to multimedia items such as
- * movies, video games, and discs.
+ La clase MultimediaController se encarga de gestionar las operaciones relacionadas con elementos multimedia, como
+ películas, videojuegos y discos.
  */
 package com.videoclub.controller;
 
@@ -13,7 +13,7 @@ public class MultimediaController
 	MultimediaDAO multimediaDAO;
 
 	/**
-	 * Constructs a new `MultimediaController` object and initializes the `MultimediaDAO`.
+	 * Constructor de la clase `MultimediaController` que inicializa el `MultimediaDAO`.
 	 */
 	public MultimediaController()
 	{
@@ -21,15 +21,15 @@ public class MultimediaController
 	}
 
 	/**
-	 * Adds a new movie to the database with the given details.
+	 * Agrega una nueva película a la base de datos con los detalles proporcionados.
 	 *
-	 * @param title      The title of the movie.
-	 * @param author     The author/director of the movie.
-	 * @param format     The format of the movie.
-	 * @param year       The release year of the movie.
-	 * @param duration   The duration of the movie.
-	 * @param maleLead   The male lead actor in the movie.
-	 * @param femaleLead The female lead actor in the movie.
+	 * @param title      El título de la película.
+	 * @param author     El autor/director de la película.
+	 * @param format     El formato de la película.
+	 * @param year       El año de lanzamiento de la película.
+	 * @param duration   La duración de la película.
+	 * @param maleLead   El actor principal masculino en la película.
+	 * @param femaleLead La actriz principal femenina en la película.
 	 */
 	public void altaPelicula(String title, String author, String format, int year, int duration, String maleLead, String femaleLead)
 	{
@@ -38,13 +38,13 @@ public class MultimediaController
 	}
 
 	/**
-	 * Adds a new video game to the database with the given details.
+	 * Agrega un nuevo videojuego a la base de datos con los detalles proporcionados.
 	 *
-	 * @param title    The title of the video game.
-	 * @param author   The author/developer of the video game.
-	 * @param format   The format of the video game.
-	 * @param year     The release year of the video game.
-	 * @param platform The platform(s) on which the video game is available.
+	 * @param title    El título del videojuego.
+	 * @param author   El autor/desarrollador del videojuego.
+	 * @param format   El formato del videojuego.
+	 * @param year     El año de lanzamiento del videojuego.
+	 * @param platform La(s) plataforma(s) en las que está disponible el videojuego.
 	 */
 	public void altaVideojuego(String title, String author, String format, int year, String platform)
 	{
@@ -53,13 +53,13 @@ public class MultimediaController
 	}
 
 	/**
-	 * Adds a new disc to the database with the given details.
+	 * Agrega un nuevo disco a la base de datos con los detalles proporcionados.
 	 *
-	 * @param titulo        The title of the disc.
-	 * @param autor         The author/artist of the disc.
-	 * @param formato       The format of the disc.
-	 * @param anio          The release year of the disc.
-	 * @param listCanciones The list of songs on the disc.
+	 * @param titulo        El título del disco.
+	 * @param autor         El autor/artista del disco.
+	 * @param formato       El formato del disco.
+	 * @param anio          El año de lanzamiento del disco.
+	 * @param listCanciones La lista de canciones en el disco.
 	 */
 	public void altaDisco(String titulo, String autor, String formato, int anio, ArrayList<Cancion> listCanciones)
 	{
@@ -68,8 +68,8 @@ public class MultimediaController
 	}
 
 	/**
-	 * Stores a disc in the system.
-	 * TODO: This method is not implemented. Implementation is missing.
+	 * Almacena un disco en el sistema.
+	 * TODO: Este método no está implementado. Falta la implementación.
 	 */
 	public void storeDisc()
 	{
@@ -77,9 +77,9 @@ public class MultimediaController
 	}
 
 	/**
-	 * Adds a multimedia item to the database.
+	 * Agrega un elemento multimedia a la base de datos.
 	 *
-	 * @param multimedia The multimedia item to be added.
+	 * @param multimedia El elemento multimedia que se va a agregar.
 	 */
 	public void guardarMultimedia(Multimedia multimedia)
 	{
@@ -87,12 +87,12 @@ public class MultimediaController
 	}
 
 	/**
-	 * Retrieves a multimedia item from the database based on the title and author. The item is removed from the
-	 * database after retrieval.
+	 * Recupera un elemento multimedia de la base de datos según el título y autor. El elemento se elimina de la
+	 * base de datos después de su recuperación.
 	 *
-	 * @param titulo The title of the multimedia item.
-	 * @param autor  The author of the multimedia item.
-	 * @return The retrieved multimedia item, or null if not found.
+	 * @param titulo El título del elemento multimedia.
+	 * @param autor  El autor del elemento multimedia.
+	 * @return El elemento multimedia recuperado, o null si no se encuentra.
 	 */
 	public Multimedia recuperarMultimedia(String titulo, String autor)
 	{
@@ -102,9 +102,9 @@ public class MultimediaController
 	}
 
 	/**
-	 * Returns a list of all multimedia items in the database.
+	 * Devuelve una lista de todos los elementos multimedia en la base de datos.
 	 *
-	 * @return An ArrayList of Multimedia objects representing the items.
+	 * @return Un ArrayList de objetos Multimedia que representan los elementos.
 	 */
 	public ArrayList<Multimedia> returnStuff()
 	{
@@ -112,10 +112,10 @@ public class MultimediaController
 	}
 
 	/**
-	 * Filters multimedia items in the database by the specified title and returns the matching items.
+	 * Filtra los elementos multimedia en la base de datos por el título especificado y devuelve los elementos coincidentes.
 	 *
-	 * @param titulo The title to filter the items by.
-	 * @return An ArrayList of Multimedia objects matching the specified title.
+	 * @param titulo El título para filtrar los elementos.
+	 * @return Un ArrayList de objetos Multimedia que coinciden con el título especificado.
 	 */
 	public ArrayList<Multimedia> filtroPorTitulo(String titulo)
 	{
@@ -123,10 +123,10 @@ public class MultimediaController
 	}
 
 	/**
-	 * Filters multimedia items in the database by the specified author and returns the matching items.
+	 * Filtra los elementos multimedia en la base de datos por el autor especificado y devuelve los elementos coincidentes.
 	 *
-	 * @param autor The author to filter the items by.
-	 * @return An ArrayList of Multimedia objects matching the specified author.
+	 * @param autor El autor para filtrar los elementos.
+	 * @return Un ArrayList de objetos Multimedia que coinciden con el autor especificado.
 	 */
 	public ArrayList<Multimedia> filtroPorAutor(String autor)
 	{
@@ -134,10 +134,10 @@ public class MultimediaController
 	}
 
 	/**
-	 * Filters discs in the database by the specified title and returns the matching Disco object.
+	 * Filtra los discos en la base de datos por el título especificado y devuelve el objeto Disco correspondiente.
 	 *
-	 * @param titulo The title to filter the discs by.
-	 * @return The Disco object matching the specified title, or null if not found.
+	 * @param titulo El título para filtrar los discos.
+	 * @return El objeto Disco que coincide con el título especificado, o null si no se encuentra.
 	 */
 	public Disco filtroDiscoPorTitulo(String titulo)
 	{
@@ -145,9 +145,9 @@ public class MultimediaController
 	}
 
 	/**
-	 * Retrieves a list of movies from the database, ordered by title.
+	 * Recupera una lista de películas de la base de datos, ordenadas por título.
 	 *
-	 * @return An ArrayList of Pelicula objects representing the movies.
+	 * @return Un ArrayList de objetos Pelicula que representan las películas.
 	 */
 	public ArrayList<Pelicula> obtenerPeliculasOrdenadosPorTitulo()
 	{
@@ -155,9 +155,9 @@ public class MultimediaController
 	}
 
 	/**
-	 * Retrieves a list of video games from the database, ordered by release year.
+	 * Recupera una lista de videojuegos de la base de datos, ordenados por año de lanzamiento.
 	 *
-	 * @return An ArrayList of Videojuego objects representing the video games.
+	 * @return Un ArrayList de objetos Videojuego que representan los videojuegos.
 	 */
 	public ArrayList<Videojuego> obtenerVideojuegosOrdenadosPorAnio()
 	{
@@ -165,9 +165,9 @@ public class MultimediaController
 	}
 
 	/**
-	 * Retrieves a list of all movies in the database.
+	 * Recupera una lista de todas las películas en la base de datos.
 	 *
-	 * @return An ArrayList of Pelicula objects representing the movies.
+	 * @return Un ArrayList de objetos Pelicula que representan las películas.
 	 */
 	public ArrayList<Pelicula> todosLosPelis()
 	{
@@ -175,9 +175,9 @@ public class MultimediaController
 	}
 
 	/**
-	 * Retrieves a list of all video games in the database.
+	 * Recupera una lista de todos los videojuegos en la base de datos.
 	 *
-	 * @return An ArrayList of Videojuego objects representing the video games.
+	 * @return Un ArrayList de objetos Videojuego que representan los videojuegos.
 	 */
 	public ArrayList<Videojuego> todosLosVideojuegos()
 	{
@@ -185,9 +185,9 @@ public class MultimediaController
 	}
 
 	/**
-	 * Retrieves a list of all discs in the database.
+	 * Recupera una lista de todos los discos en la base de datos.
 	 *
-	 * @return An ArrayList of Disco objects representing the discs.
+	 * @return Un ArrayList de objetos Disco que representan los discos.
 	 */
 	public ArrayList<Disco> todosLosDiscos()
 	{
@@ -195,9 +195,9 @@ public class MultimediaController
 	}
 
 	/**
-	 * Retrieves an array of titles of all discs in the database.
+	 * Recupera un array de títulos de todos los discos en la base de datos.
 	 *
-	 * @return A String array containing the titles of the discs.
+	 * @return Un array de tipo String que contiene los títulos de los discos.
 	 */
 	public String[] obtenerDiscosTitulo()
 	{
@@ -205,10 +205,10 @@ public class MultimediaController
 	}
 
 	/**
-	 * Adds a song to a disc in the database.
+	 * Agrega una canción a un disco en la base de datos.
 	 *
-	 * @param cancion The song to be added.
-	 * @param disco   The disc to which the song should be added.
+	 * @param cancion La canción que se va a agregar.
+	 * @param disco   El disco al que se debe agregar la canción.
 	 */
 	public void aniadirCancionToDisco(Cancion cancion, Disco disco)
 	{
@@ -216,10 +216,10 @@ public class MultimediaController
 	}
 
 	/**
-	 * Removes a multimedia item from the database based on the title and author.
+	 * Elimina un elemento multimedia de la base de datos según el título y autor.
 	 *
-	 * @param titulo The title of the multimedia item to be removed.
-	 * @param autor  The author of the multimedia item to be removed.
+	 * @param titulo El título del elemento multimedia que se va a eliminar.
+	 * @param autor  El autor del elemento multimedia que se va a eliminar.
 	 */
 	public void darBajaMultimedia(String titulo, String autor)
 	{

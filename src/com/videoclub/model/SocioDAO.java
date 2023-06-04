@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class SocioDAO
 {
 	/**
-	 * atributos de la clase SocioDAO
+	 * Atributos de la clase SocioDAO
 	 */
 	private final ArrayList<Socio> listSocios;
 
 	/**
-	 * constructor por defecto de la clase SocioDAO
+	 * Constructor por defecto de la clase SocioDAO
 	 */
 	public SocioDAO()
 	{
@@ -18,7 +18,7 @@ public class SocioDAO
 	}
 
 	/**
-	 * override de toString
+	 * Override de toString
 	 * @return
 	 */
 	@Override
@@ -35,7 +35,7 @@ public class SocioDAO
 	}
 
 	/**
-	 * getters y setters
+	 * Getters y setters
 	 * @return
 	 */
 	public ArrayList<Socio> getListSocios()
@@ -49,7 +49,7 @@ public class SocioDAO
 	}
 
 	/**
-	 * metodo para encontrar socios mediante el nif
+	 * Metodo para encontrar socios mediante el nif
 	 * @param nif
 	 * @return
 	 */
@@ -70,7 +70,7 @@ public class SocioDAO
 	}
 
 	/**
-	 * metodo que muestra una lista de los socios filtadros por nombre
+	 * Metodo que muestra una lista de los socios filtadros por nombre
 	 * @param nombre
 	 * @return
 	 */
@@ -90,7 +90,7 @@ public class SocioDAO
 	}
 
 	/**
-	 * metodo que muestra una lista de los socios filtadros por nif
+	 * Metodo que muestra una lista de los socios filtadros por nif
 	 * @param nIF
 	 * @return
 	 */
@@ -110,7 +110,7 @@ public class SocioDAO
 	}
 
 	/**
-	 * metodo que añade un socio a la lista de socios
+	 * Metodo que añade un socio a la lista de socios
 	 * @param socio
 	 */
 	public void aniadirSocio(Socio socio)
@@ -119,7 +119,7 @@ public class SocioDAO
 	}
 
 	/**
-	 * metodo que elimina un socio de la lista de socios
+	 * Metodo que elimina un socio de la lista de socios
 	 * @param nif
 	 */
 	public void eliminarSocio(String nif)
