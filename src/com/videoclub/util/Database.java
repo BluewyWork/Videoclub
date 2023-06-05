@@ -607,7 +607,7 @@ public class Database
 
 			try
 			{
-				PreparedStatement pstmt = connection.prepareStatement("INSERT INTO alquiler(nif, titulo, autor) VALUES (?, ?, ?)");
+				PreparedStatement pstmt = connection.prepareStatement("INSERT INTO alquiler(nif, titulo, autor, tipo) VALUES (?, ?, ?, ?)");
 
 				for (Alquiler alquiler : listAlquiler)
 				{
